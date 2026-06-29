@@ -1,0 +1,28 @@
+{
+  "_comentario": "Template FLAT completo. Preencha os valores e remova este campo '_comentario'.",
+  
+  "renda_mensal_pf": 8000,
+  "despesas_mensais_pf": 5000,
+  "prestacoes_mensais_total": 0,
+  "caixa_aplicacoes_total": 55000,
+  "fluxo_real_mensal": 10500,
+  "fluxo_projetado_mensal": 10000,
+  
+  "distribuicoes_mensais_fse": 8000,
+  "faturamento_bruto_mensal_fse": null,
+  "custos_operacionais_fse": null,
+  "saldo_dividas_total": 0,
+  
+  "eletroposto_capex_total": 1500000,
+  "eletroposto_receitas_anuais_proj": 400000,
+  "eletroposto_custos_anuais_proj": 150000,
+  
+  "ativos_transferidos_pct": 20,
+  "itcmd_estimado_economia": 120000,
+  
+  "imoveis_count": 4,
+  "casa_quitada": true,
+  "valor_mercado_estimado_imoveis": 2500000,
+  
+  "risco_score_macro": 3.0
+}
