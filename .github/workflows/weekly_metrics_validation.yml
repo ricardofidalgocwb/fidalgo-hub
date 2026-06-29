@@ -4,7 +4,7 @@ on:
   schedule:
     # Todo domingo às 22:00 UTC (19:00 BRT)
     - cron: '0 22 * * 0'
-  workflow_dispatch:   # Permite execução manual
+  workflow_dispatch:
 
 jobs:
   weekly-validation:
@@ -14,6 +14,15 @@ jobs:
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
+
+      - name: Mostrar estrutura de arquivos (Debug)
+        run: |
+          echo "=== Estrutura do repositório ==="
+          ls -la
+          echo ""
+          echo "=== Verificando arquivos necessários ==="
+          ls -la validate_and_sync_notion_v2_final.py 2>/dev/null || echo "❌ validate_and_sync_notion_v2_final.py NÃO ENCONTRADO"
+          ls -la template_dados_completo.json 2>/dev/null || echo "❌ template_dados_completo.json NÃO ENCONTRADO"
 
       - name: Configurar Python 3.11
         uses: actions/setup-python@v5
@@ -25,6 +34,21 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install notion-client python-dotenv
+
+      - name: Verificar Secrets (Debug)
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          echo "=== Verificação de Secrets ==="
+          echo "NOTION_TOKEN definido: $(if [ -n "$NOTION_TOKEN" ]; then echo '✅ SIM'; else echo '❌ NÃO'; fi)"
+          echo "NOTION_DATABASE_ID definido: $(if [ -n "$NOTION_DATABASE_ID" ]; then echo '✅ SIM'; else echo '❌ NÃO'; fi)"
+          echo "GMAIL_USER definido: $(if [ -n "$GMAIL_USER" ]; then echo '✅ SIM'; else echo '❌ NÃO'; fi)"
+          echo "GMAIL_APP_PASSWORD definido: $(if [ -n "$GMAIL_APP_PASSWORD" ]; then echo '✅ SIM'; else echo '❌ NÃO'; fi)"
+          echo "RECIPIENT_EMAIL definido: $(if [ -n "$RECIPIENT_EMAIL" ]; then echo '✅ SIM'; else echo '❌ NÃO'; fi)"
 
       - name: Executar Validação Automática (v3 Final)
         env:
