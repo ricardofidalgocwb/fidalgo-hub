@@ -1,0 +1,9 @@
+{
+  "name": "eletro-fidalgo",
+  "private": true,
+  "description": "Unpublished Eletro Fidalgo sibling-grid site. Must not replace eletrofidalgo.net until Ricardo says so.",
+  "scripts": {
+    "start": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "dev": "python3 -m http.server 4173 --bind 127.0.0.1"
+  }
+}
