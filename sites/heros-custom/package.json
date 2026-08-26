@@ -1,0 +1,9 @@
+{
+  "name": "heros-custom",
+  "private": true,
+  "description": "Unpublished Heros Custom sibling-grid site. Must not go live until Ricardo says so.",
+  "scripts": {
+    "start": "python3 -m http.server 4174 --bind 127.0.0.1",
+    "dev": "python3 -m http.server 4174 --bind 127.0.0.1"
+  }
+}
