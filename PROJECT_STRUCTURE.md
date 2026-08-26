@@ -5,39 +5,52 @@
 ```
 fidalgo-hub/
 │
-├── 📄 README.md                              # Visão geral principal
-├── 📄 SETUP_GUIDE.md                         # Guia de configuração
-├── 📄 WORKFLOW_DOCUMENTATION.md              # Documentação técnica
-├── 📄 FAQ.md                                 # Perguntas frequentes
-├── 📄 CHANGELOG.md                           # Histórico de versões
-├── 📄 CONTRIBUTING.md                        # Guia de contribuição
-├── 📄 PROJECT_STRUCTURE.md                   # Este arquivo
+├── 📄 README.md
+├── 📄 SETUP_GUIDE.md
+├── 📄 WORKFLOW_DOCUMENTATION.md
+├── 📄 FAQ.md
+├── 📄 CHANGELOG.md
+├── 📄 CONTRIBUTING.md
+├── 📄 PROJECT_STRUCTURE.md
 │
-├── 🔧 Configuração Local
-│   ├── .env.example                          # Exemplo de variáveis
-│   ├── .gitignore                            # Git ignore rules
-│   ├── requirements.txt                      # Dependências Python
-│   ├── setup.sh                              # Script de setup
-│   └── test_local.sh                         # Script de testes
+├── 🔧 Configuração
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── requirements.txt
+│   ├── pytest.ini
+│   ├── setup.sh
+│   └── test_local.sh
+│
+├── 🗂 config/
+│   └── notion_ids.json                     # IDs canônicos Notion (sem secrets)
+│
+├── 🖥 dashboard/                             # Painel Founder · Heros Custom
+│   ├── app.py                              # Flask local (dry-run padrão)
+│   ├── status_machine.py                   # Aprovar / Avançar / Recusar / Adiar
+│   ├── notion_fila.py                      # PATCH só na Fila Founder
+│   ├── pulse.py
+│   ├── templates/index.html
+│   └── fixtures/sample_fila.json
+│
+├── 🧪 tests/
+│   ├── test_status_machine.py
+│   ├── test_n8n_guard.py
+│   └── test_panel_http.py
 │
 ├── 🚀 Workflow
-│   ├── .github/
-│   │   └── workflows/
-│   │       └── weekly_metrics_validation.yml # Workflow v3.1.0
+│   ├── .github/workflows/weekly_metrics_validation.yml
+│   └── .github/workflows/founder_panel_tests.yml
 │
 ├── 💻 Scripts
-│   ├── validate_and_sync_notion_v2_final.py  # Script principal
-│   └── (outros scripts Python futuros)
+│   └── validate_and_sync_notion_v2_final.py
 │
 ├── 📊 Dados
-│   ├── template_dados_completo.json          # Template de dados
-│   └── (relatórios gerados - gitignored)
+│   └── template_dados_completo.json
 │
-└── 📦 Artefatos (Gerados)
-    ├── validation_report_*.json              # Relatórios JSON
-    ├── validation_report_*.md                # Relatórios Markdown
-    └── validation_output.log                 # Logs de execução
+└── 🤖 agents/  leads/  sales/
 ```
+
+O painel Founder estende este repositório (Python + Notion). Não é um segundo SSOT: só lê a Central de Comando e escreve Status / Data do OK / Observações na Fila Founder.
 
 ## 🎯 Arquivos Principais
 

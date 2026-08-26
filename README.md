@@ -1,10 +1,57 @@
-# Fidalgo Hub - Sistema de Governança Automatizada
+# Fidalgo Hub — Multi-Asset Control Dashboard
 
-## 📊 Visão Geral
+Painel operacional interno da **Heros Custom** (nunca Eros / Eletric). Notion é a fonte única de verdade. Founder: Ricardo Rodriguez Fidalgo.
 
-O **Fidalgo Hub** é um sistema integrado de governança financeira e familiar que automatiza validações, sincroniza dados com Notion e fornece relatórios inteligentes para tomada de decisão.
+**Regra de ouro:** Grok Bot roteia → card na Fila Founder → Founder dá OK (**Aprovar**) → só então **Avançar** pode executar. O painel **não dispara n8n em Aprovar**.
 
-**Status:** ✅ Production Ready v3 Final
+---
+
+## Painel Founder (como rodar)
+
+Pulso read-only (contagens por status + próximo item L0) e botões **Aprovar / Avançar / Recusar / Adiar** que só PATCHeiam propriedades do card na Fila Founder.
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # preencha NOTION_TOKEN; não commite .env
+
+# Dry-run (padrão): imprime o payload Notion, não escreve
+python -m dashboard.app
+# Abra http://127.0.0.1:5050
+
+# Testes da máquina de status + guarda n8n
+python -m pytest tests/ -q
+```
+
+Escrita no Notion só acontece se:
+
+1. `NOTION_TOKEN` estiver definido, **e**
+2. `CONFIRM=1` **ou** a UI marcar “Confirmar escrita no Notion”.
+
+```bash
+# CLI/servidor com escrita liberada (ainda exige confirmação na UI se você quiser o checkbox)
+CONFIRM=1 python -m dashboard.app
+```
+
+n8n permanece **desligado**. Para (opcionalmente) avisar o motor só em **Avançar**:
+
+```
+N8N_AVANCAR_ENABLED=1
+N8N_AVANCAR_WEBHOOK=https://seu-n8n/webhook/...
+```
+
+IDs canônicos (sem secrets) estão em `config/notion_ids.json`, espelhados do Hub Claude Code e da Fila Founder ao vivo. CRM SSOT = `6157d36b…`. Não usar Leads arquivado `43b3f514`. Este painel **não** escreve OS Status Entregue nem mistura CNPJ/caixa Heros vs FSE.
+
+Pipeline (português, schema Notion): Aguardando OK → Aprovado → Em Execução → Concluído; Recusar → Rejeitado; Adiar → Adiado.
+
+---
+
+# Governança automatizada (workflow semanal)
+
+O **Fidalgo Hub** também valida dados de governança financeira e familiar, sincroniza com Notion e gera relatórios.
+
+**Status workflow semanal:** Production Ready v3 Final
 
 ---
 
@@ -37,16 +84,15 @@ O **Fidalgo Hub** é um sistema integrado de governança financeira e familiar q
 
 ```
 fidalgo-hub/
-├── .github/
-│   └── workflows/
-│       └── weekly_metrics_validation.yml    # ✅ Workflow automático
-├── validate_and_sync_notion_v2_final.py     # ✅ Script principal
-├── template_dados_completo.json              # ✅ Template de dados
-├── README.md                                 # 📖 Você está aqui
-├── SETUP_GUIDE.md                            # 📖 Guia de configuração
-├── WORKFLOW_DOCUMENTATION.md                 # 📖 Docs técnicas
-└── validation_report_*.json                  # 📊 Artefatos (gerados)
-    validation_report_*.md                   # 📊 Artefatos (gerados)
+├── config/notion_ids.json                    # IDs Notion SSOT (sem secrets)
+├── dashboard/                                # Painel Founder (Heros Custom)
+├── tests/                                    # Máquina de status + guarda n8n
+├── .github/workflows/
+│   ├── weekly_metrics_validation.yml
+│   └── founder_panel_tests.yml
+├── validate_and_sync_notion_v2_final.py
+├── template_dados_completo.json
+└── README.md
 ```
 
 ---

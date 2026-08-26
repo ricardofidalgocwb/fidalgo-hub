@@ -1,5 +1,13 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## Dashboard Founder (decisão 26/08/2026)
+- Painel interno no repo: `dashboard/` · marca **Heros Custom**
+- Notion SSOT = Fila Founder (`01cb462a…`)
+- Aprovar = Aguardando OK → Aprovado, sem n8n
+- Avançar = Aprovado → Em Execução; n8n opcional e desligado por padrão
+- Não escrever OS Status Entregue; não usar Leads arquivado 43b3f514
+- Não misturar CNPJ/caixa Heros vs FSE
+
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.
 
