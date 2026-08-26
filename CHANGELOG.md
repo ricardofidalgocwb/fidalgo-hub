@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [3.2.0] - 2026-08-26 - Painel Founder (Heros Custom)
+
+### Adicionado
+- Painel Founder local (`python -m dashboard.app`) com pulso Notion e botões Aprovar / Avançar / Recusar / Adiar
+- Máquina de status alinhada ao schema vivo da Fila Founder
+- Dry-run padrão; escrita só com `NOTION_TOKEN` + `CONFIRM=1` ou confirmação na UI
+- Aprovar nunca dispara n8n; Avançar só dispara webhook se `N8N_AVANCAR_ENABLED=1`
+- `config/notion_ids.json` com IDs canônicos (CRM 6157d36b…, OS e1a7d36b…, sem Leads 43b3f514)
+- Testes em `tests/` e workflow `founder_panel_tests.yml`
+
+---
+
 ## [3.1.0] - 2026-06-29 - Aprimoramentos de Tratamento de Erros
 
 ### ✨ Adicionado

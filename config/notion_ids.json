@@ -1,0 +1,103 @@
+{
+  "comment": "IDs canônicos espelhados do Hub Claude Code + fetch ao vivo em 2026-08-26. Sem secrets. Painel Founder só escreve em fila_founder.",
+  "fetched_at": "2026-08-26",
+  "brand": "Heros Custom",
+  "ssot": "Notion",
+  "pages": {
+    "atalho_grok_bot": {
+      "name": "Atalho Grok Bot — Hub Fidalgo",
+      "id": "3c87d36b-ae64-81a1-aa00-e85808c0cc8b",
+      "url": "https://app.notion.com/p/3c87d36bae6481a1aa00e85808c0cc8b"
+    },
+    "claude_code_hub": {
+      "name": "Claude Code · Integração Total (Hub)",
+      "id": "3c07d36b-ae64-815d-a9da-fc55cc08a858",
+      "url": "https://app.notion.com/p/3c07d36bae64815da9dafc55cc08a858"
+    },
+    "controle_gerencial": {
+      "name": "Heros Custom — Controle Gerencial",
+      "id": "3a47d36b-ae64-8123-9213-d5b43fbf0800",
+      "url": "https://app.notion.com/p/3a47d36bae6481239213d5b43fbf0800"
+    }
+  },
+  "databases": {
+    "fila_founder": {
+      "name": "Central de Comando — Recomendações dos Agentes",
+      "alias": "Fila Founder",
+      "database_id": "01cb462a-0237-4aab-9ddc-1735d1e1ea23",
+      "data_source_id": "4f37d360-45b6-46a6-820b-7a0b6e624f8b",
+      "url": "https://app.notion.com/p/01cb462a02374aab9ddc1735d1e1ea23",
+      "view_fila_founder": "3b87d36b-ae64-81d1-944c-000cb6fac922",
+      "write": true,
+      "properties": {
+        "title": "Name",
+        "status": "Status",
+        "fila": "Fila",
+        "nivel_l": "Nível L",
+        "prioridade": "Prioridade",
+        "handoff": "Handoff",
+        "confianca": "Confiança",
+        "gate": "Gate",
+        "evento_id": "evento_id",
+        "agente_origem": "Agente Origem",
+        "setor": "Setor",
+        "recomendacao": "Recomendação",
+        "observacoes": "Observações",
+        "data_do_ok": "Data do OK"
+      },
+      "status_options": [
+        "Aguardando OK",
+        "Aprovado",
+        "Em Execução",
+        "Concluído",
+        "Rejeitado",
+        "Adiado"
+      ],
+      "fila_options": [
+        "1 · L0",
+        "2 · P0/Crítica",
+        "3 · Caixa",
+        "4 · Demais"
+      ]
+    },
+    "os": {
+      "name": "Ordens de Serviço",
+      "database_id": "e1a7d36b-ae64-821a-b2a2-81970ddf289a",
+      "data_source_id": "2987d36b-ae64-824f-a9e1-87f5ba4e7a7c",
+      "url": "https://app.notion.com/p/e1a7d36bae64821ab2a281970ddf289a",
+      "write": false,
+      "notes": "Não criar segundo escritor de OS Status Entregue."
+    },
+    "crm_oportunidades": {
+      "name": "CRM — Oportunidades",
+      "database_id": "6157d36b-ae64-8222-bd17-0188ec6f0c7c",
+      "data_source_id": "7577d36b-ae64-835e-9e3d-0788304619bc",
+      "url": "https://app.notion.com/p/6157d36bae648222bd170188ec6f0c7c",
+      "write": false,
+      "ssot": true,
+      "notes": "CRM SSOT. Não usar Leads arquivado 43b3f514."
+    },
+    "clientes": {
+      "name": "Clientes",
+      "database_id": "be27d36b-ae64-8313-b646-816b05a657e9",
+      "data_source_id": "3067d36b-ae64-82d6-ae7f-07290c4bac94",
+      "url": "https://app.notion.com/p/be27d36bae648313b646816b05a657e9",
+      "write": false
+    },
+    "financeiro": {
+      "name": "Financeiro — Movimentações",
+      "database_id": "5bc7d36b-ae64-8296-80f7-01e5a5ca0ef4",
+      "data_source_id": "0467d36b-ae64-8356-89e9-0753629c64b0",
+      "url": "https://app.notion.com/p/5bc7d36bae64829680f701e5a5ca0ef4",
+      "write": false,
+      "notes": "Não misturar CNPJ/caixa Heros vs FSE."
+    }
+  },
+  "archived_do_not_use": {
+    "leads_heros_crm": {
+      "id_prefix": "43b3f514",
+      "reason": "Arquivado em 99_Arquivo. CRM SSOT = 6157d36b…"
+    }
+  },
+  "pipeline_rule": "Grok Bot roteia → card na Central → Founder OK (Aprovado) → só então Avançar pode (opcionalmente) acionar n8n. Aprovar nunca dispara n8n."
+}

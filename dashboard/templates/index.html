@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Founder · Heros Custom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --heros-gold: #C9A227;
+      --heros-black: #0D0D0D;
+      --heros-charcoal: #1A1A1A;
+      --heros-ivory: #F5F0E6;
+      --heros-steel: #6B6B6B;
+      --heros-red: #B91C1C;
+      --heros-yellow: #E8B923;
+      --heros-green: #1B4D3E;
+      --heros-amber: #F59E0B;
+      --heros-ok: #16A34A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--heros-black);
+      color: var(--heros-ivory);
+      min-height: 100vh;
+    }
+    header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    h1 {
+      font-family: Oswald, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--heros-gold);
+    }
+    .sub { color: var(--heros-steel); font-size: 0.92rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .dry { background: #3a2a00; color: var(--heros-yellow); }
+    .live { background: var(--heros-green); color: var(--heros-ivory); }
+    .warn { background: #3a1010; color: #fca5a5; }
+    main { padding: 1.25rem 1.5rem 3rem; max-width: 1280px; margin: 0 auto; }
+    .pulse {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pulse article {
+      background: var(--heros-charcoal);
+      border: 1px solid #2e2e2e;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+    }
+    .pulse .n {
+      font-family: Oswald, sans-serif;
+      font-size: 1.8rem;
+      color: var(--heros-gold);
+    }
+    .pulse .l { color: var(--heros-steel); font-size: 0.8rem; }
+    .next {
+      background: var(--heros-charcoal);
+      border: 1px solid var(--heros-gold);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .next h2 { margin: 0 0 0.4rem; font-family: Oswald, sans-serif; font-size: 1.2rem; }
+    .meta { color: var(--heros-steel); font-size: 0.85rem; margin: 0.35rem 0 0.8rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    button {
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+    }
+    .aprovar { background: var(--heros-ok); color: #fff; }
+    .avancar { background: var(--heros-gold); color: var(--heros-black); }
+    .recusar { background: var(--heros-red); color: #fff; }
+    .adiar { background: #3d3d3d; color: var(--heros-ivory); }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 0.55rem 0.4rem; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+    th { color: var(--heros-steel); font-weight: 500; }
+    a { color: var(--heros-gold); }
+    .alert { color: var(--heros-amber); font-size: 0.8rem; }
+    .log {
+      margin-top: 1.25rem;
+      background: #111;
+      border-radius: 8px;
+      padding: 0.9rem;
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+      white-space: pre-wrap;
+      max-height: 280px;
+      overflow: auto;
+    }
+    label.confirm { display: flex; gap: 0.45rem; align-items: center; font-size: 0.85rem; }
+    .rules { color: var(--heros-steel); font-size: 0.82rem; margin: 0.6rem 0 1rem; }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .row-actions button { padding: 0.3rem 0.5rem; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Painel Founder · Heros Custom</h1>
+      <div class="sub">{{ founder }} · Notion SSOT · Multi-Asset Control Dashboard</div>
+    </div>
+    <div>
+      {% if token_present %}
+        <span class="badge live">Token presente</span>
+      {% else %}
+        <span class="badge warn">Sem token — dry-run</span>
+      {% endif %}
+      {% if dry_run_default %}
+        <span class="badge dry">Dry-run padrão</span>
+      {% else %}
+        <span class="badge live">CONFIRM=1</span>
+      {% endif %}
+      {% if n8n_avancar_enabled %}
+        <span class="badge warn">n8n Avançar ON</span>
+      {% else %}
+        <span class="badge dry">n8n desligado</span>
+      {% endif %}
+    </div>
+  </header>
+  <main>
+    <p class="rules">
+      Fonte: {{ source }}.
+      Regra: Grok Bot roteia → card → Founder OK (<strong>Aprovar</strong>) → só então <strong>Avançar</strong> (execução).
+      Aprovar <strong>não</strong> dispara n8n.
+      <a href="{{ fila_url }}" target="_blank" rel="noopener">Abrir Fila Founder no Notion</a>
+    </p>
+
+    <section class="pulse" aria-label="Pulso por status">
+      {% for status in statuses %}
+      <article>
+        <div class="n">{{ pulse.counts[status] }}</div>
+        <div class="l">{{ status }}</div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="next">
+      <h2>Próximo item Founder (L0 primeiro)</h2>
+      {% if pulse.proximo %}
+        <p>
+          <a href="{{ pulse.proximo.url }}" target="_blank" rel="noopener">{{ pulse.proximo.name }}</a>
+        </p>
+        <p class="meta">
+          {{ pulse.proximo.fila or "Sem fila" }}
+          · {{ pulse.proximo.nivel_l or "—" }}
+          · {{ pulse.proximo.prioridade or "—" }}
+          · {{ pulse.proximo.status }}
+          {% if pulse.proximo.evento_id %} · {{ pulse.proximo.evento_id }}{% endif %}
+          {% if pulse.proximo.handoff %} · Handoff {{ pulse.proximo.handoff }}{% endif %}
+        </p>
+        {% if pulse.proximo.alerta_caixa %}
+          <p class="alert">{{ pulse.proximo.alerta_caixa }}</p>
+        {% endif %}
+        <div class="actions" data-card='{{ pulse.proximo | tojson }}'>
+          <button class="aprovar" data-action="aprovar">Aprovar</button>
+          <button class="avancar" data-action="avancar">Avançar</button>
+          <button class="recusar" data-action="recusar">Recusar</button>
+          <button class="adiar" data-action="adiar">Adiar</button>
+          <label class="confirm">
+            <input type="checkbox" id="confirm-write">
+            Confirmar escrita no Notion (exige token)
+          </label>
+        </div>
+      {% else %}
+        <p>Nenhum card em Aguardando OK.</p>
+      {% endif %}
+    </section>
+
+    <h2 style="font-family:Oswald,sans-serif;font-size:1.15rem;">Fila Aguardando OK</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Card</th>
+          <th>Fila</th>
+          <th>Nível</th>
+          <th>Prioridade</th>
+          <th>Handoff</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for card in pulse.fila %}
+        <tr>
+          <td>
+            <a href="{{ card.url }}" target="_blank" rel="noopener">{{ card.name }}</a>
+            {% if card.alerta_caixa %}<div class="alert">{{ card.alerta_caixa }}</div>{% endif %}
+          </td>
+          <td>{{ card.fila or "—" }}</td>
+          <td>{{ card.nivel_l or "—" }}</td>
+          <td>{{ card.prioridade or "—" }}</td>
+          <td>{{ card.handoff or "—" }}</td>
+          <td class="row-actions" data-card='{{ card | tojson }}'>
+            <button class="aprovar" data-action="aprovar">Aprovar</button>
+            <button class="avancar" data-action="avancar">Avançar</button>
+            <button class="recusar" data-action="recusar">Recusar</button>
+            <button class="adiar" data-action="adiar">Adiar</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2 style="font-family:Oswald,sans-serif;font-size:1.15rem;margin-top:1.5rem;">Aprovados (prontos para Avançar)</h2>
+    {% if pulse.aprovados %}
+    <table>
+      <tbody>
+        {% for card in pulse.aprovados %}
+        <tr>
+          <td><a href="{{ card.url }}" target="_blank" rel="noopener">{{ card.name }}</a></td>
+          <td>{{ card.status }}</td>
+          <td class="row-actions" data-card='{{ card | tojson }}'>
+            <button class="avancar" data-action="avancar">Avançar</button>
+            <button class="recusar" data-action="recusar">Recusar</button>
+            <button class="adiar" data-action="adiar">Adiar</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p class="sub">Nenhum card em Aprovado. Pipeline de execução vazio (OK ainda não virou execução).</p>
+    {% endif %}
+
+    <pre class="log" id="log">Pronto. Ações imprimem o payload Notion. Escrita só com token + confirmação.</pre>
+  </main>
+  <script>
+    const logEl = document.getElementById("log");
+    function isConfirmed() {
+      return Boolean(document.getElementById("confirm-write")?.checked);
+    }
+    async function runAction(card, action) {
+      let reason = null;
+      if (action === "recusar") {
+        reason = window.prompt("Motivo curto da recusa (obrigatório):");
+        if (!reason || reason.trim().length < 8) {
+          logEl.textContent = "Recusar exige um motivo com pelo menos 8 caracteres.";
+          return;
+        }
+      }
+      if (action === "adiar") {
+        reason = window.prompt("Nota de adiamento (opcional):") || "";
+      }
+      const body = {
+        page_id: card.id,
+        action,
+        current_status: card.status,
+        reason,
+        confirmed: isConfirmed()
+      };
+      logEl.textContent = "Enviando…\n" + JSON.stringify(body, null, 2);
+      const res = await fetch("/api/action", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      logEl.textContent = JSON.stringify(data, null, 2);
+      if (data.ok && data.written) {
+        window.location.reload();
+      }
+    }
+    document.querySelectorAll("[data-action]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const host = btn.closest("[data-card]");
+        const card = JSON.parse(host.getAttribute("data-card"));
+        runAction(card, btn.getAttribute("data-action"));
+      });
+    });
+  </script>
+</body>
+</html>

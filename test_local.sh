@@ -39,6 +39,12 @@ fi
 echo "✅ Pré-requisitos validados"
 echo ""
 
+if command -v python3 >/dev/null && python3 -c "import pytest" 2>/dev/null; then
+  echo "🧪 Máquina de status + guarda n8n..."
+  python3 -m pytest tests/ -q
+  echo ""
+fi
+
 # Executar script
 echo "🚀 Executando validações..."
 echo ""
