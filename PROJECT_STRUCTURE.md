@@ -24,18 +24,23 @@ fidalgo-hub/
 ├── 🗂 config/
 │   └── notion_ids.json                     # IDs canônicos Notion (sem secrets)
 │
-├── 🖥 dashboard/                             # Painel Founder · Heros Custom
+├── 🖥 dashboard/                             # Painel Founder + runner editorial · Heros Custom
 │   ├── app.py                              # Flask local (dry-run padrão)
 │   ├── status_machine.py                   # Aprovar / Avançar / Recusar / Adiar
 │   ├── notion_fila.py                      # PATCH só na Fila Founder
+│   ├── editorial_status.py                 # Aprovar ≠ publicar (Fila Editorial)
+│   ├── editorial_runner.py                 # CLI dry-run; CONFIRM=1 só Status=Aprovado
 │   ├── pulse.py
 │   ├── templates/index.html
-│   └── fixtures/sample_fila.json
+│   └── fixtures/
+│       ├── sample_fila.json
+│       └── sample_fila_editorial.json      # EDI-1 Datar / EDI-2 Anchieta
 │
 ├── 🧪 tests/
 │   ├── test_status_machine.py
 │   ├── test_n8n_guard.py
-│   └── test_panel_http.py
+│   ├── test_panel_http.py
+│   └── test_editorial_runner.py
 │
 ├── 🚀 Workflow
 │   ├── .github/workflows/weekly_metrics_validation.yml

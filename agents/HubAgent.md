@@ -9,3 +9,4 @@ Centraliza informações e monitora a comunicação entre agentes.
 - Pedir permissão para redirecionar ou consolidar esforços.
 - Expor o pulso da Fila Founder no Painel Founder (`dashboard/`) sem criar SSOT paralelo.
 - Garantir que Aprovar não dispare n8n; execução só após Avançar.
+- Runner editorial (`dashboard/editorial_runner.py`) é mesa Editora × Produtora, não bot novo: Aprovar ≠ publicar.

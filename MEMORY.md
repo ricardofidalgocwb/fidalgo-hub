@@ -8,6 +8,15 @@
 - Não escrever OS Status Entregue; não usar Leads arquivado 43b3f514
 - Não misturar CNPJ/caixa Heros vs FSE
 
+## Runner editorial Editora × Produtora (decisão 26/08/2026)
+- SSOT = Fila Editorial (`8af724e1…` / ds `13be9ea3…`), parent Mesa editorial (`3c97d36b…`)
+- Módulo separado: `dashboard/editorial_runner.py` — não é bot novo, não é quarta marca
+- Dry-run padrão; `CONFIRM=1` só grava Status=Aprovado (e talvez Observações)
+- **Aprovar ≠ publicar.** Publicado só o Ricardo. Canal Não publicar permanece
+- Sem n8n, IG, PDF, site. Sem escrita em Fila Founder / OS / CRM / Clientes / Financeiro
+- Peças vivas: EDI-1 Kit Datar (M0 D1), EDI-2 Reel Anchieta 1959
+- Sincronismo: 12 V BR = 1968; fim BR = 1996. Sem NAP EF
+
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.
 
