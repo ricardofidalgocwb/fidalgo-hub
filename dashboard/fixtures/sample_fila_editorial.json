@@ -1,0 +1,36 @@
+[
+  {
+    "id": "3c97d36b-ae64-8126-a798-c1fc475bfaa7",
+    "url": "https://www.notion.so/3c97d36bae648126a798c1fc475bfaa7",
+    "peca": "EDI · Kit Datar (M0 D1)",
+    "numero": 1,
+    "codigo": "EDI-1",
+    "status": "Rascunho",
+    "braco": "Editora",
+    "canal": "Não publicar",
+    "formato": "Ficha",
+    "porta": "Venda",
+    "metrica": "12 V = 1968; fim BR = 1996; sem mito 2003",
+    "observacoes": "Lead 5 cards no corpo. Ficha D1 v1.1 intacta. Sem PDF, sem Diogo.",
+    "proxima_acao": "Acervo revisa fato; Comunicação segura tom. Não empacotar.",
+    "data": null,
+    "automacao_executada": false
+  },
+  {
+    "id": "3c97d36b-ae64-8153-afca-df4cc630baae",
+    "url": "https://www.notion.so/3c97d36bae648153afcadf4cc630baae",
+    "peca": "EDI · Reel histórico (Anchieta 1959)",
+    "numero": 2,
+    "codigo": "EDI-2",
+    "status": "Rascunho",
+    "braco": "Produtora",
+    "canal": "Não publicar",
+    "formato": "Reel",
+    "porta": "Venda",
+    "metrica": "Pilar história 25% · 1 CTA só · sem OS viva",
+    "observacoes": "Roteiro 12s no corpo. 1 CTA (marca). Canal Não publicar. Sem WA neste corte.",
+    "proxima_acao": "OK do Ricardo pra gravar. Não postar.",
+    "data": null,
+    "automacao_executada": false
+  }
+]

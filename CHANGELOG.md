@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [3.3.0] - 2026-08-27 - Runner editorial (Editora × Produtora)
+
+### Adicionado
+- Runner dry-run `python -m dashboard.editorial_runner` para a Fila Editorial (Heros Editora × Produtora)
+- Máquina de status: Rascunho / Aguardando OK → Aprovado; Recusar → Recusado
+- **Aprovar ≠ publicar:** o runner recusa Status=Publicado, não altera Canal, não dispara n8n
+- `fila_editorial` em `config/notion_ids.json` com `write=false` / `runner_only=true`
+- Fixtures EDI-1 (kit Datar) e EDI-2 (reel Anchieta) para CI sem Notion live
+
+---
+
 ## [3.2.0] - 2026-08-26 - Painel Founder (Heros Custom)
 
 ### Adicionado

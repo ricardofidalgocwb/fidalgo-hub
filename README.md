@@ -47,6 +47,25 @@ Pipeline (português, schema Notion): Aguardando OK → Aprovado → Em Execuç�
 
 ---
 
+## Runner editorial (Editora × Produtora)
+
+Fila SSOT: [Fila Editorial — Editora × Produtora](https://app.notion.com/p/8af724e1f3964864a1e2e9840c741047) (`8af724e1…`, ds `13be9ea3…`). **Aprovar ≠ publicar.** O runner não define `Publicado` (estado só do Ricardo), não muda Canal (`Não publicar` permanece), não dispara n8n, não posta IG, não gera PDF e não toca os sites.
+
+```bash
+# Dry-run (padrão): lista a fila e o PATCH planejado. Sem token usa fixtures EDI-1 / EDI-2.
+python -m dashboard.editorial_runner --dry-run
+
+# Ainda dry-run: imprime Status=Aprovado. Só grava com NOTION_TOKEN + CONFIRM=1.
+python -m dashboard.editorial_runner --approve EDI-1
+CONFIRM=1 python -m dashboard.editorial_runner --approve EDI-1
+```
+
+`config/notion_ids.json` marca `fila_editorial.write=false` (runner-only). Mesmo com `CONFIRM=1` o payload só leva `Status=Aprovado` (e talvez `Observações`). Peças ao vivo na fila (não inventadas): **EDI-1** kit Datar (M0 D1) e **EDI-2** reel Anchieta 1959, ambas Canal=Não publicar / Status=Rascunho.
+
+Sincronismo se a peça citar data: 12 V BR = **1968**; fim BR = **1996**. Sem NAP de Eletro Fidalgo.
+
+---
+
 # Governança automatizada (workflow semanal)
 
 O **Fidalgo Hub** também valida dados de governança financeira e familiar, sincroniza com Notion e gera relatórios.
@@ -85,8 +104,8 @@ O **Fidalgo Hub** também valida dados de governança financeira e familiar, sin
 ```
 fidalgo-hub/
 ├── config/notion_ids.json                    # IDs Notion SSOT (sem secrets)
-├── dashboard/                                # Painel Founder (Heros Custom)
-├── tests/                                    # Máquina de status + guarda n8n
+├── dashboard/                                # Painel Founder + runner editorial
+├── tests/                                    # Máquina de status + guarda n8n + editorial
 ├── .github/workflows/
 │   ├── weekly_metrics_validation.yml
 │   └── founder_panel_tests.yml
