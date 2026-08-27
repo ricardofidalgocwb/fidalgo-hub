@@ -42,7 +42,7 @@ _RE_LIVE_OS = re.compile(
 )
 _RE_VOLUME = re.compile(
     r"("
-    r"\d[\d.\s]{2,}\s*(milh[oõ]es|mi\b)"
+    r"\d[\d.\s]*\s*(milh[oõ]es|mi\b)"
     r"|volume\s+(de\s+)?produ[cç][aã]o"
     r"|unidades\s+produz"
     r"|produzidos?\s*[:\-]?\s*\d{4,}"
