@@ -7,6 +7,19 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [3.3.0] - 2026-08-27 - Mesa editorial (Heros Custom)
+
+### Adicionado
+- Runner CLI `python -m editorial` (pulso + Aprovar / Recusar / Adiar / novo)
+- SSOT Fila Editorial em `config/notion_ids.json` (database `8af724e1…`, data source `13be9ea3…`)
+- Dry-run padrão; escrita só com `NOTION_TOKEN` + `CONFIRM=1`
+- Aprovar nunca publica (IG / site / n8n); Publicado só o Founder marca
+- Canon: recusa 12V=1967, fim BR=2003, volume inventado, OS viva, CPF
+- Docs: `docs/editorial-runner.md`
+- Testes de transição, canon e guarda de publicação
+
+---
+
 ## [3.2.0] - 2026-08-26 - Painel Founder (Heros Custom)
 
 ### Adicionado
@@ -113,6 +126,6 @@ Este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/):
 
 ---
 
-**Última atualização:** 2026-06-29  
-**Versão atual:** 3.1.0  
+**Última atualização:** 2026-08-27  
+**Versão atual:** 3.3.0  
 **Status:** ✅ Production Ready

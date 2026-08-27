@@ -4,8 +4,10 @@ on:
   push:
     paths:
       - "dashboard/**"
+      - "editorial/**"
       - "config/notion_ids.json"
       - "tests/**"
+      - "docs/editorial-runner.md"
       - "requirements.txt"
       - ".github/workflows/founder_panel_tests.yml"
   pull_request:
@@ -25,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Rodar testes (sem Notion write / sem n8n)
+      - name: Rodar testes (sem Notion write / sem n8n / sem IG)
         env:
           CONFIRM: "0"
           N8N_AVANCAR_ENABLED: "0"

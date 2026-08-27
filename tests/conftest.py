@@ -12,3 +12,5 @@ def _isolate_write_env(monkeypatch):
     monkeypatch.delenv("N8N_AVANCAR_WEBHOOK", raising=False)
     monkeypatch.delenv("N8N_WEBHOOK_KEY", raising=False)
     monkeypatch.delenv("HEROS_WEBHOOK_KEY", raising=False)
+    monkeypatch.delenv("INSTAGRAM_TOKEN", raising=False)
+    monkeypatch.delenv("IG_TOKEN", raising=False)

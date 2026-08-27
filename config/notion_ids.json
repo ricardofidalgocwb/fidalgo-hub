@@ -1,6 +1,6 @@
 {
-  "comment": "IDs canônicos espelhados do Hub Claude Code + fetch ao vivo em 2026-08-26. Sem secrets. Painel Founder só escreve em fila_founder.",
-  "fetched_at": "2026-08-26",
+  "comment": "IDs canônicos. Sem secrets. Painel Founder só escreve em fila_founder. Mesa editorial só escreve em fila_editorial. Nenhum dos dois publica sozinho.",
+  "fetched_at": "2026-08-27",
   "brand": "Heros Custom",
   "ssot": "Notion",
   "pages": {
@@ -18,6 +18,12 @@
       "name": "Heros Custom — Controle Gerencial",
       "id": "3a47d36b-ae64-8123-9213-d5b43fbf0800",
       "url": "https://app.notion.com/p/3a47d36bae6481239213d5b43fbf0800"
+    },
+    "mesa_editorial": {
+      "name": "Mesa editorial · Editora × Produtora (Heros)",
+      "id": "3c97d36b-ae64-81ce-b08d-f218c3d02ba8",
+      "url": "https://app.notion.com/p/3c97d36bae6481ceb08df218c3d02ba8",
+      "notes": "Função editorial, não CNPJ novo. Staff cheio (6). Sem AGT-09, sem 7º bot Grok."
     }
   },
   "databases": {
@@ -60,6 +66,73 @@
         "4 · Demais"
       ]
     },
+    "fila_editorial": {
+      "name": "Fila Editorial — Editora × Produtora",
+      "alias": "Fila Editorial",
+      "database_id": "8af724e1-f396-4864-a1e2-e9840c741047",
+      "data_source_id": "13be9ea3-a48d-464f-9c10-e15203c3a61a",
+      "url": "https://app.notion.com/p/8af724e1f3964864a1e2e9840c741047",
+      "mesa_page_id": "3c97d36b-ae64-81ce-b08d-f218c3d02ba8",
+      "mesa_url": "https://app.notion.com/p/3c97d36bae6481ceb08df218c3d02ba8",
+      "view_default": "b1b88515-a136-4dc5-99cc-e6e283a17794",
+      "write": true,
+      "notes": "Runner editorial só escreve nesta database. Aprovar nunca publica (IG/site/n8n). Publicado só o Founder marca. Canal padrão de card novo = Não publicar.",
+      "agents": {
+        "Editora": "Acervo",
+        "Produtora": "Comunicação"
+      },
+      "forbidden_agents": [
+        "AGT-09",
+        "7º bot Grok"
+      ],
+      "properties": {
+        "title": "Peça",
+        "braco": "Braço",
+        "porta": "Porta",
+        "status": "Status",
+        "formato": "Formato",
+        "canal": "Canal",
+        "metrica": "Métrica",
+        "proxima_acao": "Próxima ação",
+        "observacoes": "Observações",
+        "automacao": "Automação executada",
+        "numero": "Nº",
+        "data": "Data"
+      },
+      "status_options": [
+        "Rascunho",
+        "Aguardando OK",
+        "Aprovado",
+        "Publicado",
+        "Recusado"
+      ],
+      "braco_options": [
+        "Editora",
+        "Produtora"
+      ],
+      "porta_options": [
+        "Venda",
+        "Clube",
+        "Interno"
+      ],
+      "formato_options": [
+        "Almanaque",
+        "Módulo",
+        "Ficha",
+        "Reel",
+        "Carrossel",
+        "Post"
+      ],
+      "canal_options": [
+        "Não publicar",
+        "IG",
+        "Clube",
+        "PDF",
+        "Site"
+      ],
+      "canal_default": "Não publicar",
+      "numero_prefix": "EDI-"
+    },
     "os": {
       "name": "Ordens de Serviço",
       "database_id": "e1a7d36b-ae64-821a-b2a2-81970ddf289a",
@@ -99,5 +172,6 @@
       "reason": "Arquivado em 99_Arquivo. CRM SSOT = 6157d36b…"
     }
   },
-  "pipeline_rule": "Grok Bot roteia → card na Central → Founder OK (Aprovado) → só então Avançar pode (opcionalmente) acionar n8n. Aprovar nunca dispara n8n."
+  "pipeline_rule": "Grok Bot roteia → card na Central → Founder OK (Aprovado) → só então Avançar pode (opcionalmente) acionar n8n. Aprovar nunca dispara n8n.",
+  "editorial_pipeline_rule": "Acervo (Editora) / Comunicação (Produtora) → card na Fila Editorial → Aprovar vira Aprovado e NÃO publica. Publicado só o Founder marca. Canal padrão = Não publicar. Sem AGT-09, sem 7º bot."
 }

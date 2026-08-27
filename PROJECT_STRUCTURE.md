@@ -32,10 +32,21 @@ fidalgo-hub/
 │   ├── templates/index.html
 │   └── fixtures/sample_fila.json
 │
+├── 📰 editorial/                             # Mesa editorial · não publica
+│   ├── cli.py                              # python -m editorial
+│   ├── status_machine.py                   # Aprovar / Recusar / Adiar
+│   ├── canon.py                            # 12V=1968 · fim BR=1996
+│   ├── notion_fila.py                      # PATCH só na Fila Editorial
+│   └── fixtures/sample_fila.json
+│
 ├── 🧪 tests/
 │   ├── test_status_machine.py
 │   ├── test_n8n_guard.py
-│   └── test_panel_http.py
+│   ├── test_panel_http.py
+│   ├── test_editorial_status.py
+│   ├── test_editorial_canon.py
+│   ├── test_editorial_guard.py
+│   └── test_editorial_cli.py
 │
 ├── 🚀 Workflow
 │   ├── .github/workflows/weekly_metrics_validation.yml
@@ -51,6 +62,8 @@ fidalgo-hub/
 ```
 
 O painel Founder estende este repositório (Python + Notion). Não é um segundo SSOT: só lê a Central de Comando e escreve Status / Data do OK / Observações na Fila Founder.
+
+A mesa editorial (`editorial/`) é irmã: lê/escreve só a Fila Editorial. Aprovar nunca publica. Publicado só o Founder marca. Docs: `docs/editorial-runner.md`.
 
 ## 🎯 Arquivos Principais
 

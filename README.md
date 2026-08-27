@@ -47,6 +47,18 @@ Pipeline (português, schema Notion): Aguardando OK → Aprovado → Em Execuç�
 
 ---
 
+## Mesa editorial (não publica)
+
+CLI irmão do painel Founder. SSOT = Fila Editorial no Notion. **Aprovar não posta no Instagram nem no site.** Dry-run padrão. Detalhes: [`docs/editorial-runner.md`](docs/editorial-runner.md).
+
+```bash
+python -m editorial pulse
+python -m editorial aprovar <PAGE_ID> --status "Aguardando OK"
+# Escrita só com NOTION_TOKEN + CONFIRM=1
+```
+
+---
+
 # Governança automatizada (workflow semanal)
 
 O **Fidalgo Hub** também valida dados de governança financeira e familiar, sincroniza com Notion e gera relatórios.
@@ -86,7 +98,9 @@ O **Fidalgo Hub** também valida dados de governança financeira e familiar, sin
 fidalgo-hub/
 ├── config/notion_ids.json                    # IDs Notion SSOT (sem secrets)
 ├── dashboard/                                # Painel Founder (Heros Custom)
-├── tests/                                    # Máquina de status + guarda n8n
+├── editorial/                                # Mesa editorial (dry-run; não publica)
+├── tests/                                    # Máquina de status + guarda n8n/IG
+├── docs/editorial-runner.md                  # Contrato da mesa editorial
 ├── .github/workflows/
 │   ├── weekly_metrics_validation.yml
 │   └── founder_panel_tests.yml

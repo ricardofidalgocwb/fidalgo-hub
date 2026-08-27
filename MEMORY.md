@@ -8,6 +8,17 @@
 - Não escrever OS Status Entregue; não usar Leads arquivado 43b3f514
 - Não misturar CNPJ/caixa Heros vs FSE
 
+## Mesa editorial (decisão 27/08/2026)
+- Runner irmão em `editorial/` · CLI `python -m editorial`
+- Notion SSOT = Fila Editorial (`8af724e1…` / ds `13be9ea3…`)
+- Dry-run padrão; escrita só com `NOTION_TOKEN` + `CONFIRM=1`
+- Aprovar = Rascunho|Aguardando OK → Aprovado; **nunca** IG/site/n8n
+- Publicado só o Founder marca; o runner não grava Publicado
+- Canal padrão de card novo = Não publicar
+- Canon: 12 V = 1968 · fim BR = 1996 · NAP 439 · sem OS viva / CPF / volume inventado
+- Agentes: Acervo (Editora), Comunicação (Produtora). Sem AGT-09, sem 7º bot Grok
+- Docs: `docs/editorial-runner.md`
+
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.
 
