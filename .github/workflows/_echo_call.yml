@@ -1,0 +1,41 @@
+name: _echo_call
+
+on:
+  workflow_call:
+    inputs:
+      workflow_key:
+        required: true
+        type: string
+      conclusion:
+        required: true
+        type: string
+      evento:
+        required: true
+        type: string
+      branch:
+        required: true
+        type: string
+      run_url:
+        required: true
+        type: string
+      run_id:
+        required: true
+        type: string
+      nome:
+        required: true
+        type: string
+
+jobs:
+  echo-inputs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Print workflow_call inputs
+        run: |
+          echo "workflow_key=${{ inputs.workflow_key }}"
+          echo "conclusion=${{ inputs.conclusion }}"
+          echo "evento=${{ inputs.evento }}"
+          echo "branch=${{ inputs.branch }}"
+          echo "run_url=${{ inputs.run_url }}"
+          echo "run_id=${{ inputs.run_id }}"
+          echo "nome=${{ inputs.nome }}"

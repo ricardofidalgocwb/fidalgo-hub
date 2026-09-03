@@ -1,0 +1,21 @@
+name: echo_call_test
+
+on:
+  push:
+    branches: [feat/ci-workflow-call-echo]
+    paths:
+      - ".github/workflows/_echo_call.yml"
+      - ".github/workflows/echo_call_test.yml"
+  workflow_dispatch:
+
+jobs:
+  call-echo:
+    uses: ./.github/workflows/_echo_call.yml
+    with:
+      workflow_key: founder_panel_tests
+      conclusion: success
+      evento: ${{ github.event_name }}
+      branch: ${{ github.ref_name }}
+      run_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      run_id: ${{ github.run_id }}
+      nome: "echo_call_test #${{ github.run_number }}"
