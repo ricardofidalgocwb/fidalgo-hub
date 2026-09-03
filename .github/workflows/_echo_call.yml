@@ -20,7 +20,7 @@ on:
         type: string
       run_id:
         required: true
-        type: number
+        type: string
       nome:
         required: true
         type: string
