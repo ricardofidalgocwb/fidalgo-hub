@@ -29,6 +29,7 @@ fidalgo-hub/
 │   ├── status_machine.py                   # Aprovar / Avançar / Recusar / Adiar
 │   ├── notion_fila.py                      # PATCH só na Fila Founder
 │   ├── editorial_status.py                 # Aprovar ≠ publicar (Fila Editorial)
+│   ├── editorial_canon.py                  # Canon travado; figura inventada bloqueia Aprovar
 │   ├── editorial_runner.py                 # CLI dry-run; CONFIRM=1 só Status=Aprovado
 │   ├── pulse.py
 │   ├── templates/index.html
@@ -40,7 +41,8 @@ fidalgo-hub/
 │   ├── test_status_machine.py
 │   ├── test_n8n_guard.py
 │   ├── test_panel_http.py
-│   └── test_editorial_runner.py
+│   ├── test_editorial_runner.py
+│   └── test_editorial_canon.py
 │
 ├── 🚀 Workflow
 │   ├── .github/workflows/weekly_metrics_validation.yml

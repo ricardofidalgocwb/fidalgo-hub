@@ -7,6 +7,15 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [3.3.1] - 2026-09-03 - Canon guard no runner editorial
+
+### Adicionado
+- `dashboard/editorial_canon.py`: recusa mito (12 V=1967, 12 V≠alternador, fim BR=2003, Anchieta com data trocada) e figura inventada (ex.: “2 milhões”)
+- Aprovar (e o dry-run planejado) bloqueia card fora do canon; volumes cravados: Ipiranga CKD 2.268, Itamar 47.700
+- `docs/editorial-runner.md` descreve o runner de `main` (`python -m dashboard.editorial_runner`): Aprovar nunca publica, Publicado só do Ricardo, sem n8n/IG/PDF/site
+
+---
+
 ## [3.3.0] - 2026-08-27 - Runner editorial (Editora × Produtora)
 
 ### Adicionado

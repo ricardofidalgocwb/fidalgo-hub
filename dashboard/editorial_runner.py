@@ -17,6 +17,7 @@ from typing import Any, Callable
 
 from dotenv import load_dotenv
 
+from dashboard.editorial_canon import canon_summary, issues_as_dicts, scan_card
 from dashboard.editorial_status import (
     ACTION_APROVAR,
     ACTION_RECUSAR,
@@ -118,6 +119,10 @@ class EditorialClient:
         *,
         reason: str | None = None,
         canal: str | None = None,
+        peca: str | None = None,
+        metrica: str | None = None,
+        observacoes: str | None = None,
+        proxima_acao: str | None = None,
         printer: Callable[[str], None] | None = print,
     ) -> ActionResult:
         assert_editorial_database_only(self.database_id)
@@ -129,6 +134,10 @@ class EditorialClient:
             current_status,
             reason=reason,
             canal=canal,
+            peca=peca,
+            metrica=metrica,
+            observacoes=observacoes,
+            proxima_acao=proxima_acao,
         )
         assert_editorial_only_payload(transition.properties)
         assert_never_publicado(transition.properties)
@@ -234,14 +243,36 @@ def build_dry_run_report(cards: list[dict[str, Any]], source: str) -> dict[str, 
         if status in counts:
             counts[status] += 1
     planned: list[dict[str, Any]] = []
+    canon_blocked: list[dict[str, Any]] = []
     for card in cards:
         status = (card.get("status") or "").strip()
         if status not in APPROVABLE_STATUSES:
+            continue
+        issues = scan_card(
+            peca=card.get("peca") or "",
+            metrica=card.get("metrica") or "",
+            observacoes=card.get("observacoes") or "",
+            proxima_acao=card.get("proxima_acao") or "",
+        )
+        if issues:
+            canon_blocked.append(
+                {
+                    "page_id": card.get("id"),
+                    "peca": card.get("peca"),
+                    "codigo": card.get("codigo"),
+                    "from_status": status,
+                    "canon_issues": issues_as_dicts(issues),
+                }
+            )
             continue
         transition = build_transition(
             ACTION_APROVAR,
             status,
             canal=card.get("canal") or CANAL_NAO_PUBLICAR,
+            peca=card.get("peca"),
+            metrica=card.get("metrica"),
+            observacoes=card.get("observacoes"),
+            proxima_acao=card.get("proxima_acao"),
         )
         item = transition.as_log_dict(card.get("id"))
         item["peca"] = card.get("peca")
@@ -260,8 +291,10 @@ def build_dry_run_report(cards: list[dict[str, Any]], source: str) -> dict[str, 
         "rule": RULE_APROVAR_NAO_PUBLICA,
         "statuses": list(PIPELINE_STATUSES),
         "counts": counts,
+        "canon": canon_summary(),
         "queue": cards,
         "planned": planned,
+        "canon_blocked": canon_blocked,
     }
 
 
@@ -330,6 +363,10 @@ def main(argv: list[str] | None = None) -> int:
                 current,
                 reason=args.reason,
                 canal=canal,
+                peca=(card or {}).get("peca"),
+                metrica=(card or {}).get("metrica"),
+                observacoes=(card or {}).get("observacoes"),
+                proxima_acao=(card or {}).get("proxima_acao"),
             )
         except EditorialError as exc:
             print(str(exc), file=sys.stderr)

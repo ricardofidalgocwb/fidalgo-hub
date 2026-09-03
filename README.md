@@ -62,7 +62,7 @@ CONFIRM=1 python -m dashboard.editorial_runner --approve EDI-1
 
 `config/notion_ids.json` marca `fila_editorial.write=false` (runner-only). Mesmo com `CONFIRM=1` o payload só leva `Status=Aprovado` (e talvez `Observações`). Peças ao vivo na fila (não inventadas): **EDI-1** kit Datar (M0 D1) e **EDI-2** reel Anchieta 1959, ambas Canal=Não publicar / Status=Rascunho.
 
-Sincronismo se a peça citar data: 12 V BR = **1968**; fim BR = **1996**. Sem NAP de Eletro Fidalgo.
+Sincronismo (canon, `dashboard/editorial_canon.py`): 12 V BR = **1968** (não implica alternador); fim BR = **1996** (2003 é México); Anchieta nacional **03/01/1959**, planta **18/11/1959**; Ipiranga CKD **2.268**; Itamar **47.700**. Figura fora dessa lista bloqueia Aprovar. Sem NAP de Eletro Fidalgo. Docs: [`docs/editorial-runner.md`](docs/editorial-runner.md).
 
 ---
 
