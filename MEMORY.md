@@ -19,6 +19,12 @@
 - Anchieta nacional 03/01/1959; planta 18/11/1959; Ipiranga CKD 2.268; Itamar 47.700
 - Canon em `dashboard/editorial_canon.py`: figura fora da lista bloqueia Aprovar; sem pacote `editorial/`
 
+## COM-PDF-02 Theodoro (04/09/2026)
+- Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto
+- Pacote A R$ 1.850 / B R$ 4.200; F0–F8 = previsão de bancada; cobrança = pacote
+- Fotos: `00_Antes` vazio; slots AUSENTE; embed só em PR posterior após drop >100 KB
+- Não enviar ao cliente, não implantar, sem CPF / URL Notion / IG / n8n no artefato
+
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.
 
