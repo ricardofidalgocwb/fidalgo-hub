@@ -4,7 +4,7 @@
 
 Primeira passagem **só texto**. Fotos **não** estão prontas: a pasta Drive `00_Antes` está vazia; IDs de arquivo anteriores eram stubs. Esta pasta **não** baixa, inventa nem embute foto.
 
-O embed fotográfico entra em **PR de follow-up**, depois que arquivos reais **> 100 KB** forem dropados manualmente em `00_Antes`.
+O embed fotográfico entra em **PR de follow-up**, depois que arquivos reais **> 100 KB** forem dropados em `00_Antes`. Upload: seguir [`docs/drive-binary-upload.md`](../../drive-binary-upload.md) (proibido MCP `create_file`).
 
 ## O que é
 

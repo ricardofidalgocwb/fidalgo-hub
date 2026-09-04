@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Upload Drive binário ≥100 KB (unpublished)
+
+### Adicionado
+- `docs/drive-binary-upload.md`: SSOT para Operações / Entrega / Comunicação — **proibido** MCP Drive `create_file` / base64 em foto ou vídeo de evidência (G-FOTO / Passaporte / Antes)
+- Aceite só ficheiro com `size` > 100 000 bytes (metadado Drive). Path A = drop manual do Ricardo em OS-34 `00_Antes`; Path B = script resumable
+- `scripts/drive_resumable_upload.py`: upload Drive **resumable** (não MCP); recusa local ≤100 KB; `--dry-run` sem API; lixeira se o remoto for stub
+- `tests/test_drive_resumable_upload.py`: portão de tamanho sem Drive live
+- Sem n8n Active, sem publish, sem secrets no git. COM-PDF-02 continua à espera do drop real
+
+---
+
 ## [Unreleased] - COM-PDF-02 Theodoro (unpublished, texto)
 
 ### Adicionado

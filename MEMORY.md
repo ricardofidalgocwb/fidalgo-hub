@@ -19,10 +19,20 @@
 - Anchieta nacional 03/01/1959; planta 18/11/1959; Ipiranga CKD 2.268; Itamar 47.700
 - Canon em `dashboard/editorial_canon.py`: figura fora da lista bloqueia Aprovar; sem pacote `editorial/`
 
+## Drive binário ≥100 KB (04/09/2026)
+- SSOT: `docs/drive-binary-upload.md` — Operações / Entrega / Comunicação
+- **Proibido** MCP Drive `create_file` / base64 para foto ou vídeo de evidência (G-FOTO / Passaporte / Antes). Gera stub de 3–9 KB
+- Aceite só `size` > 100 000 bytes (metadado Drive). Stub = recusar
+- Path A (preferido): Ricardo drop manual no browser em OS-34 `00_Antes` (`1pYlbPeFcp2RyB1ZqEn9RNFBZ8Y7YccE-`)
+- Path B: `scripts/drive_resumable_upload.py` (resumable, não MCP). Auth local só — ver `scripts/README.md`. Sem secrets no git
+- Sem n8n Active, sem placeholder, sem publish, sem escrita Notion neste fluxo
+- COM-PDF-02 continua texto até o drop real das 11 Antes + caixa de fusíveis
+
 ## COM-PDF-02 Theodoro (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto
 - Pacote A R$ 1.850 / B R$ 4.200; F0–F8 = previsão de bancada; cobrança = pacote
 - Fotos: `00_Antes` vazio; slots AUSENTE; embed só em PR posterior após drop >100 KB
+- Upload: seguir `docs/drive-binary-upload.md` (não MCP)
 - Não enviar ao cliente, não implantar, sem CPF / URL Notion / IG / n8n no artefato
 - COM-ALIGN-01: Gold v1.1 — `#C9A227` / carbon `#0D0D0D` / panel `#1A1A1A` / paper `#F5F0E6`
 
