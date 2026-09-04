@@ -24,6 +24,7 @@
 - Pacote A R$ 1.850 / B R$ 4.200; F0–F8 = previsão de bancada; cobrança = pacote
 - Fotos: `00_Antes` vazio; slots AUSENTE; embed só em PR posterior após drop >100 KB
 - Não enviar ao cliente, não implantar, sem CPF / URL Notion / IG / n8n no artefato
+- COM-ALIGN-01: Gold v1.1 — `#C9A227` / carbon `#0D0D0D` / panel `#1A1A1A` / paper `#F5F0E6`
 
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.

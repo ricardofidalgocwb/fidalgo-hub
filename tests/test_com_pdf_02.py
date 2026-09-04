@@ -100,8 +100,28 @@ def test_readme_followup_fotos_e_refs_internas():
     assert "não publicado" in readme.lower() or "nao publicado" in readme.lower()
 
 
-def test_ouro_heros():
-    css = CSS.read_text(encoding="utf-8").lower()
-    assert "#c9a227" in css
-    assert "montserrat" in css
-    assert "inter" in css
+def test_gold_v11_tokens():
+    css = CSS.read_text(encoding="utf-8")
+    assert "#C9A227" in css
+    assert "#0D0D0D" in css
+    assert "#1A1A1A" in css
+    assert "#F5F0E6" in css
+    assert "montserrat" in css.lower()
+    assert "inter" in css.lower()
+    banned = (
+        "#1b1b1b",
+        "#ffffff",
+        "#eeeae0",
+        "#ececec",
+        "#f6f4ee",
+        "#5c5c5c",
+        "#d6d6d6",
+        "orange",
+        "#e67e22",
+        "#ff9800",
+        "#f39c12",
+    )
+    lower = css.lower()
+    for hex_or_name in banned:
+        assert hex_or_name not in lower, hex_or_name
+    assert not re.search(r"#fff\b", lower)

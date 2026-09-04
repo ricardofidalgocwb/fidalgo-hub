@@ -1,14 +1,17 @@
-/* COM-PDF-02 — Heros Custom, ouro #C9A227 / carbon. Print-first A4.
-   Carbon de UI só (mesmo espírito do site unpublished): não cria hex canônico novo. */
+/* COM-PDF-02 — Gold v1.1 (COM-ALIGN-01). Print-first A4.
+   Tokens oficiais: gold #C9A227 · carbon #0D0D0D · panel #1A1A1A · paper #F5F0E6
+   Sem laranja. Texto escuro no cream; ouro só em acento. */
 
 :root {
-  --gold: #c9a227;
-  --ink: #1b1b1b;
-  --muted: #5c5c5c;
-  --line: #d6d6d6;
-  --paper: #ffffff;
-  --banner: #eeeae0;
-  --slot: #f6f4ee;
+  --gold: #C9A227;
+  --carbon: #0D0D0D;
+  --panel: #1A1A1A;
+  --paper: #F5F0E6;
+  --ink: var(--carbon);
+  --muted: color-mix(in srgb, var(--carbon) 58%, var(--paper));
+  --line: color-mix(in srgb, var(--carbon) 16%, var(--paper));
+  --banner: var(--paper);
+  --slot: var(--paper);
   --font-display: "Montserrat", "Segoe UI", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
@@ -52,8 +55,8 @@ body {
 
 .actions button {
   font: 600 0.85rem/1.2 var(--font-body);
-  background: var(--ink);
-  color: #fff;
+  background: var(--carbon);
+  color: var(--paper);
   border: 1px solid var(--gold);
   padding: 0.45rem 0.85rem;
   cursor: pointer;
@@ -70,8 +73,8 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  background: var(--ink);
-  color: #fff;
+  background: var(--carbon);
+  color: var(--paper);
   padding: 1rem 1.15rem 1.1rem;
 }
 
@@ -89,7 +92,7 @@ body {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: color-mix(in srgb, var(--paper) 72%, var(--carbon));
 }
 
 .mast-meta {
@@ -231,8 +234,8 @@ td {
 }
 
 th {
-  background: var(--ink);
-  color: #fff;
+  background: var(--panel);
+  color: var(--paper);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.72rem;
@@ -331,7 +334,8 @@ tr.total td {
   }
 
   body {
-    background: #fff;
+    background: var(--paper);
+    color: var(--carbon);
     font-size: 10pt;
   }
 
@@ -341,11 +345,9 @@ tr.total td {
     padding: 0;
   }
 
-  .unpublished {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
+  body,
+  .sheet,
+  .unpublished,
   .mast,
   th,
   th.gold,
@@ -370,7 +372,7 @@ tr.total td {
 
 @media screen {
   body {
-    background: #ececec;
+    background: var(--panel);
   }
 
   .sheet {

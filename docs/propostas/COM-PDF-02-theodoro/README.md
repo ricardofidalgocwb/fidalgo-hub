@@ -82,4 +82,13 @@ Não usar stock, render, placeholder que pareça o carro, nem ID stub antigo.
 
 ## Marca
 
-Heros Custom · ouro `#C9A227` · Montserrat (títulos) + Inter (corpo). Fatura / CNPJ: Fidalgo Soluções Elétricas LTDA **31.402.321/0001-46**. WhatsApp oficina **(41) 99187-8091**.
+Heros Custom · Gold v1.1 (COM-ALIGN-01) · Montserrat (títulos) + Inter (corpo).
+
+| Token | HEX |
+|---|---|
+| gold | `#C9A227` |
+| carbon | `#0D0D0D` |
+| panel | `#1A1A1A` |
+| paper / cream | `#F5F0E6` |
+
+Fatura / CNPJ: Fidalgo Soluções Elétricas LTDA **31.402.321/0001-46**. WhatsApp oficina **(41) 99187-8091**.
