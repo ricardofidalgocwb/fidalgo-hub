@@ -49,7 +49,8 @@ fidalgo-hub/
 │   └── .github/workflows/founder_panel_tests.yml
 │
 ├── 💻 Scripts
-│   └── validate_and_sync_notion_v2_final.py
+│   ├── validate_and_sync_notion_v2_final.py
+│   └── scripts/drive_resumable_upload.py   # Path B Drive resumable; SSOT docs/drive-binary-upload.md
 │
 ├── 📊 Dados
 │   └── template_dados_completo.json

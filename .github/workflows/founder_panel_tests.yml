@@ -5,6 +5,7 @@ on:
     paths:
       - "dashboard/**"
       - "config/notion_ids.json"
+      - "scripts/**"
       - "tests/**"
       - "requirements.txt"
       - ".github/workflows/founder_panel_tests.yml"

@@ -66,6 +66,12 @@ Sincronismo (canon, `dashboard/editorial_canon.py`): 12 V BR = **1968** (não im
 
 ---
 
+## Fotos de evidência (Drive) — não usar MCP
+
+SSOT: [`docs/drive-binary-upload.md`](docs/drive-binary-upload.md). **Proibido** Google Drive MCP `create_file` / base64 para G-FOTO, Passaporte ou Antes — o MCP grava stub de 3–9 KB. Aceite só `size` > 100 KB. Path A: Ricardo dropa no browser em `00_Antes`. Path B: `scripts/drive_resumable_upload.py` (resumable; auth em [`scripts/README.md`](scripts/README.md)). Sem n8n, sem publish.
+
+---
+
 # Governança automatizada (workflow semanal)
 
 O **Fidalgo Hub** também valida dados de governança financeira e familiar, sincroniza com Notion e gera relatórios.
