@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - COM-PDF-APR-N0 Aprendiz (unpublished)
+
+### Adicionado
+- `docs/propostas/COM-PDF-APR-N0/`: pacote HTML+print CSS+PDF do curso inicial elétrica simples (N0) Type 1
+- Camada A completa (6 aulas, A1–A6, §10, Quiz D1 placeholder, checklist 1–7, E1–E3, slots AUSENTE)
+- Camada B esqueleto: só com Passaporte tipado; campos vazios; sem carro
+- Guarda em `tests/test_com_pdf_apr_n0.py` (Gold v1.1, sem Theodoro/Diogo/CPF/Herculid, sem diagrama Type 3 de ensino)
+- Não publicar / sem site até OK Founder. Aprendiz testa como aluno
+
+---
+
 ## [Unreleased] - Audit Drive OS-34 + IDs (unpublished)
 
 ### Adicionado
