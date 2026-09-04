@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - COM-PDF-02 Theodoro (unpublished, texto)
+
+### Adicionado
+- `docs/propostas/COM-PDF-02-theodoro/`: proposta HTML+print CSS da Heros Custom para Variant AIW3138
+- Primeira passagem **só texto**; slots fotográficos AUSENTE; não enviar ao cliente; não implantar
+- Pacotes travados A R$ 1.850 / B R$ 4.200; tabela F0–F8 como previsão de bancada
+- Guarda em `tests/test_com_pdf_02.py` (sem CPF, Notion URL, IG, n8n, Type 1, `<img>`)
+- COM-ALIGN-01: `print.css` travado em Gold v1.1 (`#C9A227` / `#0D0D0D` / `#1A1A1A` / `#F5F0E6`)
+
+---
+
 ## [3.3.1] - 2026-09-03 - Canon guard no runner editorial
 
 ### Adicionado
