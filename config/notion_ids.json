@@ -1,8 +1,26 @@
 {
-  "comment": "IDs canônicos espelhados do Hub Claude Code + fetch ao vivo em 2026-08-26. Sem secrets. Painel Founder só escreve em fila_founder. Fila Editorial: write=false; runner-only; Aprovar ≠ publicar.",
-  "fetched_at": "2026-08-26",
+  "comment": "IDs canônicos espelhados do Hub + fetch ao vivo em 2026-09-04 (America/Sao_Paulo). Sem secrets. Painel Founder só escreve em fila_founder. Fila Editorial: write=false; runner-only; Aprovar ≠ publicar. OS / CRM / Clientes / Passaporte: write=false (este PR não escreve Notion).",
+  "fetched_at": "2026-09-04",
   "brand": "Heros Custom",
   "ssot": "Notion",
+  "twins": {
+    "aiw3138": {
+      "ice_head": {
+        "codigo": "HC-2026-025",
+        "numero": 35,
+        "role": "ICE head",
+        "page_id": "3d07d36b-ae64-81b5-994d-f6003ac40ab8"
+      },
+      "comercial": {
+        "codigo": "OS-34",
+        "numero": 34,
+        "role": "comercial",
+        "page_id": "3d07d36b-ae64-818a-9213-dfd6f74f51f0"
+      },
+      "shared_drive_root_id": "1wJSiE_gmqMnLUkt18lB75YCpxzMxz_Oy",
+      "notes": "HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) são gémeos da mesma Variant AIW3138 e partilham a pasta Drive. Não duplicar árvore."
+    }
+  },
   "pages": {
     "atalho_grok_bot": {
       "name": "Atalho Grok Bot — Hub Fidalgo",
@@ -24,6 +42,13 @@
       "id": "3c97d36b-ae64-81ce-b08d-f218c3d02ba8",
       "url": "https://app.notion.com/p/3c97d36bae6481ceb08df218c3d02ba8",
       "notes": "Função editorial, não CNPJ novo, não quarta porta. Parent da Fila Editorial."
+    },
+    "comece_aqui": {
+      "name": "COMECE AQUI",
+      "id": "3b67d36b-ae64-81b0-9617-fdcfa724d72f",
+      "url": "https://app.notion.com/p/3b67d36bae6481b09617fdcfa724d72f",
+      "parent_page_id": "3a47d36b-ae64-8123-9213-d5b43fbf0800",
+      "notes": "Mapa vivo sob Controle Gerencial. Read-only neste repo."
     }
   },
   "databases": {
@@ -125,27 +150,48 @@
     },
     "os": {
       "name": "Ordens de Serviço",
+      "alias": "OS",
       "database_id": "e1a7d36b-ae64-821a-b2a2-81970ddf289a",
       "data_source_id": "2987d36b-ae64-824f-a9e1-87f5ba4e7a7c",
       "url": "https://app.notion.com/p/e1a7d36bae64821ab2a281970ddf289a",
       "write": false,
-      "notes": "Não criar segundo escritor de OS Status Entregue."
+      "notes": "Não criar segundo escritor de OS Status Entregue. Twin AIW3138: HC-2026-025 = ICE (Nº35), OS-34 = comercial (Nº34), pasta Drive partilhada. Ver twins.aiw3138."
     },
     "crm_oportunidades": {
       "name": "CRM — Oportunidades",
+      "alias": "CRM",
       "database_id": "6157d36b-ae64-8222-bd17-0188ec6f0c7c",
       "data_source_id": "7577d36b-ae64-835e-9e3d-0788304619bc",
       "url": "https://app.notion.com/p/6157d36bae648222bd170188ec6f0c7c",
       "write": false,
       "ssot": true,
-      "notes": "CRM SSOT. Não usar Leads arquivado 43b3f514."
+      "notes": "CRM SSOT (chave crm). Não usar Leads arquivado 43b3f514."
     },
     "clientes": {
       "name": "Clientes",
       "database_id": "be27d36b-ae64-8313-b646-816b05a657e9",
       "data_source_id": "3067d36b-ae64-82d6-ae7f-07290c4bac94",
       "url": "https://app.notion.com/p/be27d36bae648313b646816b05a657e9",
-      "write": false
+      "write": false,
+      "notes": "Read-only neste repo. Sem PATCH a partir do painel ou do audit Drive."
+    },
+    "passaporte_cabeca": {
+      "name": "Passaporte Digital - Heros OS",
+      "alias": "Passaporte cabeça",
+      "database_id": "0ec22874-b2b5-49f2-a9e1-6e9e2f0bd7f4",
+      "data_source_id": "a0254a75-b8d9-41a9-b281-1b9b9cb997dd",
+      "url": "https://app.notion.com/p/0ec22874b2b549f2a9e16e9e2f0bd7f4",
+      "write": false,
+      "notes": "Cabeça do Passaporte (1 por ciclo/ativo). Dual com passaporte_linhas. Sem escrita neste PR."
+    },
+    "passaporte_linhas": {
+      "name": "📘 Passaporte Digital — Registros & Laudos",
+      "alias": "Passaporte linhas",
+      "database_id": "f407d36b-ae64-8238-9c19-81c1753a1f9a",
+      "data_source_id": "d2d7d36b-ae64-8204-b15a-877aae5bf91b",
+      "url": "https://app.notion.com/p/f407d36bae6482389c1981c1753a1f9a",
+      "write": false,
+      "notes": "Linhas (N provas: foto, laudo, serviço). Dual com passaporte_cabeca. Sem escrita neste PR. Não usar o DB arquivado 5a3a19c8."
     },
     "financeiro": {
       "name": "Financeiro — Movimentações",
@@ -160,6 +206,10 @@
     "leads_heros_crm": {
       "id_prefix": "43b3f514",
       "reason": "Arquivado em 99_Arquivo. CRM SSOT = 6157d36b…"
+    },
+    "passaporte_linhas_arquivo": {
+      "id_prefix": "5a3a19c8",
+      "reason": "Cópia em 99_Arquivo. Passaporte linhas vivo = f407d36b… / ds d2d7d36b…"
     }
   },
   "pipeline_rule": "Grok Bot roteia → card na Central → Founder OK (Aprovado) → só então Avançar pode (opcionalmente) acionar n8n. Aprovar nunca dispara n8n.",

@@ -1,4 +1,4 @@
-"""Carrega IDs canônicos de config/notion_ids.json (sem secrets)."""
+"""Carrega IDs canônicos de config/ (sem secrets)."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 IDS_PATH = ROOT / "config" / "notion_ids.json"
+DRIVE_IDS_PATH = ROOT / "config" / "drive_ids.json"
 
 OS_DATABASE_ID = "e1a7d36b-ae64-821a-b2a2-81970ddf289a"
 CRM_OPORTUNIDADES_ID = "6157d36b-ae64-8222-bd17-0188ec6f0c7c"
@@ -19,6 +20,11 @@ FILA_EDITORIAL_ID = "8af724e1-f396-4864-a1e2-e9840c741047"
 FILA_EDITORIAL_DATA_SOURCE_ID = "13be9ea3-a48d-464f-9c10-e15203c3a61a"
 MESA_EDITORIAL_PAGE_ID = "3c97d36b-ae64-81ce-b08d-f218c3d02ba8"
 ARCHIVED_LEADS_PREFIX = "43b3f514"
+PASSAPORTE_CABECA_ID = "0ec22874-b2b5-49f2-a9e1-6e9e2f0bd7f4"
+PASSAPORTE_CABECA_DATA_SOURCE_ID = "a0254a75-b8d9-41a9-b281-1b9b9cb997dd"
+PASSAPORTE_LINHAS_ID = "f407d36b-ae64-8238-9c19-81c1753a1f9a"
+PASSAPORTE_LINHAS_DATA_SOURCE_ID = "d2d7d36b-ae64-8204-b15a-877aae5bf91b"
+COMECE_AQUI_PAGE_ID = "3b67d36b-ae64-81b0-9617-fdcfa724d72f"
 
 FORBIDDEN_EDITORIAL_WRITE_IDS = (
     FILA_FOUNDER_ID,
@@ -32,6 +38,13 @@ FORBIDDEN_EDITORIAL_WRITE_IDS = (
 @lru_cache(maxsize=1)
 def load_ids() -> dict[str, Any]:
     with IDS_PATH.open(encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+@lru_cache(maxsize=1)
+def load_drive_ids() -> dict[str, Any]:
+    """Árvore OS-34 + catálogo de tipagem. Sem secrets, sem API Drive."""
+    with DRIVE_IDS_PATH.open(encoding="utf-8") as fh:
         return json.load(fh)
 
 

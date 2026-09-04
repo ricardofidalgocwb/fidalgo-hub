@@ -68,7 +68,7 @@ Sincronismo (canon, `dashboard/editorial_canon.py`): 12 V BR = **1968** (não im
 
 ## Fotos de evidência (Drive) — não usar MCP
 
-SSOT: [`docs/drive-binary-upload.md`](docs/drive-binary-upload.md). **Proibido** Google Drive MCP `create_file` / base64 para G-FOTO, Passaporte ou Antes — o MCP grava stub de 3–9 KB. Aceite só `size` > 100 KB. Path A: Ricardo dropa no browser em `00_Antes`. Path B: `scripts/drive_resumable_upload.py` (resumable; auth em [`scripts/README.md`](scripts/README.md)). Sem n8n, sem publish.
+SSOT: [`docs/drive-binary-upload.md`](docs/drive-binary-upload.md). Allowlist MCP: [`docs/mcp-drive-allowlist.md`](docs/mcp-drive-allowlist.md) (`search` / `get_file_metadata` ok; **proibido** `create_file` para imagem/vídeo). Aceite só `size` > 100 KB. Path A: Ricardo dropa no browser em `00_Antes`. Path B: `scripts/drive_resumable_upload.py` (resumable; auth em [`scripts/README.md`](scripts/README.md)). Audit offline: `scripts/drive_evidence_audit.py`. Sem n8n, sem publish. Audit 2026-09-04: OS-34 `00_Antes` tem 17 solid + caixa ~2.8 MB; embed COM-PDF-02 continua HOLD.
 
 ---
 

@@ -7,6 +7,19 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Audit Drive OS-34 + IDs (unpublished)
+
+### Adicionado
+- `config/drive_ids.json`: árvore OS-34 (`root` / `02_Fotos` / `00_Antes` / `00_Cliente_envia`) + catálogo de tipagem + caixa ~2.8 MB. Twin partilha pasta. Sem secrets
+- `scripts/drive_evidence_audit.py` + `tests/test_drive_evidence_audit.py`: portão stub (≤100000) vs solid, manifesto `--manifest`, gaps de tipagem; exit ≠ 0 se houver stub. Dry-only, sem Drive live
+- `docs/mcp-drive-allowlist.md`: bots podem `search` / `get_file_metadata`; `create_file` de imagem/vídeo proibido; Path A manual / Path B resumable
+
+### Alterado
+- `config/notion_ids.json`: fetched_at 2026-09-04; páginas COMECE AQUI; DBs Passaporte cabeça/linhas; twin HC-2026-025=ICE / OS-34=comercial / Drive partilhado; write=false em OS/CRM/Clientes/Passaporte; Fila Editorial write=false runner_only
+- `MEMORY.md` e `docs/propostas/COM-PDF-02-theodoro/README.md`: `00_Antes` tem 17 solid + caixa ~2.8 MB (2026-09-04); embed PDF continua HOLD; MCP `create_file` continua banido. HTML da proposta sem `<img>`
+
+---
+
 ## [Unreleased] - Upload Drive binário ≥100 KB (unpublished)
 
 ### Adicionado

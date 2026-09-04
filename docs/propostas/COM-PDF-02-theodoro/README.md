@@ -2,9 +2,11 @@
 
 **Status:** rascunho interno, **não publicado**. Não enviar ao cliente. Não implantar site. Não postar em canal nenhum.
 
-Primeira passagem **só texto**. Fotos **não** estão prontas: a pasta Drive `00_Antes` está vazia; IDs de arquivo anteriores eram stubs. Esta pasta **não** baixa, inventa nem embute foto.
+Primeira passagem **só texto**. O HTML **não** baixa, inventa nem embute foto (`<img>` continua proibido neste artefato).
 
-O embed fotográfico entra em **PR de follow-up**, depois que arquivos reais **> 100 KB** forem dropados em `00_Antes`. Upload: seguir [`docs/drive-binary-upload.md`](../../drive-binary-upload.md) (proibido MCP `create_file`).
+Audit Drive **2026-09-04** (America/Sao_Paulo): `00_Antes` tem **17 solid** (> 100 000 bytes) e **0 stubs**. Caixa presente: `AIW3138_00_Antes_10_caixa_fusiveis_print_zap.png` (~2.8 MB, id `1qO4OS7GdJAfmxUrvH0PbosEgGKjvtICC`). Inbox `00_Cliente_envia` (sob `00_Antes`) vazia de ficheiros. IDs: [`config/drive_ids.json`](../../../config/drive_ids.json).
+
+**HOLD:** embed fotográfico no PDF/HTML só em **PR de follow-up explícito** — o drop solid no Drive **não** autoriza inventar `<img>` aqui. MCP `create_file` continua **proibido** para evidência. Upload: [`docs/drive-binary-upload.md`](../../drive-binary-upload.md) · allowlist [`docs/mcp-drive-allowlist.md`](../../mcp-drive-allowlist.md).
 
 ## O que é
 
@@ -55,9 +57,9 @@ Saída: `COM-PDF-02-theodoro-texto.pdf` (só texto; slots fotográficos = AUSENT
 
 Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
 
-## Fotos — hold
+## Fotos — HOLD (embed)
 
-Slots no HTML (todos **AUSENTE / aguardando drop manual > 100 KB**):
+Drive `00_Antes` **já tem** 17 solid + caixa ~2.8 MB (2026-09-04). Os slots no HTML desta pasta continuam **AUSENTE** até follow-up explícito:
 
 1. Impressão geral (print)
 2. Faróis
@@ -66,9 +68,9 @@ Slots no HTML (todos **AUSENTE / aguardando drop manual > 100 KB**):
 5. Lanternas
 6. Farol E
 7. Partida
-8. Caixa de fusíveis (**especialmente vazia**)
+8. Caixa de fusíveis (ficheiro solid no Drive; **não** embutir aqui ainda)
 
-Não usar stock, render, placeholder que pareça o carro, nem ID stub antigo.
+Não usar stock, render, placeholder que pareça o carro, nem MCP `create_file`. Tipagem catalogada: `02_farol_E`, `03_chicote/lanterna`, `04_luz_placa`, `07_partida`, `10_caixa_fusiveis`, `00_print_zap`.
 
 ## Regras duras deste artefato
 
@@ -78,7 +80,7 @@ Não usar stock, render, placeholder que pareça o carro, nem ID stub antigo.
 - Sem Instagram
 - Sem n8n
 - Sem foto embutida (`<img>` proibido nesta passagem)
-- Não enviar ao cliente até OK do Ricardo **e** fotos reais em `00_Antes`
+- Não enviar ao cliente até OK do Ricardo. Fotos solid já estão em `00_Antes`; embed no PDF continua HOLD
 
 ## Marca
 

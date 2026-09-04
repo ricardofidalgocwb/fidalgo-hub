@@ -21,18 +21,20 @@
 
 ## Drive binário ≥100 KB (04/09/2026)
 - SSOT: `docs/drive-binary-upload.md` — Operações / Entrega / Comunicação
-- **Proibido** MCP Drive `create_file` / base64 para foto ou vídeo de evidência (G-FOTO / Passaporte / Antes). Gera stub de 3–9 KB
-- Aceite só `size` > 100 000 bytes (metadado Drive). Stub = recusar
+- Allowlist MCP: `docs/mcp-drive-allowlist.md` — `search` / `get_file_metadata` ok; **proibido** `create_file` para imagem/vídeo de evidência
+- Aceite só `size` > 100 000 bytes (metadado Drive). Stub = recusar. Audit offline: `scripts/drive_evidence_audit.py`
 - Path A (preferido): Ricardo drop manual no browser em OS-34 `00_Antes` (`1pYlbPeFcp2RyB1ZqEn9RNFBZ8Y7YccE-`)
 - Path B: `scripts/drive_resumable_upload.py` (resumable, não MCP). Auth local só — ver `scripts/README.md`. Sem secrets no git
 - Sem n8n Active, sem placeholder, sem publish, sem escrita Notion neste fluxo
-- COM-PDF-02 continua texto até o drop real das 11 Antes + caixa de fusíveis
+- Audit 2026-09-04 (America/Sao_Paulo): `00_Antes` tem **17 solid** (>100000 bytes) e **0 stubs**. Caixa presente: `AIW3138_00_Antes_10_caixa_fusiveis_print_zap.png` (~2.8 MB, id `1qO4OS7GdJAfmxUrvH0PbosEgGKjvtICC`). Inbox `00_Cliente_envia` vazia de ficheiros. IDs em `config/drive_ids.json`
+- Twin Notion: HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a pasta Drive. Passaporte dual: cabeça ds `a0254a75…` / linhas ds `d2d7d36b…` — write=false
+- COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito (não inventar `<img>`)
 
 ## COM-PDF-02 Theodoro (04/09/2026)
-- Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto
+- Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto embutida
 - Pacote A R$ 1.850 / B R$ 4.200; F0–F8 = previsão de bancada; cobrança = pacote
-- Fotos: `00_Antes` vazio; slots AUSENTE; embed só em PR posterior após drop >100 KB
-- Upload: seguir `docs/drive-binary-upload.md` (não MCP)
+- Fotos Drive (2026-09-04): `00_Antes` **não** está vazio — 17 solid + caixa ~2.8 MB. Slots no HTML continuam AUSENTE. Embed no PDF = HOLD até PR de follow-up explícito
+- Upload de novas provas: `docs/drive-binary-upload.md` + allowlist MCP (não `create_file`)
 - Não enviar ao cliente, não implantar, sem CPF / URL Notion / IG / n8n no artefato
 - COM-ALIGN-01: Gold v1.1 — `#C9A227` / carbon `#0D0D0D` / panel `#1A1A1A` / paper `#F5F0E6`
 
