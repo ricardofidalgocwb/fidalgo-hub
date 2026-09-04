@@ -127,6 +127,10 @@ def build_transition(
     *,
     reason: str | None = None,
     canal: str | None = None,
+    peca: str | None = None,
+    metrica: str | None = None,
+    observacoes: str | None = None,
+    proxima_acao: str | None = None,
 ) -> EditorialTransition:
     """Monta o PATCH da Fila Editorial. Sem efeito colateral. Nunca Publicado."""
     action = (action or "").strip().lower()
@@ -149,6 +153,14 @@ def build_transition(
                 f"Aprovar só vale de {STATUS_RASCUNHO!r} ou {STATUS_AGUARDANDO!r} "
                 f"(atual: {current_status!r})"
             )
+        from dashboard.editorial_canon import assert_card_canon
+
+        assert_card_canon(
+            peca=peca,
+            metrica=metrica,
+            observacoes=observacoes,
+            proxima_acao=proxima_acao,
+        )
         props: dict[str, Any] = {
             PROP_STATUS: {"select": {"name": STATUS_APROVADO}},
         }
@@ -270,6 +282,10 @@ def planned_approve_actions(cards: list[Mapping[str, Any]]) -> list[EditorialTra
                 ACTION_APROVAR,
                 status,
                 canal=card.get("canal") or CANAL_NAO_PUBLICAR,
+                peca=card.get("peca"),
+                metrica=card.get("metrica"),
+                observacoes=card.get("observacoes"),
+                proxima_acao=card.get("proxima_acao"),
             )
         )
     return planned

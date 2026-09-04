@@ -15,7 +15,9 @@
 - **Aprovar ≠ publicar.** Publicado só o Ricardo. Canal Não publicar permanece
 - Sem n8n, IG, PDF, site. Sem escrita em Fila Founder / OS / CRM / Clientes / Financeiro
 - Peças vivas: EDI-1 Kit Datar (M0 D1), EDI-2 Reel Anchieta 1959
-- Sincronismo: 12 V BR = 1968; fim BR = 1996. Sem NAP EF
+- Sincronismo: 12 V BR = 1968; 12 V não implica alternador; fim BR = 1996 (2003 = México)
+- Anchieta nacional 03/01/1959; planta 18/11/1959; Ipiranga CKD 2.268; Itamar 47.700
+- Canon em `dashboard/editorial_canon.py`: figura fora da lista bloqueia Aprovar; sem pacote `editorial/`
 
 ## Objetivo Geral
 Central inteligente multicanal que gerencia múltiplos agentes de IA para atendimento, operações e geração de leads das empresas do grupo Fidalgo.
