@@ -18,7 +18,12 @@ if [[ -z "${CHROME}" ]]; then
   exit 1
 fi
 
+USER_DATA="$(mktemp -d)"
+cleanup() { rm -rf "${USER_DATA}"; }
+trap cleanup EXIT
+
 "${CHROME}" --headless --disable-gpu --no-pdf-header-footer \
+  --user-data-dir="${USER_DATA}" \
   --print-to-pdf="${OUT}" \
   "file://${HTML}"
 

@@ -51,7 +51,7 @@ Pela linha de comando (mesmo Chrome do ambiente):
 ./emitir-pdf.sh
 ```
 
-Saída: `COM-PDF-02-theodoro-texto.pdf` (só texto; slots fotográficos = AUSENTE).
+Saída: `COM-PDF-02-theodoro-texto.pdf` (só texto; slots fotográficos = AUSENTE). Um snapshot desse PDF pode estar commitado nesta pasta; regenerar localmente o substitui.
 
 Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
 
