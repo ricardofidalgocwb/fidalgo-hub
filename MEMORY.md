@@ -30,6 +30,13 @@
 - Twin Notion: HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a pasta Drive. Passaporte dual: cabeça ds `a0254a75…` / linhas ds `d2d7d36b…` — write=false
 - COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito (não inventar `<img>`)
 
+## COM-PDF-APR-N0 Aprendiz (04/09/2026)
+- Pasta unpublished `docs/propostas/COM-PDF-APR-N0/` — HTML+print CSS+PDF, Camada A (Type 1 / N0) + Camada B esqueleto
+- Sem site até OK Founder. Aprendiz testa como aluno. Slots foto-modelo AUSENTE. Sem carro tipado
+- Canon: 12 V BR=1968; 12 V ≠ alternador; fim BR=1996; 1º nacional 03/01/1959; Anchieta 18/11/1959
+- Sem OS viva / CPF / preço / diagrama Type 3 de ensino / os 9 procedimentos. Hércules = método, não nome do curso
+- CTA: N0→M1 ou OS box NAP 439 (não Eletro). Gold v1.1
+
 ## COM-PDF-02 Theodoro (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto embutida
 - Pacote A R$ 1.850 / B R$ 4.200; F0–F8 = previsão de bancada; cobrança = pacote
