@@ -31,7 +31,7 @@ Estes nomes ficam **só neste README**. Não colar URL viva de Notion nem CPF no
 
 - Ementa N0 — Curso inicial elétrica simples
 - Briefing PDF Aprendiz · Camada A + B
-- Quiz D1 — gabarito na página editorial (este PDF não inventa as 10 questões)
+- Quiz D1 — 10Q + gabarito copiados da página editorial (sem inventar)
 - D1 Pista C (fonte aula 2; Cap. 1 §5 = rascunho, não pré-requisito)
 - Ponte 01/09 (E1–E3)
 - Chicote U2 / bitolas = **só Camada B / M1**, não N0

@@ -65,6 +65,9 @@ def test_camada_a_indice_e_canon():
     assert "Quiz D1" in html
     assert "fonte Notion Quiz D1 — gabarito na página editorial" in html
     assert "8/10" in html
+    assert "vigia oval" in html
+    assert "O que faz primeiro no negativo?" in html
+    assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
     assert "NAP 439" in html or "439" in html
     assert "Não Eletro" in html or "não Eletro" in html
@@ -93,11 +96,14 @@ def test_slots_ausentes_sem_img():
         assert slot in html
 
 
-def test_quiz_nao_inventa_dez_qa():
+def test_quiz_d1_editorial_e_a1_exato():
     html = _html()
-    # Placeholder + regra. Não inventar 10 Q&A que se apresentem como cânon.
-    assert "não inventa 10 perguntas" in html.lower() or "nao inventa 10 perguntas" in html.lower()
-    assert not re.search(r"\b1B\s*·\s*2B\s*·\s*3B", html)
+    assert "vigia oval" in html
+    assert "O que faz primeiro no negativo?" in html
+    assert "Como medís parado?" in html
+    assert "O que recusa num kit YT?" in html
+    assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
+    assert "ficha D1" in html
 
 
 def test_proibido_pii_nomes_e_diagramas():

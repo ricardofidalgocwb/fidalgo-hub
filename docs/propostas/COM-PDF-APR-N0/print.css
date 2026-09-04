@@ -264,6 +264,32 @@ h3 {
   margin: 0.2rem 0;
 }
 
+.quiz {
+  margin: 0.4rem 0 0.8rem;
+  padding-left: 1.25rem;
+}
+
+.quiz > li {
+  margin: 0.55rem 0;
+  break-inside: avoid;
+}
+
+.quiz p {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+}
+
+.quiz ul {
+  margin: 0.15rem 0 0;
+  padding-left: 1.1rem;
+  list-style: none;
+}
+
+.quiz ul li {
+  margin: 0.12rem 0;
+  font-size: 0.88rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -513,6 +539,7 @@ th.gold {
   table,
   .slots,
   .qblock,
+  .quiz > li,
   .fields,
   .cta {
     break-inside: avoid;
