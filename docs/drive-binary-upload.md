@@ -34,7 +34,7 @@ Cem kilobytes aqui = **100 000 bytes** (decimal), não 102 400. O script e o tes
 Pasta: **`00_Antes`**  
 ID Drive (público, não é secret): `1pYlbPeFcp2RyB1ZqEn9RNFBZ8Y7YccE-`
 
-Operações precisa de peso real para as **11 fotos Antes tipadas + caixa de fusíveis**. COM-PDF-02 espera esse drop antes de qualquer embed fotográfico. Slots no artefato de Comunicação continuam AUSENTE até o arquivo no Drive passar no limiar.
+Audit **2026-09-04** (America/Sao_Paulo): `00_Antes` tem **17 solid** e **0 stubs**; caixa `AIW3138_00_Antes_10_caixa_fusiveis_print_zap.png` ~2.8 MB. Inbox `00_Cliente_envia` vazia de ficheiros. IDs e catálogo de tipagem: [`config/drive_ids.json`](../config/drive_ids.json). COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito — slots no HTML seguem AUSENTE. Allowlist MCP: [`docs/mcp-drive-allowlist.md`](mcp-drive-allowlist.md).
 
 ---
 

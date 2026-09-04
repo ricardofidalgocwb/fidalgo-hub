@@ -5,6 +5,7 @@ on:
     paths:
       - "dashboard/**"
       - "config/notion_ids.json"
+      - "config/drive_ids.json"
       - "scripts/**"
       - "tests/**"
       - "requirements.txt"

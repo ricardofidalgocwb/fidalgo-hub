@@ -92,12 +92,16 @@ def test_proibido_pii_canais_e_diagramas():
 def test_readme_followup_fotos_e_refs_internas():
     readme = README.read_text(encoding="utf-8")
     assert "00_Antes" in readme
-    assert "100 KB" in readme
+    assert "100 KB" in readme or "100 000" in readme
     assert "OS-34" in readme
     assert "PD-4" in readme
     assert "HC-2026-025" in readme
     assert "emitir-pdf" in readme
     assert "não publicado" in readme.lower() or "nao publicado" in readme.lower()
+    assert "está vazia" not in readme
+    assert "17 solid" in readme or "17 solid" in readme.lower()
+    assert "HOLD" in readme
+    assert "create_file" in readme
 
 
 def test_gold_v11_tokens():

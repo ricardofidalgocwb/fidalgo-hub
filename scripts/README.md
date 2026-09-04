@@ -2,6 +2,18 @@
 
 Nada daqui publica site, escreve Notion ou liga n8n. Auth **nunca** vai para o git.
 
+## `drive_evidence_audit.py`
+
+Audit **dry-only** do portão stub vs solid. Não chama a API Drive. Exige `--manifest` JSON (`{name,size,id}`).
+
+Classifica `size` ≤ 100 000 como stub e `size` > 100 000 como solid. Confronta nomes com o catálogo de tipagem em [`config/drive_ids.json`](../config/drive_ids.json). Exit ≠ 0 se houver stub ou size inválido; lacuna de tipagem só é reportada.
+
+```bash
+python scripts/drive_evidence_audit.py --manifest /tmp/antes.json
+```
+
+Allowlist MCP: [`docs/mcp-drive-allowlist.md`](../docs/mcp-drive-allowlist.md).
+
 ## `drive_resumable_upload.py`
 
 Upload **resumable** para o Google Drive (não MCP, não base64). Regra SSOT: [`docs/drive-binary-upload.md`](../docs/drive-binary-upload.md).

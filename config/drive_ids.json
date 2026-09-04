@@ -1,0 +1,36 @@
+{
+  "comment": "IDs Drive públicos (não são secrets). Audit 2026-09-04 America/Sao_Paulo. Sem credenciais, sem tokens. Twin HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a mesma pasta.",
+  "fetched_at": "2026-09-04",
+  "timezone": "America/Sao_Paulo",
+  "min_evidence_bytes": 100000,
+  "os34": {
+    "label": "OS-34 / HC-2026-025 — Variant AIW3138 Theodoro (pasta compartilhada)",
+    "root_id": "1wJSiE_gmqMnLUkt18lB75YCpxzMxz_Oy",
+    "folders": {
+      "02_Fotos": "1IWdCBE5NPbOpZexm2mGNA2t9XohHUo7f",
+      "00_Antes": "1pYlbPeFcp2RyB1ZqEn9RNFBZ8Y7YccE-",
+      "00_Cliente_envia": "1dgBWAfYnqsAOrUPFulUAPZJxKf1n_ASl"
+    },
+    "notes": {
+      "twin": "HC-2026-025 (Nº35, cabeça ICE) e OS-34 (Nº34, comercial) partilham esta pasta Drive. Não criar segunda árvore.",
+      "inbox": "00_Cliente_envia está aninhada sob 00_Antes; vazia de ficheiros no audit 2026-09-04.",
+      "antes_audit_2026_09_04": "17 solid (>100000 bytes), 0 stubs."
+    },
+    "evidence": {
+      "caixa_fusiveis": {
+        "name": "AIW3138_00_Antes_10_caixa_fusiveis_print_zap.png",
+        "id": "1qO4OS7GdJAfmxUrvH0PbosEgGKjvtICC",
+        "size": 2842327,
+        "parent": "00_Antes"
+      }
+    }
+  },
+  "tipagem_slots": [
+    "02_farol_E",
+    "03_chicote/lanterna",
+    "04_luz_placa",
+    "07_partida",
+    "10_caixa_fusiveis",
+    "00_print_zap"
+  ]
+}
