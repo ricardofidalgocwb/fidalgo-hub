@@ -3,9 +3,15 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+AUDIT_SCRIPT = ROOT / "scripts" / "drive_evidence_audit.py"
 
 from dashboard.ids import (
     CLIENTES_ID,
@@ -185,6 +191,30 @@ def test_cli_manifest_solid_exit_zero(tmp_path: Path, capsys):
 def test_cli_manifest_ausente(tmp_path: Path):
     rc = main(["--manifest", str(tmp_path / "nao.json")])
     assert rc == 2
+
+
+def test_cli_como_script_sem_package_path(tmp_path: Path):
+    """`python scripts/drive_evidence_audit.py` tem de funcionar sem PYTHONPATH."""
+    manifest = tmp_path / "files.json"
+    manifest.write_text(
+        json.dumps(
+            [{"name": "AIW3138_04_luz_placa.jpg", "size": 120_000, "id": "ok"}]
+        ),
+        encoding="utf-8",
+    )
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+    proc = subprocess.run(
+        [sys.executable, str(AUDIT_SCRIPT), "--manifest", str(manifest)],
+        cwd=str(ROOT),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert proc.returncode == 0, proc.stderr
+    payload = json.loads(proc.stdout)
+    assert payload["ok"] is True
+    assert payload["counts"]["solid"] == 1
 
 
 def test_parse_manifest_rejeita_formato_errado():

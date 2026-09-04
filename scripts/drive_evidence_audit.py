@@ -21,9 +21,12 @@ import sys
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from scripts.drive_resumable_upload import MIN_EVIDENCE_BYTES
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DRIVE_IDS = REPO_ROOT / "config" / "drive_ids.json"
 
 # mimeType Drive de pasta — sem campo size útil.
