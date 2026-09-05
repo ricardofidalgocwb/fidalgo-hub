@@ -15,6 +15,16 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - VIS tipadas H1 / VIS-G1 + M6_T (unpublished)
+
+### Adicionado
+- `docs/acervo/vis-tipadas/`: três JPEGs Commons SRC ≥100 KB (H1×2 gênese + M6 tronco T único)
+- `SOURCES.md` + `README.md` com mapa VIS-G1/H1×2 + M6_T, Drive IDs e índice VIS
+- Guarda `tests/test_vis_tipadas_h1_m6.py` (existência + ≥100000; DUPs/HenryFord fora; N0-H1 Era B1 intacta)
+- Pacote separado de Cap.2 / N0 A.8. Não publicar
+
+---
+
 ## [Unreleased] - N0 caixa 12 pólos CIP1 505 M (unpublished)
 
 ### Adicionado

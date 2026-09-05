@@ -39,6 +39,13 @@
 - Não embutir: `N0_caixa8_fuseBox8polos_SRC-cip1` · getriebe · explosionsmodell · DUPs `Cap2_engine1962` / `M6_T_engineBayTin`
 - Demais slots (prefixo, ventoinha, tinware incompleto, H1–H3, Camada B) = AUSENTE
 
+## VIS tipadas H1 / VIS-G1 + M6_T (05/09/2026)
+- Pasta unpublished `docs/acervo/vis-tipadas/` — três Commons SRC ≥100 KB (TEC PASS)
+- H1a `H1_VW_Beetle_1946` (529615) · H1b `H1_KdF_Wagen42` (434867) → **VIS-G1 / Mód.1 V-G1** gênese. **≠** ficha N0-H1 Era B1 1959–66
+- M6 `M6_T_motor30PS1959` (578324) → tronco T único. **≠** DUP `M6_T_engineBayTin` / `Cap2_engineBay`
+- Sem HenryFord. A1 HOLD. Sem PDF M6 / módulo Variant
+- Guarda: `tests/test_vis_tipadas_h1_m6.py`. Índice VIS: Notion `3d27d36bae6481e8a8d8ed280f9acbdd`
+
 ## COM-PDF-CAP2-motor (05/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-CAP2-motor/` — HTML+print CSS+PDF, Cap. 2 anatomia boxer a ar Type 1 (rascunho 0.2)
 - Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slot tinware = Commons; demais AUSENTE
