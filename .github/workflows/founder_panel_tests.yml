@@ -10,6 +10,7 @@ on:
       - "tests/**"
       - "docs/propostas/COM-PDF-APR-N0/**"
       - "docs/propostas/COM-PDF-CAP2-motor/**"
+      - "docs/acervo/vis-tipadas/**"
       - "requirements.txt"
       - ".github/workflows/founder_panel_tests.yml"
   pull_request:
