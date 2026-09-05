@@ -18,7 +18,7 @@ Citações (Commons + Drive IDs + índice VIS): [`SOURCES.md`](SOURCES.md).
 
 ## Fora deste PR (não preencher)
 
-- Cap.2 / N0 A.8 — PR separado. Não embutir `Cap2_engineBay` nem `N0_A8_*`.
+- Cap.2 / N0 A.8 — PR separado. Não embutir `Cap2_engineBay` nem binários `N0_A8_*` aqui. Cites do par Drive A.8 (`113903021C` · `55A kit`) em [`SOURCES.md`](SOURCES.md) + [`../../propostas/COM-PDF-APR-N0/SOURCES.md`](../../propostas/COM-PDF-APR-N0/SOURCES.md).
 - `M6_T_engineBayTin` = **DUP-A** de Cap.2 bay — **fora**.
 - HenryFord / lote-2 FAIL candidates — **fora**.
 - Caixa 8 vs 12 tipada — **AUSENTE**.

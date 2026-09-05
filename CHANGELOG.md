@@ -7,6 +7,20 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 A.8 Drive dinam+alt contrast (unpublished)
+
+### Adicionado
+- N0 §8 / A.8 par Drive: `assets/N0_A8_dinam_SRC-heritagestocks.jpg` (443360, Drive `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i`) + `assets/N0_A8_alt_SRC-appletreekit.jpg` (141153, Drive `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi`)
+- Contraste visual primário = dínamo vs alternador (nunca dínamo sozinho). Cites Acervo VIS: `113903021C` (heritagestocks) · `55A kit` (appletreekit)
+- Drive IDs + cites em HTML / README / `SOURCES.md` (N0 + `docs/acervo/vis-tipadas/SOURCES.md`)
+- Guarda pytest: ambos ≥100 KB e tamanhos exactos; HTML/README/SOURCES embutem os dois paths + IDs + cites
+
+### Alterado
+- Commons GenAlt (`N0_A8_engineGenAlt_SRC-commons.jpg`) fica secundário / cite — não é o par de contraste
+- Sem site / sem publish / sem Hotmart
+
+---
+
 ## [Unreleased] - N0 caixa 8 pólos appletree (unpublished)
 
 ### Adicionado

@@ -38,15 +38,25 @@ Bytes neste repo = tipadas Ops (Drive `files.get` `size` = aceite). Commons orig
 | Autor / licença | mib18 · [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 | Nota | Bay 30 PS 1959 · TEC PASS como visual **único** do tronco T. **Não** é `Cap2_engineBay` nem `M6_T_engineBayTin` (DUP-A). |
 
+## N0 A.8 · par Drive (cite only · binários no pacote N0)
+
+**Não** copiar `N0_A8_*` para esta pasta. Embed **ambos** juntos no COM-PDF-APR-N0. Nunca dínamo sozinho. Ficha completa: [`../../propostas/COM-PDF-APR-N0/SOURCES.md`](../../propostas/COM-PDF-APR-N0/SOURCES.md).
+
+| Metade | Ficheiro (pacote N0) | Bytes | Drive | Cite |
+|---|---|---|---|---|
+| dínamo | `N0_A8_dinam_SRC-heritagestocks.jpg` | **443360** | https://drive.google.com/file/d/1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i/view · id `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i` | `113903021C` · heritagestocks |
+| alternador | `N0_A8_alt_SRC-appletreekit.jpg` | **141153** | https://drive.google.com/file/d/1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi/view · id `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi` | `55A kit` · appletreekit |
+
 ## Proibido neste pacote
 
 | Ficheiro / slot | Motivo |
 |---|---|
-| `Cap2_engineBay_SRC-commons.jpg` | Cap.2 / N0 A.8 — outro PR |
+| `Cap2_engineBay_SRC-commons.jpg` | Cap.2 — outro PR |
 | `M6_T_engineBayTin_SRC-commons.jpg` | DUP-A = Cap.2 bay |
-| `N0_A8_*` / `Cap2_engine1962_*` | N0 A.8 / DUP-B — outro PR |
+| `N0_A8_*` binários | vivem em COM-PDF-APR-N0 `assets/` — cite acima; **não** duplicar aqui |
+| `Cap2_engine1962_*` | DUP-B — fora |
 | `N0_A8_HenryFord1949engine_*` | fora deste PR (cite venue; não H1/M6) |
-| caixa 8 / caixa 12 | **AUSENTE** |
+| caixa 8 / caixa 12 | **AUSENTE** nesta pasta (slots no N0) |
 | A1 | **HOLD** |
 
 *Heros Custom · Acervo · fontes Commons + Drive · 05/09/2026 · não publicar*

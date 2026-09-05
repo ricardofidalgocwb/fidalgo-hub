@@ -53,6 +53,13 @@ def test_readme_sources_citam_commons_drive_e_indice_vis():
     assert "3d27d36bae6481e8a8d8ed280f9acbdd" in blob
     assert "n0-h1" in blob
     assert "1959–66" in f"{readme}\n{sources}" or "1959-66" in blob
+    assert "1a_l6-bgoabwfw8vterfca7nmg6zhuq_i" in blob
+    assert "1nqx1ef7yg5o-uou8jrjnc1rffs3wchai" in blob
+    assert "113903021c" in blob
+    assert "55a kit" in blob
+    assert "nunca" in blob
+    assert "n0_a8_dinam_src-heritagestocks.jpg" in blob
+    assert "n0_a8_alt_src-appletreekit.jpg" in blob
 
 
 def test_dups_e_fail_candidates_fora_do_pacote():
