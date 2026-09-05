@@ -411,6 +411,12 @@ th.gold {
   color: var(--muted);
 }
 
+.slot.slot-filled figcaption a {
+  color: var(--carbon);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
 .slot p {
   margin: 0;
   font-size: 0.78rem;

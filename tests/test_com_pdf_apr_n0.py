@@ -123,13 +123,38 @@ def test_slot_a8_geracao_commons_demais_ausentes():
     caixa8 = _slot(html, "caixa 8 pólos")
     caixa12 = _slot(html, "caixa 12 pólos")
     assert "Ausente" in caixa8
-    assert "Ausente" in caixa12
     assert not re.search(r"<img\b", caixa8, re.I)
-    assert not re.search(r"<img\b", caixa12, re.I)
+    caixa12_asset = PACOTE / "assets" / "N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg"
+    assert caixa12_asset.is_file()
+    assert caixa12_asset.stat().st_size >= 100_000
+    assert re.search(r"<img\b", caixa12, re.I)
+    assert "assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in caixa12
+    assert "Ausente" not in caixa12
+    assert "AUSENTE" not in caixa12
+    assert "cip1.com/vwc-111-937-505-m" in caixa12
     assert html.lower().count("ausente") >= 3
     assert "Cap2_engine1962" not in html
     assert "M6_T_engineBayTin" not in html
-    assert html.count("<img") == 1
+    assert "getriebe" not in html.lower()
+    assert "explosionsmodell" not in html.lower()
+    assert not any((PACOTE / "assets").glob("*caixa8*"))
+    assert not any((PACOTE / "assets").glob("*getriebe*"))
+    assert not any((PACOTE / "assets").glob("*explosionsmodell*"))
+    assert html.count("<img") == 2
+
+
+def test_slot_caixa12_cip1_sem_caixa8():
+    html = _html()
+    asset = PACOTE / "assets" / "N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg"
+    assert asset.is_file()
+    assert asset.stat().st_size == 239795 or asset.stat().st_size >= 100_000
+    caixa12 = _slot(html, "caixa 12 pólos")
+    assert "N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in caixa12
+    assert "www2.cip1.com/vwc-111-937-505-m" in caixa12
+    caixa8 = _slot(html, "caixa 8 pólos")
+    assert "Ausente" in caixa8
+    geracao = _slot(html, "dínamo vs alternador")
+    assert "N0_A8_engineGenAlt_SRC-commons.jpg" in geracao
 
 
 def test_quiz_d1_editorial_e_a1_exato():
@@ -166,8 +191,9 @@ def test_cos_p0_checklist_e_linhas_a1():
     assert "caixa 8 pólos" in html
     assert "caixa 12 pólos" in html
     assert "dínamo vs alternador" in html
-    assert html.count("<img") == 1
+    assert html.count("<img") == 2
     assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" in html
+    assert "assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in html
 
 
 def test_fichas_historico_h1_h3():
@@ -207,8 +233,9 @@ def test_fichas_historico_h1_h3():
     assert "caixa 12 pólos" in html
     assert "dínamo vs alternador" in html
     assert html.lower().count("ausente") >= 6
-    assert html.count("<img") == 1
+    assert html.count("<img") == 2
     assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" in html
+    assert "assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in html
     quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
     assert quiz and "✅" not in quiz.group(1)
     assert "Próximo: M1 chicote — ou agendar diagnóstico" in html

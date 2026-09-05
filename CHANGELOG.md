@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 caixa 12 pólos CIP1 505 M (unpublished)
+
+### Adicionado
+- N0 §8 slot «caixa 12 pólos»: `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` (239795 bytes, Drive `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx`, cite cip1 111 937 505 M)
+- Guarda pytest: caixa 12 preenchida ≥100 KB; caixa 8 AUSENTE; GenAlt A.8 intacto; sem caixa8/getriebe/explosionsmodell
+
+### Alterado
+- Caixa 8, H1–H3 e Camada B continuam AUSENTE. Sem publish.
+
+---
+
 ## [Unreleased] - Commons tipadas Cap.2 tinware + N0 A.8 (unpublished)
 
 ### Adicionado
