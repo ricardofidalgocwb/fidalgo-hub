@@ -10,7 +10,7 @@ Bytes neste repo = tipadas Ops (Drive `files.get` `size` = aceite). Commons orig
 | Campo | Valor |
 |---|---|
 | Ficheiro Hub | `H1_VW_Beetle_1946_SRC-commons.jpg` |
-| Bytes | **512 333** |
+| Bytes | **519 609** · md5 `52cd60147588dd1fcd3010177f7cab35` |
 | Drive | https://drive.google.com/file/d/1vjVvZ18DYGUREYEfYFzvadlOa3OHGwbp/view · id `1vjVvZ18DYGUREYEfYFzvadlOa3OHGwbp` |
 | Commons | [File:VW Beetle (1946).jpg](https://commons.wikimedia.org/wiki/File:VW_Beetle_(1946).jpg) |
 | Autor / licença | Andrew Bone (Flickr andreboeni) · [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |

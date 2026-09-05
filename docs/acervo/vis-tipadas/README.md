@@ -10,7 +10,7 @@ Este pacote **não** é curso Mód.1, **não** é PDF M6 Avançado, **não** é 
 
 | Slot Mestra | Arquivo | Bytes | Onde cola | O que **não** é |
 |---|---|---|---|---|
-| **VIS-G1 / H1a** | `H1_VW_Beetle_1946_SRC-commons.jpg` | 512 333 | Mód.1 V-G1 · gênese / protótipos | **≠** ficha `N0-H1` Era B1 1959–66 em COM-PDF-APR-N0 |
+| **VIS-G1 / H1a** | `H1_VW_Beetle_1946_SRC-commons.jpg` | 519 609 | Mód.1 V-G1 · gênese / protótipos | **≠** ficha `N0-H1` Era B1 1959–66 em COM-PDF-APR-N0 |
 | **VIS-G1 / H1b** | `H1_KdF_Wagen42_SRC-commons.jpg` | 434 867 | Mód.1 V-G1 · KdF / gênese | **≠** Anchieta 03/01/1959 · **≠** N0-H1 |
 | **M6 tronco T** | `M6_T_motor30PS1959_SRC-commons.jpg` | 578 324 | M6 térmica (único ≠ Cap.2) | **≠** DUP `M6_T_engineBayTin` / `Cap2_engineBay` |
 

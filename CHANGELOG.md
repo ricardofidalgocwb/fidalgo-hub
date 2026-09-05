@@ -11,7 +11,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 - `docs/acervo/vis-tipadas/`: três JPEGs Commons SRC ≥100 KB (H1×2 gênese + M6 tronco T único)
-- H1a `H1_VW_Beetle_1946` COM crop: placa coberta COM/TEC gate (512 333 B ≥100 KB); H1b/M6 intactos
+- H1a `H1_VW_Beetle_1946` COM crop: placa coberta COM/TEC gate (519 609 B, md5 `52cd6014…`); H1b/M6 intactos
 - `SOURCES.md` + `README.md` com mapa VIS-G1/H1×2 + M6_T, Drive IDs e índice VIS
 - Guarda `tests/test_vis_tipadas_h1_m6.py` (existência + ≥100000; DUPs/HenryFord fora; N0-H1 Era B1 intacta)
 - Pacote separado de Cap.2 / N0 A.8. Não publicar
