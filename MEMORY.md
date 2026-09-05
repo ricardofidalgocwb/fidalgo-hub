@@ -32,7 +32,7 @@
 
 ## VIS tipadas H1 / VIS-G1 + M6_T (05/09/2026)
 - Pasta unpublished `docs/acervo/vis-tipadas/` — três Commons SRC ≥100 KB (TEC PASS)
-- H1a `H1_VW_Beetle_1946` (529615) · H1b `H1_KdF_Wagen42` (434867) → **VIS-G1 / Mód.1 V-G1** gênese. **≠** ficha N0-H1 Era B1 1959–66
+- H1a `H1_VW_Beetle_1946` (512333, placa coberta COM/TEC gate) · H1b `H1_KdF_Wagen42` (434867) → **VIS-G1 / Mód.1 V-G1** gênese. **≠** ficha N0-H1 Era B1 1959–66
 - M6 `M6_T_motor30PS1959` (578324) → tronco T único. **≠** DUP `M6_T_engineBayTin` / `Cap2_engineBay`
 - Sem Cap.2 / N0 A.8 neste PR. Sem HenryFord. Caixa 8/12 AUSENTE. A1 HOLD. Sem PDF M6 / módulo Variant
 - Guarda: `tests/test_vis_tipadas_h1_m6.py`. Índice VIS: Notion `3d27d36bae6481e8a8d8ed280f9acbdd`

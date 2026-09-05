@@ -13,7 +13,7 @@ N0_HTML = ROOT / "docs" / "propostas" / "COM-PDF-APR-N0" / "index.html"
 MIN_BYTES = 100_000
 
 TIPADAS = (
-    ("H1_VW_Beetle_1946_SRC-commons.jpg", 529_615),
+    ("H1_VW_Beetle_1946_SRC-commons.jpg", 512_333),
     ("H1_KdF_Wagen42_SRC-commons.jpg", 434_867),
     ("M6_T_motor30PS1959_SRC-commons.jpg", 578_324),
 )
