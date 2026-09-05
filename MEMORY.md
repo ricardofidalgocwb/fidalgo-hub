@@ -36,6 +36,7 @@
 - Cânon: 1-4-3-2 · B/BF/BH/BB/BD · Itamar 1600 1993–96 · sem cv · elétrica = ponte N0 (item 9, não miolo)
 - Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
 - Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
+- TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; tinware AUSENTE; quiz sem ✅ nas opções
 - Gold v1.1
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)

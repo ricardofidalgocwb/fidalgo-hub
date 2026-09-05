@@ -21,6 +21,14 @@ def _html() -> str:
     return HTML.read_text(encoding="utf-8")
 
 
+def _miolo(html: str) -> str:
+    """Anatomia §§1–5 only — before checklist / item 9 / quiz."""
+    start = html.find("<h2>1. O que é o motor do Type 1</h2>")
+    end = html.find("<h2>6. Checklist Aprendiz")
+    assert start != -1 and end != -1 and end > start
+    return html[start:end]
+
+
 def _quiz_options_blob(html: str) -> str:
     """Texto das alternativas do quiz, sem o bloco de gabarito."""
     m = re.search(
@@ -71,7 +79,7 @@ def test_capa_e_miolo_acervo():
     assert "foto do prefixo" in html.lower() or "foto prefixo" in html.lower()
     assert "1968" in html
     assert "12 V ≠ alternador" in html or "12 V ≠ alt" in html or "12 V ≠ alternador" in html
-    assert "Cap. 14" in html
+    assert "Cap.14" in html or "Cap. 14" in html
     assert "N0" in html
 
 
@@ -207,6 +215,27 @@ def test_nao_mistura_n0_no_miolo():
         "Multímetro parado",
     ):
         assert aula not in html
+
+
+def test_tec_gates_miolo_sem_torque_pn_folga_n0():
+    html = _html()
+    miolo = _miolo(html)
+    miolo_l = miolo.lower()
+    assert "torque" not in miolo_l
+    assert "folga" not in miolo_l
+    assert not re.search(r"\bpn\b", miolo_l)
+    assert "ω" not in miolo_l and "ohm" not in miolo_l
+    assert "item 9" not in miolo_l
+    assert "tensão medida" not in miolo_l
+    assert "foto da caixa" not in miolo_l
+    assert "12 v ≠ alternador" not in miolo_l
+    after = html[html.find("<h2>6. Checklist Aprendiz") :]
+    assert "Item 9" in after
+    assert "N0 only" in after
+    assert "tensão medida" in after.lower() or "tensão + caixa" in after.lower()
+    assert "Type 3 = outro módulo" in html
+    assert not re.search(r"diagrama (do |da )?type\s*3", html, re.I)
+    assert "✅" not in _quiz_options_blob(html)
 
 
 def test_gold_v11_tokens():
