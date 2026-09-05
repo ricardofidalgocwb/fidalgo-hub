@@ -69,10 +69,14 @@ def test_camada_a_indice_e_canon():
     assert "O que faz primeiro no negativo?" in html
     assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
-    assert "M1 chicote · ou OS box (hold COM)" in html
+    assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
     assert "Não Eletro" in html or "não Eletro" in html
+    assert "439" not in html
+    assert "nap" not in html.lower()
     assert "99187" not in html
     assert "whatsapp" not in html.lower()
+    assert not re.search(r"\(\s*41\s*\)", html)
+    assert not re.search(r"\b\d{4,5}-?\d{4}\b", html)
 
 
 def test_camada_b_esqueleto():
@@ -117,6 +121,8 @@ def test_cos_p0_quiz_sem_marca_gabarito_no_fim():
     assert "✅" not in body
     assert "✔" not in body
     assert "✓" not in body
+    css = CSS.read_text(encoding="utf-8")
+    assert 'content: "○ "' in css or "content: '○ '" in css
     after = html[quiz.end() :]
     gabarito = "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B"
     assert gabarito in after
@@ -131,6 +137,8 @@ def test_cos_p0_checklist_e_linhas_a1():
     assert "caixa 8 pólos" in html
     assert "caixa 12 pólos" in html
     assert "dínamo vs alternador" in html
+    assert "Hold Founder/Ops" in html
+    assert not re.search(r"<img\b", html, re.I)
 
 
 def test_proibido_pii_nomes_e_diagramas():

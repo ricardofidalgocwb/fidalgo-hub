@@ -23,7 +23,7 @@ Canon compilado da ementa N0 + briefing Aprendiz (04/09/2026):
 - 1º nacional **03/01/1959**
 - Planta Anchieta **18/11/1959**
 
-CTA no PDF: **M1 chicote · ou OS box (hold COM)** — sem telefone / NAP até OK COM/Founder. Sem preço neste PDF.
+CTA no miolo: **Próximo: M1 chicote — ou agendar diagnóstico**. Sem NAP, sem WhatsApp, sem telefone. Contato = página de vendas depois, não neste PDF.
 
 ## Refs internas (não vão no HTML / PDF)
 
@@ -68,12 +68,11 @@ Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatór
 Hold de diagramação — **não** neste PDF:
 
 - 1 aula / folha
-- Quiz D1 em folhas próprias
-- Bolinha A/B/C (marca de opção)
+- Quiz D1 em folhas próprias (○ vazia no miolo já está)
 
 ## Fotos-modelo — AUSENTE
 
-Slots da Camada A (caixa 8, caixa 12, dínamo vs alternador) e campos da Camada B = **AUSENTE**. Sem foto de cliente. Sem stock. Sem `<img>`.
+Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternador`) e campos da Camada B = **AUSENTE**. Hold Founder/Ops — sem foto inventada, sem stock, sem `<img>`.
 
 ## Regras duras deste artefato
 
