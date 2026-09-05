@@ -322,19 +322,7 @@ th.gold {
 
 .checklist li {
   margin: 0.35rem 0;
-  padding-left: 1.6rem;
-  position: relative;
-}
-
-.checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.15rem;
-  width: 0.85rem;
-  height: 0.85rem;
-  border: 1.5px solid var(--gold);
-  background: var(--paper);
+  padding-left: 0;
 }
 
 .slots {

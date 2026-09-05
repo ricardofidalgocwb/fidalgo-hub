@@ -132,6 +132,19 @@ def test_checklist_8_e_selo():
     assert "não misturou n0 no miolo" in html.lower() or "nao misturou n0 no miolo" in html.lower()
     assert "item 9" in html.lower()
     assert "N0 only" in html or "só ponte" in html.lower() or "nao miolo" in html.lower()
+    block = re.search(r'<ol class="checklist">(.*?)</ol>', html, flags=re.S)
+    assert block, "ol.checklist não encontrado"
+    lis = re.findall(r"<li\b[^>]*>(.*?)</li>", block.group(1), flags=re.S)
+    assert len(lis) == 8
+    for li in lis:
+        assert "☐" in li
+    gate = re.search(
+        r'<p class="gate">\s*<strong>Item 9.*?</p>',
+        html,
+        flags=re.S,
+    )
+    assert gate, "gate Item 9 não encontrado"
+    assert "☐" not in gate.group(0)
 
 
 def test_quiz_literais_sem_check_nas_opcoes():
