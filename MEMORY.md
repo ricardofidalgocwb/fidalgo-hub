@@ -30,25 +30,34 @@
 - Twin Notion: HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a pasta Drive. Passaporte dual: cabeça ds `a0254a75…` / linhas ds `d2d7d36b…` — write=false
 - COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito (não inventar `<img>`)
 
+## COM-PDF Commons tipadas (05/09/2026)
+- Ops liberou 2 tipadas Commons ≥100 KB. Embed unpublished nos packs — **não** publicar / **não** site
+- Cap.2 tinware: `docs/propostas/COM-PDF-CAP2-motor/assets/Cap2_engineBay_SRC-commons.jpg` (193513) Drive `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2`
+- N0 A.8 geração: `docs/propostas/COM-PDF-APR-N0/assets/N0_A8_engineGenAlt_SRC-commons.jpg` (195262) Drive `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv`
+- N0 caixa 12: `docs/propostas/COM-PDF-APR-N0/assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` (239795) Drive `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx` · cite cip1 111 937 505 M
+- N0 caixa 8: `docs/propostas/COM-PDF-APR-N0/assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434) Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK` · cite appletreeauto 61–66 (Acervo) (não CIP1)
+- Não embutir: `N0_caixa8_fuseBox8polos_SRC-cip1` · getriebe · explosionsmodell · DUPs `Cap2_engine1962` / `M6_T_engineBayTin`
+- Demais slots (prefixo, ventoinha, tinware incompleto, H1–H3, Camada B) = AUSENTE
+
 ## VIS tipadas H1 / VIS-G1 + M6_T (05/09/2026)
 - Pasta unpublished `docs/acervo/vis-tipadas/` — três Commons SRC ≥100 KB (TEC PASS)
 - H1a `H1_VW_Beetle_1946` (519609, md5 `52cd60147588dd1fcd3010177f7cab35`, placa coberta COM/TEC gate) · H1b `H1_KdF_Wagen42` (434867) → **VIS-G1 / Mód.1 V-G1** gênese. **≠** ficha N0-H1 Era B1 1959–66
 - M6 `M6_T_motor30PS1959` (578324) → tronco T único. **≠** DUP `M6_T_engineBayTin` / `Cap2_engineBay`
-- Sem Cap.2 / N0 A.8 neste PR. Sem HenryFord. Caixa 8/12 AUSENTE. A1 HOLD. Sem PDF M6 / módulo Variant
+- Sem HenryFord. A1 HOLD. Sem PDF M6 / módulo Variant
 - Guarda: `tests/test_vis_tipadas_h1_m6.py`. Índice VIS: Notion `3d27d36bae6481e8a8d8ed280f9acbdd`
 
 ## COM-PDF-CAP2-motor (05/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-CAP2-motor/` — HTML+print CSS+PDF, Cap. 2 anatomia boxer a ar Type 1 (rascunho 0.2)
-- Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slots foto AUSENTE
+- Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slot tinware = Commons; demais AUSENTE
 - Cânon: 1-4-3-2 · B/BF/BH/BB/BD · Itamar 1600 1993–96 · sem cv · elétrica = ponte N0 (item 9, não miolo)
 - Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
 - Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
-- TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; tinware AUSENTE; quiz sem ✅ nas opções
+- TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; quiz sem ✅ nas opções; tinware didático Commons (demais slots AUSENTE)
 - Gold v1.1
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-APR-N0/` — HTML+print CSS+PDF, Camada A (Type 1 / N0) + Camada B esqueleto
-- Sem site até OK Founder. Aprendiz testa como aluno. Slots foto-modelo AUSENTE. Sem carro tipado
+- Sem site até OK Founder. Aprendiz testa como aluno. Slot A.8 geração = Commons; caixa 12 = CIP1 505 M; caixa 8 = appletreeauto 61–66 (Acervo); H1–H3 AUSENTE. Sem carro tipado
 - Canon: 12 V BR=1968; 12 V ≠ alternador; fim BR=1996; 1º nacional 03/01/1959; Anchieta 18/11/1959
 - Sem OS viva / CPF / preço / diagrama Type 3 de ensino / os 9 procedimentos. Hércules = método, não nome do curso
 - CTA miolo: Próximo: M1 chicote — ou agendar diagnóstico (sem NAP/WhatsApp). Gold v1.1

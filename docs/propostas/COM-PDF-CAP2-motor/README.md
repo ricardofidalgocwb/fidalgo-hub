@@ -62,11 +62,23 @@ Pela linha de comando:
 
 Saída: `COM-PDF-CAP2-motor.pdf`. Um snapshot pode estar commitado nesta pasta; regenerar localmente o substitui.
 
-Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
+Requisitos: `google-chrome` ou `chromium` no PATH. A tipada Commons está em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
 
-## Fotos-modelo — AUSENTE
+## Fotos-modelo — tinware Commons (unpublished)
 
-Slots (tinware didático, prefixo bloco, ventoinha/correia) = **AUSENTE**. Sem foto de cliente. Sem stock. Sem `<img>`.
+**Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
+
+Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
+
+| Slot | Arquivo | Drive ID | Bytes |
+|---|---|---|---|
+| Tinware completo (didático) | `assets/Cap2_engineBay_SRC-commons.jpg` | `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2` | 193513 |
+
+[Drive](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · cite no HTML: Wikimedia Commons (SRC-commons).
+
+**AUSENTE:** prefixo bloco · ventoinha/correia · tinware incompleto.
+
+**Não embutir:** `Cap2_engine1962` (DUP de N0 A.8) · `M6_T_engineBayTin` (DUP deste bay).
 
 ## Regras duras deste artefato
 
@@ -75,7 +87,7 @@ Slots (tinware didático, prefixo bloco, ventoinha/correia) = **AUSENTE**. Sem f
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto embutida (`<img>` proibido)
+- Sem foto de cliente / stock / IA; só a tipada Commons do tinware didático
 - Sem cv / torque / folga / pistão inventado
 - Sem misturar N0 no miolo motor (item 9 = só ponte)
 - Type 3 = outro módulo

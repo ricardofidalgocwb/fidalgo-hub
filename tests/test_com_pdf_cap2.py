@@ -168,16 +168,38 @@ def test_quiz_literais_sem_check_nas_opcoes():
     assert "1A · 2A · 3B · 4B · 5A · 6B · 7B · 8B · 9B · 10B" in html[gabarito_idx:]
 
 
-def test_slots_ausentes_sem_img():
+def _slot(html: str, heading: str) -> str:
+    m = re.search(
+        rf'<div class="slot[^"]*">\s*<div>\s*<h3>{re.escape(heading)}</h3>(.*?)</div>\s*(?:<figure>.*?</figure>|<p>.*?</p>)\s*</div>',
+        html,
+        flags=re.S,
+    )
+    assert m, f"slot {heading!r} não encontrado"
+    return m.group(0)
+
+
+def test_slot_tinware_commons_demais_ausentes():
     html = _html()
-    assert not re.search(r"<img\b", html, re.I)
-    for slot in (
-        "Tinware completo",
-        "Prefixo bloco",
-        "Ventoinha",
-    ):
-        assert slot in html
-    assert html.lower().count("ausente") >= 3
+    asset = PACOTE / "assets" / "Cap2_engineBay_SRC-commons.jpg"
+    assert asset.is_file()
+    assert asset.stat().st_size >= 100_000
+    tinware = _slot(html, "Tinware completo (didático)")
+    assert re.search(r"<img\b", tinware, re.I)
+    assert "assets/Cap2_engineBay_SRC-commons.jpg" in tinware
+    assert "Ausente" not in tinware
+    assert "AUSENTE" not in tinware
+    assert "Wikimedia Commons" in tinware
+    assert "SRC-commons" in tinware
+    prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
+    ventoinha = _slot(html, "Ventoinha / correia")
+    assert "Ausente" in prefixo
+    assert "Ausente" in ventoinha
+    assert not re.search(r"<img\b", prefixo, re.I)
+    assert not re.search(r"<img\b", ventoinha, re.I)
+    assert html.lower().count("ausente") >= 2
+    assert "M6_T_engineBayTin" not in html
+    assert "Cap2_engine1962" not in html
+    assert html.count("<img") == 1
 
 
 def test_proibido_pii_nomes_preco_isbn_canais():

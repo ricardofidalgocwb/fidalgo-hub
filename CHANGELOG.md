@@ -7,14 +7,47 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 caixa 8 pólos appletree (unpublished)
+
+### Adicionado
+- N0 §8 slot «caixa 8 pólos»: `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434 bytes, Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK`, cite appletreeauto 61–66 (Acervo) — não CIP1)
+- Guarda pytest: caixa 8 + caixa 12 ≥100 KB; GenAlt A.8 intacto; sem `N0_caixa8_fuseBox8polos_SRC-cip1` / getriebe / explosionsmodell
+
+---
+
 ## [Unreleased] - VIS tipadas H1 / VIS-G1 + M6_T (unpublished)
 
 ### Adicionado
 - `docs/acervo/vis-tipadas/`: três JPEGs Commons SRC ≥100 KB (H1×2 gênese + M6 tronco T único)
 - H1a `H1_VW_Beetle_1946` COM crop: placa coberta COM/TEC gate (519 609 B, md5 `52cd6014…`); H1b/M6 intactos
 - `SOURCES.md` + `README.md` com mapa VIS-G1/H1×2 + M6_T, Drive IDs e índice VIS
-- Guarda `tests/test_vis_tipadas_h1_m6.py` (existência + ≥100000; DUPs/HenryFord fora; N0-H1 Era B1 intacta)
+- Guarda `tests/test_vis_tipadas_h1_m6.py` (existência + ≥100000; DUPs/HenryFord fora; ficha N0-H1 Era B1 sem `<img>` / sem VIS-G1; §8 N0 pode ter caixa/GenAlt)
 - Pacote separado de Cap.2 / N0 A.8. Não publicar
+
+---
+
+## [Unreleased] - N0 caixa 12 pólos CIP1 505 M (unpublished)
+
+### Adicionado
+- N0 §8 slot «caixa 12 pólos»: `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` (239795 bytes, Drive `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx`, cite cip1 111 937 505 M)
+- Guarda pytest: caixa 12 preenchida ≥100 KB; GenAlt A.8 intacto; sem getriebe/explosionsmodell
+
+### Alterado
+- H1–H3 e Camada B continuam AUSENTE. Sem publish.
+
+---
+
+## [Unreleased] - Commons tipadas Cap.2 tinware + N0 A.8 (unpublished)
+
+### Adicionado
+- Cap.2 §7 slot «Tinware completo (didático)»: `assets/Cap2_engineBay_SRC-commons.jpg` (193513 bytes, Drive `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2`, cite Commons SRC)
+- N0 §8 slot A.8 geração / dínamo vs alternador: `assets/N0_A8_engineGenAlt_SRC-commons.jpg` (195262 bytes, Drive `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv`, cite Commons SRC)
+- Guardas pytest: slot preenchido + `<img>` + ficheiro ≥100 KB; demais slots AUSENTE; sem DUP `Cap2_engine1962` / `M6_T_engineBayTin`
+
+### Alterado
+- READMEs dos dois pacotes: unpublished + Drive IDs; `<img>` só na tipada Commons
+- Demais slots (prefixo bloco, ventoinha, caixa 8 vs 12, tinware incompleto, H1–H3, Camada B) continuam AUSENTE
+- Sem publish / sem site / sem NAP-Zap no CTA didático
 
 ---
 

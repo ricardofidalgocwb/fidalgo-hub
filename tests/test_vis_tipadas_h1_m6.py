@@ -68,7 +68,12 @@ def test_nao_sobrescreve_n0_h1_era_b1():
     html = N0_HTML.read_text(encoding="utf-8")
     assert "H1 · Era B1 (1959–66)" in html
     assert "N0-H1" in html
-    assert "<img" not in html.lower()
+    start = html.find('id="n0-h1"')
+    end = html.find('id="n0-h2"')
+    assert 0 <= start < end
+    ficha_h1 = html[start:end]
+    assert "<img" not in ficha_h1.lower()
+    assert "AUSENTE" in ficha_h1
     assert "H1_VW_Beetle_1946" not in html
     assert "H1_KdF_Wagen42" not in html
     assert "KdF-Wagen" not in html

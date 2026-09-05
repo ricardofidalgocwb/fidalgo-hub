@@ -385,6 +385,38 @@ th.gold {
   font-size: 0.78rem;
 }
 
+.slot.slot-filled {
+  aspect-ratio: auto;
+  min-height: 0;
+  justify-content: flex-start;
+  gap: 0.35rem;
+}
+
+.slot.slot-filled figure {
+  margin: 0;
+}
+
+.slot.slot-filled img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 58mm;
+  object-fit: contain;
+  border: 1px solid var(--line);
+}
+
+.slot.slot-filled figcaption {
+  margin: 0.3rem 0 0;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.slot.slot-filled figcaption a {
+  color: var(--carbon);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
 .slot p {
   margin: 0;
   font-size: 0.78rem;
