@@ -391,6 +391,34 @@ th.gold {
   color: var(--muted);
 }
 
+.ficha {
+  border: 1px solid var(--line);
+  padding: 0.7rem 0.85rem;
+  margin: 0.7rem 0 1rem;
+  break-inside: avoid;
+}
+
+.ficha h3 {
+  margin-top: 0.15rem;
+}
+
+.ficha .id {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.15rem;
+}
+
+.selo {
+  border: 1px solid var(--gold);
+  padding: 0.45rem 0.65rem;
+  font-size: 0.86rem;
+  margin: 0.45rem 0 0;
+}
+
 .cta {
   border: 2px solid var(--gold);
   padding: 0.85rem 1rem;
@@ -544,6 +572,8 @@ th.gold {
   .quiz > li,
   .fields,
   .cta,
+  .ficha,
+  .selo,
   .write,
   .quiz ul li::before {
     break-inside: avoid;

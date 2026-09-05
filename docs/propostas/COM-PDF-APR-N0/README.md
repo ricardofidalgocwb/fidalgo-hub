@@ -8,7 +8,7 @@ Duas camadas no mesmo artefato:
 
 | Camada | O que é | Neste PDF |
 |---|---|---|
-| **A · Ensino Type 1** | Critério N0 (6 aulas, A1–A6, §10, Quiz D1, checklist, E1–E3) | Completa (texto) |
+| **A · Ensino Type 1** | Critério N0 (6 aulas, A1–A6, §10, Quiz D1, checklist, E1–E3, fichas H1–H3) | Completa (texto) |
 | **B · Execução** | Só com Passaporte tipado (ano + tensão + foto caixa + foto gerador) | **Esqueleto vazio** — sem carro |
 
 ## O que é
@@ -65,7 +65,7 @@ Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatór
 
 ## Testes / CI
 
-Pasta visível neste artefato: [`./tests/`](./tests/) (README aponta para a guarda na raiz).
+Pasta visível neste artefato: [`./tests/`](./tests/) · nota: [`TESTES.md`](./TESTES.md).
 
 A guarda pytest **não** está nesta pasta. Vive na raiz do repo e a CI já a corre:
 
@@ -84,7 +84,7 @@ Hold de diagramação — **não** neste PDF:
 
 ## Fotos-modelo — AUSENTE
 
-Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternador`) e campos da Camada B = **AUSENTE**. Hold Founder/Ops — sem foto inventada, sem stock, sem `<img>`.
+Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternador`), slots das fichas H1–H3 e campos da Camada B = **AUSENTE**. Hold Founder/Ops — sem foto inventada, sem stock, sem `<img>`. Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
 
 ## Regras duras deste artefato
 
