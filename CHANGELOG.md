@@ -10,7 +10,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Unreleased] - N0 caixa 8 pólos appletree (unpublished)
 
 ### Adicionado
-- N0 §8 slot «caixa 8 pólos»: `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434 bytes, Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK`, cite appletree — não CIP1)
+- N0 §8 slot «caixa 8 pólos»: `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434 bytes, Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK`, cite appletreeauto 61–66 (Acervo) — não CIP1)
 - Guarda pytest: caixa 8 + caixa 12 ≥100 KB; GenAlt A.8 intacto; sem `N0_caixa8_fuseBox8polos_SRC-cip1` / getriebe / explosionsmodell
 
 ---

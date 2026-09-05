@@ -129,6 +129,7 @@ def test_slot_a8_geracao_commons_demais_ausentes():
     assert "assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in caixa8
     assert "Ausente" not in caixa8
     assert "AUSENTE" not in caixa8
+    assert "appletreeauto 61–66 (Acervo)" in caixa8
     assert "appletree" in caixa8.lower()
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in caixa8
     assert "SRC-appletree" in caixa8
@@ -165,6 +166,7 @@ def test_slot_caixa12_cip1_e_caixa8_appletree():
     assert "www2.cip1.com/vwc-111-937-505-m" in caixa12
     caixa8 = _slot(html, "caixa 8 pólos")
     assert "N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in caixa8
+    assert "appletreeauto 61–66 (Acervo)" in caixa8
     assert "appletree" in caixa8.lower()
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in caixa8
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in html
