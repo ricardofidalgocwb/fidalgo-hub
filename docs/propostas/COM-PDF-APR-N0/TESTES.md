@@ -18,4 +18,4 @@ Local (raiz do repo):
 python -m pytest tests/test_com_pdf_apr_n0.py -q
 ```
 
-A guarda cobre Gold v1.1, Quiz D1 (sem ✅ no enunciado; gabarito só no fim), checklist ☐, slots AUSENTE, fichas N0-H1 / N0-H2 / N0-H3, CTA didático e bans (Theodoro / Diogo / CPF / OS viva / Type 3 como ensino). Não publicar.
+**8 testes** da guarda original cobrem Gold / Quiz / bans (Gold v1.1, Quiz D1 sem ✅ no enunciado, PII/nomes/Type 3). O ficheiro tem agora 11 testes no total (COS P0 + fichas N0-H1 / N0-H2 / N0-H3 + checklist ☐ + slots AUSENTE + CTA didático). Não publicar. Não mover `tests/test_com_pdf_apr_n0.py` para dentro deste pacote.
