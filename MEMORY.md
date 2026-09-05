@@ -33,7 +33,8 @@
 ## COM-PDF Commons tipadas (05/09/2026)
 - Ops liberou 2 tipadas Commons ≥100 KB. Embed unpublished nos packs — **não** publicar / **não** site
 - Cap.2 tinware: `docs/propostas/COM-PDF-CAP2-motor/assets/Cap2_engineBay_SRC-commons.jpg` (193513) Drive `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2`
-- N0 A.8 geração: `docs/propostas/COM-PDF-APR-N0/assets/N0_A8_engineGenAlt_SRC-commons.jpg` (195262) Drive `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv`
+- N0 A.8 geração **par Drive** (primário): `N0_A8_dinam_SRC-heritagestocks.jpg` (443360, `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i`) + `N0_A8_alt_SRC-appletreekit.jpg` (141153, `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi`) — nunca dínamo sozinho
+- N0 A.8 Commons (secundário / cite): `docs/propostas/COM-PDF-APR-N0/assets/N0_A8_engineGenAlt_SRC-commons.jpg` (195262) Drive `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv`
 - N0 caixa 12: `docs/propostas/COM-PDF-APR-N0/assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` (239795) Drive `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx` · cite cip1 111 937 505 M
 - N0 caixa 8: `docs/propostas/COM-PDF-APR-N0/assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434) Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK` · cite appletreeauto 61–66 (Acervo) (não CIP1)
 - Não embutir: `N0_caixa8_fuseBox8polos_SRC-cip1` · getriebe · explosionsmodell · DUPs `Cap2_engine1962` / `M6_T_engineBayTin`
@@ -57,7 +58,7 @@
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-APR-N0/` — HTML+print CSS+PDF, Camada A (Type 1 / N0) + Camada B esqueleto
-- Sem site até OK Founder. Aprendiz testa como aluno. Slot A.8 geração = Commons; caixa 12 = CIP1 505 M; caixa 8 = appletreeauto 61–66 (Acervo); H1–H3 AUSENTE. Sem carro tipado
+- Sem site até OK Founder. Aprendiz testa como aluno. Slot A.8 geração = par Drive dínamo+alt (heritagestocks · appletreekit); Commons secundário; caixa 12 = CIP1 505 M; caixa 8 = appletreeauto 61–66 (Acervo); H1–H3 AUSENTE. Sem carro tipado
 - Canon: 12 V BR=1968; 12 V ≠ alternador; fim BR=1996; 1º nacional 03/01/1959; Anchieta 18/11/1959
 - Sem OS viva / CPF / preço / diagrama Type 3 de ensino / os 9 procedimentos. Hércules = método, não nome do curso
 - CTA miolo: Próximo: M1 chicote — ou agendar diagnóstico (sem NAP/WhatsApp). Gold v1.1

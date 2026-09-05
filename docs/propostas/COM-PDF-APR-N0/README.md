@@ -61,7 +61,7 @@ Pela linha de comando:
 
 Saída: `COM-PDF-APR-N0-aprendiz.pdf`. Um snapshot pode estar commitado nesta pasta; regenerar localmente o substitui.
 
-Requisitos: `google-chrome` ou `chromium` no PATH. A tipada Commons A.8 está em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
+Requisitos: `google-chrome` ou `chromium` no PATH. O par Drive A.8 (dínamo+alt) está em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
 
 ## Testes / CI
 
@@ -82,7 +82,7 @@ Hold de diagramação — **não** neste PDF:
 - 1 aula / folha
 - Quiz D1 em folhas próprias (○ vazia no miolo já está)
 
-## Fotos-modelo — A.8 Commons + caixa 12 CIP1 + caixa 8 appletreeauto 61–66 (Acervo) (unpublished)
+## Fotos-modelo — A.8 Drive dínamo+alt + caixa 12 CIP1 + caixa 8 appletreeauto 61–66 (Acervo) (unpublished)
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
@@ -90,11 +90,13 @@ Slots liberados Ops/COS+TEC (Type 1, ≥100 KB, sem stock/IA, sem foto de OS/cli
 
 | Slot | Arquivo | Drive ID | Bytes | Cite |
 |---|---|---|---|---|
-| A.8 geração · dínamo vs alternador | `assets/N0_A8_engineGenAlt_SRC-commons.jpg` | `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv` | 195262 | Wikimedia Commons (SRC-commons) |
+| A.8 dínamo (par Drive · nunca sozinho) | `assets/N0_A8_dinam_SRC-heritagestocks.jpg` | `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i` | 443360 | heritagestocks |
+| A.8 alternador (par Drive) | `assets/N0_A8_alt_SRC-appletreekit.jpg` | `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi` | 141153 | appletreekit |
+| A.8 Commons (secundário / cite) | `assets/N0_A8_engineGenAlt_SRC-commons.jpg` | `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv` | 195262 | Wikimedia Commons (SRC-commons) — bay, não o par |
 | caixa 12 pólos | `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` | `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx` | 239795 | [cip1 111 937 505 M](https://www2.cip1.com/vwc-111-937-505-m/) |
 | caixa 8 pólos | `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` | `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK` | 129434 | appletreeauto 61–66 (Acervo) (não CIP1) |
 
-[Drive A.8](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · [Drive caixa 12](https://drive.google.com/file/d/12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx/view) · [Drive caixa 8](https://drive.google.com/file/d/1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK/view).
+[Drive dínamo](https://drive.google.com/file/d/1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i/view) · [Drive alt](https://drive.google.com/file/d/1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi/view) · [Drive Commons A.8](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · [Drive caixa 12](https://drive.google.com/file/d/12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx/view) · [Drive caixa 8](https://drive.google.com/file/d/1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK/view).
 
 **AUSENTE:** slots das fichas H1–H3 · campos da Camada B.
 
@@ -111,7 +113,7 @@ Slots liberados Ops/COS+TEC (Type 1, ≥100 KB, sem stock/IA, sem foto de OS/cli
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto de cliente / stock / IA; tipadas A.8 Commons (geração), caixa 12 CIP1 505 M e caixa 8 appletreeauto 61–66 (Acervo); sem CIP1 caixa 8
+- Sem foto de cliente / stock / IA; tipadas A.8 Drive par dínamo+alt (heritagestocks · appletreekit), Commons GenAlt só secundário/cite, caixa 12 CIP1 505 M e caixa 8 appletreeauto 61–66 (Acervo); sem CIP1 caixa 8
 - Sem site até OK Founder
 - Camada B vazia até Passaporte tipado
 

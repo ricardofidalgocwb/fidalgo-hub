@@ -355,8 +355,29 @@ th.gold {
 
 .slots {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.65rem;
+}
+
+.slot-contrast {
+  grid-column: 1 / -1;
+}
+
+.contrast-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.cite-secondary {
+  margin: 0.35rem 0 0;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.cite-secondary .src {
+  font-family: var(--font-body);
+  word-break: break-all;
 }
 
 .slot {
@@ -600,6 +621,7 @@ th.gold {
   .two-col,
   table,
   .slots,
+  .contrast-pair,
   .qblock,
   .quiz > li,
   .fields,
@@ -638,6 +660,7 @@ th.gold {
   .two-col,
   .fields,
   .slots,
+  .contrast-pair,
   .checks {
     grid-template-columns: 1fr;
   }

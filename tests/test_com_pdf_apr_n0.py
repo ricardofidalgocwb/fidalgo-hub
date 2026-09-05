@@ -99,7 +99,7 @@ def test_camada_b_esqueleto():
 
 def _slot(html: str, heading: str) -> str:
     m = re.search(
-        rf'<div class="slot[^"]*">\s*<div>\s*<h3>{re.escape(heading)}</h3>(.*?)</div>\s*(?:<figure>.*?</figure>|<p>.*?</p>)\s*</div>',
+        rf'<div class="slot[^"]*">\s*<div>\s*<h3>{re.escape(heading)}</h3>.*?</div>\s*(?:<div class="contrast-pair">.*?</div>|<figure>.*?</figure>|<p>.*?</p>)(?:\s*<p class="cite-secondary">.*?</p>)?\s*</div>',
         html,
         flags=re.S,
     )
@@ -107,19 +107,36 @@ def _slot(html: str, heading: str) -> str:
     return m.group(0)
 
 
-def test_slot_a8_geracao_commons_demais_ausentes():
+def test_slot_a8_drive_dinam_alt_contrast():
     html = _html()
-    asset = PACOTE / "assets" / "N0_A8_engineGenAlt_SRC-commons.jpg"
-    assert asset.is_file()
-    assert asset.stat().st_size >= 100_000
+    dinam = PACOTE / "assets" / "N0_A8_dinam_SRC-heritagestocks.jpg"
+    alt = PACOTE / "assets" / "N0_A8_alt_SRC-appletreekit.jpg"
+    commons = PACOTE / "assets" / "N0_A8_engineGenAlt_SRC-commons.jpg"
+    assert dinam.is_file()
+    assert alt.is_file()
+    assert commons.is_file()
+    assert dinam.stat().st_size >= 100_000
+    assert alt.stat().st_size >= 100_000
+    assert dinam.stat().st_size == 443_360
+    assert alt.stat().st_size == 141_153
+    assert dinam.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert alt.read_bytes()[:3] == b"\xff\xd8\xff"
     geracao = _slot(html, "dínamo vs alternador")
-    assert re.search(r"<img\b", geracao, re.I)
-    assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" in geracao
+    assert geracao.count("<img") == 2
+    assert "assets/N0_A8_dinam_SRC-heritagestocks.jpg" in geracao
+    assert "assets/N0_A8_alt_SRC-appletreekit.jpg" in geracao
+    assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" not in re.search(
+        r'<div class="contrast-pair">(.*?)</div>', geracao, flags=re.S
+    ).group(1)
+    assert "heritagestocks" in geracao
+    assert "appletreekit" in geracao
     assert "Ausente" not in geracao
     assert "AUSENTE" not in geracao
-    assert "Wikimedia Commons" in geracao
-    assert "SRC-commons" in geracao
     assert "A.8" in geracao
+    assert "Drive" in geracao
+    assert "secundário" in geracao.lower() or "secundario" in geracao.lower()
+    assert "N0_A8_engineGenAlt_SRC-commons.jpg" in geracao
+    assert "Wikimedia Commons" in geracao
     caixa8 = _slot(html, "caixa 8 pólos")
     caixa12 = _slot(html, "caixa 12 pólos")
     caixa8_asset = PACOTE / "assets" / "N0_caixa8_fuseBox8polos_SRC-appletree.jpg"
@@ -150,7 +167,7 @@ def test_slot_a8_geracao_commons_demais_ausentes():
     assert not (PACOTE / "assets" / "N0_caixa8_fuseBox8polos_SRC-cip1.jpg").exists()
     assert not any((PACOTE / "assets").glob("*getriebe*"))
     assert not any((PACOTE / "assets").glob("*explosionsmodell*"))
-    assert html.count("<img") == 3
+    assert html.count("<img") == 4
 
 
 def test_slot_caixa12_cip1_e_caixa8_appletree():
@@ -171,7 +188,10 @@ def test_slot_caixa12_cip1_e_caixa8_appletree():
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in caixa8
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in html
     geracao = _slot(html, "dínamo vs alternador")
-    assert "N0_A8_engineGenAlt_SRC-commons.jpg" in geracao
+    assert "N0_A8_dinam_SRC-heritagestocks.jpg" in geracao
+    assert "N0_A8_alt_SRC-appletreekit.jpg" in geracao
+    assert "heritagestocks" in geracao
+    assert "appletreekit" in geracao
 
 
 def test_quiz_d1_editorial_e_a1_exato():
@@ -208,8 +228,9 @@ def test_cos_p0_checklist_e_linhas_a1():
     assert "caixa 8 pólos" in html
     assert "caixa 12 pólos" in html
     assert "dínamo vs alternador" in html
-    assert html.count("<img") == 3
-    assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" in html
+    assert html.count("<img") == 4
+    assert "assets/N0_A8_dinam_SRC-heritagestocks.jpg" in html
+    assert "assets/N0_A8_alt_SRC-appletreekit.jpg" in html
     assert "assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in html
     assert "assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in html
 
@@ -251,8 +272,9 @@ def test_fichas_historico_h1_h3():
     assert "caixa 12 pólos" in html
     assert "dínamo vs alternador" in html
     assert html.lower().count("ausente") >= 6
-    assert html.count("<img") == 3
-    assert "assets/N0_A8_engineGenAlt_SRC-commons.jpg" in html
+    assert html.count("<img") == 4
+    assert "assets/N0_A8_dinam_SRC-heritagestocks.jpg" in html
+    assert "assets/N0_A8_alt_SRC-appletreekit.jpg" in html
     assert "assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in html
     assert "assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in html
     quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
