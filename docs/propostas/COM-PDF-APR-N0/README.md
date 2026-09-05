@@ -23,7 +23,7 @@ Canon compilado da ementa N0 + briefing Aprendiz (04/09/2026):
 - 1º nacional **03/01/1959**
 - Planta Anchieta **18/11/1959**
 
-CTA: N0 → M1 chicote, ou OS box **NAP 439**. Não Eletro. Sem preço neste PDF.
+CTA no PDF: **M1 chicote · ou OS box (hold COM)** — sem telefone / NAP até OK COM/Founder. Sem preço neste PDF.
 
 ## Refs internas (não vão no HTML / PDF)
 
@@ -63,6 +63,14 @@ Saída: `COM-PDF-APR-N0-aprendiz.pdf`. Um snapshot pode estar commitado nesta pa
 
 Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
 
+## P1 (não agora)
+
+Hold de diagramação — **não** neste PDF:
+
+- 1 aula / folha
+- Quiz D1 em folhas próprias
+- Bolinha A/B/C (marca de opção)
+
 ## Fotos-modelo — AUSENTE
 
 Slots da Camada A (caixa 8, caixa 12, dínamo vs alternador) e campos da Camada B = **AUSENTE**. Sem foto de cliente. Sem stock. Sem `<img>`.
@@ -93,4 +101,4 @@ Heros Custom · Gold v1.1 (COM-ALIGN-01) · Montserrat (títulos) + Inter (corpo
 | panel | `#1A1A1A` |
 | paper / cream | `#F5F0E6` |
 
-NAP pública: Olímio Monteiro Soares **439**, Fanny. WhatsApp oficina **(41) 99187-8091**.
+Marca oficina: Heros Custom. NAP / WhatsApp de contato **não** vão no HTML/PDF até OK COM/Founder.

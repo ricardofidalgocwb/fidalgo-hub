@@ -261,7 +261,14 @@ h3 {
 }
 
 .qblock li {
-  margin: 0.2rem 0;
+  margin: 0.45rem 0 0.7rem;
+}
+
+.write {
+  display: block;
+  min-height: 1.55rem;
+  margin-top: 0.3rem;
+  border-bottom: 1px solid var(--ink);
 }
 
 .quiz {
@@ -335,20 +342,9 @@ th.gold {
 }
 
 .checklist li {
-  margin: 0.35rem 0;
-  padding-left: 1.6rem;
-  position: relative;
-}
-
-.checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.15rem;
-  width: 0.85rem;
-  height: 0.85rem;
-  border: 1.5px solid var(--gold);
-  background: var(--paper);
+  margin: 0.4rem 0;
+  padding-left: 0;
+  font-size: 0.95rem;
 }
 
 .slots {
@@ -541,7 +537,8 @@ th.gold {
   .qblock,
   .quiz > li,
   .fields,
-  .cta {
+  .cta,
+  .write {
     break-inside: avoid;
   }
 

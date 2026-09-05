@@ -16,6 +16,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - Guarda em `tests/test_com_pdf_apr_n0.py` (Gold v1.1, sem Theodoro/Diogo/CPF/Herculid, sem diagrama Type 3 de ensino)
 - Não publicar / sem site até OK Founder. Aprendiz testa como aluno
 - QA Aprendiz: Quiz D1 10Q + gabarito editorial embutidos; A1–A6 = texto N0 §9 exato
+- COS P0: Quiz sem ✅ no corpo (gabarito só no fim); checklist ☐; linhas A1–A6; CTA hold COM (sem telefone)
 
 ---
 

@@ -35,7 +35,8 @@
 - Sem site até OK Founder. Aprendiz testa como aluno. Slots foto-modelo AUSENTE. Sem carro tipado
 - Canon: 12 V BR=1968; 12 V ≠ alternador; fim BR=1996; 1º nacional 03/01/1959; Anchieta 18/11/1959
 - Sem OS viva / CPF / preço / diagrama Type 3 de ensino / os 9 procedimentos. Hércules = método, não nome do curso
-- CTA: N0→M1 ou OS box NAP 439 (não Eletro). Gold v1.1
+- CTA: M1 chicote · ou OS box (hold COM) — sem telefone/NAP no PDF até OK COM. Gold v1.1
+- COS P0: Quiz D1 sem marca no corpo; gabarito só no fim; ☐ no checklist; linhas A1–A6
 
 ## COM-PDF-02 Theodoro (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto embutida

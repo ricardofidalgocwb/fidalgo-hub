@@ -69,8 +69,10 @@ def test_camada_a_indice_e_canon():
     assert "O que faz primeiro no negativo?" in html
     assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
-    assert "NAP 439" in html or "439" in html
+    assert "M1 chicote · ou OS box (hold COM)" in html
     assert "Não Eletro" in html or "não Eletro" in html
+    assert "99187" not in html
+    assert "whatsapp" not in html.lower()
 
 
 def test_camada_b_esqueleto():
@@ -92,8 +94,9 @@ def test_camada_b_esqueleto():
 def test_slots_ausentes_sem_img():
     html = _html()
     assert not re.search(r"<img\b", html, re.I)
-    for slot in ("Caixa 8 pólos", "Caixa 12 pólos", "Dínamo vs alternador"):
-        assert slot in html
+    for slot in ("caixa 8 pólos", "caixa 12 pólos", "dínamo vs alternador"):
+        assert slot in html.lower()
+    assert html.lower().count("ausente") >= 3
 
 
 def test_quiz_d1_editorial_e_a1_exato():
@@ -104,6 +107,30 @@ def test_quiz_d1_editorial_e_a1_exato():
     assert "O que recusa num kit YT?" in html
     assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "ficha D1" in html
+
+
+def test_cos_p0_quiz_sem_marca_gabarito_no_fim():
+    html = _html()
+    quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
+    assert quiz, "bloco Quiz D1 ausente"
+    body = quiz.group(1)
+    assert "✅" not in body
+    assert "✔" not in body
+    assert "✓" not in body
+    after = html[quiz.end() :]
+    gabarito = "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B"
+    assert gabarito in after
+    assert gabarito not in html[: quiz.start()]
+    assert 'id="gabarito-d1"' in after
+
+
+def test_cos_p0_checklist_e_linhas_a1():
+    html = _html()
+    assert html.count("☐") >= 7
+    assert html.count('class="write"') == 18
+    assert "caixa 8 pólos" in html
+    assert "caixa 12 pólos" in html
+    assert "dínamo vs alternador" in html
 
 
 def test_proibido_pii_nomes_e_diagramas():
@@ -122,6 +149,8 @@ def test_proibido_pii_nomes_e_diagramas():
     assert "notion.com" not in html_css_lower
     assert "instagram" not in html_css_lower
     assert "n8n" not in html_css_lower
+    assert "whatsapp" not in html_css_lower
+    assert "99187" not in html_css_lower
     assert "R$" not in blob
     assert not re.search(r"diagrama da variant", lower)
     assert not re.search(r"usar o diagrama (do )?type\s*3", lower)
