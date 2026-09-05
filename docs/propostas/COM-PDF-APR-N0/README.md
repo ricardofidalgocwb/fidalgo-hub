@@ -82,7 +82,7 @@ Hold de diagramação — **não** neste PDF:
 - 1 aula / folha
 - Quiz D1 em folhas próprias (○ vazia no miolo já está)
 
-## Fotos-modelo — A.8 Commons + caixa 12 CIP1 (unpublished)
+## Fotos-modelo — A.8 Commons + caixa 12 CIP1 + caixa 8 appletree (unpublished)
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
@@ -92,12 +92,13 @@ Slots liberados Ops/COS+TEC (Type 1, ≥100 KB, sem stock/IA, sem foto de OS/cli
 |---|---|---|---|---|
 | A.8 geração · dínamo vs alternador | `assets/N0_A8_engineGenAlt_SRC-commons.jpg` | `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv` | 195262 | Wikimedia Commons (SRC-commons) |
 | caixa 12 pólos | `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` | `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx` | 239795 | [cip1 111 937 505 M](https://www2.cip1.com/vwc-111-937-505-m/) |
+| caixa 8 pólos | `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` | `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK` | 129434 | appletree (não CIP1) |
 
-[Drive A.8](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · [Drive caixa 12](https://drive.google.com/file/d/12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx/view).
+[Drive A.8](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · [Drive caixa 12](https://drive.google.com/file/d/12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx/view) · [Drive caixa 8](https://drive.google.com/file/d/1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK/view).
 
-**AUSENTE:** caixa 8 pólos · slots das fichas H1–H3 · campos da Camada B.
+**AUSENTE:** slots das fichas H1–H3 · campos da Camada B.
 
-**Não embutir:** `caixa8` · `getriebe` · `explosionsmodell` · `Cap2_engine1962` (DUP desta A.8) · `M6_T_engineBayTin` (DUP do bay Cap.2). Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
+**Não embutir:** `N0_caixa8_fuseBox8polos_SRC-cip1` (FAIL / tipagem retirada) · `getriebe` · `explosionsmodell` · `Cap2_engine1962` (DUP desta A.8) · `M6_T_engineBayTin` (DUP do bay Cap.2). Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
 
 ## Regras duras deste artefato
 
@@ -110,7 +111,7 @@ Slots liberados Ops/COS+TEC (Type 1, ≥100 KB, sem stock/IA, sem foto de OS/cli
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto de cliente / stock / IA; só tipadas A.8 Commons (geração) e caixa 12 CIP1 505 M; caixa 8 AUSENTE
+- Sem foto de cliente / stock / IA; tipadas A.8 Commons (geração), caixa 12 CIP1 505 M e caixa 8 appletree; sem CIP1 caixa 8
 - Sem site até OK Founder
 - Camada B vazia até Passaporte tipado
 

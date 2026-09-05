@@ -7,14 +7,22 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 caixa 8 pólos appletree (unpublished)
+
+### Adicionado
+- N0 §8 slot «caixa 8 pólos»: `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` (129434 bytes, Drive `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK`, cite appletree — não CIP1)
+- Guarda pytest: caixa 8 + caixa 12 ≥100 KB; GenAlt A.8 intacto; sem `N0_caixa8_fuseBox8polos_SRC-cip1` / getriebe / explosionsmodell
+
+---
+
 ## [Unreleased] - N0 caixa 12 pólos CIP1 505 M (unpublished)
 
 ### Adicionado
 - N0 §8 slot «caixa 12 pólos»: `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` (239795 bytes, Drive `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx`, cite cip1 111 937 505 M)
-- Guarda pytest: caixa 12 preenchida ≥100 KB; caixa 8 AUSENTE; GenAlt A.8 intacto; sem caixa8/getriebe/explosionsmodell
+- Guarda pytest: caixa 12 preenchida ≥100 KB; GenAlt A.8 intacto; sem getriebe/explosionsmodell
 
 ### Alterado
-- Caixa 8, H1–H3 e Camada B continuam AUSENTE. Sem publish.
+- H1–H3 e Camada B continuam AUSENTE. Sem publish.
 
 ---
 

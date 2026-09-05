@@ -22,7 +22,7 @@ Na prática o job executa `python -m pytest tests/ -q`, que inclui este ficheiro
 python -m pytest tests/test_com_pdf_apr_n0.py -q
 ```
 
-A guarda cobre Gold v1.1, Quiz D1 (sem ✅ no enunciado), ☐ do checklist, slot A.8 Commons + caixa 12 CIP1 (≥100 KB; caixa 8 AUSENTE), CTA sem NAP/WhatsApp, e bans (Theodoro / Diogo / CPF / OS viva).
+A guarda cobre Gold v1.1, Quiz D1 (sem ✅ no enunciado), ☐ do checklist, slot A.8 Commons + caixa 12 CIP1 + caixa 8 appletree (≥100 KB; sem CIP1 caixa 8), CTA sem NAP/WhatsApp, e bans (Theodoro / Diogo / CPF / OS viva).
 
 `test_path.py` aqui só confirma que o ficheiro da raiz existe — corra-o a partir da raiz:
 
