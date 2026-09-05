@@ -99,6 +99,11 @@ def test_spec_table_somente_acervo():
     assert "sem cv" in html_l
     assert " cv" not in html_l.replace("sem cv", "")
     assert not re.search(r"\b\d+\s*cv\b", html_l)
+    assert "nm" not in html_l
+    assert "kgfm" not in html_l
+    assert "kgf" not in html_l
+    assert "ω" not in html_l and "ohm" not in html_l
+    assert not re.search(r"\b\d+[,\.]?\d*\s*(mm|nm)\b", html_l)
 
 
 def test_checklist_8_e_selo():
