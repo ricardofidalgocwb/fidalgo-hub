@@ -8,7 +8,7 @@ Duas camadas no mesmo artefato:
 
 | Camada | O que é | Neste PDF |
 |---|---|---|
-| **A · Ensino Type 1** | Critério N0 (6 aulas, A1–A6, §10, Quiz D1, checklist, E1–E3) | Completa (texto) |
+| **A · Ensino Type 1** | Critério N0 (6 aulas, A1–A6, §10, Quiz D1, checklist, E1–E3, fichas H1–H3) | Completa (texto) |
 | **B · Execução** | Só com Passaporte tipado (ano + tensão + foto caixa + foto gerador) | **Esqueleto vazio** — sem carro |
 
 ## O que é
@@ -23,7 +23,7 @@ Canon compilado da ementa N0 + briefing Aprendiz (04/09/2026):
 - 1º nacional **03/01/1959**
 - Planta Anchieta **18/11/1959**
 
-CTA: N0 → M1 chicote, ou OS box **NAP 439**. Não Eletro. Sem preço neste PDF.
+CTA no miolo: **Próximo: M1 chicote — ou agendar diagnóstico**. Sem NAP, sem WhatsApp, sem telefone. Contato = página de vendas depois, não neste PDF.
 
 ## Refs internas (não vão no HTML / PDF)
 
@@ -63,9 +63,28 @@ Saída: `COM-PDF-APR-N0-aprendiz.pdf`. Um snapshot pode estar commitado nesta pa
 
 Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
 
+## Testes / CI
+
+Pasta visível neste artefato: [`./tests/`](./tests/) · nota: [`TESTES.md`](./TESTES.md).
+
+A guarda pytest **não** está nesta pasta. Vive na raiz do repo e a CI já a corre:
+
+```bash
+python -m pytest tests/test_com_pdf_apr_n0.py
+```
+
+Workflow: `.github/workflows/founder_panel_tests.yml` (`pytest tests/` + path `docs/propostas/COM-PDF-APR-N0/**`). Não mover o ficheiro para fora de `tests/`.
+
+## P1 (não agora)
+
+Hold de diagramação — **não** neste PDF:
+
+- 1 aula / folha
+- Quiz D1 em folhas próprias (○ vazia no miolo já está)
+
 ## Fotos-modelo — AUSENTE
 
-Slots da Camada A (caixa 8, caixa 12, dínamo vs alternador) e campos da Camada B = **AUSENTE**. Sem foto de cliente. Sem stock. Sem `<img>`.
+Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternador`), slots das fichas H1–H3 e campos da Camada B = **AUSENTE**. Hold Founder/Ops — sem foto inventada, sem stock, sem `<img>`. Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
 
 ## Regras duras deste artefato
 
@@ -93,4 +112,4 @@ Heros Custom · Gold v1.1 (COM-ALIGN-01) · Montserrat (títulos) + Inter (corpo
 | panel | `#1A1A1A` |
 | paper / cream | `#F5F0E6` |
 
-NAP pública: Olímio Monteiro Soares **439**, Fanny. WhatsApp oficina **(41) 99187-8091**.
+Marca oficina: Heros Custom. NAP / WhatsApp de contato **não** vão no HTML/PDF até OK COM/Founder.

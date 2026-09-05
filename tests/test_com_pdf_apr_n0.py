@@ -28,6 +28,8 @@ def test_artefatos_existem():
     assert (PACOTE / "emitir-pdf.sh").is_file()
     assert PDF.is_file()
     assert PDF.stat().st_size > 10_000
+    assert (PACOTE / "tests" / "README.md").is_file()
+    assert (PACOTE / "TESTES.md").is_file()
 
 
 def test_nao_publicado_e_pt_br():
@@ -69,8 +71,14 @@ def test_camada_a_indice_e_canon():
     assert "O que faz primeiro no negativo?" in html
     assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
-    assert "NAP 439" in html or "439" in html
+    assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
     assert "Não Eletro" in html or "não Eletro" in html
+    assert "439" not in html
+    assert "nap" not in html.lower()
+    assert "99187" not in html
+    assert "whatsapp" not in html.lower()
+    assert not re.search(r"\(\s*41\s*\)", html)
+    assert not re.search(r"\b\d{4,5}-?\d{4}\b", html)
 
 
 def test_camada_b_esqueleto():
@@ -92,8 +100,9 @@ def test_camada_b_esqueleto():
 def test_slots_ausentes_sem_img():
     html = _html()
     assert not re.search(r"<img\b", html, re.I)
-    for slot in ("Caixa 8 pólos", "Caixa 12 pólos", "Dínamo vs alternador"):
-        assert slot in html
+    for slot in ("caixa 8 pólos", "caixa 12 pólos", "dínamo vs alternador"):
+        assert slot in html.lower()
+    assert html.lower().count("ausente") >= 3
 
 
 def test_quiz_d1_editorial_e_a1_exato():
@@ -104,6 +113,85 @@ def test_quiz_d1_editorial_e_a1_exato():
     assert "O que recusa num kit YT?" in html
     assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
     assert "ficha D1" in html
+
+
+def test_cos_p0_quiz_sem_marca_gabarito_no_fim():
+    html = _html()
+    quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
+    assert quiz, "bloco Quiz D1 ausente"
+    body = quiz.group(1)
+    assert "✅" not in body
+    assert "✔" not in body
+    assert "✓" not in body
+    css = CSS.read_text(encoding="utf-8")
+    assert 'content: "○ "' in css or "content: '○ '" in css
+    after = html[quiz.end() :]
+    gabarito = "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B"
+    assert gabarito in after
+    assert gabarito not in html[: quiz.start()]
+    assert 'id="gabarito-d1"' in after
+
+
+def test_cos_p0_checklist_e_linhas_a1():
+    html = _html()
+    assert html.count("☐") >= 7
+    assert html.count('class="write"') == 18
+    assert "caixa 8 pólos" in html
+    assert "caixa 12 pólos" in html
+    assert "dínamo vs alternador" in html
+    assert "Hold Founder/Ops" in html
+    assert not re.search(r"<img\b", html, re.I)
+
+
+def test_fichas_historico_h1_h3():
+    html = _html()
+    assert "Fichas-histórico (didáticas · anonimizadas)" in html
+    assert "N0-H1" in html
+    assert "N0-H2" in html
+    assert "N0-H3" in html
+    assert "H1 · Era B1 (1959–66)" in html
+    assert "H2 · Era B2 (1967–69)" in html
+    assert "H3 · Era B4 (1975–86)" in html
+    assert "1200 / código B (slot AUSENTE)" in html
+    assert "6 V medida" in html
+    assert "pré-12 pólos / foto (slot 8 AUSENTE)" in html
+    assert "dínamo 6 V (slot AUSENTE)" in html
+    assert "Vigia retangular nacional" in html
+    assert "E2 se misturar 12 V" in html
+    assert "não misturar 12 V neste carro" in html
+    assert "1300 / BF (1967 ainda pode 6 V)" in html
+    assert "medir 6 ou 12 se ≥1968" in html
+    assert "foto 8 vs 12 sem inventar boletim (AUSENTE)" in html
+    assert "dínamo 12 V comum se 12 V ≠ alt automático" in html
+    assert "“12 V=1967” recusar" in html or '"12 V=1967" recusar' in html
+    assert "cânon 1968" in html
+    assert "1967 ≠ 12 V automático" in html
+    assert "1600 BB (prefixo slot AUSENTE)" in html
+    assert "12 V medida" in html
+    assert "≥1975 = 12 pólos só se foto confirmar (AUSENTE)" in html
+    assert "dínamo ou alt — duas OS" in html
+    assert "Fafá possível 79–86" in html
+    assert "não data sozinha" in html
+    assert "Massa ~0 V N0" in html
+    assert "não pede dínamo→alt como se fosse 6→12" in html
+    assert html.count("☐ Aluno") >= 3
+    assert html.count("Selo domínio") == 3
+    assert "caixa 8 pólos" in html
+    assert "caixa 12 pólos" in html
+    assert "dínamo vs alternador" in html
+    assert html.lower().count("ausente") >= 6
+    assert not re.search(r"<img\b", html, re.I)
+    quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
+    assert quiz and "✅" not in quiz.group(1)
+    assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
+    assert "439" not in html
+    assert "nap" not in html.lower()
+    assert "whatsapp" not in html.lower()
+    assert "Theodoro" not in html
+    assert "Diogo" not in html
+    assert not re.search(r"\b\d{3}\.\d{3}\.\d{3}-\d{2}\b", html)
+    assert not re.search(r"diagrama da variant", html.lower())
+    assert not re.search(r"usar o diagrama (do )?type\s*3", html.lower())
 
 
 def test_proibido_pii_nomes_e_diagramas():
@@ -122,6 +210,8 @@ def test_proibido_pii_nomes_e_diagramas():
     assert "notion.com" not in html_css_lower
     assert "instagram" not in html_css_lower
     assert "n8n" not in html_css_lower
+    assert "whatsapp" not in html_css_lower
+    assert "99187" not in html_css_lower
     assert "R$" not in blob
     assert not re.search(r"diagrama da variant", lower)
     assert not re.search(r"usar o diagrama (do )?type\s*3", lower)

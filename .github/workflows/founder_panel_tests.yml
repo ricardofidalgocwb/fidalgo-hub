@@ -8,6 +8,7 @@ on:
       - "config/drive_ids.json"
       - "scripts/**"
       - "tests/**"
+      - "docs/propostas/COM-PDF-APR-N0/**"
       - "requirements.txt"
       - ".github/workflows/founder_panel_tests.yml"
   pull_request:
