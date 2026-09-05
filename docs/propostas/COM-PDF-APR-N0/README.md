@@ -63,6 +63,18 @@ Saída: `COM-PDF-APR-N0-aprendiz.pdf`. Um snapshot pode estar commitado nesta pa
 
 Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
 
+## Testes / CI
+
+Pasta visível neste artefato: [`./tests/`](./tests/) (README aponta para a guarda na raiz).
+
+A guarda pytest **não** está nesta pasta. Vive na raiz do repo e a CI já a corre:
+
+```bash
+python -m pytest tests/test_com_pdf_apr_n0.py
+```
+
+Workflow: `.github/workflows/founder_panel_tests.yml` (`pytest tests/` + path `docs/propostas/COM-PDF-APR-N0/**`). Não mover o ficheiro para fora de `tests/`.
+
 ## P1 (não agora)
 
 Hold de diagramação — **não** neste PDF:

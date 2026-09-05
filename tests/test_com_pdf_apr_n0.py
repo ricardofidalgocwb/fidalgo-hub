@@ -28,6 +28,7 @@ def test_artefatos_existem():
     assert (PACOTE / "emitir-pdf.sh").is_file()
     assert PDF.is_file()
     assert PDF.stat().st_size > 10_000
+    assert (PACOTE / "tests" / "README.md").is_file()
 
 
 def test_nao_publicado_e_pt_br():
