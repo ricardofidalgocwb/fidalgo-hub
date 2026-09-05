@@ -30,6 +30,13 @@
 - Twin Notion: HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a pasta Drive. Passaporte dual: cabeça ds `a0254a75…` / linhas ds `d2d7d36b…` — write=false
 - COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito (não inventar `<img>`)
 
+## VIS tipadas H1 / VIS-G1 + M6_T (05/09/2026)
+- Pasta unpublished `docs/acervo/vis-tipadas/` — três Commons SRC ≥100 KB (TEC PASS)
+- H1a `H1_VW_Beetle_1946` (529615) · H1b `H1_KdF_Wagen42` (434867) → **VIS-G1 / Mód.1 V-G1** gênese. **≠** ficha N0-H1 Era B1 1959–66
+- M6 `M6_T_motor30PS1959` (578324) → tronco T único. **≠** DUP `M6_T_engineBayTin` / `Cap2_engineBay`
+- Sem Cap.2 / N0 A.8 neste PR. Sem HenryFord. Caixa 8/12 AUSENTE. A1 HOLD. Sem PDF M6 / módulo Variant
+- Guarda: `tests/test_vis_tipadas_h1_m6.py`. Índice VIS: Notion `3d27d36bae6481e8a8d8ed280f9acbdd`
+
 ## COM-PDF-CAP2-motor (05/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-CAP2-motor/` — HTML+print CSS+PDF, Cap. 2 anatomia boxer a ar Type 1 (rascunho 0.2)
 - Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slots foto AUSENTE
