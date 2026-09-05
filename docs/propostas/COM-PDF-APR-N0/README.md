@@ -90,11 +90,13 @@ Slots liberados Ops/COS+TEC (Type 1, ≥100 KB, sem stock/IA, sem foto de OS/cli
 
 | Slot | Arquivo | Drive ID | Bytes | Cite |
 |---|---|---|---|---|
-| A.8 dínamo (par Drive · nunca sozinho) | `assets/N0_A8_dinam_SRC-heritagestocks.jpg` | `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i` | 443360 | heritagestocks |
-| A.8 alternador (par Drive) | `assets/N0_A8_alt_SRC-appletreekit.jpg` | `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi` | 141153 | appletreekit |
+| A.8 dínamo (par Drive · nunca sozinho) | `assets/N0_A8_dinam_SRC-heritagestocks.jpg` | `1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i` | 443360 | heritagestocks · `113903021C` |
+| A.8 alternador (par Drive) | `assets/N0_A8_alt_SRC-appletreekit.jpg` | `1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi` | 141153 | appletreekit · `55A kit` |
 | A.8 Commons (secundário / cite) | `assets/N0_A8_engineGenAlt_SRC-commons.jpg` | `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv` | 195262 | Wikimedia Commons (SRC-commons) — bay, não o par |
 | caixa 12 pólos | `assets/N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg` | `12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx` | 239795 | [cip1 111 937 505 M](https://www2.cip1.com/vwc-111-937-505-m/) |
 | caixa 8 pólos | `assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg` | `1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK` | 129434 | appletreeauto 61–66 (Acervo) (não CIP1) |
+
+Citações (Drive IDs + `113903021C` / `55A kit`): [`SOURCES.md`](SOURCES.md).
 
 [Drive dínamo](https://drive.google.com/file/d/1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i/view) · [Drive alt](https://drive.google.com/file/d/1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi/view) · [Drive Commons A.8](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · [Drive caixa 12](https://drive.google.com/file/d/12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx/view) · [Drive caixa 8](https://drive.google.com/file/d/1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK/view).
 

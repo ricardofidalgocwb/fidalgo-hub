@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PACOTE = ROOT / "docs" / "propostas" / "COM-PDF-APR-N0"
 HTML = PACOTE / "index.html"
 README = PACOTE / "README.md"
+SOURCES = PACOTE / "SOURCES.md"
 CSS = PACOTE / "print.css"
 PDF = PACOTE / "COM-PDF-APR-N0-aprendiz.pdf"
 
@@ -30,6 +31,7 @@ def test_artefatos_existem():
     assert PDF.stat().st_size > 10_000
     assert (PACOTE / "tests" / "README.md").is_file()
     assert (PACOTE / "TESTES.md").is_file()
+    assert SOURCES.is_file()
 
 
 def test_nao_publicado_e_pt_br():
@@ -78,7 +80,8 @@ def test_camada_a_indice_e_canon():
     assert "99187" not in html
     assert "whatsapp" not in html.lower()
     assert not re.search(r"\(\s*41\s*\)", html)
-    assert not re.search(r"\b\d{4,5}-?\d{4}\b", html)
+    html_sem_cites = html.replace("113903021C", "")
+    assert not re.search(r"\b\d{4,5}-?\d{4}\b", html_sem_cites)
 
 
 def test_camada_b_esqueleto():
@@ -130,6 +133,20 @@ def test_slot_a8_drive_dinam_alt_contrast():
     ).group(1)
     assert "heritagestocks" in geracao
     assert "appletreekit" in geracao
+    assert "113903021C" in geracao
+    assert "55A kit" in geracao
+    assert "1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i" in geracao
+    assert "1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi" in geracao
+    sources = SOURCES.read_text(encoding="utf-8")
+    readme = README.read_text(encoding="utf-8")
+    for blob in (html, sources, readme):
+        assert "113903021C" in blob
+        assert "55A kit" in blob
+        assert "1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i" in blob
+        assert "1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi" in blob
+        assert "N0_A8_dinam_SRC-heritagestocks.jpg" in blob
+        assert "N0_A8_alt_SRC-appletreekit.jpg" in blob
+    assert "nunca sozinho" in sources.lower() or "nunca dínamo sozinho" in sources.lower()
     assert "Ausente" not in geracao
     assert "AUSENTE" not in geracao
     assert "A.8" in geracao
@@ -192,6 +209,8 @@ def test_slot_caixa12_cip1_e_caixa8_appletree():
     assert "N0_A8_alt_SRC-appletreekit.jpg" in geracao
     assert "heritagestocks" in geracao
     assert "appletreekit" in geracao
+    assert "113903021C" in geracao
+    assert "55A kit" in geracao
 
 
 def test_quiz_d1_editorial_e_a1_exato():
