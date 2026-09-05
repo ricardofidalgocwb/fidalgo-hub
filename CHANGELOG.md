@@ -7,6 +7,20 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Commons tipadas Cap.2 tinware + N0 A.8 (unpublished)
+
+### Adicionado
+- Cap.2 §7 slot «Tinware completo (didático)»: `assets/Cap2_engineBay_SRC-commons.jpg` (193513 bytes, Drive `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2`, cite Commons SRC)
+- N0 §8 slot A.8 geração / dínamo vs alternador: `assets/N0_A8_engineGenAlt_SRC-commons.jpg` (195262 bytes, Drive `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv`, cite Commons SRC)
+- Guardas pytest: slot preenchido + `<img>` + ficheiro ≥100 KB; demais slots AUSENTE; sem DUP `Cap2_engine1962` / `M6_T_engineBayTin`
+
+### Alterado
+- READMEs dos dois pacotes: unpublished + Drive IDs; `<img>` só na tipada Commons
+- Demais slots (prefixo bloco, ventoinha, caixa 8 vs 12, tinware incompleto, H1–H3, Camada B) continuam AUSENTE
+- Sem publish / sem site / sem NAP-Zap no CTA didático
+
+---
+
 ## [Unreleased] - COM-PDF-CAP2-motor Cap. 2 boxer a ar (unpublished)
 
 ### Adicionado

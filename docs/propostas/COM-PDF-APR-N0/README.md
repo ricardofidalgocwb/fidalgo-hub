@@ -61,7 +61,7 @@ Pela linha de comando:
 
 Saída: `COM-PDF-APR-N0-aprendiz.pdf`. Um snapshot pode estar commitado nesta pasta; regenerar localmente o substitui.
 
-Requisitos: `google-chrome` ou `chromium` no PATH. Sem foto, sem rede obrigatória (Montserrat/Inter caem no fallback se o Google Fonts não carregar).
+Requisitos: `google-chrome` ou `chromium` no PATH. A tipada Commons A.8 está em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
 
 ## Testes / CI
 
@@ -82,9 +82,21 @@ Hold de diagramação — **não** neste PDF:
 - 1 aula / folha
 - Quiz D1 em folhas próprias (○ vazia no miolo já está)
 
-## Fotos-modelo — AUSENTE
+## Fotos-modelo — A.8 Commons (unpublished)
 
-Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternador`), slots das fichas H1–H3 e campos da Camada B = **AUSENTE**. Hold Founder/Ops — sem foto inventada, sem stock, sem `<img>`. Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
+**Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
+
+Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA, sem foto de OS/cliente):
+
+| Slot | Arquivo | Drive ID | Bytes |
+|---|---|---|---|
+| A.8 geração · dínamo vs alternador | `assets/N0_A8_engineGenAlt_SRC-commons.jpg` | `1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv` | 195262 |
+
+[Drive](https://drive.google.com/file/d/1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv/view) · cite no HTML: Wikimedia Commons (SRC-commons).
+
+**AUSENTE:** caixa 8 pólos · caixa 12 pólos (8 vs 12 distinta) · slots das fichas H1–H3 · campos da Camada B.
+
+**Não embutir:** `Cap2_engine1962` (DUP desta A.8) · `M6_T_engineBayTin` (DUP do bay Cap.2). Fichas-histórico = Type 1 didático / Acervo EDI- / anonimizado — sem cliente, sem placa.
 
 ## Regras duras deste artefato
 
@@ -97,7 +109,7 @@ Slots da Camada A (`caixa 8 pólos` · `caixa 12 pólos` · `dínamo vs alternad
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto embutida (`<img>` proibido)
+- Sem foto de cliente / stock / IA; só a tipada Commons A.8 (geração)
 - Sem site até OK Founder
 - Camada B vazia até Passaporte tipado
 
