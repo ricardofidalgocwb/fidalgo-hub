@@ -7,6 +7,16 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - COM-PDF-CAP2-motor Cap. 2 boxer a ar (unpublished)
+
+### Adicionado
+- `docs/propostas/COM-PDF-CAP2-motor/`: pacote HTML+print CSS+PDF do Cap. 2 — Anatomia do motor boxer a ar (Type 1, rascunho 0.2)
+- Miolo Acervo §§1–5, checklist Aprendiz 1–8 ☐, quiz «nomeie a peça» 10Q (gabarito só no fim), ponte N0 (item 9)
+- Guarda em `tests/test_com_pdf_cap2.py` (Gold v1.1, sem Theodoro/Herculid/ISBN/NAP/WhatsApp/preço, sem ✅ nas opções)
+- Pacote separado do COM-PDF-APR-N0. Não publicar / sem site até OK Founder
+
+---
+
 ## [Unreleased] - COM-PDF-APR-N0 Aprendiz (unpublished)
 
 ### Adicionado

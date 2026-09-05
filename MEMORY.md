@@ -30,6 +30,14 @@
 - Twin Notion: HC-2026-025 (Nº35 ICE) e OS-34 (Nº34 comercial) partilham a pasta Drive. Passaporte dual: cabeça ds `a0254a75…` / linhas ds `d2d7d36b…` — write=false
 - COM-PDF-02 embed fotográfico continua **HOLD** até follow-up explícito (não inventar `<img>`)
 
+## COM-PDF-CAP2-motor (05/09/2026)
+- Pasta unpublished `docs/propostas/COM-PDF-CAP2-motor/` — HTML+print CSS+PDF, Cap. 2 anatomia boxer a ar Type 1 (rascunho 0.2)
+- Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slots foto AUSENTE
+- Cânon: 1-4-3-2 · B/BF/BH/BB/BD · Itamar 1600 1993–96 · sem cv · elétrica = ponte N0 (item 9, não miolo)
+- Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
+- Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
+- Gold v1.1
+
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-APR-N0/` — HTML+print CSS+PDF, Camada A (Type 1 / N0) + Camada B esqueleto
 - Sem site até OK Founder. Aprendiz testa como aluno. Slots foto-modelo AUSENTE. Sem carro tipado
