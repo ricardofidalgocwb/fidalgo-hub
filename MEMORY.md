@@ -49,12 +49,14 @@
 
 ## COM-PDF-CAP2-motor (05/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-CAP2-motor/` — HTML+print CSS+PDF, Cap. 2 anatomia boxer a ar Type 1 (rascunho 0.2)
-- Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Slot tinware = Commons; demais AUSENTE
+- Pacote **separado** do COM-PDF-APR-N0 / PR#15. Sem site até OK Founder. Tinware = Commons (bay + AUR1500 + Coccinelle); prefixo/correia = P0 BD; stamp B + tinware incompleto = AUSENTE
 - Cânon: 1-4-3-2 · B/BF/BH/BB/BD · Itamar 1600 1993–96 · sem cv · elétrica = ponte N0 (item 9, não miolo)
 - Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
 - Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
 - TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; quiz sem ✅ nas opções; tinware didático Commons (demais slots AUSENTE)
 - TEC P1 (unpublished draft): mito × correção + par P0 SSOT `Cap2_P0_prefixBD_*` 241948/708229 (label BD · Drive 1EPi/1jmh). Sem stamp A.
+- P0 tinware (unpublished draft): AUR1500 483449 · Drive `1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ` (Commons AUR 131F) + Coccinelle 1111977 · Drive `1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M` (Commons beige). `Cap2_engineBay` (193513) permanece — **não** é DUP. Stamp B = AUSENTE. Sem `*30PS*` / `1Cmt8` no pacote Cap.2.
+- P1 opcional (unpublished): 1965AVI 409825 · Drive `19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH` (Commons AVI2387) = face **terciária**. Dupla pode ser aftermarket. Não substitui o par P0.
 - Gold v1.1
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)

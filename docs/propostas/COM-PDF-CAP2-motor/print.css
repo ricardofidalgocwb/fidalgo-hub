@@ -331,6 +331,11 @@ th.gold {
   gap: 0.65rem;
 }
 
+.slots-tertiary {
+  grid-template-columns: minmax(0, 16rem);
+  max-width: 16rem;
+}
+
 .slot {
   border: 1.5px dashed var(--gold);
   background: var(--slot);
