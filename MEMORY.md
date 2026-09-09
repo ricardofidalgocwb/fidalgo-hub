@@ -54,7 +54,7 @@
 - Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
 - Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
 - TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; quiz sem ✅ nas opções; tinware didático Commons (demais slots AUSENTE)
-- TEC P1 (unpublished draft): mito × correção + par P0 241948/708229 (ficheiros temp `prefixB_*`, label BD no HTML). Sem stamp A. Naming HOLD Ops vs COS.
+- TEC P1 (unpublished draft): mito × correção + par P0 SSOT `Cap2_P0_prefixBD_*` 241948/708229 (label BD · Drive 1EPi/1jmh). Sem stamp A.
 - Gold v1.1
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)
