@@ -183,6 +183,7 @@ def test_slot_tinware_commons_demais_ausentes():
     asset = PACOTE / "assets" / "Cap2_engineBay_SRC-commons.jpg"
     assert asset.is_file()
     assert asset.stat().st_size >= 100_000
+    assert asset.stat().st_size == 193_513
     tinware = _slot(html, "Tinware completo (didático)")
     assert re.search(r"<img\b", tinware, re.I)
     assert "assets/Cap2_engineBay_SRC-commons.jpg" in tinware
@@ -192,14 +193,61 @@ def test_slot_tinware_commons_demais_ausentes():
     assert "SRC-commons" in tinware
     prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
     ventoinha = _slot(html, "Ventoinha / correia")
-    assert "Ausente" in prefixo
-    assert "Ausente" in ventoinha
-    assert not re.search(r"<img\b", prefixo, re.I)
-    assert not re.search(r"<img\b", ventoinha, re.I)
-    assert html.lower().count("ausente") >= 2
+    assert "Ausente" not in prefixo
+    assert "Ausente" not in ventoinha
+    assert re.search(r"<img\b", prefixo, re.I)
+    assert re.search(r"<img\b", ventoinha, re.I)
+    assert "assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg" in prefixo
+    assert "assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in ventoinha
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in prefixo
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in ventoinha
+    assert "stamp BD" in prefixo.lower() or "stamp bd" in prefixo.lower()
+    assert html.lower().count("ausente") >= 1
     assert "M6_T_engineBayTin" not in html
     assert "Cap2_engine1962" not in html
-    assert html.count("<img") == 1
+    assert html.count("<img") == 5
+    assert html.count("assets/Cap2_engineBay_SRC-commons.jpg") == 1
+
+
+def test_p0_prefixbd_exact_sizes_sem_fail():
+    assets = PACOTE / "assets"
+    crop = assets / "Cap2_P0_prefixBD_crop_SRC-commons.jpg"
+    fan = assets / "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg"
+    tin = assets / "Cap2_engineBay_SRC-commons.jpg"
+    assert crop.is_file()
+    assert fan.is_file()
+    assert crop.stat().st_size == 241_948
+    assert fan.stat().st_size == 708_229
+    assert crop.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert fan.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert tin.read_bytes() != crop.read_bytes()
+    assert tin.read_bytes() != fan.read_bytes()
+    extras = [
+        p
+        for p in assets.glob("Cap2_P0_prefixBD_*")
+        if p.name
+        not in {
+            "Cap2_P0_prefixBD_crop_SRC-commons.jpg",
+            "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg",
+        }
+    ]
+    assert extras == []
+    for p in assets.glob("Cap2_P0_prefixBD_*"):
+        assert p.stat().st_size in {241_948, 708_229}
+    html = _html()
+    readme = README.read_text(encoding="utf-8")
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in html
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in html
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in readme
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in readme
+    assert "1bWAvwvwzPQFRLmPWGjVDtHeizJTGhTIc" not in html
+    assert "1rgEg7oxpCreZpA42juxU0bSIpVBfRlb-" not in html
+    assert "HOLD_rimA" not in html
+    assert "prefixA" not in html.lower()
+    assert not list(assets.glob("*prefixA*"))
+    assert not list(assets.glob("*HOLD_rimA*"))
+    assert not list(assets.glob("Cap2_engine1962*"))
+    assert not (assets / "Cap2_engineBay_SRC-commons.jpg").samefile(crop)
 
 
 def test_proibido_pii_nomes_preco_isbn_canais():
@@ -311,15 +359,16 @@ def test_p1_mito_correcao_seis_linhas():
         assert correcao in table
     assert "Correção Heros" in table
     assert "✅" not in table
-    assert html.count("<img") == 1
+    assert html.count("<img") == 5
     assert "Cap2_engine1962" not in html
     assert "M6_T_engineBayTin" not in html
+    assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in table or "stamp BD" in html[start:end].lower()
     prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
     ventoinha = _slot(html, "Ventoinha / correia")
-    assert "Ausente" in prefixo
-    assert "Ausente" in ventoinha
-    assert not re.search(r"<img\b", prefixo, re.I)
-    assert not re.search(r"<img\b", ventoinha, re.I)
+    assert "Ausente" not in prefixo
+    assert "Ausente" not in ventoinha
+    assert re.search(r"<img\b", prefixo, re.I)
+    assert re.search(r"<img\b", ventoinha, re.I)
 
 
 def test_gold_v11_tokens():
