@@ -273,6 +273,55 @@ def test_tec_gates_miolo_sem_torque_pn_folga_n0():
     assert "✅" not in _quiz_options_blob(html)
 
 
+def test_p1_mito_correcao_seis_linhas():
+    html = _html()
+    start = html.find("<h3>Mito × correção</h3>")
+    end = html.find("<h2>2. Por que esquenta e por que vaza</h2>")
+    assert start != -1 and end != -1 and end > start
+    table = html[start:end]
+    rows = (
+        (
+            "«É ar = não precisa de lata»",
+            "Sem tinware o fluxo foge; kit aftermarket costuma omitir defletores — não fecha orçamento de motor.",
+        ),
+        (
+            "«Tira o termostato/anel pra render»",
+            "Termostato/anel (quando presente) controla fluxo a frio — não «tira pra render».",
+        ),
+        (
+            "«Cilindrada do CRLV = motor de hoje»",
+            "Data o carro pela ficha D1; o motor pela foto do prefixo no bloco (B/BF/BH/BB/BD…).",
+        ),
+        (
+            "«Óleo só lubrifica»",
+            "No Type 1 a ar o óleo lubrifica e tira calor.",
+        ),
+        (
+            "«Cap.2 resolve elétrica»",
+            "Tensão + caixa + gerador = N0. Cap.2 = tinware / ar / prefixo.",
+        ),
+        (
+            "«Sem foto do bloco fecha OS de motor»",
+            "Sem tinware completo + sem foto do prefixo = não fecha.",
+        ),
+    )
+    assert table.count("<tr>") == 7
+    for mito, correcao in rows:
+        assert mito in table
+        assert correcao in table
+    assert "Correção Heros" in table
+    assert "✅" not in table
+    assert html.count("<img") == 1
+    assert "Cap2_engine1962" not in html
+    assert "M6_T_engineBayTin" not in html
+    prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
+    ventoinha = _slot(html, "Ventoinha / correia")
+    assert "Ausente" in prefixo
+    assert "Ausente" in ventoinha
+    assert not re.search(r"<img\b", prefixo, re.I)
+    assert not re.search(r"<img\b", ventoinha, re.I)
+
+
 def test_gold_v11_tokens():
     css = CSS.read_text(encoding="utf-8")
     assert "#C9A227" in css

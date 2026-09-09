@@ -117,6 +117,18 @@ body {
   border-top: none;
 }
 
+.mini-trilha {
+  margin: 0.55rem 0 0.15rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--gold);
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
 h1,
 h2,
 h3 {
@@ -243,6 +255,39 @@ h3 {
   margin: 0;
   font-size: 0.86rem;
   color: var(--muted);
+}
+
+.progresso {
+  margin: 0.7rem 0 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--gold);
+}
+
+.progresso-list {
+  margin: 0.2rem 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.progresso-list li {
+  margin: 0.45rem 0;
+  font-size: 0.88rem;
+}
+
+.progresso .fronteira {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.gabarito-page {
+  break-before: page;
+  margin: 0.8rem 0 1rem;
+}
+
+.gabarito-page h2 {
+  margin-top: 0;
 }
 
 .qblock {
@@ -606,6 +651,8 @@ th.gold {
   body,
   .sheet,
   .unpublished,
+  .mini-trilha,
+  .progresso,
   .mast,
   th,
   th.gold,
@@ -629,11 +676,14 @@ th.gold {
   .ficha,
   .selo,
   .write,
+  .progresso-list li,
   .quiz ul li::before {
     break-inside: avoid;
   }
 
-  .divider {
+  .divider,
+  .gabarito-page,
+  #gabarito-d1 {
     break-before: page;
   }
 

@@ -7,7 +7,7 @@
 | Bloco | O que é | Neste PDF |
 |---|---|---|
 | **Capa** | Type 1 · anatomia motor refrigerado a ar · unpublished | Completa |
-| **Miolo Cap.2** | Conceito · fluxo ar/óleo · tinware · spec códigos · ponte bancada | Completa (texto Acervo) |
+| **Miolo Cap.2** | Conceito · fluxo ar/óleo · tinware · spec códigos · mito × correção · ponte bancada | Completa (texto Acervo) |
 | **Bridge Aprendiz** | Checklist peças 1–8 + ☐ + selo domínio | Completa |
 | **Quiz** | «Nomeie a peça» 10Q · gabarito **só no fim** | Completa |
 | **Ponte N0** | Tensão + caixa + gerador = outro PDF | Só ponte — não miolo |
@@ -94,6 +94,7 @@ Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
 - BV / Brasília / SP2 (BL 1678) = fora (não são Type 1 Fusca)
 - Sem Hércules-curso (método de box ≠ nome deste capítulo)
 - Quiz: sem marca de acerto nas opções; gabarito só no fim
+- Mito × correção: tabela de 6 linhas (texto). Prefixo / ventoinha-correia continuam AUSENTE
 - Pacote separado do COM-PDF-APR-N0
 
 ## Marca

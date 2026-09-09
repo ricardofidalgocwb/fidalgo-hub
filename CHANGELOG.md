@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - TEC P1 N0 anti-spoiler + mini-trilha + Cap.2 mito (unpublished)
+
+### Adicionado
+- N0: mini-trilha no topo (`A1…A6 ☐☐☐☐☐☐ · Quiz ☐ · Checklist 0/7`) e bloco Progresso A1–A6 (ordem D1 + fronteira N0/M1)
+- N0 P1.1: Quiz D1 letras remapeadas `1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A`; `#gabarito-d1` em secção própria com `break-before: page`
+- Cap.2: tabela Mito × correção (6 linhas, texto). Prefixo / ventoinha-correia continuam AUSENTE
+
+### Alterado
+- Guarda pytest N0 + Cap.2. Sem site / sem publish / sem Hotmart. Sem tipadas novas
+
+---
+
 ## [Unreleased] - N0 A.8 Drive dinam+alt contrast (unpublished)
 
 ### Adicionado
