@@ -221,11 +221,14 @@ def test_p0_prefixbd_pass_pair_sem_stamp_a():
     assert tin.read_bytes() != fan.read_bytes()
     assert list(assets.glob("*prefixA*")) == []
     assert list(assets.glob("*HOLD_rimA*")) == []
-    assert list(assets.glob("Cap2_P0_prefixB_*")) == []  # temp names gone after soft-rename
+    assert list(assets.glob("Cap2_P0_prefixB_*")) == []
     assert {p.name for p in assets.glob("Cap2_P0_prefixBD_*")} == {
         "Cap2_P0_prefixBD_crop_SRC-commons.jpg",
         "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg",
     }
+    assert not any(
+        p.stat().st_size not in {241_948, 708_229} for p in assets.glob("Cap2_P0_prefixBD_*")
+    )
     assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html
     assert "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in html
     assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in html

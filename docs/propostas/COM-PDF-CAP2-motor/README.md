@@ -68,7 +68,7 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
-**HOLD de naming:** Ops prefere `prefixB_*`; COS quer label **BD** (soft rename). Ficheiros temporários neste PR = `prefixB_*`. HTML usa label BD. Sem stamp A.
+**HOLD de naming:** Ops preferia `prefixB_*`; COS veredito = ficheiros `prefixBD_*` + label **BD**. Sem stamp A. Sem `prefixB_*` no pacote.
 
 | Slot | Arquivo (temp) | Drive ID | Bytes |
 |---|---|---|---|
@@ -89,7 +89,7 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto de cliente / stock / IA; tipadas Commons: tinware + P0 prefixo/correia (label BD; ficheiro temp prefixB_*)
+- Sem foto de cliente / stock / IA; tipadas Commons: tinware + P0 prefixo/correia (`prefixBD_*`, label BD)
 - Sem cv / torque / folga / pistão inventado
 - Sem misturar N0 no miolo motor (item 9 = só ponte)
 - Type 3 = outro módulo
