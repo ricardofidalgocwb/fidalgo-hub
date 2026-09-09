@@ -196,8 +196,8 @@ def test_slot_tinware_commons_demais_ausentes():
     assert "Ausente" not in ventoinha
     assert re.search(r"<img\b", prefixo, re.I)
     assert re.search(r"<img\b", ventoinha, re.I)
-    assert "assets/Cap2_P0_prefixB_crop_SRC-commons.jpg" in prefixo
-    assert "assets/Cap2_P0_prefixB_fanbelt_SRC-commons.jpg" in ventoinha
+    assert "assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg" in prefixo
+    assert "assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in ventoinha
     assert html.lower().count("ausente") >= 1
     assert "M6_T_engineBayTin" not in html
     assert "Cap2_engine1962" not in html
@@ -207,8 +207,8 @@ def test_slot_tinware_commons_demais_ausentes():
 
 def test_p0_prefixb_pass_pair_sem_stamp_a():
     assets = PACOTE / "assets"
-    crop = assets / "Cap2_P0_prefixB_crop_SRC-commons.jpg"
-    fan = assets / "Cap2_P0_prefixB_fanbelt_SRC-commons.jpg"
+    crop = assets / "Cap2_P0_prefixBD_crop_SRC-commons.jpg"
+    fan = assets / "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg"
     tin = assets / "Cap2_engineBay_SRC-commons.jpg"
     html = _html()
     readme = README.read_text(encoding="utf-8")
@@ -223,8 +223,8 @@ def test_p0_prefixb_pass_pair_sem_stamp_a():
     assert list(assets.glob("*HOLD_rimA*")) == []
     assert list(assets.glob("Cap2_P0_prefixBD_*")) == []
     assert not any(p.stat().st_size not in {241_948, 708_229} for p in assets.glob("Cap2_P0_prefixB_*"))
-    assert "Cap2_P0_prefixB_crop_SRC-commons.jpg" in html
-    assert "Cap2_P0_prefixB_fanbelt_SRC-commons.jpg" in html
+    assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html
+    assert "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in html
     assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in html
     assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in html
     assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in readme
@@ -351,7 +351,7 @@ def test_p1_mito_correcao_seis_linhas():
     assert html.count("<img") == 5
     assert "Cap2_engine1962" not in html
     assert "M6_T_engineBayTin" not in html
-    assert "Cap2_P0_prefixB_crop_SRC-commons.jpg" in html[start:end]
+    assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html[start:end]
     prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
     ventoinha = _slot(html, "Ventoinha / correia")
     assert "Ausente" not in prefixo
