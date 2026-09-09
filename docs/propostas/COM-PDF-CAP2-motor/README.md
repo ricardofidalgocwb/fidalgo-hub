@@ -73,8 +73,8 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 | Slot | Arquivo (temp) | Drive ID | Bytes |
 |---|---|---|---|
 | Tinware completo (didático) | `assets/Cap2_engineBay_SRC-commons.jpg` | `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2` | 193513 |
-| Prefixo crop | `assets/Cap2_P0_prefixB_crop_SRC-commons.jpg` | `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` | **241948** |
-| Ventoinha / correia | `assets/Cap2_P0_prefixB_fanbelt_SRC-commons.jpg` | `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` | **708229** |
+| Prefixo crop | `assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg` | `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` | **241948** |
+| Ventoinha / correia | `assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` | `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` | **708229** |
 
 [Drive tinware](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · [Drive crop](https://drive.google.com/file/d/1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc/view) · [Drive fanbelt](https://drive.google.com/file/d/1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r/view).
 
