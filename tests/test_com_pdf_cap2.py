@@ -192,14 +192,57 @@ def test_slot_tinware_commons_demais_ausentes():
     assert "SRC-commons" in tinware
     prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
     ventoinha = _slot(html, "Ventoinha / correia")
-    assert "Ausente" in prefixo
-    assert "Ausente" in ventoinha
-    assert not re.search(r"<img\b", prefixo, re.I)
-    assert not re.search(r"<img\b", ventoinha, re.I)
-    assert html.lower().count("ausente") >= 2
+    assert "Ausente" not in prefixo
+    assert "Ausente" not in ventoinha
+    assert re.search(r"<img\b", prefixo, re.I)
+    assert re.search(r"<img\b", ventoinha, re.I)
+    assert "assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg" in prefixo
+    assert "assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in ventoinha
+    assert html.lower().count("ausente") >= 1
     assert "M6_T_engineBayTin" not in html
     assert "Cap2_engine1962" not in html
-    assert html.count("<img") == 1
+    assert html.count("<img") == 5
+    assert html.count("assets/Cap2_engineBay_SRC-commons.jpg") == 1
+
+
+def test_p0_prefixbd_pass_pair_sem_stamp_a():
+    assets = PACOTE / "assets"
+    crop = assets / "Cap2_P0_prefixBD_crop_SRC-commons.jpg"
+    fan = assets / "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg"
+    tin = assets / "Cap2_engineBay_SRC-commons.jpg"
+    html = _html()
+    readme = README.read_text(encoding="utf-8")
+    assert crop.is_file() and fan.is_file()
+    assert crop.stat().st_size == 241_948
+    assert fan.stat().st_size == 708_229
+    assert crop.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert fan.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert tin.read_bytes() != crop.read_bytes()
+    assert tin.read_bytes() != fan.read_bytes()
+    assert list(assets.glob("*prefixA*")) == []
+    assert list(assets.glob("*HOLD_rimA*")) == []
+    assert list(assets.glob("Cap2_P0_prefixB_*")) == []
+    assert {p.name for p in assets.glob("Cap2_P0_prefixBD_*")} == {
+        "Cap2_P0_prefixBD_crop_SRC-commons.jpg",
+        "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg",
+    }
+    assert not any(
+        p.stat().st_size not in {241_948, 708_229} for p in assets.glob("Cap2_P0_prefixBD_*")
+    )
+    assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html
+    assert "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in html
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in html
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in html
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in readme
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in readme
+    assert "241948" in readme
+    assert "708229" in readme
+    assert "label BD" in html.lower() or "commons · bd" in html.lower()
+    assert "stamp A" not in html.lower()
+    assert "prefixa" not in html.lower()
+    assert "1bWAvwvwzPQFRLmPWGjVDtHeizJTGhTIc" not in html
+    assert "1rgEg7oxpCreZpA42juxU0bSIpVBfRlb-" not in html
+    assert html.count("<img") == 5
 
 
 def test_proibido_pii_nomes_preco_isbn_canais():
@@ -271,6 +314,56 @@ def test_tec_gates_miolo_sem_torque_pn_folga_n0():
     assert "Type 3 = outro módulo" in html
     assert not re.search(r"diagrama (do |da )?type\s*3", html, re.I)
     assert "✅" not in _quiz_options_blob(html)
+
+
+def test_p1_mito_correcao_seis_linhas():
+    html = _html()
+    start = html.find("<h3>Mito × correção</h3>")
+    end = html.find("<h2>2. Por que esquenta e por que vaza</h2>")
+    assert start != -1 and end != -1 and end > start
+    table = html[start:end]
+    rows = (
+        (
+            "«É ar = não precisa de lata»",
+            "Sem tinware o fluxo foge; kit aftermarket costuma omitir defletores — não fecha orçamento de motor.",
+        ),
+        (
+            "«Tira o termostato/anel pra render»",
+            "Termostato/anel (quando presente) controla fluxo a frio — não «tira pra render».",
+        ),
+        (
+            "«Cilindrada do CRLV = motor de hoje»",
+            "Data o carro pela ficha D1; o motor pela foto do prefixo no bloco (B/BF/BH/BB/BD…).",
+        ),
+        (
+            "«Óleo só lubrifica»",
+            "No Type 1 a ar o óleo lubrifica e tira calor.",
+        ),
+        (
+            "«Cap.2 resolve elétrica»",
+            "Tensão + caixa + gerador = N0. Cap.2 = tinware / ar / prefixo.",
+        ),
+        (
+            "«Sem foto do bloco fecha OS de motor»",
+            "Sem tinware completo + sem foto do prefixo = não fecha.",
+        ),
+    )
+    assert table.count("<tr>") == 7
+    for mito, correcao in rows:
+        assert mito in table
+        assert correcao in table
+    assert "Correção Heros" in table
+    assert "✅" not in table
+    assert html.count("<img") == 5
+    assert "Cap2_engine1962" not in html
+    assert "M6_T_engineBayTin" not in html
+    assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html[start:end]
+    prefixo = _slot(html, "Prefixo bloco B/BF/BH/BB/BD")
+    ventoinha = _slot(html, "Ventoinha / correia")
+    assert "Ausente" not in prefixo
+    assert "Ausente" not in ventoinha
+    assert re.search(r"<img\b", prefixo, re.I)
+    assert re.search(r"<img\b", ventoinha, re.I)
 
 
 def test_gold_v11_tokens():

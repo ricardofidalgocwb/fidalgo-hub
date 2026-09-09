@@ -7,7 +7,7 @@
 | Bloco | O que é | Neste PDF |
 |---|---|---|
 | **Capa** | Type 1 · anatomia motor refrigerado a ar · unpublished | Completa |
-| **Miolo Cap.2** | Conceito · fluxo ar/óleo · tinware · spec códigos · ponte bancada | Completa (texto Acervo) |
+| **Miolo Cap.2** | Conceito · fluxo ar/óleo · tinware · spec códigos · mito × correção · ponte bancada | Completa (texto Acervo) |
 | **Bridge Aprendiz** | Checklist peças 1–8 + ☐ + selo domínio | Completa |
 | **Quiz** | «Nomeie a peça» 10Q · gabarito **só no fim** | Completa |
 | **Ponte N0** | Tensão + caixa + gerador = outro PDF | Só ponte — não miolo |
@@ -62,23 +62,25 @@ Pela linha de comando:
 
 Saída: `COM-PDF-CAP2-motor.pdf`. Um snapshot pode estar commitado nesta pasta; regenerar localmente o substitui.
 
-Requisitos: `google-chrome` ou `chromium` no PATH. A tipada Commons está em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
+Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
 
-## Fotos-modelo — tinware Commons (unpublished)
+## Fotos-modelo — tinware Commons + P0 par (unpublished)
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
-Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
+**SSOT naming (COS):** ficheiros `Cap2_P0_prefixBD_crop_SRC-commons.jpg` + `Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` · label **BD** · Drive `1EPi6…` / `1jmhG…`. Sem stamp A · sem `prefixB_*` · sem HOLD_rimA.
 
-| Slot | Arquivo | Drive ID | Bytes |
+| Slot | Arquivo (temp) | Drive ID | Bytes |
 |---|---|---|---|
 | Tinware completo (didático) | `assets/Cap2_engineBay_SRC-commons.jpg` | `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2` | 193513 |
+| Prefixo crop | `assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg` | `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` | **241948** |
+| Ventoinha / correia | `assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` | `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` | **708229** |
 
-[Drive](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · cite no HTML: Wikimedia Commons (SRC-commons).
+[Drive tinware](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · [Drive crop](https://drive.google.com/file/d/1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc/view) · [Drive fanbelt](https://drive.google.com/file/d/1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r/view).
 
-**AUSENTE:** prefixo bloco · ventoinha/correia · tinware incompleto.
+**AUSENTE:** tinware incompleto.
 
-**Não embutir:** `Cap2_engine1962` (DUP de N0 A.8) · `M6_T_engineBayTin` (DUP deste bay).
+**Não embutir:** stamp A / prefixA / HOLD_rimA · `Cap2_engine1962` · `M6_T_engineBayTin` · qualquer outro BD.
 
 ## Regras duras deste artefato
 
@@ -87,13 +89,14 @@ Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto de cliente / stock / IA; só a tipada Commons do tinware didático
+- Sem foto de cliente / stock / IA; tipadas Commons: tinware + P0 prefixo/correia (`prefixBD_*`, label BD)
 - Sem cv / torque / folga / pistão inventado
 - Sem misturar N0 no miolo motor (item 9 = só ponte)
 - Type 3 = outro módulo
 - BV / Brasília / SP2 (BL 1678) = fora (não são Type 1 Fusca)
 - Sem Hércules-curso (método de box ≠ nome deste capítulo)
 - Quiz: sem marca de acerto nas opções; gabarito só no fim
+- Mito × correção: tabela de 6 linhas (texto) + par P0 241948/708229 (label BD; sem stamp A)
 - Pacote separado do COM-PDF-APR-N0
 
 ## Marca

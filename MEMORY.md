@@ -54,6 +54,7 @@
 - Quiz «nomeie a peça» 10Q: gabarito só no fim; sem marca de acerto nas opções. Selo: 8 ☐
 - Sem Theodoro / Herculid / Hércules-curso / ISBN / NAP / WhatsApp / preço neste artefato
 - TEC PASS 05/09: sem linha de torque; sem PN/Ω/folga no miolo; item 9 = só nota N0 fora do miolo; Type 3 fora; quiz sem ✅ nas opções; tinware didático Commons (demais slots AUSENTE)
+- TEC P1 (unpublished draft): mito × correção + par P0 SSOT `Cap2_P0_prefixBD_*` 241948/708229 (label BD · Drive 1EPi/1jmh). Sem stamp A.
 - Gold v1.1
 
 ## COM-PDF-APR-N0 Aprendiz (04/09/2026)
@@ -63,6 +64,7 @@
 - Sem OS viva / CPF / preço / diagrama Type 3 de ensino / os 9 procedimentos. Hércules = método, não nome do curso
 - CTA miolo: Próximo: M1 chicote — ou agendar diagnóstico (sem NAP/WhatsApp). Gold v1.1
 - COS P0: Quiz D1 sem marca no corpo; gabarito só no fim; ☐ no checklist; linhas A1–A6
+- TEC P1 (unpublished draft): anti-spoiler gabarito (`1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A` em `#gabarito-d1` + `break-before: page`); mini-trilha + Progresso A1–A6. Sem site / Hotmart
 
 ## COM-PDF-02 Theodoro (04/09/2026)
 - Pasta unpublished `docs/propostas/COM-PDF-02-theodoro/` — HTML+print CSS, sem foto embutida

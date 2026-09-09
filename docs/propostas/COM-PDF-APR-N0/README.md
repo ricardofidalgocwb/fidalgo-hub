@@ -75,12 +75,18 @@ python -m pytest tests/test_com_pdf_apr_n0.py
 
 Workflow: `.github/workflows/founder_panel_tests.yml` (`pytest tests/` + path `docs/propostas/COM-PDF-APR-N0/**`). Não mover o ficheiro para fora de `tests/`.
 
-## P1 (não agora)
+## P1 (rascunho TEC — neste PDF)
 
-Hold de diagramação — **não** neste PDF:
+Hold de diagramação que **ainda** não entra:
 
 - 1 aula / folha
-- Quiz D1 em folhas próprias (○ vazia no miolo já está)
+
+Já alinhado neste rascunho unpublished:
+
+- Mini-trilha no topo do miolo (`A1…A6 ☐☐☐☐☐☐ · Quiz ☐ · Checklist 0/7`)
+- Bloco **Progresso A1–A6** (ordem D1 + fronteira N0/M1)
+- Quiz D1: ○ vazia no miolo; letras remapeadas (não é tudo B)
+- `#gabarito-d1` em secção própria, `break-before: page`, heading «Gabarito (só depois de responder)»
 
 ## Fotos-modelo — A.8 Drive dínamo+alt + caixa 12 CIP1 + caixa 8 appletreeauto 61–66 (Acervo) (unpublished)
 

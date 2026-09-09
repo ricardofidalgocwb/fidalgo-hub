@@ -71,7 +71,7 @@ def test_camada_a_indice_e_canon():
     assert "8/10" in html
     assert "vigia oval" in html
     assert "O que faz primeiro no negativo?" in html
-    assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
+    assert "1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
     assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
     assert "Não Eletro" in html or "não Eletro" in html
@@ -219,8 +219,24 @@ def test_quiz_d1_editorial_e_a1_exato():
     assert "O que faz primeiro no negativo?" in html
     assert "Como medís parado?" in html
     assert "O que recusa num kit YT?" in html
-    assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" in html
+    assert "1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A" in html
     assert "ficha D1" in html
+
+
+GABARITO_D1 = "1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A"
+
+QUIZ_D1_CORRECT = (
+    ("A", "Não — nacional típico já nasce com vigia retangular"),
+    ("B", "1968"),
+    ("C", "Não — dínamo 12 V + regulador é caminho BR comum"),
+    ("A", "Tensão medida + foto da caixa (e o que mais a D1/Pista C pede)"),
+    ("B", "Sim — 1300/1967 ainda pode ser 6 V; 12 V = 1968"),
+    ("C", "1979–86 e Itamar 93–96"),
+    ("A", "1996"),
+    ("B", "Marcar eras diferentes: carroceria/doc pra era do carro; motor = grupo propulsor atual"),
+    ("C", "Pelo que a foto mostra (sem inventar boletim)"),
+    ("A", "03/01/1959 e 18/11/1959"),
+)
 
 
 def test_cos_p0_quiz_sem_marca_gabarito_no_fim():
@@ -234,10 +250,77 @@ def test_cos_p0_quiz_sem_marca_gabarito_no_fim():
     css = CSS.read_text(encoding="utf-8")
     assert 'content: "○ "' in css or "content: '○ '" in css
     after = html[quiz.end() :]
-    gabarito = "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B"
-    assert gabarito in after
-    assert gabarito not in html[: quiz.start()]
+    assert GABARITO_D1 in after
+    assert GABARITO_D1 not in html[: quiz.start()]
+    assert GABARITO_D1 not in body
     assert 'id="gabarito-d1"' in after
+    assert "1B · 2B · 3B · 4B · 5B · 6B · 7B · 8B · 9B · 10B" not in html
+
+
+def test_p1_gabarito_secao_propria_quebra_pagina():
+    html = _html()
+    css = CSS.read_text(encoding="utf-8")
+    quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
+    assert quiz
+    gab = re.search(
+        r'<section[^>]*id="gabarito-d1"[^>]*>(.*?)</section>',
+        html,
+        flags=re.S,
+    )
+    assert gab, "#gabarito-d1 deve ser secção própria"
+    assert gab.start() > quiz.end()
+    assert "Critério de domínio" in html[quiz.end() : gab.start()]
+    assert "Gabarito (só depois de responder)" in gab.group(1)
+    assert GABARITO_D1 in gab.group(1)
+    assert "✅" not in gab.group(1)
+    assert re.search(
+        r"(#gabarito-d1|\.gabarito-page)\s*\{[^}]*break-before:\s*page",
+        css,
+        flags=re.S,
+    )
+    items = re.findall(r"<li>\s*<p>.*?<ul>(.*?)</ul>", quiz.group(1), flags=re.S)
+    assert len(items) == 10
+    for opts, (letter, text) in zip(items, QUIZ_D1_CORRECT, strict=True):
+        assert text in opts
+        assert f"{letter}) {text}" in opts
+
+
+def test_p1_mini_trilha_e_progresso():
+    html = _html()
+    assert 'id="mini-trilha"' in html
+    assert "A1…A6 ☐☐☐☐☐☐ · Quiz ☐ · Checklist 0/7" in html
+    mini = html.find('id="mini-trilha"')
+    h1 = html.find("<h1>")
+    assert 0 <= mini < h1
+    progresso = re.search(
+        r'<section[^>]*id="progresso-a1-a6"[^>]*>(.*?)</section>',
+        html,
+        flags=re.S,
+    )
+    assert progresso, "bloco Progresso A1–A6 ausente"
+    body = progresso.group(1)
+    assert "Progresso A1–A6" in body
+    assert "energia zero → ano/tensão → geração → foto caixa →" in body
+    assert "massa → V parado" in body
+    for aula in (
+        "A1 · Energia zero",
+        "A2 · Ano/tensão",
+        "A3 · Geração",
+        "A4 · Foto caixa",
+        "A5 · Massa",
+        "A6 · Multímetro parado",
+    ):
+        assert aula in body
+    assert "bitola de cabo · crimp" in body
+    assert "Ω da bobina · PN" in body
+    assert "rebuild / polarização" in body
+    assert "boletim inventado" in body
+    assert "Ω completo · terminal spec" in body
+    assert "ensaio dinâmico" in body
+    assert body.count("☐") == 6
+    assert "hotmart" not in html.lower()
+    assert "whatsapp" not in html.lower()
+    assert "nap" not in html.lower()
 
 
 def test_cos_p0_checklist_e_linhas_a1():
