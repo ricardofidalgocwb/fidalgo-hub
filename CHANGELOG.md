@@ -12,7 +12,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ### Adicionado
 - N0: mini-trilha no topo (`A1…A6 ☐☐☐☐☐☐ · Quiz ☐ · Checklist 0/7`) e bloco Progresso A1–A6 (ordem D1 + fronteira N0/M1)
 - N0 P1.1: Quiz D1 letras remapeadas `1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A`; `#gabarito-d1` em secção própria com `break-before: page`
-- Cap.2: tabela Mito × correção (6 linhas, texto). Prefixo / ventoinha-correia HOLD até TEC PASS (Ops-OK no vis-bin; sem embed)
+- Cap.2: tabela Mito × correção (6 linhas, texto). Prefixo / ventoinha-correia HOLD até TEC PASS — único par BD `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` (241948) + `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` (708229). Sem stamp A. Sem embed.
 
 ### Alterado
 - Guarda pytest N0 + Cap.2. Sem site / sem publish / sem Hotmart. Sem tipadas novas no pacote Cap.2

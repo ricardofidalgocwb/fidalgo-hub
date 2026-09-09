@@ -214,7 +214,15 @@ def test_p0_prefix_hold_sem_embed():
     assert "1bWAvwvwzPQFRLmPWGjVDtHeizJTGhTIc" not in html
     assert "1rgEg7oxpCreZpA42juxU0bSIpVBfRlb-" not in html
     assert "HOLD até TEC PASS" in html or "hold até tec pass" in html.lower()
+    assert "stamp A" not in html.lower()
+    assert "prefixa" not in html.lower()
+    assert "B|BD" not in html
     assert html.count("<img") == 1
+    readme = README.read_text(encoding="utf-8")
+    assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in readme
+    assert "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r" in readme
+    assert "241948" in readme
+    assert "708229" in readme
 
 
 def test_proibido_pii_nomes_preco_isbn_canais():

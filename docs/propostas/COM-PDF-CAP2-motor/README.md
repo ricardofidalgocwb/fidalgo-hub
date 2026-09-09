@@ -78,9 +78,16 @@ Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
 
 **AUSENTE:** prefixo bloco · ventoinha/correia · tinware incompleto.
 
-**HOLD (Ops-OK, sem embed até TEC PASS explícito):** P0 prefix B|BD em `/workspace/vis-bin/cap2-p0/Cap2_P0_prefixB_*.jpg` e `Cap2_P0_prefixBD_*.jpg`. Não copiar para `assets/` neste PR.
+**HOLD (Ops-OK, sem embed até TEC PASS explícito).** Único par autorizado, label **BD** — não caçar mais candidatos, não stamp A:
 
-**Não embutir:** `Cap2_engine1962` (DUP de N0 A.8) · `M6_T_engineBayTin` (DUP deste bay).
+| Slot | Drive ID | Bytes |
+|---|---|---|
+| Prefixo crop | `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` | 241948 |
+| Ventoinha / correia (fanbelt) | `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` | 708229 |
+
+Binários no box: `/workspace/vis-bin/cap2-p0/Cap2_P0_prefixBD_*.jpg`. Não copiar para `assets/` neste PR.
+
+**Não embutir:** `Cap2_engine1962` (DUP de N0 A.8) · `M6_T_engineBayTin` (DUP deste bay) · stamp A · outros BD.
 
 ## Regras duras deste artefato
 
@@ -96,7 +103,7 @@ Slot liberado Ops 05/09 (Commons SRC, ≥100 KB, Type 1, sem stock/IA):
 - BV / Brasília / SP2 (BL 1678) = fora (não são Type 1 Fusca)
 - Sem Hércules-curso (método de box ≠ nome deste capítulo)
 - Quiz: sem marca de acerto nas opções; gabarito só no fim
-- Mito × correção: tabela de 6 linhas (texto). Prefixo / ventoinha-correia HOLD até TEC PASS
+- Mito × correção: tabela de 6 linhas (texto). Prefixo / ventoinha-correia HOLD até TEC PASS (só o par BD acima; sem stamp A)
 - Pacote separado do COM-PDF-APR-N0
 
 ## Marca
