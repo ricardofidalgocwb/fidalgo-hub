@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Cap.2 tinware AUR1500 + Coccinelle (unpublished)
+
+### Adicionado
+- Cap.2 §7 tinware-completo: `Cap2_P0_tinware_AUR1500_SRC-commons.jpg` (483449, Drive `1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ`, Commons AUR 131F) + `Cap2_P0_tinware_coccinelle_SRC-commons.jpg` (1111977, Drive `1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M`, Commons Coccinelle beige)
+- Guarda pytest: tamanhos exactos; `Cap2_engineBay` permanece (não é DUP); sem `*30PS*` / `1Cmt8` em `assets/`
+
+### Alterado
+- Stamp B = AUSENTE (não inventar). Prefixo BD + bay intactos. Sem site / sem publish / sem Hotmart
+
+---
+
 ## [Unreleased] - TEC P1 N0 anti-spoiler + mini-trilha + Cap.2 mito (unpublished)
 
 ### Adicionado
