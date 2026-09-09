@@ -7,6 +7,16 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Cap.2 tinware 1965AVI face terciária P1 (unpublished)
+
+### Adicionado
+- Cap.2 §7 face terciária opcional: `Cap2_P0_tinware_1965AVI_SRC-commons.jpg` (409825, Drive `19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH`, Commons AVI2387). Dupla carburação pode ser aftermarket. **Não** promove sobre AUR1500 + Coccinelle
+
+### Alterado
+- P0 primário continua AUR1500 + Coccinelle. Sem `*30PS*`. Sem site / sem publish / sem Hotmart
+
+---
+
 ## [Unreleased] - Cap.2 tinware AUR1500 + Coccinelle (unpublished)
 
 ### Adicionado

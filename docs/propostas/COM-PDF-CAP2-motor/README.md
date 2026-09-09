@@ -64,21 +64,22 @@ Saída: `COM-PDF-CAP2-motor.pdf`. Um snapshot pode estar commitado nesta pasta; 
 
 Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em `assets/` (local; sem rede). Montserrat/Inter caem no fallback se o Google Fonts não carregar.
 
-## Fotos-modelo — tinware Commons (bay + AUR1500 + Coccinelle) + P0 par (unpublished)
+## Fotos-modelo — tinware P0 primário AUR1500 + Coccinelle (+ 1965AVI terciária) (unpublished)
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
-**SSOT naming (COS):** ficheiros `Cap2_P0_prefixBD_crop_SRC-commons.jpg` + `Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` · label **BD** · Drive `1EPi6…` / `1jmhG…`. Sem stamp A · sem `prefixB_*` · sem HOLD_rimA. `Cap2_engineBay` **não** é DUP de AUR1500/Coccinelle.
+**SSOT naming (COS):** ficheiros `Cap2_P0_prefixBD_crop_SRC-commons.jpg` + `Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` · label **BD** · Drive `1EPi6…` / `1jmhG…`. Sem stamp A · sem `prefixB_*` · sem HOLD_rimA. `Cap2_engineBay` **não** é DUP de AUR1500/Coccinelle. **P0 primário** = AUR1500 + Coccinelle. 1965AVI = face terciária P1 opcional (não promove sobre o par).
 
 | Slot | Arquivo | Drive ID | Bytes | Cite |
 |---|---|---|---|---|
 | Tinware completo (didático) | `assets/Cap2_engineBay_SRC-commons.jpg` | `1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2` | 193513 | Wikimedia Commons (SRC-commons) |
-| Tinware completo (AUR1500) | `assets/Cap2_P0_tinware_AUR1500_SRC-commons.jpg` | `1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ` | **483449** | [Commons · Engine of VW 1500 AUR 131F](https://commons.wikimedia.org/wiki/File:Engine_of_VW_1500_AUR_131F_-_53901082311.jpg) |
-| Tinware completo (Coccinelle) | `assets/Cap2_P0_tinware_coccinelle_SRC-commons.jpg` | `1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M` | **1111977** | [Commons · Volkswagen Coccinelle, beige (2)](https://commons.wikimedia.org/wiki/File:Volkswagen_Coccinelle,_beige_(2).jpg) |
+| Tinware P0 primário (AUR1500) | `assets/Cap2_P0_tinware_AUR1500_SRC-commons.jpg` | `1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ` | **483449** | [Commons · Engine of VW 1500 AUR 131F](https://commons.wikimedia.org/wiki/File:Engine_of_VW_1500_AUR_131F_-_53901082311.jpg) |
+| Tinware P0 primário (Coccinelle) | `assets/Cap2_P0_tinware_coccinelle_SRC-commons.jpg` | `1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M` | **1111977** | [Commons · Volkswagen Coccinelle, beige (2)](https://commons.wikimedia.org/wiki/File:Volkswagen_Coccinelle,_beige_(2).jpg) |
+| Tinware terciário (1965AVI) · P1 opcional | `assets/Cap2_P0_tinware_1965AVI_SRC-commons.jpg` | `19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH` | **409825** | [Commons · 1965 VW Beetle Sedan AVI2387 Engine](https://commons.wikimedia.org/wiki/File:1965_VW_Beetle_Sedan_AVI2387_Engine_-_55437653570.jpg) · dupla pode ser aftermarket |
 | Prefixo crop | `assets/Cap2_P0_prefixBD_crop_SRC-commons.jpg` | `1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc` | **241948** | Wikimedia Commons (SRC-commons) |
 | Ventoinha / correia | `assets/Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` | `1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r` | **708229** | Wikimedia Commons (SRC-commons) |
 
-[Drive bay](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · [Drive AUR1500](https://drive.google.com/file/d/1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ/view) · [Drive Coccinelle](https://drive.google.com/file/d/1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M/view) · [Drive crop](https://drive.google.com/file/d/1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc/view) · [Drive fanbelt](https://drive.google.com/file/d/1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r/view).
+[Drive bay](https://drive.google.com/file/d/1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2/view) · [Drive AUR1500](https://drive.google.com/file/d/1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ/view) · [Drive Coccinelle](https://drive.google.com/file/d/1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M/view) · [Drive 1965AVI](https://drive.google.com/file/d/19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH/view) · [Drive crop](https://drive.google.com/file/d/1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc/view) · [Drive fanbelt](https://drive.google.com/file/d/1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r/view).
 
 **AUSENTE:** tinware incompleto · stamp B (não inventar).
 
@@ -91,7 +92,7 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 - Sem URL viva de Notion
 - Sem Instagram
 - Sem n8n
-- Sem foto de cliente / stock / IA; tipadas Commons: tinware (bay + AUR1500 + Coccinelle) + P0 prefixo/correia (`prefixBD_*`, label BD)
+- Sem foto de cliente / stock / IA; tipadas Commons: tinware P0 primário AUR1500 + Coccinelle; 1965AVI só face terciária P1 opcional (dupla pode ser aftermarket); bay + P0 prefixo/correia (`prefixBD_*`, label BD)
 - Sem cv / torque / folga / pistão inventado
 - Sem misturar N0 no miolo motor (item 9 = só ponte)
 - Type 3 = outro módulo

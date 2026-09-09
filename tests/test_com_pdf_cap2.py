@@ -107,7 +107,7 @@ def test_spec_table_somente_acervo():
     assert "sem cv" in html_l
     assert " cv" not in html_l.replace("sem cv", "")
     assert not re.search(r"\b\d+\s*cv\b", html_l)
-    assert "nm" not in html_l
+    assert not re.search(r"\bnm\b", html_l)
     assert "kgfm" not in html_l
     assert "kgf" not in html_l
     assert "ω" not in html_l and "ohm" not in html_l
@@ -202,17 +202,23 @@ def test_slot_tinware_commons_demais_ausentes():
     assert "stamp b" in html.lower() and "AUSENTE" in html
     assert "M6_T_engineBayTin" not in html
     assert "Cap2_engine1962" not in html
-    assert html.count("<img") == 7
+    assert html.count("<img") == 8
     assert html.count("assets/Cap2_engineBay_SRC-commons.jpg") == 1
     aur = _slot(html, "Tinware completo (AUR1500)")
     cocc = _slot(html, "Tinware completo (Coccinelle)")
+    avi = _slot(html, "Tinware terciário (1965AVI)")
     assert re.search(r"<img\b", aur, re.I)
     assert re.search(r"<img\b", cocc, re.I)
+    assert re.search(r"<img\b", avi, re.I)
     assert "assets/Cap2_P0_tinware_AUR1500_SRC-commons.jpg" in aur
     assert "assets/Cap2_P0_tinware_coccinelle_SRC-commons.jpg" in cocc
+    assert "assets/Cap2_P0_tinware_1965AVI_SRC-commons.jpg" in avi
     assert "Ausente" not in aur and "AUSENTE" not in aur
     assert "Ausente" not in cocc and "AUSENTE" not in cocc
+    assert "Ausente" not in avi and "AUSENTE" not in avi
     assert "Wikimedia Commons" in aur and "Wikimedia Commons" in cocc
+    assert "aftermarket" in avi.lower()
+    assert "p1 opcional" in avi.lower() or "terciár" in avi.lower()
 
 
 def test_p0_prefixbd_pass_pair_sem_stamp_a():
@@ -252,7 +258,7 @@ def test_p0_prefixbd_pass_pair_sem_stamp_a():
     assert "prefixa" not in html.lower()
     assert "1bWAvwvwzPQFRLmPWGjVDtHeizJTGhTIc" not in html
     assert "1rgEg7oxpCreZpA42juxU0bSIpVBfRlb-" not in html
-    assert html.count("<img") == 7
+    assert html.count("<img") == 8
 
 
 def test_p0_tinware_aur_cocc_exact_sizes_sem_30ps():
@@ -294,7 +300,30 @@ def test_p0_tinware_aur_cocc_exact_sizes_sem_30ps():
     assert "1Cmt8" not in html
     assert "30PS" not in html
     assert html.count("assets/Cap2_engineBay_SRC-commons.jpg") == 1
-    assert html.count("<img") == 7
+    assert html.count("<img") == 8
+    avi = assets / "Cap2_P0_tinware_1965AVI_SRC-commons.jpg"
+    assert avi.is_file()
+    assert avi.stat().st_size == 409_825
+    assert avi.read_bytes()[:3] == b"\xff\xd8\xff"
+    assert avi.read_bytes() != aur.read_bytes()
+    assert avi.read_bytes() != cocc.read_bytes()
+    assert avi.read_bytes() != tin.read_bytes()
+    assert "Cap2_P0_tinware_1965AVI_SRC-commons.jpg" in html
+    assert "19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH" in html
+    assert "AVI2387" in html
+    assert "19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH" in readme
+    assert "409825" in readme
+    assert "AVI2387" in readme
+    assert html.find("Cap2_P0_tinware_AUR1500_SRC-commons.jpg") < html.find(
+        "Cap2_P0_tinware_1965AVI_SRC-commons.jpg"
+    )
+    assert html.find("Cap2_P0_tinware_coccinelle_SRC-commons.jpg") < html.find(
+        "Cap2_P0_tinware_1965AVI_SRC-commons.jpg"
+    )
+    assert "primário" in html.lower() and "terciár" in html.lower()
+    assert "aftermarket" in html.lower()
+    assert "não substitui" in html.lower() or "nao substitui" in html.lower()
+    assert html.count("assets/Cap2_P0_tinware_1965AVI_SRC-commons.jpg") == 1
 
 
 def test_proibido_pii_nomes_preco_isbn_canais():
@@ -406,7 +435,7 @@ def test_p1_mito_correcao_seis_linhas():
         assert correcao in table
     assert "Correção Heros" in table
     assert "✅" not in table
-    assert html.count("<img") == 7
+    assert html.count("<img") == 8
     assert "Cap2_engine1962" not in html
     assert "M6_T_engineBayTin" not in html
     assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html[start:end]
