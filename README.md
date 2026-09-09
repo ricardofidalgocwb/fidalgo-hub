@@ -111,7 +111,8 @@ O **Fidalgo Hub** também valida dados de governança financeira e familiar, sin
 fidalgo-hub/
 ├── config/notion_ids.json                    # IDs Notion SSOT (sem secrets)
 ├── dashboard/                                # Painel Founder + runner editorial
-├── tests/                                    # Máquina de status + guarda n8n + editorial
+├── sites/heros-custom/                       # Landing unpublished (agendamento + clube + vagas)
+├── tests/                                    # Máquina de status + guarda n8n + editorial + site Heros
 ├── .github/workflows/
 │   ├── weekly_metrics_validation.yml
 │   └── founder_panel_tests.yml

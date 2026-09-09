@@ -1,12 +1,12 @@
 # Heros Custom — site spec (face 3)
 
-**Status:** written spec in this repo only. Not published. No domain. Nothing live. Gold is already locked. This file is **not** a publish, a deploy, or HTML.
+**Status:** unpublished HTML in `sites/heros-custom/`. Not published. No domain. Nothing live. Gold v1.1 is locked. This file is **not** a publish or a deploy.
 
 **Public door today:** [https://www.instagram.com/heroseletric](https://www.instagram.com/heroseletric) (`@heroseletric`). Instagram remains the vitrine until Ricardo says otherwise.
 
-Heros Custom is **face 3** of the sibling grid. Same canonical IA and chrome as Eletro Fidalgo (face 1). Sibling IA lives in [`docs/sites/sibling-grid.md`](sibling-grid.md) (PR #3; may not be on `main` yet). Face 1 unpublished preview: `sites/eletro-fidalgo/` — do not edit it from this spec.
+Heros Custom is **face 3** of the sibling grid. Same canonical IA and chrome as Eletro Fidalgo (face 1). Sibling IA lives in [`docs/sites/sibling-grid.md`](sibling-grid.md). Face 1 unpublished preview: `sites/eletro-fidalgo/` — do not edit it from this spec.
 
-Copy below is pt-BR from Comunicação. Do not rewrite the tone.
+Copy is pt-BR, tom oficina T1 / rigor de engenharia. Sem hype de anúncio.
 
 ---
 
@@ -14,7 +14,7 @@ Copy below is pt-BR from Comunicação. Do not rewrite the tone.
 
 `Início` · `Serviços` · `Prova` · `Como` · `Contato`
 
-Do not add extra top-nav items. **Clube is not in this spec’s top nav.**
+Do not add extra top-nav items. **Clube is not in this spec’s top nav.** It is a section on Início and one of the five service CTAs.
 
 | Sibling | Target path |
 |---|---|
@@ -32,35 +32,40 @@ Same structure as EF. Do not invent a fourth door.
 |---|---|
 | Type | **Montserrat** (display / headings) + **Inter** (UI / body) |
 | Header | Wordmark “Heros Custom” + the five IA links. No Grupo Fidalgo door. |
-| Footer | Heros NAP (table below) + the same five links + **Grupo Fidalgo** endorsement chip |
+| Footer | Heros NAP (table below) + the same five links + **Grupo Fidalgo** endorsement chip + unpublished badge |
 | Proof photos | **4:3** only |
 | Chip | Footer only. Does not navigate to a fourth site. |
+| Banner | `UNPUBLISHED · DRAFT · Founder OK required to go live` on every page |
 
-## Palette
+## Palette (Gold v1.1 / COM-ALIGN-01)
 
-Gold `#C9A227` / carbon.
+Gold `#C9A227` / carbon `#0D0D0D` / panel `#1A1A1A` / paper `#F5F0E6`.
 
-Carbon has **no hex in this spec** — do not invent one. Do not reopen gold.
+Do not reopen gold. Do not invent a fifth brand hex.
 
 ---
 
-## Início
+## Início (MVP landing)
 
-**Headline:** Heros Custom — Elétrica de clássico. Sem improvisação.
+**Headline:** Heros Custom — Agendamento & Engenharia Clínica Aircooled
 
-**Sub:** peças e serviços pra veículos antigos, desde 2014, Curitiba.
+**Sub:** Bancada Type 1: agendamento, vistoria com Passaporte Digital, preventiva e corretiva. Clube e curadoria só com vaga confirmada pelo hub.
 
-**CTA:** only the oficina WhatsApp `(41) 99187-8091` (`https://wa.me/5541991878091`). No second CTA. No Instagram-as-CTA on this page (IG stays the public vitrine, not a home button).
+**CTA:** oficina WhatsApp `(41) 99187-8091` (`https://wa.me/5541991878091`) + âncora do formulário. No Instagram-as-CTA on this page (IG stays the public vitrine, not a home button).
+
+Landing sections, in order: hero · five CTAs · jornada · clube & curadoria · formulário.
 
 ## Serviços
 
-Hub only. Do not mint extra top-nav brands.
+Hub of **five** CTAs. Do not mint extra top-nav brands.
 
-1. Revisão elétrica
-2. Diagnóstico com fotos
-3. Chicote
-4. Painel
-5. Frunk
+1. Visita institucional
+2. Vistoria / Passaporte Digital
+3. Preventiva / corretiva (elétrica e mecânica; XLPE / Deutsch IP68 as differentiators — no invented PN or torque)
+4. Clube / guarda (sujeita a vaga)
+5. Vaga de curadoria (interesse — Ops confirma no Notion Vagas)
+
+Electrical shop items from the first Comunicação pass (revisão, diagnóstico com fotos, chicote, painel, frunk) fold into preventiva / corretiva. Do not put them back as extra top-level brands.
 
 ## Prova
 
@@ -70,30 +75,40 @@ Do **not** name any live OS, client, plate, or vehicle identity. Do not invent m
 
 ## Como
 
-Sequence (do not invent extra steps):
+Customer sequence (do not invent extra steps):
 
-fotos → orçamento → execução documentada → entrega
+Agendar → Vistoria → Execução → Entrega
+
+System side: **Notion OS + Passaporte Digital**. Never promise Trello as live ERP, automatic NF, or a live client portal in 2026.
 
 ## Contato (service home NAP — exact)
 
-This is the **only** NAP on the five pages. Do not put **557** here.
+This is the **only** NAP on the five pages. Do not put **557** here as address.
 
 | Field | Value |
 |---|---|
-| Address | Olímio Monteiro Soares **439**, Fanny |
+| Address | Rua Olímio Monteiro Soares **439**, Fanny, Curitiba |
 | WhatsApp | **(41) 99187-8091** — `https://wa.me/5541991878091` |
 | Instagram | `@heroseletric` — [instagram.com/heroseletric](https://www.instagram.com/heroseletric) |
 | E-mail | `heroscustomeletric@gmail.com` |
 
-No landline in this spec. Do not add CEP, CNPJ, CPF, or a second street number on Contato.
+No landline in this spec. Do not add CEP, CNPJ, CPF, or a second street number as NAP.
+
+### Formulário (MVP estático)
+
+Fields: nome · telefone/WhatsApp · veículo (Fusca / Kombi / outro) · tipo de serviço (as five CTAs) · observações.
+
+Submit: WhatsApp deep-link or `mailto:` with prefilled text. Do **not** add Formspree, Netlify Forms, n8n, Hotmart, or checkout. Repo does not already use those form backends.
+
+Guarda price, if mentioned: “a partir de R$ 650/mês, sujeita a vaga” — reference only.
 
 ---
 
-## 557 — garage / clube only
+## 557 — clube / curadoria / aluguel only
 
-**557 is not the service home.** Do not list 557 on Contato, in the footer NAP, or in the five-item IA.
+**557 is not the service home.** Do not list 557 as NAP on Contato, in the footer, or in the five-item IA.
 
-Mention 557 **only** as a possible future **Clube** page. That page is **not** in this spec. Add it later only with an explicit IA change.
+Mention 557 **lightly** only as clube / curadoria / aluguel context. Do not invent a Clube top-nav item. Do not invent free-slot counts (Notion Vagas has no public count).
 
 ---
 
@@ -102,6 +117,6 @@ Mention 557 **only** as a possible future **Clube** page. That page is **not** i
 1. NAP **never** crosses companies. Do not copy EF BR-116, `(41) 3333-8644`, or `(41) 99979-3395` onto Heros. Do not copy Heros 439 / `99187-8091` onto EF or FSE.
 2. `heroscustom.com` and `@heroscustom` are **not** this oficina.
 3. Public door today is Instagram `@heroseletric`. No live domain in this spec.
-4. No live OS names, no CPF, no invented metrics.
+4. No live OS names, no CPF, no invented metrics, no portal login, no NFT, no gamification checkout.
 5. Grupo Fidalgo chip is footer endorsement only — not a fourth face.
-6. This file is not a publish, deploy, Netlify site, or HTML under `sites/`.
+6. HTML in `sites/heros-custom/` is a draft preview. Founder OK required to go live.

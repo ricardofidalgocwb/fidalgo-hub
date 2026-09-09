@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Heros Custom MVP landing agendamento + clube + vagas (unpublished)
+
+### Adicionado
+- `sites/heros-custom/`: landing MVP (Início) com hero de agendamento, cinco CTAs, jornada Agendar → Vistoria → Execução → Entrega, secção Clube & curadoria e formulário estático WhatsApp/`mailto:`
+- Hub Serviços alinhado às cinco portas; Como com Notion OS + Passaporte (sem Trello ERP, sem NF automática, sem portal 2026)
+- Guarda pytest `tests/test_heros_custom_site.py` (banner unpublished, NAP 439, Gold v1.1, sem checkout/Hotmart/n8n)
+
+### Alterado
+- Spec `docs/sites/heros-custom.md` e README da pasta: Gold v1.1, NAP Rua Olímio Monteiro Soares 439, Fanny, Curitiba. Sem publish / sem domínio / Founder OK required to go live
+
+---
+
 ## [Unreleased] - TEC P1 N0 anti-spoiler + mini-trilha + Cap.2 mito (unpublished)
 
 ### Adicionado
