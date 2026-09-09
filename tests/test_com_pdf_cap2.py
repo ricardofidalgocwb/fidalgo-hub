@@ -205,7 +205,7 @@ def test_slot_tinware_commons_demais_ausentes():
     assert html.count("assets/Cap2_engineBay_SRC-commons.jpg") == 1
 
 
-def test_p0_prefixb_pass_pair_sem_stamp_a():
+def test_p0_prefixbd_pass_pair_sem_stamp_a():
     assets = PACOTE / "assets"
     crop = assets / "Cap2_P0_prefixBD_crop_SRC-commons.jpg"
     fan = assets / "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg"
@@ -221,8 +221,11 @@ def test_p0_prefixb_pass_pair_sem_stamp_a():
     assert tin.read_bytes() != fan.read_bytes()
     assert list(assets.glob("*prefixA*")) == []
     assert list(assets.glob("*HOLD_rimA*")) == []
-    assert list(assets.glob("Cap2_P0_prefixBD_*")) == []
-    assert not any(p.stat().st_size not in {241_948, 708_229} for p in assets.glob("Cap2_P0_prefixB_*"))
+    assert list(assets.glob("Cap2_P0_prefixB_*")) == []  # temp names gone after soft-rename
+    assert {p.name for p in assets.glob("Cap2_P0_prefixBD_*")} == {
+        "Cap2_P0_prefixBD_crop_SRC-commons.jpg",
+        "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg",
+    }
     assert "Cap2_P0_prefixBD_crop_SRC-commons.jpg" in html
     assert "Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg" in html
     assert "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc" in html
