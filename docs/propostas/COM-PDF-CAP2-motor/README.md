@@ -68,7 +68,7 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 
 **Status:** rascunho interno, **não publicado**. Sem site até OK Founder.
 
-**HOLD de naming:** Ops preferia `prefixB_*`; COS veredito = ficheiros `prefixBD_*` + label **BD**. Sem stamp A. Sem `prefixB_*` no pacote.
+**SSOT naming (COS):** ficheiros `Cap2_P0_prefixBD_crop_SRC-commons.jpg` + `Cap2_P0_prefixBD_fanbelt_SRC-commons.jpg` · label **BD** · Drive `1EPi6…` / `1jmhG…`. Sem stamp A · sem `prefixB_*` · sem HOLD_rimA.
 
 | Slot | Arquivo (temp) | Drive ID | Bytes |
 |---|---|---|---|
