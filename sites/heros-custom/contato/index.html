@@ -7,7 +7,7 @@
     <title>Contato — Heros Custom</title>
     <meta
       name="description"
-      content="Olímio Monteiro Soares 439, Fanny. WhatsApp (41) 99187-8091. Prévia não publicada."
+      content="Rua Olímio Monteiro Soares 439, Fanny, Curitiba. WhatsApp (41) 99187-8091. Formulário unpublished."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,8 +21,8 @@
     <a class="skip" href="#conteudo">Ir para o conteúdo</a>
     <div class="banner">
       <p>
-        Prévia não publicada — a vitrine pública continua no Instagram
-        @heroseletric até Ricardo publicar.
+        <span class="draft-en">UNPUBLISHED · DRAFT · Founder OK required to go live</span>
+        — rascunho institucional. Não publicar até OK do Ricardo.
       </p>
     </div>
     <header class="site-header">
@@ -53,12 +53,12 @@
           </p>
         </header>
 
-        <section class="section">
+        <div class="grid-2 section">
           <article class="panel">
-            <h2>NAP</h2>
+            <h2>NAP — casa de serviço</h2>
             <dl class="nap">
               <dt>Endereço</dt>
-              <dd>Olímio Monteiro Soares 439, Fanny</dd>
+              <dd>Rua Olímio Monteiro Soares 439, Fanny, Curitiba</dd>
               <dt>WhatsApp</dt>
               <dd>
                 <a href="https://wa.me/5541991878091">(41) 99187-8091</a>
@@ -74,20 +74,79 @@
                 >
               </dd>
             </dl>
+            <p class="note">
+              O 557 não é NAP. Entra só como contexto de clube, curadoria e
+              aluguel, se o assunto for esse.
+            </p>
             <p class="actions actions-after">
               <a class="btn btn-gold" href="https://wa.me/5541991878091"
                 >WhatsApp (41) 99187-8091</a
               >
             </p>
           </article>
-        </section>
+          <article class="panel">
+            <h2>Formulário</h2>
+            <p>
+              Envio abre WhatsApp da oficina ou o cliente de e-mail com o texto
+              pronto. Sem n8n, Hotmart ou pagamento.
+            </p>
+            <form class="form" id="contato-form" action="#" method="get">
+              <label>
+                Nome
+                <input type="text" name="nome" autocomplete="name" required />
+              </label>
+              <label>
+                Telefone / WhatsApp
+                <input type="tel" name="telefone" autocomplete="tel" required />
+              </label>
+              <label>
+                Veículo
+                <select name="veiculo" required>
+                  <option value="">Selecione</option>
+                  <option value="Fusca">Fusca</option>
+                  <option value="Kombi">Kombi</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </label>
+              <label>
+                Tipo de serviço
+                <select name="servico" id="servico" required>
+                  <option value="">Selecione</option>
+                  <option value="visita-institucional">Visita institucional</option>
+                  <option value="vistoria-passaporte">
+                    Vistoria / Passaporte Digital
+                  </option>
+                  <option value="preventiva-corretiva">
+                    Preventiva / corretiva
+                  </option>
+                  <option value="clube-guarda">Clube / guarda</option>
+                  <option value="vaga-curadoria">Vaga de curadoria</option>
+                </select>
+              </label>
+              <label>
+                Observações
+                <textarea name="notas"></textarea>
+              </label>
+              <div class="actions">
+                <button class="btn btn-solid" type="submit" data-channel="whatsapp">
+                  Enviar pelo WhatsApp
+                </button>
+                <button class="btn btn-ghost" type="submit" data-channel="mailto">
+                  Enviar por e-mail
+                </button>
+              </div>
+              <p class="form-status" id="form-status" tabindex="-1" role="status"></p>
+            </form>
+          </article>
+        </div>
       </div>
     </main>
     <footer class="site-footer">
       <div class="footer-inner footer-grid">
         <div class="nap-block">
+          <p class="badge-draft">UNPUBLISHED · DRAFT</p>
           <a class="wordmark" href="../">Heros Custom</a>
-          <p>Olímio Monteiro Soares 439, Fanny</p>
+          <p>Rua Olímio Monteiro Soares 439, Fanny, Curitiba</p>
           <p>
             WhatsApp
             <a href="https://wa.me/5541991878091">(41) 99187-8091</a>
@@ -119,9 +178,9 @@
         </div>
       </div>
       <p class="legal">
-        Prévia não publicada. A vitrine pública continua no Instagram
-        @heroseletric até Ricardo publicar. Sem domínio próprio.
-        heroscustom.com e @heroscustom não são esta oficina.
+        UNPUBLISHED · DRAFT · Heros Custom · sem métricas inventadas · Founder
+        OK required to go live. A vitrine pública continua no Instagram
+        @heroseletric. heroscustom.com e @heroscustom não são esta oficina.
       </p>
     </footer>
     <script src="../js/site.js"></script>

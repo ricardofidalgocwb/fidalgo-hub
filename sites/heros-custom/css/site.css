@@ -1,15 +1,16 @@
 /* Heros Custom — unpublished sibling-grid face.
-   Brand gold is #C9A227. Carbon gray is used as UI chrome only; this file
-   does not mint a canonical carbon hex. */
+   Gold v1.1 (COM-ALIGN-01): gold #C9A227 · carbon #0D0D0D · panel #1A1A1A · paper #F5F0E6 */
 :root {
   --gold: #c9a227;
-  --paper: #f3f4f6;
-  --white: #ffffff;
-  --ink: #1b1b1b;
-  --muted: #5c5c5c;
-  --line: #d6d6d6;
+  --carbon: #0d0d0d;
+  --panel: #1a1a1a;
+  --paper: #f5f0e6;
+  --white: #fffdf8;
+  --ink: #0d0d0d;
+  --muted: #5c5346;
+  --line: #d8d0c0;
   --focus: #c9a227;
-  --banner: #eeeae0;
+  --banner: #c9a227;
   --radius: 4px;
   --header-h: 4.25rem;
   --max: 68rem;
@@ -42,7 +43,7 @@ img {
 }
 
 a {
-  color: color-mix(in srgb, var(--gold) 70%, black);
+  color: color-mix(in srgb, var(--gold) 55%, var(--carbon));
   text-underline-offset: 0.18em;
 }
 
@@ -72,26 +73,31 @@ a:hover {
 
 .banner {
   background: var(--banner);
-  color: var(--ink);
-  border-bottom: 1px solid var(--line);
-  font-size: 0.8125rem;
-  letter-spacing: 0.01em;
+  color: var(--carbon);
+  border-bottom: 1px solid color-mix(in srgb, var(--carbon) 18%, var(--gold));
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .banner p {
   margin: 0;
-  padding: 0.45rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   text-align: center;
+}
+
+.banner .draft-en {
+  text-transform: uppercase;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--ink);
-  color: var(--white);
+  background: var(--carbon);
+  color: var(--paper);
   min-height: var(--header-h);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 0 rgba(201, 162, 39, 0.22);
 }
 
 .header-inner,
@@ -126,8 +132,8 @@ a:hover {
 .nav-toggle {
   display: none;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--white);
+  border: 1px solid rgba(245, 240, 230, 0.35);
+  color: var(--paper);
   font: 600 0.8rem/1 var(--font-body);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -145,7 +151,7 @@ a:hover {
 }
 
 .ia a {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(245, 240, 230, 0.82);
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
@@ -155,13 +161,13 @@ a:hover {
 
 .ia a:hover,
 .ia a[aria-current="page"] {
-  color: var(--white);
+  color: var(--paper);
   border-bottom-color: var(--gold);
 }
 
 .hero {
-  background: var(--ink);
-  color: var(--white);
+  background: var(--carbon);
+  color: var(--paper);
   padding: 3.5rem 0 3.75rem;
 }
 
@@ -191,15 +197,15 @@ h3 {
 }
 
 .hero h1 {
-  font-size: clamp(1.75rem, 3.4vw, 2.55rem);
-  max-width: 22ch;
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+  max-width: 28ch;
   margin: 0 0 1rem;
 }
 
 .lede {
-  max-width: 42rem;
+  max-width: 44rem;
   margin: 0 0 1.5rem;
-  color: #d4d4d4;
+  color: #e6dfd0;
   font-size: 1.0625rem;
 }
 
@@ -225,26 +231,42 @@ h3 {
   font-size: 0.95rem;
   text-decoration: none;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
-.btn-solid {
-  background: var(--gold);
-  color: var(--ink);
-}
-
-.btn-solid:hover {
-  background: color-mix(in srgb, var(--gold) 82%, white);
-  color: var(--ink);
-}
-
+.btn-solid,
 .btn-gold {
   background: var(--gold);
-  color: var(--ink);
+  color: var(--carbon);
 }
 
+.btn-solid:hover,
 .btn-gold:hover {
   background: color-mix(in srgb, var(--gold) 82%, white);
-  color: var(--ink);
+  color: var(--carbon);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(245, 240, 230, 0.4);
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.panel .btn-ghost,
+.form .btn-ghost {
+  color: var(--carbon);
+  border-color: color-mix(in srgb, var(--carbon) 28%, var(--paper));
+}
+
+.panel .btn-ghost:hover,
+.form .btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--carbon);
 }
 
 .page-head {
@@ -259,7 +281,7 @@ h3 {
 
 .page-head p {
   margin: 0;
-  max-width: 42rem;
+  max-width: 46rem;
   color: var(--muted);
 }
 
@@ -277,8 +299,10 @@ main {
   margin: 0 0 0.75rem;
 }
 
-.section p {
+.section > p,
+.section-lead {
   margin: 0 0 1rem;
+  max-width: 46rem;
 }
 
 .panel {
@@ -345,6 +369,43 @@ main {
   text-decoration: none;
 }
 
+.cta-strip {
+  background: var(--panel);
+  color: var(--paper);
+  padding: 2.1rem 0 2.25rem;
+}
+
+.cta-strip h2,
+.cta-strip .section-lead {
+  color: var(--paper);
+}
+
+.cta-strip .section-lead {
+  color: #d8d0c0;
+}
+
+.cta-strip .card {
+  background: var(--carbon);
+  border-color: rgba(201, 162, 39, 0.28);
+}
+
+.cta-strip .card h3 {
+  color: var(--gold);
+}
+
+.cta-strip .card p {
+  color: #e6dfd0;
+  font-size: 0.92rem;
+}
+
+.cta-strip .card a.more {
+  color: var(--gold);
+}
+
+.cta-strip .card a.more:hover {
+  color: var(--paper);
+}
+
 .sequence {
   counter-reset: step;
   list-style: none;
@@ -371,6 +432,20 @@ main {
   color: var(--gold);
 }
 
+.sequence strong {
+  display: block;
+  font-family: var(--font-display);
+  margin-bottom: 0.2rem;
+}
+
+.system-note {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  padding: 0.9rem 1rem;
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+
 .note {
   font-size: 0.92rem;
   color: var(--muted);
@@ -389,14 +464,14 @@ main {
 
 .shot-frame {
   aspect-ratio: 4 / 3;
-  border: 1px dashed #9a9a9a;
+  border: 1px dashed #9a8f7a;
   background:
     repeating-linear-gradient(
       -45deg,
-      #eef0f3,
-      #eef0f3 10px,
-      #e6e9ee 10px,
-      #e6e9ee 20px
+      #f5f0e6,
+      #f5f0e6 10px,
+      #ece4d4 10px,
+      #ece4d4 20px
     );
   display: grid;
   place-items: center;
@@ -431,9 +506,50 @@ main {
   margin: 0;
 }
 
+.form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+label {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+}
+
+textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form-status {
+  display: none;
+  background: color-mix(in srgb, var(--gold) 16%, var(--paper));
+  border: 1px solid var(--line);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  color: var(--carbon);
+}
+
+.form-status.is-visible {
+  display: block;
+}
+
 .site-footer {
-  background: #111;
-  color: #d4d4d4;
+  background: var(--carbon);
+  color: #d8d0c0;
   padding: 2.4rem 0 1.6rem;
   margin-top: 1rem;
 }
@@ -447,7 +563,7 @@ main {
 
 .site-footer h2 {
   font-family: var(--font-display);
-  color: var(--white);
+  color: var(--paper);
   font-size: 1rem;
   margin: 0 0 0.7rem;
 }
@@ -460,7 +576,7 @@ main {
 }
 
 .site-footer a {
-  color: #ececec;
+  color: var(--paper);
 }
 
 .footer-ia {
@@ -508,6 +624,18 @@ main {
   max-width: 16rem;
 }
 
+.badge-draft {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
 .legal {
   width: min(var(--max), calc(100% - 2.5rem));
   margin: 1.4rem auto 0;
@@ -515,6 +643,12 @@ main {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.8rem;
   color: #8e8e8e;
+}
+
+@media (max-width: 1100px) {
+  .cards-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 860px) {
@@ -536,7 +670,7 @@ main {
     left: 0;
     right: 0;
     top: 100%;
-    background: #111;
+    background: var(--panel);
     flex-direction: column;
     padding: 0.5rem 1.25rem 1rem;
     gap: 0;
