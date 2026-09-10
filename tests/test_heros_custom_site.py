@@ -1,4 +1,12 @@
-"""Guarda sites/heros-custom: MVP unpublished, NAP 439, sem promessas proibidas."""
+"""ENT gates — Founder OK MVP unpublished (Heros Custom).
+
+Locks:
+- 5 CTAs: visita · vistoria/Passaporte · preventiva · Clube/guarda · vaga curadoria
+- NAP Heros: Olímio Monteiro Soares 439 · WhatsApp (41) 99187-8091 · Gold #C9A227
+- Do NOT invent free parking slots (Vagas DB empty)
+- No publish / no n8n Active / no Hotmart go-live
+- Separate from Cap.2 tinware
+"""
 
 from __future__ import annotations
 
@@ -7,6 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "sites" / "heros-custom"
+CAP2 = ROOT / "docs" / "propostas" / "COM-PDF-CAP2-motor"
 PAGES = [
     SITE / "index.html",
     SITE / "servicos" / "index.html",
@@ -14,6 +23,26 @@ PAGES = [
     SITE / "como" / "index.html",
     SITE / "contato" / "index.html",
 ]
+
+CTAS = (
+    ("visita-institucional", "Visita institucional"),
+    ("vistoria-passaporte", "Vistoria / Passaporte Digital"),
+    ("preventiva-corretiva", "Preventiva / corretiva"),
+    ("clube-guarda", "Clube / guarda"),
+    ("vaga-curadoria", "Vaga de curadoria"),
+)
+
+SLOT_COUNT_RE = re.compile(
+    r"""
+    (?:\d+\s+vagas?\s+livres)
+    | (?:vagas?\s+livres\s*[:=]\s*\d+)
+    | (?:\d+\s+vagas?\s+(?:de\s+)?(?:guarda|estacionamento|parking))
+    | (?:estacionamento\s+livre)
+    | (?:há\s+\d+\s+vagas)
+    | (?:ha\s+\d+\s+vagas)
+    """,
+    re.I | re.X,
+)
 
 
 def _read(path: Path) -> str:
@@ -41,26 +70,41 @@ def test_unpublished_banner_e_pt_br():
         assert "UNPUBLISHED · DRAFT" in html
 
 
-def test_gold_v11_tokens():
-    css = _read(SITE / "css" / "site.css").lower()
-    assert "#c9a227" in css
-    assert "#0d0d0d" in css
-    assert "#1a1a1a" in css
-    assert "#f5f0e6" in css
+def test_gold_c9a227():
+    css = _read(SITE / "css" / "site.css")
+    assert "#C9A227" in css or "#c9a227" in css
+    assert re.search(r"--gold:\s*#c9a227", css, re.I)
+    assert "#C9A227" in _read(SITE / "README.md")
 
 
-def test_cinco_ctas_e_jornada():
+def test_cinco_ctas_exactas():
     home = _read(SITE / "index.html")
     servicos = _read(SITE / "servicos" / "index.html")
-    como = _read(SITE / "como" / "index.html")
+    contato = _read(SITE / "contato" / "index.html")
+    js = _read(SITE / "js" / "site.js")
+    for slug, label in CTAS:
+        for blob in (home, servicos, contato, js):
+            assert slug in blob, slug
+        for blob in (home, servicos, contato):
+            assert label in blob, label
     for blob in (home, servicos):
-        assert "Visita institucional" in blob
-        assert "Vistoria / Passaporte Digital" in blob
-        assert "Preventiva / corretiva" in blob
-        assert "Clube / guarda" in blob
-        assert "Vaga de curadoria" in blob
         assert "XLPE" in blob
         assert "Deutsch IP68" in blob
+    for html in (home, contato):
+        options = [
+            value
+            for value in re.findall(
+                r'<option value="([^"]*)">',
+                html[html.find('id="servico"') : html.find("</select>", html.find('id="servico"'))],
+            )
+            if value
+        ]
+        assert options == [slug for slug, _label in CTAS], options
+
+
+def test_jornada_quatro_passos():
+    home = _read(SITE / "index.html")
+    como = _read(SITE / "como" / "index.html")
     for blob in (home, como):
         assert "Agendar" in blob
         assert "Vistoria" in blob
@@ -89,7 +133,7 @@ def test_formulario_estatico():
     assert "netlify" not in (home + contato + js).lower()
 
 
-def test_nap_439_nao_557():
+def test_nap_439_whatsapp_99187():
     blob = _all_html()
     assert "Olímio Monteiro Soares 439" in blob
     assert "Fanny" in blob
@@ -103,6 +147,8 @@ def test_nap_439_nao_557():
         nap_block = html[start : start + 900]
         assert "557" not in nap_block
         assert "439" in nap_block
+        assert "99187-8091" in nap_block
+        assert "wa.me/5541991878091" in nap_block
     home = _read(SITE / "index.html")
     assert "557" in home
     assert "contexto de clube" in home.lower()
@@ -112,7 +158,7 @@ def test_ia_cinco_itens_sem_clube_no_nav():
     for page in PAGES:
         html = _read(page)
         nav = html.split('aria-label="Principal"', 1)[1].split("</nav>", 1)[0]
-        assert "Início" in nav or "Início" in html
+        assert "Início" in nav
         assert "Serviços" in nav
         assert "Prova" in nav
         assert "Como" in nav
@@ -120,25 +166,44 @@ def test_ia_cinco_itens_sem_clube_no_nav():
         assert "Clube" not in nav
 
 
-def test_proibidos_e_sem_metricas():
+def test_nao_inventa_vagas_livres():
+    blob = _all_html() + _read(SITE / "js" / "site.js") + _read(SITE / "README.md")
+    lower = blob.lower()
+    assert SLOT_COUNT_RE.search(blob) is None
+    assert "não inventa vagas livres" in lower or "nao inventa vagas livres" in lower
+    assert "sujeita a vaga" in lower
+    assert "r$ 650" in lower
+
+
+def test_sem_publish_n8n_active_hotmart_golive():
     html = _all_html()
     js = _read(SITE / "js" / "site.js")
-    blob = html + js
-    lower = blob.lower()
-    assert "hotmart" not in lower or "sem n8n, hotmart" in lower
-    assert "n8n" not in lower or "sem n8n" in lower
+    lower = (html + js).lower()
+    assert "n8n active" not in lower
+    assert "sem n8n" in lower
+    assert "hotmart" in lower
+    assert "sem n8n, hotmart" in lower
+    assert "founder ok required to go live" in lower
     assert "nft" not in lower
-    assert "trello" in lower
     assert "não há trello como erp vivo" in lower or "nao ha trello como erp vivo" in lower
     assert "portal do cliente em 2026" in lower
-    assert "login" in lower
-    assert not re.search(r"\d+\s+vagas livres", lower)
-    assert "sem métricas inventadas" in lower or "sem metricas inventadas" in lower
-    assert "r$ 650" in lower
-    assert "sujeita a vaga" in lower
     assert "3333-8644" not in html
     assert "99979-3395" not in html
     assert "BR 116" not in html and "BR-116" not in html
+    assert not (SITE / "netlify.toml").exists()
+    assert not (SITE / ".netlify").exists()
+
+
+def test_separado_do_cap2_tinware():
+    site_blob = _all_html() + _read(SITE / "css" / "site.css") + _read(SITE / "js" / "site.js")
+    assert "Cap2_P0_tinware" not in site_blob
+    assert "COM-PDF-CAP2" not in site_blob
+    assert "AUR1500" not in site_blob
+    assert "coccinelle" not in site_blob.lower()
+    if CAP2.is_dir():
+        cap2_html = CAP2 / "index.html"
+        if cap2_html.is_file():
+            assert "sites/heros-custom" not in _read(cap2_html)
 
 
 def test_css_js_sem_typo_box_sizing():

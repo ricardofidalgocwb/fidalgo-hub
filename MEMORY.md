@@ -2,11 +2,11 @@
 
 ## Site Heros Custom MVP (unpublished, 09/09/2026)
 - HTML em `sites/heros-custom/` — sibling-grid face 3, **não publicar** até OK Founder
-- Landing: Agendamento & Engenharia Clínica Aircooled; 5 CTAs (visita, vistoria/Passaporte, preventiva/corretiva XLPE·Deutsch IP68, clube/guarda, vaga de curadoria)
-- Jornada cliente: Agendar → Vistoria → Execução → Entrega; sistema = Notion OS + Passaporte — sem Trello ERP, sem NF automática, sem portal 2026
-- NAP só 439 Fanny; 557 = contexto clube/curadoria/aluguel; guarda «a partir de R$ 650/mês, sujeita a vaga»; sem contar vagas livres
-- Form estático WhatsApp `wa.me/5541991878091` ou mailto; sem n8n / Hotmart / Formspree / Netlify Forms
-- Gold v1.1: `#C9A227` / `#0D0D0D` / `#1A1A1A` / `#F5F0E6`
+- ENT gates (`tests/test_heros_custom_site.py`): 5 CTAs (visita · vistoria/Passaporte · preventiva · Clube/guarda · vaga curadoria); NAP 439 + WhatsApp (41) 99187-8091 + Gold `#C9A227`; sem vagas livres inventadas; sem publish / n8n Active / Hotmart go-live
+- Landing: Agendamento & Engenharia Clínica Aircooled; jornada Agendar → Vistoria → Execução → Entrega; sistema = Notion OS + Passaporte
+- 557 = contexto clube/curadoria/aluguel; guarda «a partir de R$ 650/mês, sujeita a vaga»
+- Form estático WhatsApp `wa.me/5541991878091` ou mailto; sem Formspree / Netlify Forms
+- Branch separado do Cap.2 tinware (`cursor/heros-custom-mvp-landing-7363`)
 
 ## Dashboard Founder (decisão 26/08/2026)
 - Painel interno no repo: `dashboard/` · marca **Heros Custom**
