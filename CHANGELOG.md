@@ -12,10 +12,31 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ### Adicionado
 - `sites/heros-custom/`: landing MVP (Início) com hero de agendamento, cinco CTAs, jornada Agendar → Vistoria → Execução → Entrega, secção Clube & curadoria e formulário estático WhatsApp/`mailto:`
 - Hub Serviços alinhado às cinco portas; Como com Notion OS + Passaporte (sem Trello ERP, sem NF automática, sem portal 2026)
-- Guarda pytest `tests/test_heros_custom_site.py` (banner unpublished, NAP 439, Gold v1.1, sem checkout/Hotmart/n8n)
+- Guarda pytest ENT `tests/test_heros_custom_site.py` (5 CTAs, NAP 439, WhatsApp 99187-8091, Gold `#C9A227`, sem vagas livres inventadas, sem publish / n8n Active / Hotmart)
 
 ### Alterado
-- Spec `docs/sites/heros-custom.md` e README da pasta: Gold v1.1, NAP Rua Olímio Monteiro Soares 439, Fanny, Curitiba. Sem publish / sem domínio / Founder OK required to go live
+- Spec `docs/sites/heros-custom.md` e README da pasta: Gold v1.1, NAP Rua Olímio Monteiro Soares 439, Fanny, Curitiba. Sem publish / sem domínio / Founder OK required to go live. Branch separado do Cap.2 tinware
+
+---
+
+## [Unreleased] - Cap.2 tinware 1965AVI face terciária P1 (unpublished)
+
+### Adicionado
+- Cap.2 §7 face terciária opcional: `Cap2_P0_tinware_1965AVI_SRC-commons.jpg` (409825, Drive `19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH`, Commons AVI2387). Dupla carburação pode ser aftermarket. **Não** promove sobre AUR1500 + Coccinelle
+
+### Alterado
+- P0 primário continua AUR1500 + Coccinelle. Sem `*30PS*`. Sem site / sem publish / sem Hotmart
+
+---
+
+## [Unreleased] - Cap.2 tinware AUR1500 + Coccinelle (unpublished)
+
+### Adicionado
+- Cap.2 §7 tinware-completo: `Cap2_P0_tinware_AUR1500_SRC-commons.jpg` (483449, Drive `1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ`, Commons AUR 131F) + `Cap2_P0_tinware_coccinelle_SRC-commons.jpg` (1111977, Drive `1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M`, Commons Coccinelle beige)
+- Guarda pytest: tamanhos exactos; `Cap2_engineBay` permanece (não é DUP); sem `*30PS*` / `1Cmt8` em `assets/`
+
+### Alterado
+- Stamp B = AUSENTE (não inventar). Prefixo BD + bay intactos. Sem site / sem publish / sem Hotmart
 
 ---
 
