@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - HA-PART P0 catalog slots unpublished (Heros Custom)
+
+### Adicionado
+- `sites/heros-custom/pecas/`: 10 tipadas elétricas ACE Mestra (bobina · distrib · tampa · cabos · WR8AC · regulador · arranque · chave · B+ · malha). Soft visível em 0002 / 0031. Sem Loja no HTML
+- Guarda `tests/test_ha_part_p0_catalog.py` (bytes exactos + noindex + bans de Loja)
+
+### Alterado
+- IA + Peças (index + siblings). Sem publish / sem domínio / sem Hotmart. preço Loja = VEN+Founder depois
+
+---
+
 ## [Unreleased] - Cap.2 Interativo P1 write-line + 3 perguntas abertas (unpublished)
 
 ### Adicionado

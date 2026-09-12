@@ -1,5 +1,11 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## HA-PART P0 catalog slots (unpublished, 12/09/2026)
+- `sites/heros-custom/pecas/` — 10 elétricas ACE Mestra, tipadas Drive, **não publicar**
+- Soft visível: `MO-0002` (filename vs face) · `MO-0031` (cabo aftermarket)
+- Sem Loja no HTML; preço Loja = VEN+Founder depois. T1 only. Sem alt/dínamo/caixa8/12
+- Guarda: `tests/test_ha_part_p0_catalog.py`
+
 ## Site Heros Custom MVP (unpublished, 09/09/2026)
 - HTML em `sites/heros-custom/` — sibling-grid face 3, **não publicar** até OK Founder
 - ENT gates (`tests/test_heros_custom_site.py`): 5 CTAs (visita · vistoria/Passaporte · preventiva · Clube/guarda · vaga curadoria); NAP 439 + WhatsApp (41) 99187-8091 + Gold `#C9A227`; sem vagas livres inventadas; sem publish / n8n Active / Hotmart go-live
