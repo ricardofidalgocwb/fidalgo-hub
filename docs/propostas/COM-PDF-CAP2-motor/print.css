@@ -434,6 +434,36 @@ th.gold {
   color: color-mix(in srgb, var(--paper) 78%, var(--carbon));
 }
 
+.qblock {
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.8rem;
+  margin: 0.45rem 0;
+}
+
+.qblock h3 {
+  margin: 0 0 0.35rem;
+}
+
+.qblock ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.qblock li {
+  margin: 0.45rem 0 0.7rem;
+}
+
+.write {
+  display: block;
+  min-height: 1.55rem;
+  margin-top: 0.3rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+td p {
+  margin: 0.35rem 0 0;
+}
+
 .gate {
   border: 1px solid var(--gold);
   padding: 0.65rem 0.8rem;
@@ -493,8 +523,10 @@ th.gold {
   .two-col,
   table,
   .slots,
+  .qblock,
   .quiz > li,
-  .cta {
+  .cta,
+  .write {
     break-inside: avoid;
   }
 

@@ -8,7 +8,7 @@
 |---|---|---|
 | **Capa** | Type 1 · anatomia motor refrigerado a ar · unpublished | Completa |
 | **Miolo Cap.2** | Conceito · fluxo ar/óleo · tinware · spec códigos · mito × correção · ponte bancada | Completa (texto Acervo) |
-| **Bridge Aprendiz** | Checklist peças 1–8 + ☐ + selo domínio | Completa |
+| **Bridge Aprendiz** | Checklist peças 1–8 + ☐ + selo domínio · write-line Motor + 3 perguntas abertas (Interativo P1) | Completa |
 | **Quiz** | «Nomeie a peça» 10Q · gabarito **só no fim** | Completa |
 | **Ponte N0** | Tensão + caixa + gerador = outro PDF | Só ponte — não miolo |
 
