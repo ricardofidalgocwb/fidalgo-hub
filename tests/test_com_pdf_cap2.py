@@ -499,6 +499,63 @@ def test_interativo_p1_write_e_perguntas_abertas():
     assert "✅" not in _quiz_options_blob(html)
 
 
+def test_tec_soft_write3q_identificacao_sem_torque_sem_eletrica_prova():
+    """TEC PASS soft: no torque in miolo; elétrica = N0 handoff; write+3Q = ID only."""
+    html = _html()
+    miolo = _miolo(html)
+    miolo_l = miolo.lower()
+    assert "torque" not in miolo_l
+    assert "folga" not in miolo_l
+    assert "Perguntas abertas" in miolo
+    assert "Aponte no bay" in miolo
+    abertas = re.search(
+        r'class="qblock"[^>]*aria-labelledby="cap2-abertas"(.*?)</section>',
+        html,
+        flags=re.S,
+    )
+    assert abertas, "subsecção perguntas abertas não encontrada"
+    motor = re.search(
+        r"<td>\s*Motor\s*</td>\s*<td>(.*?)</td>",
+        html,
+        flags=re.S,
+    )
+    assert motor
+    bloco = (motor.group(1) + abertas.group(1)).lower()
+    bloco_flat = re.sub(r"\s+", " ", bloco)
+    for token in ("prefixo", "bay", "lata", "aletas", "óleo"):
+        assert token in bloco_flat
+    assert "térmico" in bloco_flat
+    for banned in (
+        "torque",
+        "folga",
+        "tensão",
+        "tensao",
+        "dínamo",
+        "dinamo",
+        "alternador",
+        "12 v",
+        "item 9",
+        "multímetro",
+        "multimetro",
+        "fusível",
+        "fusivel",
+        "foto da caixa",
+        "crimp",
+        "ohm",
+        "ω",
+        "Ω",
+    ):
+        assert banned not in bloco_flat, banned
+    assert not re.search(r"\bpn\b", bloco_flat)
+    after = html[html.find("<h2>6. Checklist Aprendiz") :]
+    assert "Item 9 — elétrica = N0 only" in after
+    assert "tensão medida" in after.lower()
+    assert "Item 9" not in abertas.group(1)
+    assert "N0 only" not in abertas.group(1)
+    assert html.find('id="cap2-abertas"') < html.find("Item 9 — elétrica = N0 only")
+    assert html.find("Item 9 — elétrica = N0 only") < html.find('class="quiz"')
+
+
 def test_gold_v11_tokens():
     css = CSS.read_text(encoding="utf-8")
     assert "#C9A227" in css

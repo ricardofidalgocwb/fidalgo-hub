@@ -15,6 +15,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Alterado
 - `print.css`: `.write` + `.qblock` (padrão N0). Guarda pytest leve. Sem site / sem publish / sem Hotmart. T1 only
+- TEC soft (didático PASS): torque **não** entra no miolo; elétrica continua ponte N0 (não prova Cap.2); write+3Q = identificação/critério (prefixo · bay · lata · aletas · óleo térmico)
 
 ---
 

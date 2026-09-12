@@ -93,8 +93,9 @@ Requisitos: `google-chrome` ou `chromium` no PATH. As tipadas Commons estão em 
 - Sem Instagram
 - Sem n8n
 - Sem foto de cliente / stock / IA; tipadas Commons: tinware P0 primário AUR1500 + Coccinelle; 1965AVI só face terciária P1 opcional (dupla pode ser aftermarket); bay + P0 prefixo/correia (`prefixBD_*`, label BD)
-- Sem cv / torque / folga / pistão inventado
-- Sem misturar N0 no miolo motor (item 9 = só ponte)
+- Sem cv / torque / folga / pistão inventado. Torque do Acervo fica **fora** do miolo PDF (soft TEC)
+- Sem misturar N0 no miolo motor (item 9 = só ponte / handoff; elétrica **não** é pergunta de prova do Cap.2)
+- Write + 3Q = identificação / critério only (prefixo · bay · lata · aletas · óleo térmico)
 - Type 3 = outro módulo
 - BV / Brasília / SP2 (BL 1678) = fora (não são Type 1 Fusca)
 - Sem Hércules-curso (método de box ≠ nome deste capítulo)
