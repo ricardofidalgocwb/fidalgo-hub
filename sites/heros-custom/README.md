@@ -26,7 +26,7 @@ Do **not**:
 
 ## Routes (canonical IA)
 
-Only these five items appear in the header and footer:
+Header and footer IA (Peças = HA-PART P0 unpublished, sem Loja):
 
 | Label    | Path       |
 |----------|------------|
@@ -34,6 +34,7 @@ Only these five items appear in the header and footer:
 | Serviços | `/servicos`|
 | Prova    | `/prova`   |
 | Como     | `/como`    |
+| Peças    | `/pecas`   |
 | Contato  | `/contato` |
 
 Grupo Fidalgo is a footer endorsement chip. It is not a link and not a fourth site.
@@ -70,6 +71,7 @@ Then open:
 - http://127.0.0.1:4174/servicos/
 - http://127.0.0.1:4174/prova/
 - http://127.0.0.1:4174/como/
+- http://127.0.0.1:4174/pecas/
 - http://127.0.0.1:4174/contato/
 
 No Netlify site, no production publish, no secrets, no custom domain.
