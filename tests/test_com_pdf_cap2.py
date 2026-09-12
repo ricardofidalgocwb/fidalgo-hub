@@ -447,6 +447,115 @@ def test_p1_mito_correcao_seis_linhas():
     assert re.search(r"<img\b", ventoinha, re.I)
 
 
+def test_interativo_p1_write_e_perguntas_abertas():
+    html = _html()
+    css = CSS.read_text(encoding="utf-8")
+    assert ".write" in css
+    assert "border-bottom" in css
+    assert html.count('class="write"') == 4
+    assert html.count('class="write" aria-hidden="true"') == 4
+    assert (
+        "Aponte no bay: prefixo no bloco · ventoinha/correia · 1 lata que"
+        in html
+    )
+    assert "fecha o fluxo · aletas visíveis." in html
+    motor = re.search(
+        r"<td>\s*Motor\s*</td>\s*<td>(.*?)</td>",
+        html,
+        flags=re.S,
+    )
+    assert motor, "célula Motor da ponte não encontrada"
+    assert 'class="write"' in motor.group(1)
+    assert "Aponte no bay" in motor.group(1)
+    abertas = re.search(
+        r'class="qblock"[^>]*aria-labelledby="cap2-abertas"(.*?)</section>',
+        html,
+        flags=re.S,
+    )
+    assert abertas, "subsecção perguntas abertas não encontrada"
+    bloco = abertas.group(1)
+    assert "Perguntas abertas" in bloco
+    qs = (
+        "Qual letra de família lês no prefixo do bloco, e por que o ano do CRLV não data o motor sozinho?",
+        "Sem uma lata no lugar, o que o ar faz em vez de passar nas aletas — e o que isso tem a ver com superaquecimento?",
+        "Em uma frase: correia → ventoinha → latas → aletas; onde o óleo entra como agente térmico (não só lubrificante)?",
+    )
+    for q in qs:
+        assert q in re.sub(r"\s+", " ", bloco)
+    assert bloco.count('class="write"') == 3
+    novo = motor.group(1) + bloco
+    novo_l = novo.lower()
+    assert "Ω" not in novo
+    assert "ω" not in novo_l
+    assert "ohm" not in novo_l
+    assert "torque" not in novo_l
+    assert "crimp" not in novo_l
+    assert not re.search(r"\bpn\b", novo_l)
+    quiz_idx = html.find('class="quiz"')
+    gabarito_idx = html.lower().rfind("gabarito")
+    assert quiz_idx != -1 and gabarito_idx > quiz_idx
+    assert html.find('id="cap2-abertas"') < quiz_idx
+    assert "1A · 2A · 3B · 4B · 5A · 6B · 7B · 8B · 9B · 10B" in html[gabarito_idx:]
+    assert "✅" not in _quiz_options_blob(html)
+
+
+def test_tec_soft_write3q_identificacao_sem_torque_sem_eletrica_prova():
+    """TEC PASS soft: no torque in miolo; elétrica = N0 handoff; write+3Q = ID only."""
+    html = _html()
+    miolo = _miolo(html)
+    miolo_l = miolo.lower()
+    assert "torque" not in miolo_l
+    assert "folga" not in miolo_l
+    assert "Perguntas abertas" in miolo
+    assert "Aponte no bay" in miolo
+    abertas = re.search(
+        r'class="qblock"[^>]*aria-labelledby="cap2-abertas"(.*?)</section>',
+        html,
+        flags=re.S,
+    )
+    assert abertas, "subsecção perguntas abertas não encontrada"
+    motor = re.search(
+        r"<td>\s*Motor\s*</td>\s*<td>(.*?)</td>",
+        html,
+        flags=re.S,
+    )
+    assert motor
+    bloco = (motor.group(1) + abertas.group(1)).lower()
+    bloco_flat = re.sub(r"\s+", " ", bloco)
+    for token in ("prefixo", "bay", "lata", "aletas", "óleo"):
+        assert token in bloco_flat
+    assert "térmico" in bloco_flat
+    for banned in (
+        "torque",
+        "folga",
+        "tensão",
+        "tensao",
+        "dínamo",
+        "dinamo",
+        "alternador",
+        "12 v",
+        "item 9",
+        "multímetro",
+        "multimetro",
+        "fusível",
+        "fusivel",
+        "foto da caixa",
+        "crimp",
+        "ohm",
+        "ω",
+        "Ω",
+    ):
+        assert banned not in bloco_flat, banned
+    assert not re.search(r"\bpn\b", bloco_flat)
+    after = html[html.find("<h2>6. Checklist Aprendiz") :]
+    assert "Item 9 — elétrica = N0 only" in after
+    assert "tensão medida" in after.lower()
+    assert "Item 9" not in abertas.group(1)
+    assert "N0 only" not in abertas.group(1)
+    assert html.find('id="cap2-abertas"') < html.find("Item 9 — elétrica = N0 only")
+    assert html.find("Item 9 — elétrica = N0 only") < html.find('class="quiz"')
+
+
 def test_gold_v11_tokens():
     css = CSS.read_text(encoding="utf-8")
     assert "#C9A227" in css

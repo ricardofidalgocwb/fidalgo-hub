@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Cap.2 Interativo P1 write-line + 3 perguntas abertas (unpublished)
+
+### Adicionado
+- Cap.2 §5 ponte / Motor: linha em branco N0 (`.write`) — `Aponte no bay: prefixo no bloco · ventoinha/correia · 1 lata que fecha o fluxo · aletas visíveis.`
+- 3 perguntas abertas (1 frase) após a tabela «Ponte para a bancada», cada uma com `.write`. Fora da zona do quiz. Sem Ω / torque / PN inventado
+
+### Alterado
+- `print.css`: `.write` + `.qblock` (padrão N0). Guarda pytest leve. Sem site / sem publish / sem Hotmart. T1 only
+- TEC soft (didático PASS): torque **não** entra no miolo; elétrica continua ponte N0 (não prova Cap.2); write+3Q = identificação/critério (prefixo · bay · lata · aletas · óleo térmico)
+
+---
+
 ## [Unreleased] - Heros Custom MVP landing agendamento + clube + vagas (unpublished)
 
 ### Adicionado
