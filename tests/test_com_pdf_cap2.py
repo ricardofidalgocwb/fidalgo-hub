@@ -158,6 +158,8 @@ def test_quiz_literais_sem_check_nas_opcoes():
     assert "Controla fluxo a frio" in html
     assert "N0 / Cap.14" in html
     assert "Não fecha" in html
+    assert "Não fecha (sem evidência / padrão de oficina com foto)" in html
+    assert "padrão OS" not in html
     assert "1A · 2A · 3B · 4B · 5A · 6B · 7B · 8B · 9B · 10B" in html
     opcoes = _quiz_options_blob(html)
     assert "✅" not in opcoes
@@ -646,4 +648,7 @@ def test_tom_instrutivo_blocos_ace_e_cortes_jargao():
     assert "hotmart" not in html.lower()
     assert "R$" not in html
     assert "preço" not in html.lower()
+    assert "padrão OS" not in html
+    assert "OS viva" not in html
+    assert "Acervo" not in caps
 
