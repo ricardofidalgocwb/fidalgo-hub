@@ -144,7 +144,9 @@ a:hover {
 
 .ia {
   display: flex;
-  gap: 0.15rem 1.35rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.15rem 1.1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -643,9 +645,152 @@ textarea {
   text-decoration: underline;
 }
 
-.nap-block p {
+.nap-block p,
+.brand-block p {
   margin: 0 0 0.35rem;
   font-size: 0.95rem;
+}
+
+.player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 1.5rem 0 0;
+  background: var(--carbon);
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.player-posters {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.player-posters img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.38;
+}
+
+.player-copy {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.25rem;
+  color: var(--paper);
+}
+
+.player-badge {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+}
+
+.player-hint {
+  margin: 0.55rem 0 0;
+  max-width: 36rem;
+  color: #e6dfd0;
+  font-size: 0.95rem;
+}
+
+.arco-aula {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.arco-aula article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 1.15rem 1.25rem 1.1rem;
+}
+
+.arco-aula h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  color: var(--gold);
+}
+
+.arco-aula p,
+.arco-aula li {
+  margin: 0;
+  color: var(--ink);
+}
+
+.arco-aula ol,
+.arco-aula ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.arco-aula li + li {
+  margin-top: 0.35rem;
+}
+
+.tipada-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.85rem;
+}
+
+.tipada-pair figure {
+  margin: 0;
+}
+
+.tipada-pair img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.tipada-pair figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.aula-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.aula-pager a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cards-aulas {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card-aula .meta {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
 .chip {
@@ -707,6 +852,8 @@ textarea {
   .cards,
   .cards-5,
   .cards-catalog,
+  .cards-aulas,
+  .tipada-pair,
   .shots,
   .footer-grid {
     grid-template-columns: 1fr;

@@ -1,5 +1,12 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## N0 A1–A6 player/páginas unpublished (13/09/2026)
+- HUB-videoaula-roteiros-p0-1309 · Founder Gerar · COS GO · draft unpublished
+- `sites/heros-custom/aulas/` — índice + A1–A6; player placeholder; sem embed real
+- Tipadas A3/A4 byte-exact do pack N0; A1–A2/A5–A6 sem foto inventada
+- Miolo: arco COM; sem R$/NAP/Zap/OS viva/Hotmart/Drive ID em caption
+- IA «Aulas» no header. Sem YouTube / Hotmart / n8n / domínio. Merge = Founder
+
 ## N0 + Cap.2 tom instrutivo (unpublished, 13/09/2026)
 - HUB-ebook-tom-instrutivo-1309 · base `a57016ac` · draft unpublished
 - N0: 6 aulas ACE + arco COM (objetivo → como → cheque). Cap.2: Blocos A–D
