@@ -1,5 +1,12 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## N0 + Cap.2 tom instrutivo (unpublished, 13/09/2026)
+- HUB-ebook-tom-instrutivo-1309 · base `a57016ac` · draft unpublished
+- N0: 6 aulas ACE + arco COM (objetivo → como → cheque). Cap.2: Blocos A–D
+- Cortes miolo: sem OS/Path/Staff/NAP/preço/Drive ID em legenda. Cânon 12 V BR=1968 intacto
+- Tipadas byte-exact. Quiz + write intactos. Sem publish / Hotmart STOP
+- Rubrica fina COM/ACE = follow-up. HA-PART fora do miolo N0/Cap.2
+
 ## HA-PART P0 catalog slots (unpublished, 12/09/2026)
 - `sites/heros-custom/pecas/` — 10 elétricas ACE Mestra, tipadas Drive, **não publicar**
 - Soft visível: `MO-0002` (filename vs face) · `MO-0031` (cabo aftermarket)
