@@ -2,7 +2,9 @@
 
 **Status:** rascunho interno 0.2, **não publicado**. Sem site até OK Founder. Não implantar. Não enviar como curso no ar. Pacote **separado** do COM-PDF-APR-N0 / PR#15.
 
-**Aprendiz testa como aluno** — lê §§1–5, marca o checklist 1–8 ☐, responde o quiz «nomeie a peça». Não trata este PDF como publicação.
+**Aprendiz testa como aluno** — lê §§1–5 (Blocos A–D), marca o checklist 1–8 ☐, responde o quiz «nomeie a peça». Não trata este PDF como publicação.
+
+**P0 tom 13/09 (unpublished):** arco COM por bloco (o quê → por quê → como → cheque → erro comum → próximo) + molde ACE (título · objetivo · evidência · exercício · próximo). Rubrica fina pode refinar num follow-up. Miolo = aluno global; sem jargão Staff/OS/Path. Sem preço.
 
 | Bloco | O que é | Neste PDF |
 |---|---|---|

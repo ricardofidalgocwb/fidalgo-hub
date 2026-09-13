@@ -7,6 +7,19 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 + Cap.2 tom instrutivo global unpublished (HUB-ebook-tom-instrutivo-1309)
+
+### Adicionado
+- N0: 6 aulas ACE (Energia zero → Multímetro parado) com arco COM o quê → por quê → como → cheque → erro comum → próximo
+- Cap.2: Blocos A–D (Type 1 · prefixo · fluxo ar/óleo · checklist motor) no mesmo arco
+- Guardas pytest de tom (sem R$/NAP/OS/Path/Staff no miolo; legendas humanas sem Drive ID)
+
+### Alterado
+- Framing N0 + Cap.2: aluno global («você»), legendas humanas, «duas OS» → dois serviços, próximo sem código interno
+- Tipadas byte-exact intactas. Quiz anti-spoiler + write+3Q + mito intactos. Sem site / sem publish / sem Hotmart
+
+---
+
 ## [Unreleased] - HA-PART P0 catalog slots unpublished (Heros Custom)
 
 ### Adicionado

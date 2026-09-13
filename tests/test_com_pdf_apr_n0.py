@@ -73,7 +73,7 @@ def test_camada_a_indice_e_canon():
     assert "O que faz primeiro no negativo?" in html
     assert "1A · 2B · 3C · 4A · 5B · 6C · 7A · 8B · 9C · 10A" in html
     assert "~0 V" in html or "~0 V" in html.replace(" ", "")
-    assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
+    assert "Próximo: Cap. 2 — anatomia do motor a ar — ou pedir diagnóstico na oficina com as fotos certas" in html
     assert "Não Eletro" in html or "não Eletro" in html
     assert "439" not in html
     assert "nap" not in html.lower()
@@ -363,7 +363,7 @@ def test_fichas_historico_h1_h3():
     assert "1600 BB (prefixo slot AUSENTE)" in html
     assert "12 V medida" in html
     assert "≥1975 = 12 pólos só se foto confirmar (AUSENTE)" in html
-    assert "dínamo ou alt — duas OS" in html
+    assert "dínamo ou alt — dois serviços diferentes" in html
     assert "Fafá possível 79–86" in html
     assert "não data sozinha" in html
     assert "Massa ~0 V N0" in html
@@ -381,7 +381,7 @@ def test_fichas_historico_h1_h3():
     assert "assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in html
     quiz = re.search(r'<ol class="quiz">(.*?)</ol>', html, re.S)
     assert quiz and "✅" not in quiz.group(1)
-    assert "Próximo: M1 chicote — ou agendar diagnóstico" in html
+    assert "Próximo: Cap. 2 — anatomia do motor a ar — ou pedir diagnóstico na oficina com as fotos certas" in html
     assert "439" not in html
     assert "nap" not in html.lower()
     assert "whatsapp" not in html.lower()
@@ -442,3 +442,75 @@ def test_gold_v11_tokens():
     for hex_or_name in banned:
         assert hex_or_name not in lower, hex_or_name
     assert not re.search(r"#fff\b", lower)
+
+
+def _figcaptions(html: str) -> list[str]:
+    return re.findall(r"<figcaption\b[^>]*>(.*?)</figcaption>", html, flags=re.S | re.I)
+
+
+def _n0_sem_quiz(html: str) -> str:
+    quiz = re.search(r'<ol class="quiz">.*?</ol>', html, flags=re.S)
+    assert quiz
+    return html[: quiz.start()] + html[quiz.end() :]
+
+
+def test_tom_instrutivo_arco_ace_e_cortes_jargao():
+    html = _html()
+    for aula_id, titulo in (
+        ("aula-1", "Aula 1 — Energia zero"),
+        ("aula-2", "Aula 2 — Ano e 6 V / 12 V"),
+        ("aula-3", "Aula 3 — 12 V ≠ alternador"),
+        ("aula-4", "Aula 4 — Diagrama e caixa de fusíveis"),
+        ("aula-5", "Aula 5 — Massas primeiro"),
+        ("aula-6", "Aula 6 — Multímetro no carro parado"),
+    ):
+        bloco = re.search(
+            rf'<section[^>]*id="{aula_id}"[^>]*>(.*?)</section>',
+            html,
+            flags=re.S,
+        )
+        assert bloco, f"{aula_id} ausente"
+        body = bloco.group(1)
+        assert titulo in body
+        assert "Nesta aula você vai" in body
+        assert "Objetivo do aluno" in body
+        assert "Por quê" in body
+        assert "Como" in body
+        assert "Cheque" in body
+        assert "Erro comum" in body
+        assert "Quando estiver pronto" in body
+    assert html.count("Nesta aula você vai") >= 6
+    caps = " ".join(_figcaptions(html))
+    assert "Isto é dínamo" in caps
+    assert "Isto é alternador" in caps
+    assert "Isto é uma caixa de 8 pólos" in caps
+    assert "Isto é uma caixa de 12 pólos" in caps
+    assert "drive.google.com" not in caps.lower()
+    for did in (
+        "1a_L6-bgoABwfW8VTeRfCA7nMg6zhUq_i",
+        "1NQx1Ef7yG5O-uoU8JRjnc1RFfS3wChAi",
+        "1K2IIqdAtPPysoloSFJcmfuv43zr_AlqK",
+        "12Xtkudi1r-gjmKmy1QTk9pjjmMTyZZtx",
+        "1GkcWznQxbPZkzuK9yl3hQwBygBSHTvKv",
+    ):
+        assert did not in caps
+    sem_quiz = _n0_sem_quiz(html)
+    for banned in (
+        "OS viva",
+        "abrir OS",
+        "duas OS",
+        "G-PASS",
+        "Path A",
+        "Theodoro",
+        "Diogo",
+        "Staff",
+        "Hotmart",
+        "WhatsApp",
+        "NAP",
+        "R$",
+        "n8n",
+        "HA-PART",
+    ):
+        assert banned not in sem_quiz, banned
+    assert "hotmart" not in html.lower()
+    assert "R$" not in html

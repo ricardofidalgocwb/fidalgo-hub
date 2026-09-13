@@ -23,7 +23,9 @@ Canon compilado da ementa N0 + briefing Aprendiz (04/09/2026):
 - 1º nacional **03/01/1959**
 - Planta Anchieta **18/11/1959**
 
-CTA no miolo: **Próximo: M1 chicote — ou agendar diagnóstico**. Sem NAP, sem WhatsApp, sem telefone. Contato = página de vendas depois, não neste PDF.
+CTA no miolo: **Próximo: Cap. 2 — anatomia do motor a ar — ou pedir diagnóstico na oficina com as fotos certas**. Curso de chicote fica para depois. Sem NAP, sem WhatsApp, sem telefone. Contato = página de vendas depois, não neste PDF.
+
+**P0 tom 13/09 (unpublished):** arco COM por aula (o quê → por quê → como → cheque → erro comum → próximo) + molde ACE (título · objetivo do aluno · evidência tipada · exercício · próximo). Rubrica fina / slots extra podem refinar num follow-up. Miolo = aluno global; sem jargão Staff/OS/Path.
 
 ## Refs internas (não vão no HTML / PDF)
 

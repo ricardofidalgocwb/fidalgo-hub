@@ -425,7 +425,7 @@ def test_p1_mito_correcao_seis_linhas():
             "Tensão + caixa + gerador = N0. Cap.2 = tinware / ar / prefixo.",
         ),
         (
-            "«Sem foto do bloco fecha OS de motor»",
+            "«Sem foto do bloco fecha diagnóstico de motor»",
             "Sem tinware completo + sem foto do prefixo = não fecha.",
         ),
     )
@@ -581,3 +581,69 @@ def test_gold_v11_tokens():
     for hex_or_name in banned:
         assert hex_or_name not in lower, hex_or_name
     assert not re.search(r"#fff\b", lower)
+
+
+def _figcaptions(html: str) -> list[str]:
+    return re.findall(r"<figcaption\b[^>]*>(.*?)</figcaption>", html, flags=re.S | re.I)
+
+
+def test_tom_instrutivo_blocos_ace_e_cortes_jargao():
+    html = _html()
+    for aula_id, marcador in (
+        ("bloco-a", "Nesta aula você vai reconhecer o boxer a ar"),
+        ("bloco-b", "Nesta aula você vai ler a letra de família"),
+        ("bloco-c", "Nesta aula você vai dizer em uma frase"),
+        ("bloco-d", "Nesta aula você vai saber o mínimo visual"),
+    ):
+        bloco = re.search(
+            rf'<section[^>]*id="{aula_id}"[^>]*>(.*?)</section>',
+            html,
+            flags=re.S,
+        )
+        assert bloco, f"{aula_id} ausente"
+        body = bloco.group(1)
+        assert marcador in body
+        assert "Objetivo do aluno" in body
+        assert "Por quê" in body
+        assert "Como" in body
+        assert "Cheque" in body
+        assert "Erro comum" in body
+        assert "Quando estiver pronto" in body
+    assert html.count("Nesta aula você vai") >= 4
+    caps = " ".join(_figcaptions(html))
+    assert "Latas no lugar" in caps
+    assert "Letra de família no bloco" in caps
+    assert "drive.google.com" not in caps.lower()
+    for did in (
+        "1EPi6wjWdL1lYai71eafFt8xQ7eD6NDqc",
+        "1jmhGbNjFbjrm5UpbaEZWXd1UwiLHEB7r",
+        "1W9m0-CSUoeyLqDVafsEclQTNlUjV_qJZ",
+        "1RJYn4YwIQmqERYNkpN8QMPVYu6LJYt1M",
+        "19ynmIA_YGOpj83VNV4ngahL6QGgKYSnH",
+        "1eQ_Oev74l_kmD_JLftGdVSBc9uFsboE2",
+    ):
+        assert did not in caps
+    miolo = _miolo(html)
+    for banned in (
+        "OS viva",
+        "abrir OS",
+        "duas OS",
+        "padrão da OS",
+        "G-PASS",
+        "Path A",
+        "Theodoro",
+        "Diogo",
+        "Staff",
+        "Hotmart",
+        "WhatsApp",
+        "NAP",
+        "R$",
+        "n8n",
+        "HA-PART-MO",
+        "preço",
+    ):
+        assert banned not in miolo, banned
+    assert "hotmart" not in html.lower()
+    assert "R$" not in html
+    assert "preço" not in html.lower()
+
