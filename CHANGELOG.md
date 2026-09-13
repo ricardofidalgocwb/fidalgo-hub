@@ -17,6 +17,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ### Alterado
 - Framing N0 + Cap.2: aluno global («você»), legendas humanas, «duas OS» → dois serviços, próximo sem código interno
 - Tipadas byte-exact intactas. Quiz anti-spoiler + write+3Q + mito intactos. Sem site / sem publish / sem Hotmart
+- COM soft OK PR#27: quiz N0 sem «valor de OS»; Cap.2 opção sem «padrão OS»; legendas sem «Acervo»
 
 ---
 
