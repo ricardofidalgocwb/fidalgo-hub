@@ -673,8 +673,9 @@ textarea {
 .player-posters img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.38;
+  object-fit: contain;
+  background: var(--carbon);
+  opacity: 0.55;
 }
 
 .player-copy {
