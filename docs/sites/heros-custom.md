@@ -12,9 +12,9 @@ Copy is pt-BR, tom oficina T1 / rigor de engenharia. Sem hype de anúncio.
 
 ## Canonical IA
 
-`Início` · `Serviços` · `Prova` · `Como` · `Contato`
+`Início` · `Serviços` · `Prova` · `Como` · `Aulas` · `Contato`
 
-Do not add extra top-nav items. **Clube is not in this spec’s top nav.** It is a section on Início and one of the five service CTAs.
+**Aulas** is the unpublished N0 A1–A6 player (`sites/heros-custom/aulas/`). Placeholder only — no real video embed. **Clube is not in this spec’s top nav.** It is a section on Início and one of the five service CTAs.
 
 | Sibling | Target path |
 |---|---|
@@ -22,6 +22,8 @@ Do not add extra top-nav items. **Clube is not in this spec’s top nav.** It is
 | **Serviços** | `/servicos` |
 | **Prova** | `/prova` |
 | **Como** | `/como` |
+| **Aulas** | `/aulas` |
+| **Peças** | `/pecas` |
 | **Contato** | `/contato` |
 
 ## Shared chrome
@@ -31,7 +33,7 @@ Same structure as EF. Do not invent a fourth door.
 | Token | Spec |
 |---|---|
 | Type | **Montserrat** (display / headings) + **Inter** (UI / body) |
-| Header | Wordmark “Heros Custom” + the five IA links. No Grupo Fidalgo door. |
+| Header | Wordmark “Heros Custom” + the IA links (incl. unpublished Aulas). No Grupo Fidalgo door. |
 | Footer | Heros NAP (table below) + the same five links + **Grupo Fidalgo** endorsement chip + unpublished badge |
 | Proof photos | **4:3** only |
 | Chip | Footer only. Does not navigate to a fourth site. |

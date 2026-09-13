@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - N0 A1–A6 player/páginas unpublished (HUB-videoaula-roteiros-p0-1309)
+
+### Adicionado
+- `sites/heros-custom/aulas/`: índice A1–A6 + uma página por aula com player placeholder («vídeo em elaboração · unpublished») e arco O quê → Por quê → Como → Cheque → Erro comum → Próximo
+- Tipadas A3 (dínamo + alternador) e A4 (caixa 8 + 12) copiadas byte-exact do pack N0; legendas humanas
+- Guarda `tests/test_n0_aulas_player.py`
+
+### Alterado
+- IA Heros Custom: link **Aulas** no header/footer (home + siblings). Sem embed real / sem YouTube / sem Hotmart / sem domínio. Merge = Founder
+
+---
+
 ## [Unreleased] - N0 + Cap.2 tom instrutivo global unpublished (HUB-ebook-tom-instrutivo-1309)
 
 ### Adicionado

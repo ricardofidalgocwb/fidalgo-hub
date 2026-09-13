@@ -162,6 +162,7 @@ def test_ia_cinco_itens_sem_clube_no_nav():
         assert "Serviços" in nav
         assert "Prova" in nav
         assert "Como" in nav
+        assert "Aulas" in nav
         assert "Contato" in nav
         assert "Clube" not in nav
 
