@@ -163,7 +163,7 @@ def test_slot_a8_drive_dinam_alt_contrast():
     assert "assets/N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in caixa8
     assert "Ausente" not in caixa8
     assert "AUSENTE" not in caixa8
-    assert "appletreeauto 61–66 (Acervo)" in caixa8
+    assert "appletreeauto 61–66" in caixa8
     assert "appletree" in caixa8.lower()
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in caixa8
     assert "SRC-appletree" in caixa8
@@ -200,7 +200,7 @@ def test_slot_caixa12_cip1_e_caixa8_appletree():
     assert "www2.cip1.com/vwc-111-937-505-m" in caixa12
     caixa8 = _slot(html, "caixa 8 pólos")
     assert "N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in caixa8
-    assert "appletreeauto 61–66 (Acervo)" in caixa8
+    assert "appletreeauto 61–66" in caixa8
     assert "appletree" in caixa8.lower()
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in caixa8
     assert "N0_caixa8_fuseBox8polos_SRC-cip1" not in html
@@ -229,7 +229,7 @@ QUIZ_D1_CORRECT = (
     ("A", "Não — nacional típico já nasce com vigia retangular"),
     ("B", "1968"),
     ("C", "Não — dínamo 12 V + regulador é caminho BR comum"),
-    ("A", "Tensão medida + foto da caixa (e o que mais a D1/Pista C pede)"),
+    ("A", "Tensão medida + foto da caixa (sem evidência, não fecha o diagnóstico)"),
     ("B", "Sim — 1300/1967 ainda pode ser 6 V; 12 V = 1968"),
     ("C", "1979–86 e Itamar 93–96"),
     ("A", "1996"),
@@ -514,3 +514,7 @@ def test_tom_instrutivo_arco_ace_e_cortes_jargao():
         assert banned not in sem_quiz, banned
     assert "hotmart" not in html.lower()
     assert "R$" not in html
+    assert "valor de OS" not in html
+    assert "padrão OS" not in html
+    assert "OS viva" not in html
+    assert "Acervo" not in caps

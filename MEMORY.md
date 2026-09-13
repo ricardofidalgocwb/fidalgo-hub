@@ -6,6 +6,7 @@
 - Cortes miolo: sem OS/Path/Staff/NAP/preço/Drive ID em legenda. Cânon 12 V BR=1968 intacto
 - Tipadas byte-exact. Quiz + write intactos. Sem publish / Hotmart STOP
 - Rubrica fina COM/ACE = follow-up. HA-PART fora do miolo N0/Cap.2
+- COM soft OK PR#27 patch: quiz N0 diagnóstico (não valor de OS); Cap.2 «sem evidência / padrão de oficina com foto»; legendas sem Acervo
 
 ## HA-PART P0 catalog slots (unpublished, 12/09/2026)
 - `sites/heros-custom/pecas/` — 10 elétricas ACE Mestra, tipadas Drive, **não publicar**
