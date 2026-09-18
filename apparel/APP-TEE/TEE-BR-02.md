@@ -18,6 +18,10 @@ Wordmark `BRASÍLIA` (Oswald) + thin Gold underline. Peito central. Ivory on dar
 
 Estética · meme.
 
+## Mock HTML
+
+[`mock-TEE-BR-02.html`](mock-TEE-BR-02.html) · mesmo mood + overlay letterform
+
 ## TODO mockup VIS
 
-Frente. Sem placa. Sem endereço.
+Frente. Sem identificador de veículo. Sem endereço.

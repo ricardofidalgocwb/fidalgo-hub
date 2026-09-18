@@ -13,6 +13,10 @@
 
 Placa · QR · checkout · preço · endereço no tecido.
 
+## Mock HTML
+
+[`mock-UNI-02.html`](mock-UNI-02.html) · mood jaqueta (339215)
+
 ## TODO mockup VIS
 
 Peito + ombro. Escala 40–60 mm anotada no mock, sem foto de produto.

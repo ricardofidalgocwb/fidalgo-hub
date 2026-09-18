@@ -38,6 +38,37 @@ UNI_FILES = ("UNI-01.md", "UNI-02.md")
 
 SKU_FOLDERS = ("APP-TEE", "APP-HOOD", "APP-JKT", "APP-PANT", "APP-UNI")
 
+MOODBOARD = APPAREL / "moodboard"
+
+MOOD_FILES = (
+    ("APRL_mood_fusca_silhueta_SRC-Side_View_VW_Beetle.jpg", 615_778),
+    ("APRL_mood_fuse_12v_SRC-Car_fuse_box_Layout.jpg", 382_332),
+    ("APRL_mood_brasilia_SRC-VWB_Brasilia_Pocos.jpg", 621_591),
+    ("APRL_mood_cultura_variante_SRC-1960s_VW_Type3_Variant.jpg", 586_823),
+    ("APRL_mood_kombi_SRC-1953_VW_Kombi_T1.jpg", 762_312),
+    ("APRL_mood_cultura_meme_SRC-Bugstock_14.jpg", 750_845),
+    ("APRL_mood_uniforme_oficina_SRC-Dungarees_car_repair.jpg", 576_470),
+    ("APRL_mood_jaqueta_servico_SRC-Bib-brace.jpg", 339_215),
+    ("APRL_mood_moletom_street_SRC-VWB_1500_Fusca.jpg", 505_636),
+    ("APRL_mood_fusca_T1_SRC-VWB_1500_Fusca.jpg", 505_636),
+    ("APRL_mood_fusca_rua_BR_SRC-VW_Fusca_1200_1965.jpg", 742_714),
+    ("APRL_mood_oficina_aircooled_bay_SRC-1962_VW_Beetle_Engine.jpg", 664_229),
+    ("APRL_mood_oficina_classic_SRC-VW_Kaferproduktion.jpg", 739_814),
+)
+
+TEE_MOCKS = (
+    "mock-TEE-FU-01.html",
+    "mock-TEE-FU-02.html",
+    "mock-TEE-BR-01.html",
+    "mock-TEE-BR-02.html",
+    "mock-TEE-VA-01.html",
+    "mock-TEE-VA-02.html",
+    "mock-TEE-KO-01.html",
+    "mock-TEE-KO-02.html",
+)
+
+UNI_MOCKS = ("mock-UNI-01.html", "mock-UNI-02.html")
+
 BINARY_3D = {".glb", ".gltf", ".fbx", ".obj", ".blend", ".stl"}
 
 
@@ -186,6 +217,8 @@ def test_apparel_skus_and_bible():
         "Founder OK",
         "Variante",
         "≠ Mestra",
+        "1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg",
+        "moodboard",
     ):
         assert token in readme, token
     assert "439" in readme
@@ -256,6 +289,37 @@ def test_apparel_eight_tee_two_uni():
     assert "HC" in uni02
     assert "primeiro nome" in uni02
     assert "40–60 mm" in uni02 or "40-60 mm" in uni02
+
+
+def test_apparel_moodboard_exact_bytes():
+    assert (MOODBOARD / "INDEX-TEE-UNI.md").is_file()
+    assert (MOODBOARD / "MANIFEST.txt").is_file()
+    assert len(MOOD_FILES) == 13
+    for name, expected in MOOD_FILES:
+        path = MOODBOARD / name
+        assert path.is_file(), name
+        size = path.stat().st_size
+        assert size == expected, (name, size, expected)
+        assert path.read_bytes()[:3] == b"\xff\xd8\xff", name
+
+
+def test_apparel_mock_html_unpublished():
+    pages = [APPAREL / "APP-TEE" / name for name in TEE_MOCKS]
+    pages += [APPAREL / "APP-UNI" / name for name in UNI_MOCKS]
+    assert len(pages) == 10
+    banned = ("R$", "hotmart", "checkout", "n8n Active")
+    for path in pages:
+        assert path.is_file(), path
+        html = _read(path)
+        assert "UNPUBLISHED" in html
+        assert "#c9a227" in html.lower() or "mock.css" in html
+        assert "Drive cite" in html
+        for token in banned:
+            assert token.lower() not in html.lower(), (path, token)
+        stem = path.name.replace("mock-", "").replace(".html", "")
+        stub = path.with_name(f"{stem}.md")
+        assert stub.is_file(), stub
+        assert path.name in _read(stub)
 
 
 def test_scaffold_sem_preco_nem_checkout():

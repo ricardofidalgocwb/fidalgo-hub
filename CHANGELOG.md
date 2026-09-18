@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Apparel moodboard 13/13 + mock HTML unpublished (HUB-apparel-heros-1709)
+
+### Adicionado
+- `apparel/moodboard/`: 13 JPG cite-only (bytes exactos) + INDEX-TEE-UNI + MANIFEST · Drive `1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg`
+- Mock HTML 8 TEE + 2 UNI (peito · Gold `#C9A227` · banner unpublished · Drive cite) · Variante ≠ Mestra
+
+### Alterado
+- Guarda pytest: sizes exactos + HTML sem preço. Sem Hotmart / domínio / n8n Active. Merge = Founder
+
+---
+
 ## [Unreleased] - Scaffold prompts + tubo 3D + apparel unpublished (HUB-tubo-3d-pesquisa-1709 · HUB-apparel-heros-1709)
 
 ### Adicionado

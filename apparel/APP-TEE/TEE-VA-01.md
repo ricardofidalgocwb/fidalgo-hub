@@ -19,6 +19,10 @@ Side silhouette only. Sem wiring. Sem Mestra. Sem placa.
 
 `VARIANTE`
 
+## Mock HTML
+
+[`mock-TEE-VA-01.html`](mock-TEE-VA-01.html) · mood Variante cultural (586823) · ≠ Mestra
+
 ## TODO mockup VIS
 
 Frente. Não colar este still em pack Type 1 de aula.

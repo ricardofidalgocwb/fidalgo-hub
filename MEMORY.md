@@ -1,5 +1,10 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## Apparel moodboard + mocks HTML (unpublished, 18/09/2026)
+- VIS 13/13 Commons cite-only em `apparel/moodboard/` · bytes exactos · Drive `1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg`
+- Mock HTML 8 TEE + 2 UNI · Gold `#C9A227` · unpublished · Variante ≠ Mestra T3 · sem preço no HTML
+- Hotmart STOP · n8n Active STOP · Merge = Founder
+
 ## Scaffold prompts + tubo 3D + apparel (unpublished, 18/09/2026)
 - HUB-tubo-3d-pesquisa-1709 + HUB-apparel-heros-1709 · draft unpublished · Hotmart STOP · n8n Active STOP
 - `prompts/` — taxonomia N0-A | F-P0 | C2 | GEN-F | HA-E | 3D | CI · fluxo COM→VIS→ENT · Oliver · Gold `#C9A227`

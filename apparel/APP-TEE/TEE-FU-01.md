@@ -22,6 +22,10 @@ Side profile Beetle line-art. Gold 1px. Sem placa. Um foco só.
 
 Cultura · visual. Estética: clean side.
 
+## Mock HTML
+
+[`mock-TEE-FU-01.html`](mock-TEE-FU-01.html) · mood silhueta (615778)
+
 ## TODO mockup VIS
 
 Still frente cite-only. Sem foto de cliente. Sem T3 no peito.

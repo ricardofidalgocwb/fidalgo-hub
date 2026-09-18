@@ -22,6 +22,10 @@ Stamp `VARIANTE · BR` Gold thin. Badge circular. Sem PN. Sem placa.
 
 Conceitos · estética.
 
+## Mock HTML
+
+[`mock-TEE-VA-02.html`](mock-TEE-VA-02.html) · stamp overlay · ≠ Mestra
+
 ## TODO mockup VIS
 
 Frente. Sem wiring. Sem slot de aula.

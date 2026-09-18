@@ -1,12 +1,15 @@
 # Apparel Heros — unpublished
 
-**HUB-apparel-heros-1709** · linha street + uniforme · **placeholders only** · **Hotmart STOP** · **n8n Active STOP**.
+**HUB-apparel-heros-1709** · linha street + uniforme · **Hotmart STOP** · **n8n Active STOP**.
 
 Sem foto de produto. Sem checkout. Sem preço. Sem domínio.
 
 Bible COM v1.1: [COM- · Bible estampa Fusca·Brasília·Variante·Kombi · 8+2 UNI](https://app.notion.com/p/3df7d36bae6481f69fa2d278b67b4507)
 
 Pai: [HUB- · Linha apparel + uniforme Heros · 17/09](https://app.notion.com/p/3df7d36bae64810f98a3db032d989d1f)
+
+Moodboard VIS (13/13, cite-only, bytes exactos): [`moodboard/`](moodboard/) · [INDEX-TEE-UNI](moodboard/INDEX-TEE-UNI.md)  
+Drive pasta: [`1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg`](https://drive.google.com/drive/folders/1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg)
 
 ## Identidade
 
@@ -29,18 +32,18 @@ Pai: [HUB- · Linha apparel + uniforme Heros · 17/09](https://app.notion.com/p/
 
 ## Matriz 8+2 (drop P0)
 
-| ID | Modelo | Eixos-chave | Mock ENT | Ficheiro |
-|----|--------|-------------|----------|----------|
-| TEE-FU-01 | Fusca | cultura · visual | frente | [`APP-TEE/TEE-FU-01.md`](APP-TEE/TEE-FU-01.md) |
-| TEE-FU-02 | Fusca | conceitos · meme | frente+verso | [`APP-TEE/TEE-FU-02.md`](APP-TEE/TEE-FU-02.md) |
-| TEE-BR-01 | Brasília | cultura · visual | frente | [`APP-TEE/TEE-BR-01.md`](APP-TEE/TEE-BR-01.md) |
-| TEE-BR-02 | Brasília | estética · meme | frente | [`APP-TEE/TEE-BR-02.md`](APP-TEE/TEE-BR-02.md) |
-| TEE-VA-01 | Variante* | cultura · visual | frente | [`APP-TEE/TEE-VA-01.md`](APP-TEE/TEE-VA-01.md) |
-| TEE-VA-02 | Variante* | conceitos · estética | frente | [`APP-TEE/TEE-VA-02.md`](APP-TEE/TEE-VA-02.md) |
-| TEE-KO-01 | Kombi | cultura · visual | frente | [`APP-TEE/TEE-KO-01.md`](APP-TEE/TEE-KO-01.md) |
-| TEE-KO-02 | Kombi | memes · estética | frente | [`APP-TEE/TEE-KO-02.md`](APP-TEE/TEE-KO-02.md) |
-| UNI-01 | — | conceitos · estética | peito+costas | [`APP-UNI/UNI-01.md`](APP-UNI/UNI-01.md) |
-| UNI-02 | — | visual · cultura | peito+ombro | [`APP-UNI/UNI-02.md`](APP-UNI/UNI-02.md) |
+| ID | Modelo | Eixos-chave | Mock ENT | Stub | HTML |
+|----|--------|-------------|----------|------|------|
+| TEE-FU-01 | Fusca | cultura · visual | frente | [md](APP-TEE/TEE-FU-01.md) | [html](APP-TEE/mock-TEE-FU-01.html) |
+| TEE-FU-02 | Fusca | conceitos · meme | frente+verso | [md](APP-TEE/TEE-FU-02.md) | [html](APP-TEE/mock-TEE-FU-02.html) |
+| TEE-BR-01 | Brasília | cultura · visual | frente | [md](APP-TEE/TEE-BR-01.md) | [html](APP-TEE/mock-TEE-BR-01.html) |
+| TEE-BR-02 | Brasília | estética · meme | frente | [md](APP-TEE/TEE-BR-02.md) | [html](APP-TEE/mock-TEE-BR-02.html) |
+| TEE-VA-01 | Variante* | cultura · visual | frente | [md](APP-TEE/TEE-VA-01.md) | [html](APP-TEE/mock-TEE-VA-01.html) |
+| TEE-VA-02 | Variante* | conceitos · estética | frente | [md](APP-TEE/TEE-VA-02.md) | [html](APP-TEE/mock-TEE-VA-02.html) |
+| TEE-KO-01 | Kombi | cultura · visual | frente | [md](APP-TEE/TEE-KO-01.md) | [html](APP-TEE/mock-TEE-KO-01.html) |
+| TEE-KO-02 | Kombi | memes · estética | frente | [md](APP-TEE/TEE-KO-02.md) | [html](APP-TEE/mock-TEE-KO-02.html) |
+| UNI-01 | — | conceitos · estética | peito+costas | [md](APP-UNI/UNI-01.md) | [html](APP-UNI/mock-UNI-01.html) |
+| UNI-02 | — | visual · cultura | peito+ombro | [md](APP-UNI/UNI-02.md) | [html](APP-UNI/mock-UNI-02.html) |
 
 \*Variante = apparel only · **fora Mestra T3**.
 
@@ -63,7 +66,7 @@ Oficina Heros: **439**. Clube **557 ≠** endereço público. **Não** carimbar 
 - **Hotmart STOP** · ads STOP · publish STOP
 - **n8n Active STOP**
 - Sem preço no ar até sessão Founder + VEN
-- Sem binário de merch neste rascunho (stubs markdown)
+- Moodboard = cite Commons (13 JPG exactos). Sem foto de produto / sem checkout
 
 Guarda: `tests/test_prompts_3d_scaffold.py`.
 

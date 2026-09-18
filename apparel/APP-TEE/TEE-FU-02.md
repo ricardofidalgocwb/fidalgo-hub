@@ -22,6 +22,10 @@ Verso ou manga: «Meça parado.»
 
 Conceitos · meme.
 
+## Mock HTML
+
+[`mock-TEE-FU-02.html`](mock-TEE-FU-02.html) · mood fuse 12V (382332)
+
 ## TODO mockup VIS
 
-Frente + verso. Sem placa. Sem preço. Sem QR.
+Frente + verso. Sem identificador de veículo. Sem preço. Sem QR.

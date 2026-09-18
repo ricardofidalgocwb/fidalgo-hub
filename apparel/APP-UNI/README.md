@@ -12,11 +12,11 @@ Endereço de oficina **não** vai ao carimbo. Ver nota 439 / 557 só no [`../REA
 
 | ID | Conceito | Mock |
 |----|----------|------|
-| [UNI-01](UNI-01.md) | Peito HEROS CUSTOM | peito+costas |
-| [UNI-02](UNI-02.md) | Monograma HC | peito+ombro |
+| [UNI-01](UNI-01.md) | Peito HEROS CUSTOM | [html](mock-UNI-01.html) |
+| [UNI-02](UNI-02.md) | Monograma HC | [html](mock-UNI-02.html) |
 
 ## TODO mockup VIS
 
-Peito / costas / ombro. Sem foto de produto. Sem full-print de modelo.
+Peito / costas / ombro. Mood em [`../moodboard/`](../moodboard/). Sem foto de produto. Sem full-print de modelo.
 
 Bible: [v1.1 8+2](https://app.notion.com/p/3df7d36bae6481f69fa2d278b67b4507)

@@ -12,6 +12,10 @@
 
 Telefone · endereço · QR · checkout · placa · preço · Hotmart.
 
+## Mock HTML
+
+[`mock-UNI-01.html`](mock-UNI-01.html) · mood uniforme (576470)
+
 ## TODO mockup VIS
 
 Peito + costas. Sem full-print. Sem 439 / 557 no tecido.
