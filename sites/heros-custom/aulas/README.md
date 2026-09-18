@@ -3,6 +3,9 @@
 Player/páginas das seis aulas N0 (elétrica simples Type 1) em
 `sites/heros-custom/aulas/`. **Irmão do MVP** de agendamento — não é publish.
 
+Trilha irmã Cap.2 / Fusca Passaporte P0: [`cap2/`](cap2/) (F-P0-1…6).
+Sub-nav nas páginas de aulas: **N0 | Cap.2 / Passaporte P0**. Header **Aulas** intacto.
+
 **Status:** unpublished. Banner `UNPUBLISHED · DRAFT · Founder OK required to go live`.
 `meta robots noindex, nofollow`. Sem domínio. Sem YouTube / Vimeo / Hotmart / n8n.
 
