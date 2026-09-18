@@ -1,0 +1,15 @@
+# Dependabot — atualizações defensivas sem alterar lógica da app.
+# pip: requirements.txt na raiz. github-actions: workflows em .github/workflows.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
