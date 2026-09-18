@@ -7,6 +7,20 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Scaffold prompts + tubo 3D + apparel unpublished (HUB-tubo-3d-pesquisa-1709 · HUB-apparel-heros-1709)
+
+### Adicionado
+- `prompts/`: biblioteca rascunho N0-A | F-P0 | GEN-F | 3D | CI (`P-N0-*` · `P-FP-*` · `P-GF-*` · `P-3D-*` · `P-CI-*`), 5 eixos, estilo base + negativo, voz Oliver, Gold `#C9A227`
+- `docs/3d-pipeline/`: tubo Pesquisa/VIS → Ops tip ≥100KB → TEC PASS|HOLD → ACE → ENT unpublished → APR; briefs 3D-CH|MO|EL-P0 (COM+TEC); pastas placeholder sem binário
+- `docs/automacao/ci-3d-prompts-rascunho.md`: CI GitHub draft only · **n8n Active STOP**
+- `apparel/`: SKUs TEE/HOOD/JKT/PANT/UNI; bible v1.1 **8 TEE + 2 UNI** (Fusca·Brasília·Variante cultural·Kombi); Variante ≠ Mestra T3
+- Guarda `tests/test_prompts_3d_scaffold.py`
+
+### Alterado
+- Sem publish / sem domínio / sem Hotmart / sem preço no ar / sem n8n Active. Merge = Founder
+
+---
+
 ## [Unreleased] - F-P0-1 bandeja PASS soft unpublished (HUB-bancar-executar-1709)
 
 ### Adicionado

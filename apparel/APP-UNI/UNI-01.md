@@ -1,0 +1,17 @@
+# UNI-01 · Peito serviço
+
+**SKU:** APP-UNI · mock **peito+costas** · unpublished · Hotmart STOP
+
+## Arte
+
+- Peito esq.: wordmark `HEROS CUSTOM` + linha Gold 1px
+- Manga (opc.): `AIR-COOLED`
+- Costas (máx.): `SERVIÇO · EVIDÊNCIA`
+
+## Proibido na peça
+
+Telefone · endereço · QR · checkout · placa · preço · Hotmart.
+
+## TODO mockup VIS
+
+Peito + costas. Sem full-print. Sem 439 / 557 no tecido.
