@@ -1,0 +1,29 @@
+# Apparel moodboard — Heros Custom (cite-only)
+# Path: /workspace/vis-bin/apparel-mood-1709/
+# Generated: 2026-09-17 America/Sao_Paulo (UTC-3) ~22:56 BRT
+# Rules: JPEG ≥102400 bytes; Wikimedia Commons preferred; no pirate/AI; no readable plates/OS/CPF; Hotmart STOP; no Drive upload
+# Format: slot|file|bytes|URL|notes|OK/FAIL
+
+# --- Core stamp / culture (original + expanded) ---
+APP_silhueta_fusca|APP_silhueta_fusca.jpg|615778|https://commons.wikimedia.org/wiki/File:Side_View_of_the_Volkswagen_Beetle.JPG|CC BY-SA 3.0; Nicke.me; Type 1 side/stamp-capable profile photo (Mumbai vintage rally)|OK
+APP_aircooled_bay|APP_aircooled_bay.jpg|1100696|https://commons.wikimedia.org/wiki/File:1962_Volkswagen_Beetle_Engine_(3564060578).jpg|CC BY 2.0; dave_7; classic air-cooled engine bay, no plates/OS|OK
+APP_oficina_uniforme|APP_oficina_uniforme.jpg|946443|https://commons.wikimedia.org/wiki/File:Dungarees,_car_repair,_Wartburg-brand_Fortepan_101905.jpg|CC (Fortepan/Commons); classic garage bib dungarees + car repair scene (generic LatAm-adjacent workshop uniform vibe)|OK
+APP_oficina_classic|APP_oficina_classic.jpg|846827|https://commons.wikimedia.org/wiki/File:VW_K%C3%A4ferproduktion_in_Wolfsburg.jpg|CC BY-SA 4.0; Bahnfan44789; classic VW Type 1 production / workshop-industry culture|OK
+APP_fusca_rua_BR|APP_fusca_rua_BR.jpg|2158827|https://commons.wikimedia.org/wiki/File:WW_Fusca_1200_-_1965_01.jpg|CC BY-SA 4.0; Túllio F; BR Fusca 1200 (1965) street curb + roof rack; no plate visible|OK
+APP_detalhe_12v_or_fuse|APP_detalhe_12v_or_fuse.jpg|382332|https://commons.wikimedia.org/wiki/File:Car_fuse_box_Layout.jpg|CC BY-SA 4.0; project Kei; generic automotive fuse/12V electrical motif («12V=1968» mood; not period VW glass-fuse panel)|OK
+APP_jaqueta_servico|APP_jaqueta_servico.jpg|339215|https://commons.wikimedia.org/wiki/File:Bib-brace.jpg|CC BY-SA 3.0/GFDL; Stuz; denim bib overalls as vintage mechanic/service workwear; brand patch scrubbed locally for TM caution|OK
+APP_moletom_street|APP_moletom_street.jpg|1113087|https://commons.wikimedia.org/wiki/File:WWB_1500_Fusca.jpg|CC BY 3.0; Renzo Maia / Mr.choppers; BR Fusca + Kombi meet/street club vibe (Águas de Lindoia); plate area obscured in source|OK
+
+# --- Expanded model slots ---
+APP_fusca_T1|APP_fusca_T1.jpg|1113087|https://commons.wikimedia.org/wiki/File:VWB_1500_Fusca.jpg|CC BY 3.0; same strong BR Type 1 rear 3/4; plate obscured|OK
+APP_brasilia|APP_brasilia.jpg|2446326|https://commons.wikimedia.org/wiki/File:WWB_Brasilia_in_Po%C3%A7os_de_Caldas.jpg|CC (Commons); Mr.choppers; VW Brasília street BR; plate motion-blurred/unreadable|OK
+APP_variante|APP_variante.jpg|956572|https://commons.wikimedia.org/wiki/File:1960s_Volkswagen_Type_3_Variant_(31077031825).jpg|CC BY 2.0; Riley; Type 3 Variant/Squareback lifestyle (surf rack); plate illegible|OK
+APP_kombi|APP_kombi.jpg|1238724|https://commons.wikimedia.org/wiki/File:1953_Volkswagen_Kombi_T1.jpg|CC BY 2.0; Sicnag; classic T1 split-window Kombi; AU club plate scrubbed locally to comply with no-readable-plate rule|OK
+APP_cultura_meme_aesthetic|APP_cultura_meme_aesthetic.jpg|1301559|https://commons.wikimedia.org/wiki/File:2019-08-11_Bugstock_14.jpg|CC (Flickr→Commons); aaca.richmond; Bugstock VW meet / custom air-cooled culture (no meme trademark text)|OK
+
+# --- FAIL / dropped (kept under _audit/) ---
+APP_fusca_rua_BR|APP_fusca_rua_BR_FAIL_readable_plate.jpg|340309|https://commons.wikimedia.org/wiki/File:VW_Sedan_Fusca_1300_1972_with_mangels_wheels_rear.jpg|Readable BR plate CXS-5869 — dropped|FAIL
+APP_kombi|APP_kombi_FAIL_readable_plates.jpg|610780|https://commons.wikimedia.org/wiki/File:Brazilian_Kombi^pair.jpg|Readable BR plates DQZ-0738 / DQZ-0716 — dropped|FAIL
+APP_variante|APP_variante_FAIL_readable_plate.jpg|1262873|https://commons.wikimedia.org/wiki/File:Volkswagen_Typ_3_Variant_(9043427673).jpg|Readable plate AWD 134 — dropped|FAIL
+
+# SUCCESS: 13/13 primary slots OK (≥5 required). Drive upload: NOT done. Agents: NOT messaged.

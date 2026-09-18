@@ -1,5 +1,18 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## Apparel moodboard + mocks HTML (unpublished, 18/09/2026)
+- VIS 13/13 Commons cite-only em `apparel/moodboard/` · bytes exactos · Drive `1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg`
+- Mock HTML 8 TEE + 2 UNI · Gold `#C9A227` · unpublished · Variante ≠ Mestra T3 · sem preço no HTML
+- Hotmart STOP · n8n Active STOP · Merge = Founder
+
+## Scaffold prompts + tubo 3D + apparel (unpublished, 18/09/2026)
+- HUB-tubo-3d-pesquisa-1709 + HUB-apparel-heros-1709 · draft unpublished · Hotmart STOP · n8n Active STOP
+- `prompts/` — taxonomia N0-A | F-P0 | C2 | GEN-F | HA-E | 3D | CI · fluxo COM→VIS→ENT · Oliver · Gold `#C9A227`
+- `docs/3d-pipeline/` — briefs 3D-CH|MO|EL-P0 (COM+TEC Notion) · T1≠T3 · cite-only · sem binário · letterform gate na caixa
+- `apparel/` — bible v1.1 8 TEE + 2 UNI · Variante merch ≠ Mestra T3 · HOOD/JKT/PANT artes P1 · 439 só no README
+- CI: `tests/test_prompts_3d_scaffold.py` (pytest no `founder_panel_tests.yml`) · doc rascunho sem n8n Active
+- Sem preço / checkout / domínio / deploy. Merge = Founder
+
 ## F-P0-1 bandeja PASS soft (18/09/2026)
 - Drive `1kp2ky01vPcJEXSa_YLsu9ZHBW1IylHka` · 196594 · caption «bandeja da bateria» · badge soft
 - Slot antigo `1qgrDeJIZ…` fora. Massa F-P0-5 GAP. Loom HOLD. Narrador Oliver intacto. Hotmart STOP
