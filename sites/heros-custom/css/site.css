@@ -717,6 +717,19 @@ textarea {
   color: var(--gold);
 }
 
+.player-soft {
+  display: inline-block;
+  margin: 0.55rem 0 0;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+}
+
 .brand-block .player-credit {
   margin-top: 0.45rem;
 }

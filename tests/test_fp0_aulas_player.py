@@ -51,6 +51,7 @@ TIPADAS_N0 = (
 )
 
 TIPADAS_PASS_DRIVE = (
+    ("F-P0_bandeja_bateria_SRC-cip1-TAB-400-730.jpg", 196_594),
     ("F-P0_pans_channels_SRC-heritage-111701061mr.jpg", 407_659),
     ("F-P0_fuel_linha_combustivel_SRC-commons-3564060578.jpg", 747_961),
 )
@@ -62,6 +63,7 @@ FAIL_HOLD_IDS = (
 )
 
 PASS_DRIVE_IDS = (
+    "1kp2ky01vPcJEXSa_YLsu9ZHBW1IylHka",
     "1I3gVHstGfNQtUYju3y9ExeTyDPHMMkGQ",
     "1kZYhT9CnNh3tBNgr6WvAj09dknNxCPY6",
 )
@@ -191,6 +193,18 @@ def test_fp0_3_tipadas_filenames_e_bytes_exactos():
         assert path.read_bytes() == source.read_bytes(), name
 
 
+def test_fp0_1_bandeja_pass_soft_bytes_exactos():
+    html = _read(CAP2 / "f-p0-1" / "index.html")
+    assert "F-P0_bandeja_bateria_SRC-cip1-TAB-400-730.jpg" in html
+    assert "bandeja da bateria" in html
+    assert 'class="player-soft"' in html
+    assert "soft" in html
+    path = ASSETS / "F-P0_bandeja_bateria_SRC-cip1-TAB-400-730.jpg"
+    assert path.is_file()
+    assert path.stat().st_size == 196_594
+    assert path.read_bytes()[:3] == b"\xff\xd8\xff"
+
+
 def test_fp0_2_4_pass_tipadas_bytes_exactos():
     fp02 = _read(CAP2 / "f-p0-2" / "index.html")
     fp04 = _read(CAP2 / "f-p0-4" / "index.html")
@@ -235,7 +249,8 @@ def test_fail_hold_ids_fora_do_miolo():
         assert drive_id not in miolo, drive_id
     fp01 = _read(CAP2 / "f-p0-1" / "index.html")
     fp06 = _read(CAP2 / "f-p0-6" / "index.html")
-    assert "<img" not in fp01
+    assert "1qgrDeJIZFBEdXFq3bvCNQFsJtr-IegD8" not in fp01
+    assert "HOLD_FAIL" not in fp01
     assert "<img" not in fp06
 
 

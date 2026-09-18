@@ -46,7 +46,7 @@ Narrador unpublished (persona): **Oliver**. Crédito no player / rodapé — sem
 | F-P0-2 pans | PASS `1I3gVHstGfNQtUYju3y9ExeTyDPHMMkGQ` | Embutir tipada |
 | F-P0-4 fuel | PASS `1kZYhT9CnNh3tBNgr6WvAj09dknNxCPY6` | Embutir tipada |
 | F-P0-3 tinware | PASS Cap.2 AUR+cocc (+prefix BD) | Reuso byte-exact do repo |
-| F-P0-1 bandeja | FAIL `1qgrDeJIZFBEdXFq3bvCNQFsJtr-IegD8` | Still textual |
+| F-P0-1 bandeja | PASS soft `1kp2ky01vPcJEXSa_YLsu9ZHBW1IylHka` | Embutir tipada + badge soft |
 | F-P0-5 massa | FAIL `1OMUS4dfI9CEedI-TfQMA5hJUlnm4q28T` | Still textual; N0 caixa/dínamo/alt = cite only |
 | F-P0-6 loom | HOLD `1F7ZMuIvCoEFy7UsW3ppt9yfacLPUTP-7` | Sem tipada viva no miolo |
 
@@ -54,6 +54,7 @@ PASS no player (bytes exactos, sem recomprimir):
 
 | Aula | Ficheiro | Bytes | Legenda humana |
 |------|----------|------:|----------------|
+| F-P0-1 | `assets/F-P0_bandeja_bateria_SRC-cip1-TAB-400-730.jpg` | 196594 | bandeja da bateria |
 | F-P0-2 | `assets/F-P0_pans_channels_SRC-heritage-111701061mr.jpg` | 407659 | pans e canais |
 | F-P0-4 | `assets/F-P0_fuel_linha_combustivel_SRC-commons-3564060578.jpg` | 747961 | linha de combustível |
 | F-P0-3 | `assets/Cap2_P0_tinware_AUR1500_SRC-commons.jpg` | 483449 | latas no lugar (motor 1500) |
@@ -71,7 +72,7 @@ F-P0-5 elétrico (cite only no miolo, **não** no player; origem N0):
 | F-P0-5 | `assets/N0_A8_dinam_SRC-heritagestocks.jpg` | 443360 | isto é dínamo |
 | F-P0-5 | `assets/N0_A8_alt_SRC-appletreekit.jpg` | 141153 | isto é alternador |
 
-F-P0-1 e F-P0-6: still textual. Sem foto de stock inventada. Sem tipada FAIL/HOLD no miolo.
+F-P0-5 massa e F-P0-6 loom: still textual (GAP / HOLD). Sem foto de stock inventada. Sem tipada FAIL/HOLD no miolo. Slot antigo `1qgrDeJIZ…` não entra.
 
 Legendas no miolo são humanas. IDs de Drive ficam **fora** das captions e do HTML do aluno.
 Sem PN / Ω / torque inventados. Type 1 only.
