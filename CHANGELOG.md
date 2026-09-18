@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - F-P0-1 bandeja PASS soft unpublished (HUB-bancar-executar-1709)
+
+### Adicionado
+- Tipada F-P0-1 bandeja `F-P0_bandeja_bateria_SRC-cip1-TAB-400-730.jpg` (196594, Drive `1kp2ky01vPcJEXSa_YLsu9ZHBW1IylHka`) no player + badge soft
+- Guarda pytest: bytes exactos; Drive ID fora do miolo; massa F-P0-5 continua GAP
+
+### Alterado
+- Slot antigo `1qgrDeJIZ…` não entra. Sem YouTube / Hotmart / domínio. Merge = Founder
+
+---
+
 ## [Unreleased] - GEN-F Fusca gênese e-book unpublished (HUB-ebook-fusca-genesis-1709)
 
 ### Adicionado

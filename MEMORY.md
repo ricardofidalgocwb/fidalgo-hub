@@ -1,5 +1,9 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## F-P0-1 bandeja PASS soft (18/09/2026)
+- Drive `1kp2ky01vPcJEXSa_YLsu9ZHBW1IylHka` · 196594 · caption «bandeja da bateria» · badge soft
+- Slot antigo `1qgrDeJIZ…` fora. Massa F-P0-5 GAP. Loom HOLD. Narrador Oliver intacto. Hotmart STOP
+
 ## GEN-F Fusca gênese e-book unpublished (17/09/2026)
 - HUB-ebook-fusca-genesis-1709 · Founder GO · 1º digital · draft unpublished
 - `docs/propostas/COM-PDF-GEN-F-fusca/` — HTML+print CSS+PDF · Gold `#C9A227` · UNPUBLISHED · noindex
