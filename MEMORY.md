@@ -1,5 +1,14 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## GEN-F Fusca gênese e-book unpublished (17/09/2026)
+- HUB-ebook-fusca-genesis-1709 · Founder GO · 1º digital · draft unpublished
+- `docs/propostas/COM-PDF-GEN-F-fusca/` — HTML+print CSS+PDF · Gold `#C9A227` · UNPUBLISHED · noindex
+- Taxonomia GEN-F1…F5 · tom você · arco O quê→Por quê→Como→Cheque→Erro→Próximo
+- Tipadas byte-exact: H1×2 · AUR/cocc · N0 caixa/dinam/alt. GEN-F3 família + Anchieta foto = HOLD AUSENTE
+- TEC cânon: 12 V BR=1968 · fim BR=1996 · MX 2003 fora · 12 V ≠ alt · T1≠T3 · sem cv/torque · 47.700 HOLD
+- Zero R$/NAP/Zap/OS/Staff/Hotmart. Ponte N0-A / F-P0. Sem site. Merge = Founder
+- Guarda: `tests/test_com_pdf_gen_f.py`
+
 ## Cap.2 / Fusca F-P0-1…6 player unpublished (18/09/2026)
 - HUB-bancar-executar-1709 · Founder BANCAR+AVANÇAR · padrão #29 · draft unpublished
 - `sites/heros-custom/aulas/cap2/` — índice + F-P0-1…6; player placeholder; sem embed real

@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - GEN-F Fusca gênese e-book unpublished (HUB-ebook-fusca-genesis-1709)
+
+### Adicionado
+- `docs/propostas/COM-PDF-GEN-F-fusca/`: 1º e-book digital GEN-F (HTML+print CSS+PDF), caps GEN-F1…F5, Gold v1.1, UNPUBLISHED / noindex
+- Tipadas byte-exact: H1 KdF+1946 · Cap.2 AUR/cocc · N0 caixa 8/12 + dínamo/alt. Gaps família/Anchieta = HOLD textual
+- Guarda `tests/test_com_pdf_gen_f.py` (5 caps · cânon 1968/1996 · sem R$/Hotmart · bytes exactos)
+
+### Alterado
+- Camada gênese cultural (≠ N0 elétrico · ≠ Cap.2 tinware sozinho). TEC cânon PASS. ACE inventário. Hotmart STOP. Sem site até OK Founder
+
+---
+
 ## [Unreleased] - Cap.2 / Fusca F-P0-1…6 player unpublished (HUB-bancar-executar-1709)
 
 ### Adicionado
