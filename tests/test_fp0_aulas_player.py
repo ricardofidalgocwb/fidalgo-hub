@@ -50,6 +50,22 @@ TIPADAS_N0 = (
     ("N0_A8_alt_SRC-appletreekit.jpg", 141_153),
 )
 
+TIPADAS_PASS_DRIVE = (
+    ("F-P0_pans_channels_SRC-heritage-111701061mr.jpg", 407_659),
+    ("F-P0_fuel_linha_combustivel_SRC-commons-3564060578.jpg", 747_961),
+)
+
+FAIL_HOLD_IDS = (
+    "1qgrDeJIZFBEdXFq3bvCNQFsJtr-IegD8",
+    "1OMUS4dfI9CEedI-TfQMA5hJUlnm4q28T",
+    "1F7ZMuIvCoEFy7UsW3ppt9yfacLPUTP-7",
+)
+
+PASS_DRIVE_IDS = (
+    "1I3gVHstGfNQtUYju3y9ExeTyDPHMMkGQ",
+    "1kZYhT9CnNh3tBNgr6WvAj09dknNxCPY6",
+)
+
 HEADINGS = ("O quê", "Por quê", "Como", "Cheque", "Erro comum", "Próximo")
 
 BANNED = re.compile(
@@ -175,16 +191,34 @@ def test_fp0_3_tipadas_filenames_e_bytes_exactos():
         assert path.read_bytes() == source.read_bytes(), name
 
 
-def test_fp0_5_reusa_tipadas_n0_bytes_exactos():
+def test_fp0_2_4_pass_tipadas_bytes_exactos():
+    fp02 = _read(CAP2 / "f-p0-2" / "index.html")
+    fp04 = _read(CAP2 / "f-p0-4" / "index.html")
+    assert "F-P0_pans_channels_SRC-heritage-111701061mr.jpg" in fp02
+    assert "pans e canais" in fp02
+    assert "F-P0_fuel_linha_combustivel_SRC-commons-3564060578.jpg" in fp04
+    assert "linha de combustível" in fp04
+    for name, expected in TIPADAS_PASS_DRIVE:
+        path = ASSETS / name
+        assert path.is_file(), name
+        size = path.stat().st_size
+        assert size == expected, (name, size, expected)
+        assert size >= 100_000, (name, size)
+        assert path.read_bytes()[:3] == b"\xff\xd8\xff", name
+
+
+def test_fp0_5_n0_cite_only_sem_massa_fail():
     html = _read(CAP2 / "f-p0-5" / "index.html")
+    player = html.split('class="player"', 1)[1].split("</div>\n        </div>", 1)[0]
+    assert "player-posters" not in player
+    assert "N0_caixa8" not in player
+    assert "N0_A8_dinam" not in player
     assert "N0_caixa8_fuseBox8polos_SRC-appletree.jpg" in html
     assert "N0_caixa12_fuseBox12polos_SRC-cip1-505M.jpg" in html
     assert "N0_A8_dinam_SRC-heritagestocks.jpg" in html
     assert "N0_A8_alt_SRC-appletreekit.jpg" in html
     assert "8 pólos" in html
-    assert "12 pólos" in html
     assert "isto é dínamo" in html
-    assert "isto é alternador" in html
     for name, expected in TIPADAS_N0:
         path = ASSETS / name
         assert path.is_file(), name
@@ -193,6 +227,23 @@ def test_fp0_5_reusa_tipadas_n0_bytes_exactos():
         source = SRC_N0 / name
         if source.is_file():
             assert path.read_bytes() == source.read_bytes(), name
+
+
+def test_fail_hold_ids_fora_do_miolo():
+    miolo = _all_html()
+    for drive_id in FAIL_HOLD_IDS + PASS_DRIVE_IDS:
+        assert drive_id not in miolo, drive_id
+    fp01 = _read(CAP2 / "f-p0-1" / "index.html")
+    fp06 = _read(CAP2 / "f-p0-6" / "index.html")
+    assert "<img" not in fp01
+    assert "<img" not in fp06
+
+
+def test_narrador_oliver_persona():
+    for page in PAGES:
+        html = _read(page)
+        assert "Narrador: Oliver" in html, page
+    assert "<iframe" not in _all_html().lower()
 
 
 def test_subnav_n0_e_cap2():

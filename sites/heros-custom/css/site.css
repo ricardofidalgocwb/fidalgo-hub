@@ -670,6 +670,10 @@ textarea {
   grid-template-columns: 1fr 1fr;
 }
 
+.player-posters-1 {
+  grid-template-columns: 1fr;
+}
+
 .player-posters img {
   width: 100%;
   height: 100%;
@@ -701,6 +705,20 @@ textarea {
   max-width: 36rem;
   color: #e6dfd0;
   font-size: 0.95rem;
+}
+
+.player-credit {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.brand-block .player-credit {
+  margin-top: 0.45rem;
 }
 
 .arco-aula {

@@ -11,7 +11,9 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 - `sites/heros-custom/aulas/cap2/`: índice F-P0-1…6 + uma página por aula com player placeholder («vídeo em elaboração · unpublished») e arco O quê → Por quê → Como → Cheque → Erro comum → Próximo
-- Tipadas F-P0-3 (AUR1500 + Coccinelle + prefixo/correia + 1965AVI opcional) copiadas byte-exact do pack Cap.2; F-P0-5 reusa tipadas N0 (caixa 8/12 + dínamo/alternador)
+- TEC PASS no player: F-P0-2 pans (407659) · F-P0-4 fuel (747961) · F-P0-3 tinware Cap.2 AUR+cocc+prefix BD. F-P0-1/5/6 still textual (FAIL/HOLD)
+- F-P0-5: N0 caixa/dínamo/alt cite only no miolo — sem tipada massa FAIL
+- Narrador unpublished (persona) **Oliver** no player F-P0-1…6 e N0 A1–A6 + índices
 - Guarda `tests/test_fp0_aulas_player.py`
 
 ### Alterado
