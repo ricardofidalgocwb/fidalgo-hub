@@ -159,6 +159,13 @@ def test_nav_aulas_no_mvp_e_siblings():
         assert "Aulas" in nav, page
 
 
+def test_narrador_oliver_persona():
+    for page in PAGES:
+        html = _read(page)
+        assert "Narrador: Oliver" in html, page
+    assert "<iframe" not in _all_html().lower()
+
+
 def test_readme_cita_notion_roteiros():
     readme = _read(AULAS / "README.md")
     assert "3da7d36bae6481d098e2f5e59e89e1d0" in readme

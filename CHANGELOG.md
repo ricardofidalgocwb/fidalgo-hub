@@ -7,6 +7,20 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - Cap.2 / Fusca F-P0-1…6 player unpublished (HUB-bancar-executar-1709)
+
+### Adicionado
+- `sites/heros-custom/aulas/cap2/`: índice F-P0-1…6 + uma página por aula com player placeholder («vídeo em elaboração · unpublished») e arco O quê → Por quê → Como → Cheque → Erro comum → Próximo
+- TEC PASS no player: F-P0-2 pans (407659) · F-P0-4 fuel (747961) · F-P0-3 tinware Cap.2 AUR+cocc+prefix BD. F-P0-1/5/6 still textual (FAIL/HOLD)
+- F-P0-5: N0 caixa/dínamo/alt cite only no miolo — sem tipada massa FAIL
+- Narrador unpublished (persona) **Oliver** no player F-P0-1…6 e N0 A1–A6 + índices
+- Guarda `tests/test_fp0_aulas_player.py`
+
+### Alterado
+- IA Aulas: sub-nav **N0 | Cap.2 / Passaporte P0**. Header **Aulas** intacto. Sem embed real / sem YouTube / sem Hotmart / sem domínio. Merge = Founder
+
+---
+
 ## [Unreleased] - N0 A1–A6 player/páginas unpublished (HUB-videoaula-roteiros-p0-1309)
 
 ### Adicionado

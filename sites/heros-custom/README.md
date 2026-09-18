@@ -26,7 +26,7 @@ Do **not**:
 
 ## Routes (canonical IA)
 
-Header and footer IA (Aulas = N0 A1–A6 unpublished player; Peças = HA-PART P0 unpublished, sem Loja):
+Header and footer IA (Aulas = N0 A1–A6 + Cap.2 / Passaporte P0 F-P0-1…6 unpublished player; Peças = HA-PART P0 unpublished, sem Loja):
 
 | Label    | Path       |
 |----------|------------|
@@ -35,6 +35,7 @@ Header and footer IA (Aulas = N0 A1–A6 unpublished player; Peças = HA-PART P0
 | Prova    | `/prova`   |
 | Como     | `/como`    |
 | Aulas    | `/aulas`   |
+| Aulas Cap.2 | `/aulas/cap2` |
 | Peças    | `/pecas`   |
 | Contato  | `/contato` |
 
@@ -73,6 +74,7 @@ Then open:
 - http://127.0.0.1:4174/prova/
 - http://127.0.0.1:4174/como/
 - http://127.0.0.1:4174/aulas/
+- http://127.0.0.1:4174/aulas/cap2/
 - http://127.0.0.1:4174/pecas/
 - http://127.0.0.1:4174/contato/
 

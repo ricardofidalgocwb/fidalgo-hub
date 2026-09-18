@@ -1,5 +1,14 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## Cap.2 / Fusca F-P0-1…6 player unpublished (18/09/2026)
+- HUB-bancar-executar-1709 · Founder BANCAR+AVANÇAR · padrão #29 · draft unpublished
+- `sites/heros-custom/aulas/cap2/` — índice + F-P0-1…6; player placeholder; sem embed real
+- TEC PASS: F-P0-2 pans · F-P0-4 fuel · F-P0-3 tinware Cap.2. FAIL/HOLD (bandeja/massa/loom) = still textual
+- F-P0-5 elétrico = cite N0 caixa/dínamo/alt; sem tipada massa FAIL
+- Narrador unpublished (persona) Oliver no player F-P0 + N0 A1–A6
+- Miolo: arco COM; sem R$/NAP/Zap/OS viva/Staff/Hotmart/Drive ID em caption
+- Sub-nav N0 | Cap.2 / Passaporte P0. Sem YouTube / Hotmart / n8n / domínio. Merge = Founder
+
 ## N0 A1–A6 player/páginas unpublished (13/09/2026)
 - HUB-videoaula-roteiros-p0-1309 · Founder Gerar · COS GO · draft unpublished
 - `sites/heros-custom/aulas/` — índice + A1–A6; player placeholder; sem embed real
