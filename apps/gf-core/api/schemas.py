@@ -7,7 +7,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-Entidade = Literal["AI", "HC", "FSE", "EF", "PF"]
+Entidade = Literal["EF", "FSE", "HC", "AI", "PF"]
 TipoEquipamento = Literal["Transformador", "Motor Elétrico", "Gerador", "Disjuntor"]
 StatusOs = Literal["Orçamento", "Aprovado", "Em Manutenção", "Teste de Carga", "Faturado"]
 
@@ -35,7 +35,6 @@ class EquipamentoIn(_Base):
     numero_serie: str = Field(min_length=1)
     marca_modelo: str | None = None
     potencia_especificacao: str | None = None
-    data_referencia: date | None = None
 
 
 class OsIn(_Base):
@@ -45,10 +44,11 @@ class OsIn(_Base):
     data_abertura: date
     descricao_servico: str | None = None
     data_previsao: date | None = None
-    valor_orcamento: float = 0.0
-    valor_final: float = 0.0
+    valor_orcamento: float | None = None
+    valor_final: float | None = None
     centro_custo: str | None = None
     responsavel_tecnico: str | None = None
+    data_referencia: date | None = None
 
 
 class TransicaoIn(_Base):
@@ -59,3 +59,26 @@ class TransicaoIn(_Base):
 class BackupIn(_Base):
     tag: Entidade
     quando: date | None = None
+
+
+class MedicaoIn(_Base):
+    entidade: Entidade
+    id_os: str = Field(min_length=1)
+    grandeza: str = Field(min_length=1)
+    valor: str = Field(min_length=1)
+    unidade: str = Field(min_length=1)
+    data: date
+    responsavel: str = Field(min_length=1)
+
+
+class FotoTipadaIn(_Base):
+    referencia: str = Field(min_length=1)
+
+
+class RecebimentoIn(_Base):
+    entidade: Entidade
+    id_os: str = Field(min_length=1)
+    data_recebimento: date
+    valor_recebido: float
+    forma: str = Field(min_length=1)
+    obs: str | None = None

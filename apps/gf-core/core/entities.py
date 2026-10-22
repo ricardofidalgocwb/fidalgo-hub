@@ -4,15 +4,9 @@ from __future__ import annotations
 
 from core.errors import EntityIsolationError, TransitionError, ValidationError
 
-ENTIDADES: tuple[str, ...] = ("AI", "HC", "FSE", "EF", "PF")
+ENTIDADES: tuple[str, ...] = ("EF", "FSE", "HC", "AI", "PF")
 
-NOME_ENTIDADE: dict[str, str] = {
-    "AI": "Ativos Imobiliários",
-    "HC": "Heros Custom",
-    "FSE": "Fidalgo Soluções Elétricas",
-    "EF": "Eletro Fidalgo Ltda",
-    "PF": "Posto Fidalgo / Eco Hub",
-}
+STATUS_EXIGE_EVIDENCIA = frozenset({"Teste de Carga", "Faturado"})
 
 CENTRO_EF = "EF-OPEX"
 

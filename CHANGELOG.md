@@ -11,6 +11,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 - `apps/gf-core/`: OS industrial EF, caixa segregada AI/HC/FSE/EF/PF, RNA Atlas, CSV `Grupo_Fidalgo_BI`, backup zip. FastAPI + Streamlit + SQLite local
+- Ajuste de staff no mesmo app: `entidade` em todas as tabelas (`EF`,`FSE`,`HC`,`AI`,`PF`), `recebimentos` separado de Faturado, `0.0` = sem preço, pasta RNA na OS, gate de `Teste de Carga` com `medicoes` + foto tipada, série digitada, painel neutro. Extraível para `grupo-fidalgo-core`
 - Guarda `tests/test_gf_core.py` no pytest do painel Founder
 
 ### Alterado

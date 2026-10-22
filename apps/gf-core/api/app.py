@@ -14,7 +14,17 @@ from contextlib import asynccontextmanager
 from fastapi import APIRouter, FastAPI, Query, Request
 from fastapi.responses import JSONResponse, Response
 
-from api.schemas import BackupIn, ClienteIn, Entidade, EquipamentoIn, OsIn, TransicaoIn
+from api.schemas import (
+    BackupIn,
+    ClienteIn,
+    Entidade,
+    EquipamentoIn,
+    FotoTipadaIn,
+    MedicaoIn,
+    OsIn,
+    RecebimentoIn,
+    TransicaoIn,
+)
 from core.errors import EntityIsolationError, GfCoreError, NotFoundError
 from db.connection import default_db_path, init_db
 from db.repository import GfRepository
@@ -52,9 +62,7 @@ def get_clientes(request: Request, entidade: Entidade = Query(...)) -> dict:
 
 @router.post("/equipamentos")
 def post_equipamento(payload: EquipamentoIn, request: Request) -> dict:
-    dados = payload.model_dump()
-    quando = dados.pop("data_referencia")
-    return _repo(request).criar_equipamento(**dados, quando=quando)
+    return _repo(request).criar_equipamento(**payload.model_dump())
 
 
 @router.get("/equipamentos")
@@ -64,7 +72,9 @@ def get_equipamentos(request: Request, entidade: Entidade = Query(...)) -> dict:
 
 @router.post("/ordens")
 def post_os(payload: OsIn, request: Request) -> dict:
-    return _repo(request).abrir_os(**payload.model_dump())
+    dados = payload.model_dump()
+    quando = dados.pop("data_referencia")
+    return _repo(request).abrir_os(**dados, quando=quando)
 
 
 @router.get("/ordens")
@@ -92,15 +102,40 @@ def post_transicao(
     )
 
 
+@router.post("/medicoes")
+def post_medicao(payload: MedicaoIn, request: Request) -> dict:
+    return _repo(request).registrar_medicao(**payload.model_dump())
+
+
+@router.get("/medicoes")
+def get_medicoes(request: Request, entidade: Entidade = Query(...), id_os: str | None = None) -> dict:
+    return {"entidade": entidade, "itens": _repo(request).listar_medicoes(entidade, id_os)}
+
+
+@router.post("/ordens/{id_os}/foto-tipada")
+def post_foto(id_os: str, payload: FotoTipadaIn, request: Request, entidade: Entidade = Query(...)) -> dict:
+    return _repo(request).registrar_foto_tipada(id_os, entidade=entidade, referencia=payload.referencia)
+
+
+@router.post("/recebimentos")
+def post_recebimento(payload: RecebimentoIn, request: Request) -> dict:
+    return _repo(request).registrar_recebimento(**payload.model_dump())
+
+
+@router.get("/recebimentos")
+def get_recebimentos(request: Request, entidade: Entidade = Query(...), id_os: str | None = None) -> dict:
+    return {"entidade": entidade, "itens": _repo(request).listar_recebimentos(entidade, id_os)}
+
+
 @router.get("/export/centros.csv")
 def get_centros(request: Request, entidade: Entidade = Query(...)) -> Response:
     corpo = _repo(request).exportar_csv_centros(entidade)
     return Response(content=corpo, media_type="text/csv; charset=utf-8")
 
 
-@router.get("/export/heros.csv")
-def get_heros(request: Request, entidade: Entidade = Query(...)) -> Response:
-    corpo = _repo(request).exportar_csv_heros(entidade)
+@router.get("/export/operacional.csv")
+def get_operacional(request: Request, entidade: Entidade = Query(...)) -> Response:
+    corpo = _repo(request).exportar_csv_operacional(entidade)
     return Response(content=corpo, media_type="text/csv; charset=utf-8")
 
 
@@ -129,7 +164,7 @@ def create_app(db_path: Path | None = None, backup_dir: Path | None = None) -> F
 
     app = FastAPI(
         title="gf-core",
-        summary="OS local da Holding Grupo Fidalgo. Unpublished.",
+        summary="gf-core local. Unpublished.",
         lifespan=_vida,
     )
     app.state.db_path = Path(db_path) if db_path else default_db_path()

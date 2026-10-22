@@ -7,6 +7,7 @@ Fixtures numéricas e de CNPJ são óbvias e não representam cadastro real.
 from __future__ import annotations
 
 import csv
+import inspect
 import io
 import sqlite3
 import sys
@@ -46,7 +47,12 @@ CNPJ_HC = "22.333.444/0001-81"
 CNPJ_FSE = "33.444.555/0001-81"
 CNPJ_AI = "44.555.666/0001-81"
 VALOR_FIXTURE = 1.0
+FOTO_FIXTURE = "FIXTURE/tipada.jpg"
+MEDICAO_FIXTURE = "FIXTURE"
+PASTA_TRAFO = "20261022_EF_Pasta_Transformador_V01.dir"
 CADEIA = ["Orçamento", "Aprovado", "Em Manutenção", "Teste de Carga", "Faturado"]
+TABELAS = ("clientes_b2b", "equipamentos", "ordens_servico", "recebimentos", "medicoes")
+CHECK_ENTIDADE = "CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF'))"
 
 
 @pytest.fixture
@@ -60,8 +66,8 @@ def _cadeia(
     entidade: str,
     cnpj: str,
     serie: str,
-    valor_final: float = 0.0,
-    valor_orcamento: float = 0.0,
+    valor_final: float | None = None,
+    valor_orcamento: float | None = None,
     centro: str | None = None,
     descricao: str = "Reparo fixture",
     tipo: str = "Transformador",
@@ -80,7 +86,6 @@ def _cadeia(
         numero_serie=serie,
         marca_modelo="MARCA FIXTURE",
         potencia_especificacao="FIXTURE",
-        quando=DIA,
     )
     ordem = repo.abrir_os(
         entidade=entidade,
@@ -92,15 +97,38 @@ def _cadeia(
         valor_final=valor_final,
         centro_custo=centro,
         responsavel_tecnico="TECNICO FIXTURE",
+        quando=DIA,
     )
     return cliente, equipamento, ordem
 
 
-def _faturar(repo: GfRepository, ordem: dict) -> dict:
+def _evidenciar(repo: GfRepository, ordem: dict) -> None:
+    """Medição e foto são dados de teste explícitos. O app não os inventa."""
+    repo.registrar_medicao(
+        entidade=ordem["entidade"],
+        id_os=ordem["id_os"],
+        grandeza="grandeza_fixture",
+        valor=MEDICAO_FIXTURE,
+        unidade="un",
+        data=DIA,
+        responsavel="RESPONSAVEL FIXTURE",
+    )
+    repo.registrar_foto_tipada(ordem["id_os"], entidade=ordem["entidade"], referencia=FOTO_FIXTURE)
+
+
+def _ate(repo: GfRepository, ordem: dict, destino: str) -> dict:
     atual = ordem
-    for destino in CADEIA[1:]:
-        atual = repo.transicionar_os(atual["id_os"], destino, entidade=atual["entidade"], quando=DIA)
+    for passo in CADEIA[1:]:
+        if passo == "Teste de Carga":
+            _evidenciar(repo, atual)
+        atual = repo.transicionar_os(atual["id_os"], passo, entidade=atual["entidade"], quando=DIA)
+        if passo == destino:
+            return atual
     return atual
+
+
+def _faturar(repo: GfRepository, ordem: dict) -> dict:
+    return _ate(repo, ordem, "Faturado")
 
 
 def test_cnpj_fixture_valido_e_mascara():
@@ -167,21 +195,30 @@ def test_fluxo_os_industrial_ate_faturado(repo: GfRepository):
     assert list(STATUS_OS) == CADEIA
     _cliente, equipamento, ordem = _cadeia(repo, entidade="EF", cnpj=CNPJ_EF, serie="SN-FIXTURE-EF-01")
     assert equipamento["status_atual"] == "Diagnóstico"
-    assert equipamento["link_pasta_drive"] == "20261022_EF_Pasta_Transformador_V01.dir"
+    assert "link_pasta_drive" not in equipamento
+    assert ordem["link_pasta_drive"] == PASTA_TRAFO
     assert ordem["status_os"] == "Orçamento"
     assert ordem["centro_custo"] == CENTRO_EF
-    assert ordem["valor_orcamento"] == 0.0
-    assert ordem["valor_final"] == 0.0
+    assert ordem["valor_orcamento"] is None
+    assert ordem["valor_final"] is None
+    assert ordem["ref_foto_tipada"] is None
     assert ordem["data_conclusao"] is None
     atual = ordem
-    for destino in CADEIA[1:]:
+    for destino in ("Aprovado", "Em Manutenção"):
+        atual = repo.transicionar_os(atual["id_os"], destino, entidade="EF", quando=DIA)
+        assert atual["status_os"] == destino
+        assert atual["data_conclusao"] is None
+    with pytest.raises(ValidationError, match="medicao"):
+        repo.transicionar_os(atual["id_os"], "Teste de Carga", entidade="EF", quando=DIA)
+    assert repo.obter_os(atual["id_os"], entidade="EF")["status_os"] == "Em Manutenção"
+    _evidenciar(repo, atual)
+    for destino in ("Teste de Carga", "Faturado"):
         atual = repo.transicionar_os(atual["id_os"], destino, entidade="EF", quando=DIA)
         assert atual["status_os"] == destino
         assert atual["centro_custo"] == CENTRO_EF
-        if destino != "Faturado":
-            assert atual["data_conclusao"] is None
-    assert atual["status_os"] == "Faturado"
     assert atual["data_conclusao"] == "2026-10-22"
+    assert atual["ref_foto_tipada"] == FOTO_FIXTURE
+    assert repo.listar_recebimentos("EF") == []
     with pytest.raises(TransitionError):
         repo.transicionar_os(atual["id_os"], "Aprovado", entidade="EF", quando=DIA)
 
@@ -240,10 +277,11 @@ def test_default_sql_ef_opex_nao_entra_em_hc(repo: GfRepository):
         assert int(conn.execute("PRAGMA foreign_keys").fetchone()[0]) == 1
         conn.execute(
             """
-            INSERT INTO ordens_servico (id_os, id_cliente, id_equipamento, entidade, data_abertura)
-            VALUES ('OS-RAW-EF', ?, ?, 'EF', '2026-10-22')
+            INSERT INTO ordens_servico (
+                id_os, id_cliente, id_equipamento, entidade, data_abertura, link_pasta_drive
+            ) VALUES ('OS-RAW-EF', ?, ?, 'EF', '2026-10-22', ?)
             """,
-            (equipamento_ef["id_cliente"], equipamento_ef["id_equipamento"]),
+            (equipamento_ef["id_cliente"], equipamento_ef["id_equipamento"], PASTA_TRAFO),
         )
         gravada = conn.execute(
             "SELECT status_os, centro_custo FROM ordens_servico WHERE id_os = 'OS-RAW-EF'"
@@ -253,8 +291,9 @@ def test_default_sql_ef_opex_nao_entra_em_hc(repo: GfRepository):
         with pytest.raises(sqlite3.IntegrityError):
             conn.execute(
                 """
-                INSERT INTO ordens_servico (id_os, id_cliente, id_equipamento, entidade, data_abertura)
-                VALUES ('OS-RAW-HC', ?, ?, 'HC', '2026-10-22')
+                INSERT INTO ordens_servico (
+                    id_os, id_cliente, id_equipamento, entidade, data_abertura, link_pasta_drive
+                ) VALUES ('OS-RAW-HC', ?, ?, 'HC', '2026-10-22', '20261022_HC_Pasta_Transformador_V01.dir')
                 """,
                 (cliente_hc["id_cliente"], equipamento_hc["id_equipamento"]),
             )
@@ -262,10 +301,11 @@ def test_default_sql_ef_opex_nao_entra_em_hc(repo: GfRepository):
             conn.execute(
                 """
                 INSERT INTO ordens_servico (
-                    id_os, id_cliente, id_equipamento, entidade, data_abertura, status_os, centro_custo
-                ) VALUES ('OS-RAW-FAT', ?, ?, 'EF', '2026-10-22', 'Faturado', 'EF-OPEX')
+                    id_os, id_cliente, id_equipamento, entidade, data_abertura,
+                    status_os, centro_custo, link_pasta_drive
+                ) VALUES ('OS-RAW-FAT', ?, ?, 'EF', '2026-10-22', 'Faturado', 'EF-OPEX', ?)
                 """,
-                (equipamento_ef["id_cliente"], equipamento_ef["id_equipamento"]),
+                (equipamento_ef["id_cliente"], equipamento_ef["id_equipamento"], PASTA_TRAFO),
             )
     finally:
         conn.close()
@@ -279,7 +319,6 @@ def test_fk_cliente_inexistente_e_serie_repetida(repo: GfRepository):
             id_cliente="CLI-NAO-EXISTE",
             tipo_equipamento="Transformador",
             numero_serie="SN-FIXTURE-EF-05",
-            quando=DIA,
         )
     conn = connect(repo.db_path)
     try:
@@ -287,8 +326,8 @@ def test_fk_cliente_inexistente_e_serie_repetida(repo: GfRepository):
             conn.execute(
                 """
                 INSERT INTO equipamentos (
-                    id_equipamento, id_cliente, entidade, tipo_equipamento, numero_serie, link_pasta_drive
-                ) VALUES ('EQ-ORF', 'CLI-NAO-EXISTE', 'EF', 'Transformador', 'SN-ORF', '20261022_EF_Pasta_Transformador_V01.dir')
+                    id_equipamento, id_cliente, entidade, tipo_equipamento, numero_serie
+                ) VALUES ('EQ-ORF', 'CLI-NAO-EXISTE', 'EF', 'Transformador', 'SN-ORF')
                 """
             )
     finally:
@@ -304,7 +343,6 @@ def test_fk_cliente_inexistente_e_serie_repetida(repo: GfRepository):
             id_cliente=_cliente["id_cliente"],
             tipo_equipamento="Gerador",
             numero_serie="SN-FIXTURE-EF-06",
-            quando=DIA,
         )
 
 
@@ -315,30 +353,30 @@ def test_tipo_invalido_e_cnpj_nao_grava(repo: GfRepository):
             id_cliente="CLI-EF-0001",
             tipo_equipamento="Turbina",
             numero_serie="SN-FIXTURE-EF-07",
-            quando=DIA,
         )
     with pytest.raises(CnpjError):
         repo.criar_cliente(entidade="EF", razao_social="FIXTURE EF LTDA", cnpj="00.000.000/0000-00")
     assert repo.listar_clientes("EF") == []
 
 
-def test_link_pasta_incrementa_e_motor(repo: GfRepository):
-    cliente, primeiro, _ordem = _cadeia(
+def test_link_pasta_na_os_incrementa_e_motor(repo: GfRepository):
+    cliente, equipamento, primeira = _cadeia(
         repo,
         entidade="EF",
         cnpj=CNPJ_EF,
         serie="SN-FIXTURE-EF-08",
         tipo="Motor Elétrico",
     )
-    assert primeiro["link_pasta_drive"] == "20261022_EF_Pasta_Motor_Eletrico_V01.dir"
-    segundo = repo.criar_equipamento(
+    assert "link_pasta_drive" not in equipamento
+    assert primeira["link_pasta_drive"] == "20261022_EF_Pasta_Motor_Eletrico_V01.dir"
+    segunda = repo.abrir_os(
         entidade="EF",
         id_cliente=cliente["id_cliente"],
-        tipo_equipamento="Motor Elétrico",
-        numero_serie="SN-FIXTURE-EF-09",
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=DIA,
         quando=DIA,
     )
-    assert segundo["link_pasta_drive"] == "20261022_EF_Pasta_Motor_Eletrico_V02.dir"
+    assert segunda["link_pasta_drive"] == "20261022_EF_Pasta_Motor_Eletrico_V02.dir"
 
 
 def test_isolamento_de_caixa_e_colunas_csv(repo: GfRepository):
@@ -481,6 +519,25 @@ def test_readme_contrato_e_arvore_sem_dado_real():
     assert "uvicorn api.app:app" in readme
     assert "streamlit run ui/streamlit_app.py" in readme
     assert "tests/test_gf_core.py" in readme
+    assert "grupo-fidalgo-core" in readme
+    assert "sem preço" in readme
+    assert "recebimentos" in readme
+    assert "medicoes" in readme
+    assert "link_pasta_drive" in readme
+    assert CHECK_ENTIDADE in schema
+    assert schema.count(CHECK_ENTIDADE) == 5
+    assert "link_pasta_drive" not in schema.split("CREATE TABLE IF NOT EXISTS equipamentos", 1)[1].split(
+        "CREATE TABLE IF NOT EXISTS ordens_servico", 1
+    )[0]
+    ui = (APP_ROOT / "ui" / "streamlit_app.py").read_text(encoding="utf-8")
+    assert "heros" not in ui.lower()
+    repositorio = (APP_ROOT / "db" / "repository.py").read_text(encoding="utf-8")
+    assert "INSERT INTO recebimentos" not in inspect.getsource(GfRepository.transicionar_os)
+    assert "SN-" not in repositorio
+    for caminho in APP_ROOT.rglob("*.py"):
+        texto = caminho.read_text(encoding="utf-8")
+        assert "import dashboard" not in texto
+        assert "notion" not in texto.lower()
     assert "fastapi" in requirements
     assert "pydantic" in requirements
     assert "streamlit" in requirements
@@ -522,11 +579,10 @@ def test_api_fluxo_local_se_fastapi(tmp_path: Path):
             "id_cliente": id_cliente,
             "tipo_equipamento": "Disjuntor",
             "numero_serie": "SN-FIXTURE-EF-11",
-            "data_referencia": "2026-10-22",
         },
     )
     assert equipamento.status_code == 200, equipamento.text
-    assert equipamento.json()["link_pasta_drive"] == "20261022_EF_Pasta_Disjuntor_V01.dir"
+    assert "link_pasta_drive" not in equipamento.json()
     ordem = client.post(
         "/ordens",
         json={
@@ -545,12 +601,50 @@ def test_api_fluxo_local_se_fastapi(tmp_path: Path):
             "id_cliente": id_cliente,
             "id_equipamento": equipamento.json()["id_equipamento"],
             "data_abertura": "2026-10-22",
+            "data_referencia": "2026-10-22",
+            "valor_orcamento": 0,
+            "valor_final": 0,
         },
     )
-    assert ordem_ok.status_code == 200
+    assert ordem_ok.status_code == 200, ordem_ok.text
     assert ordem_ok.json()["centro_custo"] == "EF-OPEX"
+    assert ordem_ok.json()["link_pasta_drive"] == "20261022_EF_Pasta_Disjuntor_V01.dir"
+    assert ordem_ok.json()["valor_orcamento"] is None
+    assert ordem_ok.json()["valor_final"] is None
     id_os = ordem_ok.json()["id_os"]
-    for destino in CADEIA[1:]:
+    for destino in ("Aprovado", "Em Manutenção"):
+        passo = client.post(
+            f"/ordens/{id_os}/transicao",
+            params={"entidade": "EF"},
+            json={"status_destino": destino, "quando": "2026-10-22"},
+        )
+        assert passo.status_code == 200, passo.text
+    bloqueada = client.post(
+        f"/ordens/{id_os}/transicao",
+        params={"entidade": "EF"},
+        json={"status_destino": "Teste de Carga", "quando": "2026-10-22"},
+    )
+    assert bloqueada.status_code == 400
+    medicao = client.post(
+        "/medicoes",
+        json={
+            "entidade": "EF",
+            "id_os": id_os,
+            "grandeza": "grandeza_fixture",
+            "valor": MEDICAO_FIXTURE,
+            "unidade": "un",
+            "data": "2026-10-22",
+            "responsavel": "RESPONSAVEL FIXTURE",
+        },
+    )
+    assert medicao.status_code == 200, medicao.text
+    foto = client.post(
+        f"/ordens/{id_os}/foto-tipada",
+        params={"entidade": "EF"},
+        json={"referencia": FOTO_FIXTURE},
+    )
+    assert foto.status_code == 200, foto.text
+    for destino in ("Teste de Carga", "Faturado"):
         passo = client.post(
             f"/ordens/{id_os}/transicao",
             params={"entidade": "EF"},
@@ -567,6 +661,246 @@ def test_api_fluxo_local_se_fastapi(tmp_path: Path):
     csv_resp = client.get("/export/centros.csv", params={"entidade": "EF"})
     assert csv_resp.status_code == 200
     assert csv_resp.text.startswith(",".join(COLUNAS_CENTROS) + "\n")
+    linhas_csv = list(csv.DictReader(io.StringIO(csv_resp.text)))
+    assert linhas_csv[0]["Valor_R"] == ""
+    assert "0.00" not in csv_resp.text
+    recebidos = client.get("/recebimentos", params={"entidade": "EF"})
+    assert recebidos.status_code == 200
+    assert recebidos.json()["itens"] == []
     backup = client.post("/backup", json={"tag": "EF", "quando": "2026-10-22"})
     assert backup.status_code == 200
     assert backup.json()["nome"] == "20261022_EF_Backup_SQLite_V01.zip"
+
+
+def test_entidade_obrigatoria_em_todas_as_tabelas(repo: GfRepository):
+    schema = (APP_ROOT / "db" / "schema.sql").read_text(encoding="utf-8")
+    assert schema.count(CHECK_ENTIDADE) == len(TABELAS)
+    conn = connect(repo.db_path)
+    try:
+        for tabela in TABELAS:
+            colunas = {linha["name"]: linha for linha in conn.execute(f"PRAGMA table_info({tabela})")}
+            assert colunas["entidade"]["notnull"] == 1
+        with pytest.raises(sqlite3.IntegrityError):
+            conn.execute(
+                """
+                INSERT INTO clientes_b2b (id_cliente, entidade, razao_social, cnpj)
+                VALUES ('CLI-XX', 'XX', 'FIXTURE', '000')
+                """
+            )
+    finally:
+        conn.close()
+
+
+def test_zero_e_sem_preco_e_export_fica_vazio(repo: GfRepository):
+    _cliente, equipamento, sem = _cadeia(
+        repo,
+        entidade="EF",
+        cnpj=CNPJ_EF,
+        serie="SN-FIXTURE-EF-20",
+        valor_orcamento=0.0,
+        valor_final=0,
+    )
+    assert sem["valor_orcamento"] is None
+    assert sem["valor_final"] is None
+    sem = repo.definir_valores(
+        sem["id_os"], entidade="EF", valor_orcamento=0.0, valor_final=0.0
+    )
+    assert sem["valor_final"] is None
+    com = repo.abrir_os(
+        entidade="EF",
+        id_cliente=sem["id_cliente"],
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=DIA,
+        quando=DIA,
+        valor_final=VALOR_FIXTURE,
+        descricao_servico="Com preco fixture",
+    )
+    sem = _faturar(repo, sem)
+    com = _faturar(repo, com)
+    centros = list(csv.DictReader(io.StringIO(repo.exportar_csv_centros("EF"))))
+    por_os = {linha["Observacoes"].split(";")[0]: linha["Valor_R"] for linha in centros}
+    assert por_os[f"id_os={sem['id_os']}"] == ""
+    assert por_os[f"id_os={com['id_os']}"] == "1.00"
+    assert "0.00" not in repo.exportar_csv_centros("EF")
+    grupo = list(csv.DictReader(io.StringIO(repo.exportar_csv_consolidado("EF"))))
+    assert grupo[0]["Receita_R"] == "1.00"
+    _ai_cli, _ai_eq, ai = _cadeia(
+        repo, entidade="AI", cnpj=CNPJ_AI, serie="SN-FIXTURE-AI-20", valor_final=0.0
+    )
+    _faturar(repo, ai)
+    ai_csv = repo.exportar_csv_consolidado("AI")
+    ai_linhas = list(csv.DictReader(io.StringIO(ai_csv)))
+    assert ai_linhas[0]["Receita_R"] == ""
+    assert "0.00" not in ai_csv
+    conn = connect(repo.db_path)
+    try:
+        with pytest.raises(sqlite3.IntegrityError):
+            conn.execute(
+                "UPDATE ordens_servico SET valor_final = 0 WHERE id_os = ?",
+                (com["id_os"],),
+            )
+    finally:
+        conn.close()
+
+
+def test_gate_teste_de_carga_sem_valor_inventado(repo: GfRepository):
+    _cliente, _equipamento, ordem = _cadeia(
+        repo, entidade="EF", cnpj=CNPJ_EF, serie="SN-FIXTURE-EF-21"
+    )
+    ordem = _ate(repo, ordem, "Em Manutenção")
+    with pytest.raises(ValidationError, match="medicao"):
+        repo.transicionar_os(ordem["id_os"], "Teste de Carga", entidade="EF", quando=DIA)
+    repo.registrar_medicao(
+        entidade="EF",
+        id_os=ordem["id_os"],
+        grandeza="grandeza_fixture",
+        valor=MEDICAO_FIXTURE,
+        unidade="un",
+        data=DIA,
+        responsavel="RESPONSAVEL FIXTURE",
+    )
+    with pytest.raises(ValidationError, match="foto"):
+        repo.transicionar_os(ordem["id_os"], "Teste de Carga", entidade="EF", quando=DIA)
+    for marcador in ("", "teste", "placeholder", "https://example.invalid/tipada.jpg", "../tipada.jpg"):
+        with pytest.raises(ValidationError):
+            repo.registrar_foto_tipada(ordem["id_os"], entidade="EF", referencia=marcador)
+    repo.registrar_foto_tipada(ordem["id_os"], entidade="EF", referencia=FOTO_FIXTURE)
+    ordem = repo.transicionar_os(ordem["id_os"], "Teste de Carga", entidade="EF", quando=DIA)
+    conn = connect(repo.db_path)
+    try:
+        conn.execute("DELETE FROM medicoes WHERE id_os = ?", (ordem["id_os"],))
+        conn.commit()
+    finally:
+        conn.close()
+    with pytest.raises(ValidationError, match="medicao"):
+        repo.transicionar_os(ordem["id_os"], "Faturado", entidade="EF", quando=DIA)
+    repo.registrar_medicao(
+        entidade="EF",
+        id_os=ordem["id_os"],
+        grandeza="grandeza_fixture",
+        valor=MEDICAO_FIXTURE,
+        unidade="un",
+        data=DIA,
+        responsavel="RESPONSAVEL FIXTURE",
+    )
+    conn = connect(repo.db_path)
+    try:
+        conn.execute(
+            "UPDATE ordens_servico SET ref_foto_tipada = NULL WHERE id_os = ?",
+            (ordem["id_os"],),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    with pytest.raises(ValidationError, match="foto"):
+        repo.transicionar_os(ordem["id_os"], "Faturado", entidade="EF", quando=DIA)
+    outra = repo.abrir_os(
+        entidade="EF",
+        id_cliente=ordem["id_cliente"],
+        id_equipamento=ordem["id_equipamento"],
+        data_abertura=DIA,
+        quando=DIA,
+    )
+    outra = _ate(repo, outra, "Em Manutenção")
+    conn = connect(repo.db_path)
+    try:
+        with pytest.raises(sqlite3.IntegrityError, match="medicao e foto tipada"):
+            conn.execute(
+                "UPDATE ordens_servico SET status_os = 'Teste de Carga' WHERE id_os = ?",
+                (outra["id_os"],),
+            )
+    finally:
+        conn.close()
+    assert repo.obter_os(outra["id_os"], entidade="EF")["status_os"] == "Em Manutenção"
+
+
+def test_numero_serie_obrigatorio_e_nao_gerado(repo: GfRepository):
+    cliente = repo.criar_cliente(entidade="EF", razao_social="FIXTURE EF LTDA", cnpj=CNPJ_EF)
+    for serie in ("", "   ", "teste", "placeholder"):
+        with pytest.raises(ValidationError):
+            repo.criar_equipamento(
+                entidade="EF",
+                id_cliente=cliente["id_cliente"],
+                tipo_equipamento="Gerador",
+                numero_serie=serie,
+            )
+    assert repo.listar_equipamentos("EF") == []
+    fonte = inspect.getsource(GfRepository.criar_equipamento)
+    assert "numero_serie" in fonte
+    assert "SN-" not in fonte
+    assert "uuid" not in fonte
+
+
+def test_recebimento_nao_nasce_com_faturado_e_isola(repo: GfRepository):
+    _cliente, _equipamento, ordem = _cadeia(
+        repo,
+        entidade="EF",
+        cnpj=CNPJ_EF,
+        serie="SN-FIXTURE-EF-22",
+        descricao="Reparo fixture isolado",
+    )
+    aberta = ordem
+    with pytest.raises(ValidationError):
+        repo.registrar_recebimento(
+            entidade="EF",
+            id_os=aberta["id_os"],
+            data_recebimento=DIA,
+            valor_recebido=0,
+            forma="fixture",
+        )
+    recibo_aberto = repo.registrar_recebimento(
+        entidade="EF",
+        id_os=aberta["id_os"],
+        data_recebimento=DIA,
+        valor_recebido=VALOR_FIXTURE,
+        forma="fixture",
+        obs="obs fixture",
+    )
+    assert repo.obter_os(aberta["id_os"], entidade="EF")["status_os"] == "Orçamento"
+    faturada = _faturar(repo, aberta)
+    assert faturada["status_os"] == "Faturado"
+    assert len(repo.listar_recebimentos("EF")) == 1
+    assert repo.listar_recebimentos("HC") == []
+    assert repo.listar_medicoes("HC") == []
+    with pytest.raises(NotFoundError) as vazou:
+        repo.registrar_recebimento(
+            entidade="HC",
+            id_os=faturada["id_os"],
+            data_recebimento=DIA,
+            valor_recebido=VALOR_FIXTURE,
+            forma="fixture",
+        )
+    assert "Reparo fixture isolado" not in str(vazou.value)
+    with pytest.raises(NotFoundError):
+        repo.registrar_medicao(
+            entidade="HC",
+            id_os=faturada["id_os"],
+            grandeza="grandeza_fixture",
+            valor=MEDICAO_FIXTURE,
+            unidade="un",
+            data=DIA,
+            responsavel="RESPONSAVEL FIXTURE",
+        )
+    depois = repo.registrar_recebimento(
+        entidade="EF",
+        id_os=faturada["id_os"],
+        data_recebimento=DIA,
+        valor_recebido=VALOR_FIXTURE,
+        forma="fixture",
+    )
+    assert repo.obter_os(faturada["id_os"], entidade="EF")["status_os"] == "Faturado"
+    assert recibo_aberto["entidade"] == "EF"
+    assert depois["id"] != recibo_aberto["id"]
+    conn = connect(repo.db_path)
+    try:
+        with pytest.raises(sqlite3.IntegrityError, match="diverge"):
+            conn.execute(
+                """
+                INSERT INTO medicoes (
+                    id, id_os, entidade, grandeza, valor, unidade, data, responsavel
+                ) VALUES ('MED-HC-RAW', ?, 'HC', 'grandeza_fixture', 'FIXTURE', 'un', '2026-10-22', 'RESPONSAVEL FIXTURE')
+                """,
+                (faturada["id_os"],),
+            )
+    finally:
+        conn.close()

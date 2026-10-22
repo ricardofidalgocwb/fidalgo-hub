@@ -7,7 +7,7 @@ import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
 
-from core.errors import EntityIsolationError, GfCoreError, IntegrityFailure, TransitionError
+from core.errors import EntityIsolationError, GfCoreError, IntegrityFailure, TransitionError, ValidationError
 
 APP_ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = Path(__file__).with_name("schema.sql")
@@ -48,6 +48,8 @@ def traduzir_integrity(exc: sqlite3.IntegrityError) -> GfCoreError:
         return IntegrityFailure("integridade referencial: vinculo inexistente ou registro em uso")
     if "unique" in baixo:
         return IntegrityFailure("cnpj ou numero de serie ja cadastrado")
+    if "medicao" in baixo or "foto tipada" in baixo:
+        return ValidationError(texto)
     if "transicao" in baixo or "faturada" in baixo or "orçamento" in baixo or "orcamento" in baixo:
         return TransitionError(texto)
     if (

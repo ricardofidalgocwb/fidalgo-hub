@@ -11,16 +11,9 @@ if str(APP_ROOT) not in sys.path:
 
 import streamlit as st
 
-from core.entities import (
-    CENTRO_EF,
-    CENTROS_POR_ENTIDADE,
-    ENTIDADES,
-    NOME_ENTIDADE,
-    STATUS_OS,
-    TIPOS_EQUIPAMENTO,
-    proximos_status,
-)
-from core.errors import GfCoreError
+from core.entities import CENTRO_EF, CENTROS_POR_ENTIDADE, ENTIDADES, STATUS_OS, TIPOS_EQUIPAMENTO, proximos_status
+from core.errors import GfCoreError, ValidationError
+from core.preco import interpretar_preco
 from db.connection import default_db_path
 from db.repository import GfRepository
 
@@ -37,6 +30,26 @@ def _chamar(acao):
         return False, None
 
 
+def _preco_form(texto: str, campo: str):
+    try:
+        return interpretar_preco(texto, campo)
+    except ValidationError:
+        raise
+    except ValueError as exc:
+        raise ValidationError(f"{campo} invalido") from exc
+
+
+def _exibir_os(linhas: list[dict]) -> list[dict]:
+    saida = []
+    for linha in linhas:
+        item = dict(linha)
+        for campo in ("valor_orcamento", "valor_final"):
+            if item.get(campo) is None:
+                item[campo] = "sem preço"
+        saida.append(item)
+    return saida
+
+
 def _tabela(linhas: list[dict], vazio: str) -> None:
     if not linhas:
         st.info(vazio)
@@ -45,15 +58,15 @@ def _tabela(linhas: list[dict], vazio: str) -> None:
 
 
 def _aba_clientes(entidade: str) -> None:
-    st.subheader("Clientes B2B")
+    st.subheader("Clientes")
     repo = _repo()
     _tabela(repo.listar_clientes(entidade), "Nenhum cliente nesta entidade.")
     with st.form("cliente"):
         razao = st.text_input("Razão social")
         cnpj = st.text_input("CNPJ")
-        contato = st.text_input("Contato responsável")
+        contato = st.text_input("Contato")
         telefone = st.text_input("Telefone")
-        email = st.text_input("E-mail fiscal")
+        email = st.text_input("E-mail")
         endereco = st.text_input("Endereço")
         obs = st.text_area("Observações")
         if st.form_submit_button("Salvar cliente"):
@@ -70,12 +83,13 @@ def _aba_clientes(entidade: str) -> None:
                 )
             )
             if ok:
-                st.success(f"Cliente {criado['id_cliente']} gravado em {entidade}.")
+                st.success(f"Cliente {criado['id_cliente']} gravado.")
                 st.rerun()
 
 
 def _aba_equipamentos(entidade: str) -> None:
     st.subheader("Equipamentos")
+    st.caption("O número de série é digitado. O app não gera série.")
     repo = _repo()
     clientes = repo.listar_clientes(entidade)
     _tabela(repo.listar_equipamentos(entidade), "Nenhum equipamento nesta entidade.")
@@ -93,7 +107,7 @@ def _aba_equipamentos(entidade: str) -> None:
         marca = st.text_input("Marca / modelo")
         potencia = st.text_input("Potência / especificação")
         if st.form_submit_button("Salvar equipamento"):
-            ok, criado = _chamar(
+            ok, _criado = _chamar(
                 lambda: repo.criar_equipamento(
                     entidade=entidade,
                     id_cliente=cliente["id_cliente"],
@@ -104,16 +118,17 @@ def _aba_equipamentos(entidade: str) -> None:
                 )
             )
             if ok:
-                st.success(f"Pasta RNA: {criado['link_pasta_drive']}")
+                st.success("Equipamento gravado.")
                 st.rerun()
 
 
 def _aba_ordens(entidade: str) -> None:
     st.subheader("Ordens de serviço")
+    st.caption("Campo vazio ou zero em valor fica sem preço. Faturado não lança recebimento.")
     repo = _repo()
     status = st.selectbox("Filtrar status", ["Todos", *STATUS_OS])
     linhas = repo.listar_os(entidade, None if status == "Todos" else status)
-    _tabela(linhas, "Nenhuma OS nesta entidade.")
+    _tabela(_exibir_os(linhas), "Nenhuma OS nesta entidade.")
     clientes = repo.listar_clientes(entidade)
     if clientes:
         cliente = st.selectbox(
@@ -133,8 +148,8 @@ def _aba_ordens(entidade: str) -> None:
                 abertura = st.date_input("Data de abertura")
                 informar_previsao = st.checkbox("Informar previsão")
                 previsao = st.date_input("Previsão") if informar_previsao else None
-                valor_orcamento = st.number_input("Valor orçamento (lançamento local)", min_value=0.0, value=0.0, step=0.01)
-                valor_final = st.number_input("Valor final (lançamento local)", min_value=0.0, value=0.0, step=0.01)
+                valor_orcamento = st.text_input("Valor orçamento")
+                valor_final = st.text_input("Valor final")
                 responsavel = st.text_input("Responsável técnico")
                 centros = CENTROS_POR_ENTIDADE[entidade]
                 if entidade == "EF":
@@ -151,14 +166,14 @@ def _aba_ordens(entidade: str) -> None:
                             data_abertura=abertura,
                             data_previsao=previsao,
                             descricao_servico=descricao,
-                            valor_orcamento=valor_orcamento,
-                            valor_final=valor_final,
+                            valor_orcamento=_preco_form(valor_orcamento, "valor_orcamento"),
+                            valor_final=_preco_form(valor_final, "valor_final"),
                             centro_custo=centro,
                             responsavel_tecnico=responsavel,
                         )
                     )
                     if ok:
-                        st.success(f"OS {criada['id_os']} em {criada['status_os']} · {criada['centro_custo']}")
+                        st.success(f"OS {criada['id_os']} · pasta {criada['link_pasta_drive']}")
                         st.rerun()
         else:
             st.info("Este cliente ainda não tem equipamento nesta entidade.")
@@ -174,6 +189,8 @@ def _aba_ordens(entidade: str) -> None:
         format_func=lambda item: f"{item['id_os']} · {item['status_os']}",
     )
     destino = st.selectbox("Próximo status", proximos_status(escolhida["status_os"]))
+    if destino in ("Teste de Carga", "Faturado"):
+        st.caption("Esta passagem exige medição registrada e referência de foto tipada.")
     if st.button("Aplicar transição"):
         ok, atualizada = _chamar(
             lambda: repo.transicionar_os(escolhida["id_os"], destino, entidade=entidade)
@@ -183,59 +200,144 @@ def _aba_ordens(entidade: str) -> None:
             st.rerun()
 
 
+def _aba_evidencia(entidade: str) -> None:
+    st.subheader("Medição e foto tipada")
+    st.caption("Sem valor padrão. A referência da foto é um caminho ou id informado aqui.")
+    repo = _repo()
+    _tabela(repo.listar_medicoes(entidade), "Nenhuma medição nesta entidade.")
+    ordens = repo.listar_os(entidade)
+    if not ordens:
+        st.info("Nenhuma OS nesta entidade.")
+        return
+    ordem = st.selectbox(
+        "OS",
+        ordens,
+        format_func=lambda item: f"{item['id_os']} · {item['status_os']}",
+    )
+    with st.form("medicao"):
+        grandeza = st.text_input("Grandeza")
+        valor = st.text_input("Valor medido")
+        unidade = st.text_input("Unidade")
+        dia = st.date_input("Data da medição")
+        responsavel = st.text_input("Responsável pela medição")
+        if st.form_submit_button("Registrar medição"):
+            ok, _med = _chamar(
+                lambda: repo.registrar_medicao(
+                    entidade=entidade,
+                    id_os=ordem["id_os"],
+                    grandeza=grandeza,
+                    valor=valor,
+                    unidade=unidade,
+                    data=dia,
+                    responsavel=responsavel,
+                )
+            )
+            if ok:
+                st.success("Medição registrada.")
+                st.rerun()
+    with st.form("foto"):
+        referencia = st.text_input("Caminho ou id da foto tipada")
+        if st.form_submit_button("Registrar foto tipada"):
+            ok, _os = _chamar(
+                lambda: repo.registrar_foto_tipada(ordem["id_os"], entidade=entidade, referencia=referencia)
+            )
+            if ok:
+                st.success("Referência registrada.")
+                st.rerun()
+
+
+def _aba_recebimentos(entidade: str) -> None:
+    st.subheader("Recebimentos")
+    st.caption("Faturado não cria recebimento. O lançamento é separado.")
+    repo = _repo()
+    _tabela(repo.listar_recebimentos(entidade), "Nenhum recebimento nesta entidade.")
+    ordens = repo.listar_os(entidade)
+    if not ordens:
+        st.info("Nenhuma OS nesta entidade.")
+        return
+    with st.form("recebimento"):
+        ordem = st.selectbox(
+            "OS do recebimento",
+            ordens,
+            format_func=lambda item: f"{item['id_os']} · {item['status_os']}",
+        )
+        dia = st.date_input("Data do recebimento")
+        valor = st.text_input("Valor recebido")
+        forma = st.text_input("Forma")
+        obs = st.text_input("Obs")
+        if st.form_submit_button("Registrar recebimento"):
+            ok, criado = _chamar(
+                lambda: repo.registrar_recebimento(
+                    entidade=entidade,
+                    id_os=ordem["id_os"],
+                    data_recebimento=dia,
+                    valor_recebido=valor,
+                    forma=forma,
+                    obs=obs,
+                )
+            )
+            if ok:
+                st.success(f"Recebimento {criado['id']} registrado. Status da OS não muda.")
+                st.rerun()
+
+
 def _aba_exportar(entidade: str) -> None:
-    st.subheader("Exportação Grupo_Fidalgo_BI")
-    st.caption("Um arquivo, uma entidade. O app não escreve na planilha.")
+    st.subheader("Exportação")
+    st.caption("Um arquivo, uma entidade. Sem preço sai célula vazia. O app não escreve na planilha.")
     repo = _repo()
     if entidade in ("EF", "FSE"):
         csv_centros = repo.exportar_csv_centros(entidade)
         st.download_button(
-            "Baixar 3_FSE_CentrosCusto",
+            "Baixar centros de custo",
             data=csv_centros.encode("utf-8"),
-            file_name=f"{entidade}_3_FSE_CentrosCusto.csv",
+            file_name=f"{entidade}_centros_custo.csv",
             mime="text/csv",
         )
     elif entidade == "HC":
-        csv_heros = repo.exportar_csv_heros(entidade)
+        csv_operacional = repo.exportar_csv_operacional(entidade)
         st.download_button(
-            "Baixar 2_Heros_Operacional",
-            data=csv_heros.encode("utf-8"),
-            file_name="HC_2_Heros_Operacional.csv",
+            "Baixar operacional HC",
+            data=csv_operacional.encode("utf-8"),
+            file_name="HC_operacional.csv",
             mime="text/csv",
         )
     else:
-        st.info("AI e PF saem só no consolidado. A aba de centros da FSE não recebe essas entidades.")
+        st.info("AI e PF saem só no consolidado.")
     csv_grupo = repo.exportar_csv_consolidado(entidade)
     st.download_button(
-        "Baixar 5_Grupo_Consolidado",
+        "Baixar consolidado",
         data=csv_grupo.encode("utf-8"),
-        file_name=f"{entidade}_5_Grupo_Consolidado.csv",
+        file_name=f"{entidade}_consolidado.csv",
         mime="text/csv",
     )
 
 
 def main() -> None:
-    st.set_page_config(page_title="gf-core local", layout="wide")
-    st.title("gf-core · Holding Grupo Fidalgo")
-    st.caption("Local e unpublished. Sem dados reais, sem n8n, sem Hotmart, sem publicação.")
+    st.set_page_config(page_title="gf-core", layout="wide")
+    st.title("gf-core")
+    st.caption("Local. Unpublished. Sem dados reais.")
     if "db_path" not in st.session_state:
         st.session_state["db_path"] = str(default_db_path())
     with st.sidebar:
-        entidade = st.selectbox("Entidade", ENTIDADES, format_func=lambda tag: f"{tag} · {NOME_ENTIDADE[tag]}")
+        entidade = st.selectbox("Entidade", ENTIDADES)
         st.session_state["db_path"] = st.text_input("SQLite local", value=st.session_state["db_path"])
-        st.caption("Centro fixo da EF: EF-OPEX. Caixa de outra entidade não entra nesta tela.")
+        st.caption("EF usa o centro EF-OPEX. Cada tela mostra só a entidade escolhida.")
         if st.button("Gerar backup zip"):
             ok, arquivo = _chamar(lambda: _repo().criar_backup(APP_ROOT / "backups", tag=entidade))
             if ok:
                 st.success(arquivo.name)
-    crm, equipamentos, ordens, exportar = st.tabs(["CRM", "Equipamentos", "Ordens", "Exportar"])
-    with crm:
+    abas = st.tabs(["Clientes", "Equipamentos", "Ordens", "Evidência", "Recebimentos", "Exportar"])
+    with abas[0]:
         _aba_clientes(entidade)
-    with equipamentos:
+    with abas[1]:
         _aba_equipamentos(entidade)
-    with ordens:
+    with abas[2]:
         _aba_ordens(entidade)
-    with exportar:
+    with abas[3]:
+        _aba_evidencia(entidade)
+    with abas[4]:
+        _aba_recebimentos(entidade)
+    with abas[5]:
         _aba_exportar(entidade)
 
 

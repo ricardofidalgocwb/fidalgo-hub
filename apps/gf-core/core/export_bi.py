@@ -12,6 +12,7 @@ import re
 
 from core.entities import CENTRO_EF, validar_entidade
 from core.errors import EntityIsolationError, ValidationError
+from core.preco import soma_precos, texto_preco
 
 PLANILHA = "Grupo_Fidalgo_BI"
 ABA_CENTROS = "3_FSE_CentrosCusto"
@@ -87,8 +88,12 @@ def _ano_mes(iso_data: str) -> str:
     return validar_anomes(iso_data[:7])
 
 
-def _dinheiro(valor: float) -> str:
-    return f"{round(float(valor), 2):.2f}"
+def _dinheiro(valor: float | None) -> str:
+    return texto_preco(valor)
+
+
+def _soma(valores) -> str:
+    return soma_precos(list(valores))
 
 
 def _celula(valor: str | None) -> str:
@@ -169,7 +174,7 @@ def csv_heros(entidade: str, linhas: list[dict]) -> str:
                 "Entidade": "HC",
                 "Tipo": "OS",
                 "Categoria": "Servicos",
-                "Valor_R": _dinheiro(sum(item["valor_final"] for item in itens)),
+                "Valor_R": _soma(item["valor_final"] for item in itens),
                 "Custo_R": "",
                 "Margem_R": "",
                 "Qtd_OS": str(len(itens)),
@@ -190,7 +195,7 @@ def csv_consolidado(entidade: str, linhas: list[dict], anomes: str | None = None
             {
                 "AnoMes": competencia,
                 "Entidade": tag,
-                "Receita_R": _dinheiro(sum(item["valor_final"] for item in itens)),
+                "Receita_R": _soma(item["valor_final"] for item in itens),
                 "Custo_R": "",
                 "Resultado_R": "",
                 "Patrimonio_Mercado_R": "",
