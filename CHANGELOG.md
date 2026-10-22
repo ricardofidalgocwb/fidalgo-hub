@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [Unreleased] - gf-core local unpublished (Founder 22/10)
+
+### Adicionado
+- `apps/gf-core/`: OS industrial EF, caixa segregada AI/HC/FSE/EF/PF, RNA Atlas, CSV `Grupo_Fidalgo_BI`, backup zip. FastAPI + Streamlit + SQLite local
+- Ajuste de staff no mesmo app: `entidade` em todas as tabelas (`EF`,`FSE`,`HC`,`AI`,`PF`), `recebimentos` separado de Faturado, `0.0` = sem preço, pasta RNA na OS, gate de `Teste de Carga` com `medicoes` + foto tipada, série digitada, painel neutro. Extraível para `grupo-fidalgo-core`
+- Guarda `tests/test_gf_core.py` no pytest do painel Founder
+
+### Alterado
+- Sem dados reais, sem preço de tabela, sem segredo, sem n8n, sem Hotmart, sem deploy. Merge = Founder
+
+---
+
 ## [Unreleased] - Apparel moodboard 13/13 + mock HTML unpublished (HUB-apparel-heros-1709)
 
 ### Adicionado

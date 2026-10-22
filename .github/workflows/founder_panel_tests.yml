@@ -8,6 +8,7 @@ on:
       - "config/drive_ids.json"
       - "scripts/**"
       - "tests/**"
+      - "apps/gf-core/**"
       - "docs/propostas/COM-PDF-APR-N0/**"
       - "docs/propostas/COM-PDF-CAP2-motor/**"
       - "docs/propostas/COM-PDF-GEN-F-fusca/**"
