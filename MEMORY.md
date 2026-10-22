@@ -1,5 +1,10 @@
 # Fidalgo Hub - Memorial Descritivo Completo
 
+## gf-core local (unpublished, 22/10/2026)
+- `apps/gf-core/` — OS industrial EF + caixa segregada AI/HC/FSE/EF/PF. SQLite `grupo_fidalgo.db`, FastAPI, Streamlit. Sem deploy, sem n8n, sem Hotmart, sem dado real
+- EF: centro `EF-OPEX` obrigatório. CSV só com cabeçalhos de `Grupo_Fidalgo_BI` (abas `3_FSE_CentrosCusto`, `2_Heros_Operacional`, `5_Grupo_Consolidado`)
+- RNA `AAAAMMDD_TAG_DESCRICAO_Vxx.ext`. CI: `tests/test_gf_core.py` no pytest do painel Founder. Merge = Founder
+
 ## Apparel moodboard + mocks HTML (unpublished, 18/09/2026)
 - VIS 13/13 Commons cite-only em `apparel/moodboard/` · bytes exactos · Drive `1YOk5ImGO1mwQB-qPpjQQclQ_zgWPjIGg`
 - Mock HTML 8 TEE + 2 UNI · Gold `#C9A227` · unpublished · Variante ≠ Mestra T3 · sem preço no HTML

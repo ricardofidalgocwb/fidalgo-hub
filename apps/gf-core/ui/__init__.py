@@ -1,0 +1,1 @@
+"""Painel Streamlit local."""
