@@ -20,8 +20,10 @@ import pytest
 APP_ROOT = Path(__file__).resolve().parents[1] / "apps" / "gf-core"
 sys.path.insert(0, str(APP_ROOT))
 
+from config.entidades import ENTIDADES, check_entidade_sql
 from core.cnpj import normalizar_cnpj
 from core.entities import CENTRO_EF, STATUS_INICIAL_OS, STATUS_OS, TIPOS_EQUIPAMENTO
+from core import export_bi, rna_atlas
 from core.errors import (
     CnpjError,
     EntityIsolationError,
@@ -38,7 +40,7 @@ from core.export_bi import (
     csv_centros,
 )
 from core.rna_atlas import gerar_caminho, validar_caminho
-from db.connection import connect
+from db.connection import connect, schema_sql
 from db.repository import GfRepository
 
 DIA = date(2026, 10, 22)
@@ -52,7 +54,6 @@ MEDICAO_FIXTURE = "FIXTURE"
 PASTA_TRAFO = "20261022_EF_Pasta_Transformador_V01.dir"
 CADEIA = ["Orçamento", "Aprovado", "Em Manutenção", "Teste de Carga", "Faturado"]
 TABELAS = ("clientes_b2b", "equipamentos", "ordens_servico", "recebimentos", "medicoes")
-CHECK_ENTIDADE = "CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF'))"
 
 
 @pytest.fixture
@@ -524,8 +525,12 @@ def test_readme_contrato_e_arvore_sem_dado_real():
     assert "recebimentos" in readme
     assert "medicoes" in readme
     assert "link_pasta_drive" in readme
-    assert CHECK_ENTIDADE in schema
-    assert schema.count(CHECK_ENTIDADE) == 5
+    assert "config/entidades.py" in readme
+    assert "EF-2026-001" in readme
+    assert "{{CHECK_ENTIDADE}}" in schema
+    assert schema.count("{{CHECK_ENTIDADE}}") == 5
+    assert "EF-OPEX" not in schema
+    assert schema_sql().count(check_entidade_sql()) == 5
     assert "link_pasta_drive" not in schema.split("CREATE TABLE IF NOT EXISTS equipamentos", 1)[1].split(
         "CREATE TABLE IF NOT EXISTS ordens_servico", 1
     )[0]
@@ -673,10 +678,12 @@ def test_api_fluxo_local_se_fastapi(tmp_path: Path):
 
 
 def test_entidade_obrigatoria_em_todas_as_tabelas(repo: GfRepository):
-    schema = (APP_ROOT / "db" / "schema.sql").read_text(encoding="utf-8")
-    assert schema.count(CHECK_ENTIDADE) == len(TABELAS)
     conn = connect(repo.db_path)
     try:
+        definicoes = "\n".join(
+            linha[0] for linha in conn.execute("SELECT sql FROM sqlite_master WHERE type = 'table'")
+        )
+        assert definicoes.count(check_entidade_sql()) == len(TABELAS)
         for tabela in TABELAS:
             colunas = {linha["name"]: linha for linha in conn.execute(f"PRAGMA table_info({tabela})")}
             assert colunas["entidade"]["notnull"] == 1
@@ -689,6 +696,144 @@ def test_entidade_obrigatoria_em_todas_as_tabelas(repo: GfRepository):
             )
     finally:
         conn.close()
+
+
+def test_fonte_unica_de_entidades(repo: GfRepository):
+    from config import entidades as fonte
+    from core import entities
+
+    assert fonte.ENTIDADES == ("EF", "FSE", "HC", "AI", "PF")
+    assert fonte.CENTRO_EF == "EF-OPEX"
+    assert entities.ENTIDADES is fonte.ENTIDADES
+    assert entities.CENTRO_EF is fonte.CENTRO_EF
+    assert export_bi.ENTIDADES is fonte.ENTIDADES
+    assert export_bi.CENTRO_EF is fonte.CENTRO_EF
+    assert export_bi.EF is fonte.EF
+    assert export_bi.FSE is fonte.FSE
+    assert export_bi.HC is fonte.HC
+    assert rna_atlas.TAGS_RNA == "|".join(fonte.ENTIDADES)
+    assert rna_atlas.ENTIDADES is fonte.ENTIDADES
+    for tag in fonte.ENTIDADES:
+        assert validar_caminho(f"20261022_{tag}_Laudo_V01.pdf").tag == tag
+    with pytest.raises(RnaAtlasError):
+        validar_caminho("20261022_XX_Laudo_V01.pdf")
+
+    bruto = (APP_ROOT / "db" / "schema.sql").read_text(encoding="utf-8")
+    assert bruto.count("{{CHECK_ENTIDADE}}") == len(TABELAS)
+    assert check_entidade_sql() not in bruto
+    assert fonte.CENTRO_EF not in bruto
+    montado = schema_sql()
+    assert montado.count(check_entidade_sql()) == len(TABELAS)
+    assert f"DEFAULT '{fonte.CENTRO_EF}'" in montado
+
+    lista_py = "(" + ", ".join(f'"{tag}"' for tag in fonte.ENTIDADES) + ")"
+    lista_sql = "(" + ", ".join(f"'{tag}'" for tag in fonte.ENTIDADES) + ")"
+    alternado = "|".join(fonte.ENTIDADES)
+    for caminho in APP_ROOT.rglob("*"):
+        if caminho.suffix not in {".py", ".sql"} or caminho == APP_ROOT / "config" / "entidades.py":
+            continue
+        texto = caminho.read_text(encoding="utf-8")
+        assert lista_py not in texto, caminho
+        assert lista_sql not in texto, caminho
+        assert alternado not in texto, caminho
+    schemas = (APP_ROOT / "api" / "schemas.py").read_text(encoding="utf-8")
+    assert "from config.entidades import ENTIDADES" in schemas
+    assert "Literal[*ENTIDADES]" in schemas
+    for nome in ("core/rna_atlas.py", "core/export_bi.py", "db/connection.py", "core/entities.py"):
+        assert "from config.entidades import" in (APP_ROOT / nome).read_text(encoding="utf-8")
+    conn = connect(repo.db_path)
+    try:
+        definicoes = "\n".join(
+            linha[0] for linha in conn.execute("SELECT sql FROM sqlite_master WHERE type = 'table'")
+        )
+    finally:
+        conn.close()
+    assert definicoes.count(check_entidade_sql()) == len(TABELAS)
+
+
+def test_id_os_sequencia_por_entidade_e_ano(repo: GfRepository):
+    _cli, equipamento, primeira = _cadeia(
+        repo, entidade="EF", cnpj=CNPJ_EF, serie="SN-FIXTURE-EF-30"
+    )
+    assert primeira["id_os"] == "EF-2026-001"
+    segunda = repo.abrir_os(
+        entidade="EF",
+        id_cliente=primeira["id_cliente"],
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=date(2026, 12, 1),
+        quando=date(2027, 1, 2),
+    )
+    assert segunda["id_os"] == "EF-2026-002"
+    assert segunda["link_pasta_drive"].startswith("20270102_EF_")
+    _hc_cli, hc_eq, hc = _cadeia(repo, entidade="HC", cnpj=CNPJ_HC, serie="SN-FIXTURE-HC-30")
+    assert hc["id_os"] == "HC-2026-001"
+    assert all(not linha["id_os"].startswith("EF-") for linha in repo.listar_os("HC"))
+    ano = repo.abrir_os(
+        entidade="EF",
+        id_cliente=primeira["id_cliente"],
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=date(2027, 1, 15),
+        quando=date(2027, 1, 15),
+    )
+    assert ano["id_os"] == "EF-2027-001"
+    conn = connect(repo.db_path)
+    try:
+        conn.execute(
+            """
+            INSERT INTO ordens_servico (
+                id_os, id_cliente, id_equipamento, entidade, data_abertura, link_pasta_drive
+            ) VALUES ('EF-2026-014', ?, ?, 'EF', '2026-06-01', '20260601_EF_Pasta_Transformador_V90.dir')
+            """,
+            (primeira["id_cliente"], equipamento["id_equipamento"]),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    seguinte = repo.abrir_os(
+        entidade="EF",
+        id_cliente=primeira["id_cliente"],
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=DIA,
+        quando=DIA,
+    )
+    assert seguinte["id_os"] == "EF-2026-015"
+    conn = connect(repo.db_path)
+    try:
+        conn.execute(
+            """
+            INSERT INTO ordens_servico (
+                id_os, id_cliente, id_equipamento, entidade, data_abertura, link_pasta_drive
+            ) VALUES ('EF-2026-999', ?, ?, 'EF', '2026-06-02', '20260602_EF_Pasta_Transformador_V91.dir')
+            """,
+            (primeira["id_cliente"], equipamento["id_equipamento"]),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    with pytest.raises(ValidationError, match="sequencia anual"):
+        repo.abrir_os(
+            entidade="EF",
+            id_cliente=primeira["id_cliente"],
+            id_equipamento=equipamento["id_equipamento"],
+            data_abertura=DIA,
+            quando=DIA,
+        )
+    hc_seguinte = repo.abrir_os(
+        entidade="HC",
+        id_cliente=hc["id_cliente"],
+        id_equipamento=hc_eq["id_equipamento"],
+        data_abertura=DIA,
+        quando=DIA,
+    )
+    assert hc_seguinte["id_os"] == "HC-2026-002"
+    outro_ano = repo.abrir_os(
+        entidade="EF",
+        id_cliente=primeira["id_cliente"],
+        id_equipamento=equipamento["id_equipamento"],
+        data_abertura=date(2027, 3, 1),
+        quando=date(2027, 3, 1),
+    )
+    assert outro_ano["id_os"] == "EF-2027-002"
 
 
 def test_zero_e_sem_preco_e_export_fica_vazio(repo: GfRepository):

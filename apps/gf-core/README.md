@@ -36,7 +36,8 @@ Esse arquivo está em `tests/`, que o workflow `.github/workflows/founder_panel_
 
 ```
 apps/gf-core/
-  core/     CNPJ, RNA Atlas, entidades, preço, evidência, CSV, backup zip
+  config/   entidades.py — única lista de tags e o centro padrão da EF
+  core/     CNPJ, RNA Atlas, preço, evidência, CSV, backup zip
   db/       schema SQLite, PRAGMA foreign_keys=ON, repositório
   api/      FastAPI + Pydantic (casca sobre o repositório)
   ui/       Streamlit neutro: cadastro, OS, evidência, recebimento, export
@@ -44,7 +45,7 @@ apps/gf-core/
 
 A regra de negócio mora no repositório. API e painel só chamam essa camada. Toda leitura de caixa, medição, recebimento e export exige `entidade`. Não existe listagem “de todas”.
 
-Tags de caixa, nesta ordem no `CHECK`: **EF**, **FSE**, **HC**, **AI**, **PF**. Um cliente, um equipamento, uma OS, uma medição e um recebimento nascem numa entidade e não mudam de entidade. O equipamento tem de ser do mesmo cliente da OS. O painel mostra a tag, sem voz de marca.
+As tags de caixa e o centro padrão da EF estão só em `config/entidades.py`. O `CHECK` do schema, a tag do RNA Atlas e o CSV importam essa lista; não há segunda cópia. A ordem é **EF**, **FSE**, **HC**, **AI**, **PF**. O centro padrão da EF é `EF-OPEX`. Um cliente, um equipamento, uma OS, uma medição e um recebimento nascem numa entidade e não mudam de entidade. O equipamento tem de ser do mesmo cliente da OS. O painel mostra a tag, sem voz de marca.
 
 ## Schema
 
@@ -54,13 +55,13 @@ Tags de caixa, nesta ordem no `CHECK`: **EF**, **FSE**, **HC**, **AI**, **PF**. 
 
 `equipamentos`: `id_equipamento` PK, `id_cliente` FK, `entidade`, `tipo_equipamento` NOT NULL (`Transformador` | `Motor Elétrico` | `Gerador` | `Disjuntor`), `marca_modelo`, `numero_serie` UNIQUE NOT NULL, `potencia_especificacao`, `status_atual` default `Diagnóstico`. O número de série é digitado pelo operador. O app não gera série.
 
-`ordens_servico`: `id_os` PK, `id_cliente` FK, `id_equipamento` FK, `entidade`, `data_abertura` NOT NULL, `data_previsao`, `data_conclusao`, `descricao_servico`, `status_os` default `Orçamento`, `valor_orcamento` e `valor_final` REAL sem default (`NULL` ou `> 0`), `centro_custo` default `EF-OPEX`, `responsavel_tecnico`, `link_pasta_drive` NOT NULL (nome RNA da pasta da OS, não é URL), `ref_foto_tipada`.
+`ordens_servico`: `id_os` PK no formato `{ENTIDADE}-{AAAA}-{NNN}` (exemplo `EF-2026-001`), sequência por entidade e por ano, três dígitos. O ano é o de `data_abertura`. `HC-2026-014` não avança a sequência da EF. Também `id_cliente` FK, `id_equipamento` FK, `entidade`, `data_abertura` NOT NULL, `data_previsao`, `data_conclusao`, `descricao_servico`, `status_os` default `Orçamento`, `valor_orcamento` e `valor_final` REAL sem default (`NULL` ou `> 0`), `centro_custo` default `EF-OPEX`, `responsavel_tecnico`, `link_pasta_drive` NOT NULL (nome RNA da pasta da OS, não é URL), `ref_foto_tipada`.
 
 `recebimentos`: `id` PK, `id_os` FK, `entidade`, `data_recebimento` NOT NULL, `valor_recebido` REAL NOT NULL `> 0`, `forma` NOT NULL, `obs`.
 
 `medicoes`: `id` PK, `id_os` FK, `entidade`, `grandeza` NOT NULL, `valor` TEXT NOT NULL (sem default numérico), `unidade` NOT NULL, `data` NOT NULL, `responsavel` NOT NULL.
 
-Toda tabela tem `entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF'))`. A segregação é verificável no banco, não só na tela.
+Toda tabela recebe, na abertura do banco, `entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF'))`. Esse texto é montado a partir de `config/entidades.py`. A segregação é verificável no banco, não só na tela.
 
 ### OS industrial
 

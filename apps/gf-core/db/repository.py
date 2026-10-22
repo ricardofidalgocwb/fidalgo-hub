@@ -65,6 +65,26 @@ def _data(valor: date | str, campo: str) -> str:
     return texto
 
 
+def _novo_id_os(conn: sqlite3.Connection, entidade: str, ano: int) -> str:
+    """{ENTIDADE}-{AAAA}-{NNN}, sequência da entidade naquele ano."""
+    if ano < 1000 or ano > 9999:
+        raise ValidationError("ano da OS invalido")
+    padrao = re.compile(rf"^{re.escape(entidade)}-{ano}-(\d{{3}})$")
+    linhas = conn.execute(
+        "SELECT id_os FROM ordens_servico WHERE entidade = ?",
+        (entidade,),
+    ).fetchall()
+    numeros = []
+    for linha in linhas:
+        encontrado = padrao.fullmatch(str(linha[0]))
+        if encontrado:
+            numeros.append(int(encontrado.group(1)))
+    proximo = (max(numeros) if numeros else 0) + 1
+    if proximo > 999:
+        raise ValidationError("sequencia anual de OS esgotada")
+    return f"{entidade}-{ano}-{proximo:03d}"
+
+
 def _novo_id(conn: sqlite3.Connection, tabela: str, coluna: str, prefixo: str) -> str:
     if tabela not in {"clientes_b2b", "equipamentos", "ordens_servico", "recebimentos", "medicoes"}:
         raise ValidationError("tabela desconhecida")
@@ -233,7 +253,7 @@ class GfRepository:
                 quando=dia_pasta,
                 existentes=links,
             )
-            id_os = _novo_id(conn, "ordens_servico", "id_os", f"OS-{tag}-")
+            id_os = _novo_id_os(conn, tag, int(abertura[:4]))
             try:
                 conn.execute(
                     """

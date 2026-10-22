@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS clientes_b2b (
     id_cliente TEXT PRIMARY KEY,
-    entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF')),
+    entidade TEXT NOT NULL {{CHECK_ENTIDADE}},
     razao_social TEXT NOT NULL,
     cnpj TEXT UNIQUE NOT NULL,
     inscricao_estadual TEXT,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS clientes_b2b (
 CREATE TABLE IF NOT EXISTS equipamentos (
     id_equipamento TEXT PRIMARY KEY,
     id_cliente TEXT NOT NULL REFERENCES clientes_b2b (id_cliente),
-    entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF')),
+    entidade TEXT NOT NULL {{CHECK_ENTIDADE}},
     tipo_equipamento TEXT NOT NULL CHECK (
         tipo_equipamento IN ('Transformador', 'Motor Elétrico', 'Gerador', 'Disjuntor')
     ),
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS ordens_servico (
     id_os TEXT PRIMARY KEY,
     id_cliente TEXT NOT NULL REFERENCES clientes_b2b (id_cliente),
     id_equipamento TEXT NOT NULL REFERENCES equipamentos (id_equipamento),
-    entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF')),
+    entidade TEXT NOT NULL {{CHECK_ENTIDADE}},
     data_abertura TEXT NOT NULL,
     data_previsao TEXT,
     data_conclusao TEXT,
@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS ordens_servico (
     ),
     valor_orcamento REAL CHECK (valor_orcamento IS NULL OR valor_orcamento > 0),
     valor_final REAL CHECK (valor_final IS NULL OR valor_final > 0),
-    centro_custo TEXT NOT NULL DEFAULT 'EF-OPEX' CHECK (
+    centro_custo TEXT NOT NULL DEFAULT '{{CENTRO_EF}}' CHECK (
         centro_custo IN (
-            'AI-OPEX', 'HC-OPEX', 'FSE-OPEX', 'FSE-CAPEX', 'EF-OPEX', 'PF-OPEX'
+            'AI-OPEX', 'HC-OPEX', 'FSE-OPEX', 'FSE-CAPEX', '{{CENTRO_EF}}', 'PF-OPEX'
         )
     ),
     responsavel_tecnico TEXT,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS ordens_servico (
 CREATE TABLE IF NOT EXISTS recebimentos (
     id TEXT PRIMARY KEY,
     id_os TEXT NOT NULL REFERENCES ordens_servico (id_os),
-    entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF')),
+    entidade TEXT NOT NULL {{CHECK_ENTIDADE}},
     data_recebimento TEXT NOT NULL,
     valor_recebido REAL NOT NULL CHECK (valor_recebido > 0),
     forma TEXT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS recebimentos (
 CREATE TABLE IF NOT EXISTS medicoes (
     id TEXT PRIMARY KEY,
     id_os TEXT NOT NULL REFERENCES ordens_servico (id_os),
-    entidade TEXT NOT NULL CHECK (entidade IN ('EF', 'FSE', 'HC', 'AI', 'PF')),
+    entidade TEXT NOT NULL {{CHECK_ENTIDADE}},
     grandeza TEXT NOT NULL,
     valor TEXT NOT NULL,
     unidade TEXT NOT NULL,
@@ -112,10 +112,10 @@ FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, 'OS abre em Orçamento')
     WHERE NEW.status_os != 'Orçamento';
-    SELECT RAISE(ABORT, 'EF exige centro_custo EF-OPEX')
-    WHERE NEW.entidade = 'EF' AND NEW.centro_custo != 'EF-OPEX';
-    SELECT RAISE(ABORT, 'EF-OPEX exclusivo da entidade EF')
-    WHERE NEW.entidade != 'EF' AND NEW.centro_custo = 'EF-OPEX';
+    SELECT RAISE(ABORT, 'EF exige centro_custo {{CENTRO_EF}}')
+    WHERE NEW.entidade = 'EF' AND NEW.centro_custo != '{{CENTRO_EF}}';
+    SELECT RAISE(ABORT, '{{CENTRO_EF}} exclusivo da entidade EF')
+    WHERE NEW.entidade != 'EF' AND NEW.centro_custo = '{{CENTRO_EF}}';
     SELECT RAISE(ABORT, 'centro_custo incompativel com a entidade')
     WHERE (NEW.entidade = 'AI' AND NEW.centro_custo != 'AI-OPEX')
        OR (NEW.entidade = 'HC' AND NEW.centro_custo != 'HC-OPEX')
@@ -157,10 +157,10 @@ BEGIN
               WHERE id_os = NEW.id_os AND entidade = NEW.entidade
           )
       );
-    SELECT RAISE(ABORT, 'EF exige centro_custo EF-OPEX')
-    WHERE NEW.entidade = 'EF' AND NEW.centro_custo != 'EF-OPEX';
-    SELECT RAISE(ABORT, 'EF-OPEX exclusivo da entidade EF')
-    WHERE NEW.entidade != 'EF' AND NEW.centro_custo = 'EF-OPEX';
+    SELECT RAISE(ABORT, 'EF exige centro_custo {{CENTRO_EF}}')
+    WHERE NEW.entidade = 'EF' AND NEW.centro_custo != '{{CENTRO_EF}}';
+    SELECT RAISE(ABORT, '{{CENTRO_EF}} exclusivo da entidade EF')
+    WHERE NEW.entidade != 'EF' AND NEW.centro_custo = '{{CENTRO_EF}}';
     SELECT RAISE(ABORT, 'OS faturada nao altera valores')
     WHERE OLD.status_os = 'Faturado'
       AND (

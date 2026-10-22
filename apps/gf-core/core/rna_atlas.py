@@ -1,7 +1,7 @@
 """Nomes RNA Atlas: AAAAMMDD_TAG_DESCRICAO_Vxx.ext
 
 A versão começa em V01 e sobe até V99 para a mesma data, tag, descrição e
-extensão. A tag é uma entidade de caixa (AI, HC, FSE, EF, PF).
+extensão. A tag vem de config.entidades.
 """
 
 from __future__ import annotations
@@ -12,13 +12,14 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from core.entities import ENTIDADES
+from config.entidades import ENTIDADES
 from core.errors import RnaAtlasError
 
+TAGS_RNA = "|".join(ENTIDADES)
 _RNA = re.compile(
-    r"^(?P<data>\d{8})_(?P<tag>AI|HC|FSE|EF|PF)_"
-    r"(?P<descricao>[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z][A-Za-z0-9]*)*)_"
-    r"V(?P<versao>\d{2})\.(?P<ext>[A-Za-z0-9]{1,8})$"
+    rf"^(?P<data>\d{{8}})_(?P<tag>{TAGS_RNA})_"
+    rf"(?P<descricao>[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z][A-Za-z0-9]*)*)_"
+    rf"V(?P<versao>\d{{2}})\.(?P<ext>[A-Za-z0-9]{{1,8}})$"
 )
 
 

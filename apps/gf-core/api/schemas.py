@@ -7,7 +7,9 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-Entidade = Literal["EF", "FSE", "HC", "AI", "PF"]
+from config.entidades import ENTIDADES
+
+Entidade = Literal[*ENTIDADES]
 TipoEquipamento = Literal["Transformador", "Motor Elétrico", "Gerador", "Disjuntor"]
 StatusOs = Literal["Orçamento", "Aprovado", "Em Manutenção", "Teste de Carga", "Faturado"]
 

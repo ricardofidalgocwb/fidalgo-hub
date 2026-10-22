@@ -2,20 +2,17 @@
 
 from __future__ import annotations
 
+from config.entidades import AI, CENTRO_EF, EF, ENTIDADES, FSE, HC, PF
 from core.errors import EntityIsolationError, TransitionError, ValidationError
-
-ENTIDADES: tuple[str, ...] = ("EF", "FSE", "HC", "AI", "PF")
 
 STATUS_EXIGE_EVIDENCIA = frozenset({"Teste de Carga", "Faturado"})
 
-CENTRO_EF = "EF-OPEX"
-
 CENTROS_POR_ENTIDADE: dict[str, tuple[str, ...]] = {
-    "AI": ("AI-OPEX",),
-    "HC": ("HC-OPEX",),
-    "FSE": ("FSE-OPEX", "FSE-CAPEX"),
-    "EF": (CENTRO_EF,),
-    "PF": ("PF-OPEX",),
+    AI: (f"{AI}-OPEX",),
+    HC: (f"{HC}-OPEX",),
+    FSE: (f"{FSE}-OPEX", f"{FSE}-CAPEX"),
+    EF: (CENTRO_EF,),
+    PF: (f"{PF}-OPEX",),
 }
 
 TIPOS_EQUIPAMENTO: tuple[str, ...] = (
@@ -66,9 +63,9 @@ def centro_padrao(entidade: str) -> str:
 def resolver_centro(entidade: str, centro: str | None) -> str:
     validar_entidade(entidade)
     permitidos = CENTROS_POR_ENTIDADE[entidade]
-    if entidade == "EF":
+    if entidade == EF:
         if centro not in (None, "", CENTRO_EF):
-            raise EntityIsolationError("EF exige centro_custo EF-OPEX")
+            raise EntityIsolationError(f"{EF} exige centro_custo {CENTRO_EF}")
         return CENTRO_EF
     if centro in (None, ""):
         return permitidos[0]

@@ -7,6 +7,7 @@ import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
 
+from config.entidades import render_schema
 from core.errors import EntityIsolationError, GfCoreError, IntegrityFailure, TransitionError, ValidationError
 
 APP_ROOT = Path(__file__).resolve().parents[1]
@@ -28,10 +29,14 @@ def connect(db_path: Path) -> sqlite3.Connection:
     return conn
 
 
+def schema_sql() -> str:
+    return render_schema(SCHEMA_PATH.read_text(encoding="utf-8"))
+
+
 def init_db(db_path: Path) -> None:
     conn = connect(db_path)
     try:
-        conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        conn.executescript(schema_sql())
         conn.execute("PRAGMA foreign_keys = ON")
         ativo = int(conn.execute("PRAGMA foreign_keys").fetchone()[0])
         if ativo != 1:
